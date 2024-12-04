@@ -62,19 +62,9 @@ const Login = () => {
   }, []);
 
   const setLogin = async (data: any) => {
-    let url = "/plan";
+    let url = "/";
     dispatch(login_success(data));
-    setTimeout(() => {
-      if (data?.subRoleDetails?.id) {
-        history("/dashboard");
-      } else if (data?.activePlan === true) {
-        history("/dashboard");
-      } else if (data?.connectionsDetails?.length < 0) {
-        history("/profile");
-      } else {
-        history(url);
-      }
-    }, 100);
+    history(url);
   };
 
   const hendleSubmit = (e: any) => {
@@ -94,15 +84,7 @@ const Login = () => {
         } else {
           localStorage.removeItem("remember");
         }
-        if (res.data.two_factor_email_sent || step == 1) {
-          let rdata = res.data;
-          rdata._id = rdata.id;
-          setStep(2);
-          setRes(rdata);
-          setLogin(rdata);
-        }
-        const loginTime = new Date();
-        localStorage.setItem("loginTime", loginTime.toISOString());
+        setLogin(res?.data);
       }
       loader(false);
     });
@@ -148,7 +130,7 @@ const Login = () => {
                 <button className="btn btn-dark">Login</button>
                 </div>
               </form>
-              <p className="text_signin mt-2">Don't have an account? <a href=""><span className="">Sign up</span></a></p>
+              <p className="text_signin mt-2">Don't have an account? <a href="/signup"><span className="">Sign up</span></a></p>
               <div className="more_info">
                 <div className="font_icon">
                 <AiOutlineFileSearch />

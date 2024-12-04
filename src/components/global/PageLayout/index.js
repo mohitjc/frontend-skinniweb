@@ -8,9 +8,7 @@ import { Menu, Transition } from "@headlessui/react";
 import methodModel from "../../../methods/methods";
 import { useDispatch, useSelector } from "react-redux";
 import { login_success, logout } from "../../../Pages/actions/user";
-import { sitedetail_success } from "../../../Pages/actions/sitedetail";
-import { subscription_success } from "../../../Pages/actions/subscription";
-import { encryptData } from "../../../models/crptoUtils";
+import { sitedetail_success } from "../../../Pages/actions/sitedetail"; 
 
 const PageLayout = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -35,27 +33,27 @@ const PageLayout = ({ children }) => {
   }
 
   const getActivePlan = () => {
-    if(!user.access_token) return
-    let param = { userId: user?.id };
-    ApiClient.get("subscription/active/subscription").then((res) => {
-      if (res.success) {
-        let data=res.data
-        dispatch(subscription_success(data))
-      }
-    });
+    // if(!user.access_token) return
+    // let param = { userId: user?.id };
+    // ApiClient.get("subscription/active/subscription").then((res) => {
+    //   if (res.success) {
+    //     let data=res.data
+    //     dispatch(subscription_success(data))
+    //   }
+    // });
   };
 
   const updateProfile=()=>{
-    if(!user.access_token) return
-    setLoader(true);
-    ApiClient.get("user/profile").then(async (res) => {
-      if (res.success) {
-        let data = { ...user, ...res.data };
-        dispatch(login_success(data));
-        sessionStorage.setItem("browseload",true)
-      }
-      setLoader(false);
-    });
+    // if(!user.access_token) return
+    // setLoader(true);
+    // ApiClient.get("user/profile").then(async (res) => {
+    //   if (res.success) {
+    //     let data = { ...user, ...res.data };
+    //     dispatch(login_success(data));
+    //     sessionStorage.setItem("browseload",true)
+    //   }
+    //   setLoader(false);
+    // });
   }
 
   useEffect(() => {

@@ -19,6 +19,12 @@ const Signup = ({setActiveTab}: any) => {
     password: "",
     firstName: "",
     lastName: "",
+    dob: "",
+    gender: "",
+    dietType: "",
+    weight: "",
+    height: "",
+    
   });
   const [remember, setRemember] = useState(false);
   const [submitted, setSubmitted] = useState(false);

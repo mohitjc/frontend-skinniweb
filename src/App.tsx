@@ -99,23 +99,7 @@ function App() {
     {url:'businessforcast', path:"BusinessForecast/Business"},
   ];
 
-
-  // const getSiteDetails = () => {
-  //   let siteDetail=localStorage.getItem('siteDetail')
-  //   if(siteDetail){
-  //     siteDetail=JSON.parse(siteDetail)
-  //     // methodModel.updateSiteDetail(siteDetail)
-  //   }
-
-  //   ApiClient.get('site/detail').then((res) => {
-  //     if (res.success){
-  //       let data=res.data
-  //       methodModel.updateSiteDetail(data)
-  //       localStorage.setItem("siteDetail",JSON.stringify(data))
-  //     }
-  //   })
-  // }
-  // getSiteDetails()
+ 
   methodModel.updateSiteDetail({
     name:'Skinni Web',
     fabIcon:''
