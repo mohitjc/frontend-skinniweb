@@ -2369,13 +2369,13 @@ body {
   text-align: center;
 }
 form.form_div input {
-  border-radius: 0px;
+  border-radius: 8px;
   border: none !important;
   height: 42px;
 }
 
 .form_div .btn-dark {
-  border-radius: 0px;
+  border-radius: 8px;
   width: 100%;
   font-size: 16px;
   font-weight: 400;
@@ -2443,7 +2443,7 @@ p.text_auth {
 }
 form.form_div select {
   height: 42px;
-  border-radius: 0px;
+  border-radius: 8px;
 }
 .text_signin {
   color: #000;
@@ -2462,4 +2462,48 @@ form.form_div select {
   object-fit: contain;
   margin: auto;
   margin-bottom: 1rem;
+}
+.relative_div {
+  position: relative;
+}
+.light_box {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: #e3e3e3;
+  padding: 4px 4px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.toggle_div {
+  display: flex;
+  background: #fff;
+  width: fit-content;
+  border-radius: 30px;
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  box-shadow: 0px 0px 10px -7px #000;
+}
+.toggle_div p {
+  font-size: 14px;
+  justify-content: center;
+  width: 38px;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+.left_toggle {
+  border-radius: 15px 0px 0px 15px;
+}
+.right_toggle {
+  border-radius: 0px 15px 15px 0px;
+}
+.active_toggle {
+  background-color: #ffd5b8;
 }

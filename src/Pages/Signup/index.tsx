@@ -120,10 +120,19 @@ const Signup = ({setActiveTab}: any) => {
 </select>
 </div>
                 <div className="col-md-6 mb-3">
-                <input type="text" placeholder="Current weight in pound" className="form-control"></input>
+                  <div className="relative_div">
+                <input type="text" placeholder="Weight" className="form-control"></input>
+                <span className="light_box">Ibs</span>
+                </div>
                 </div>
                 <div className="col-md-6 mb-3">
-                <input type="text" placeholder="Current height in pound" className="form-control"></input>
+                <div className="relative_div">
+                <input type="text" placeholder="Height" className="form-control"></input>
+                 <div className="toggle_div">
+                  <p className="left_toggle active_toggle">Ft</p>
+                  <p className="right_toggle ">Cm</p>
+                 </div>
+                </div>
                 </div>
                 <div className="col-md-6 mb-3">
                 <input type="text" placeholder="Goal Weight in pound" className="form-control"></input>
