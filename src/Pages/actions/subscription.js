@@ -1,0 +1,1 @@
+export const subscription_success = (data) => ({ type: 'SUBSCRIPTION_SUCCESS', data });

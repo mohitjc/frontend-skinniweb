@@ -1,0 +1,1 @@
+export const sitedetail_success = (data) => ({ type: 'SITE_DETAIL_SUCCESS', data });

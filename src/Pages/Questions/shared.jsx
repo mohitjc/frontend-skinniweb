@@ -1,0 +1,48 @@
+const questions = [
+    {
+      question: "Who is your primary target audience?",
+      options: ["Small business owners and entrepreneurs", "Medium to large enterprises (B2B clients)", "Individual consumers (B2C clients)", "Tech-savvy millennials and Gen Z", "Other"]
+    },
+    {
+      question: "How old are you?",
+      options: ["Under 18", "18-25", "26-35", "36-45", "45+"]
+    },
+    {
+      question: "What is your preferred mode of transportation?",
+      options: ["Car", "Bus", "Bicycle", "Walking", "Other"]
+    },
+    {
+      question: "Which pet do you prefer?",
+      options: ["Dog", "Cat", "Bird", "Fish", "Other"]
+    },
+    {
+      question: "What is your favorite season?",
+      options: ["Spring", "Summer", "Autumn", "Winter", "Other"]
+    },
+    {
+      question: "Which genre of music do you like?",
+      options: ["Pop", "Rock", "Jazz", "Classical", "Other"]
+    },
+    {
+      question: "What type of food do you prefer?",
+      options: ["Vegetarian", "Non-Vegetarian", "Vegan", "Gluten-Free", "Other"]
+    },
+    {
+      question: "What is your favorite hobby?",
+      options: ["Reading", "Sports", "Traveling", "Cooking", "Other"]
+    },
+    {
+      question: "Which type of movies do you like?",
+      options: ["Action", "Comedy", "Drama", "Horror", "Other"]
+    },
+    {
+      question: "What is your preferred social media platform?",
+      options: ["Facebook", "Instagram", "Twitter", "LinkedIn", "Other"]
+    }
+  ];
+  
+  const shared = {
+    questions:questions
+  }
+
+  export default shared;
