@@ -28,7 +28,7 @@ const Login = () => {
   }, []);
 
   const [ip, setIp] = useState("");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [remember, setRemember] = useState(false);
   const [password, setPassword] = useState("");
   const [eyes, setEyes] = useState({
@@ -43,7 +43,7 @@ const Login = () => {
     let r = localStorage.getItem("remember");
     if (r) {
       let data = JSON.parse(r);
-      setUsername(data.email);
+      setEmail(data.email);
       setPassword(data.password);
       setRemember(true);
     }
@@ -58,7 +58,7 @@ const Login = () => {
     //   .catch((error) => console.error("Error fetching IP address:", error));
 
     let email = methodModel.getPrams("email");
-    if (email) setUsername(email);
+    if (email) setEmail(email);
   }, []);
 
   const setLogin = async (data: any) => {
@@ -80,17 +80,11 @@ const Login = () => {
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     let data: any = {
-      email: username,
+      email: email,
       password,
     };
-    let url = "user/login";
-    if (step == 2) {
-      url = "api/two-factor/auth";
-      data = {
-        id: resp?._id,
-        otp: otp,
-      };
-    }
+    let url = "user/signin";
+ 
     loader(true);
 
     ApiClient.post(url, data).then(async (res) => {
@@ -112,15 +106,10 @@ const Login = () => {
       }
       loader(false);
     });
-  };
+  }; 
+  const [profile, setProfile] = useState<any>(null); 
 
-  const [provider, setProvider] = useState<string>("");
-  const [profile, setProfile] = useState<any>(null);
-  console.log(provider, "fdsfadfsdafdasfdasfdasfs", profile);
-
-  function setToken() {
-    document.cookie = "gtoken" + "=" + profile.access_token + ";"  + ";path=/";
-}
+ 
 
   useEffect(() => {
     if (profile) {
@@ -144,13 +133,13 @@ const Login = () => {
               <h2>Member Login</h2>
               <p>Access your account.</p>
               </div>
-              <form className="form_div">
+              <form   onSubmit={hendleSubmit} className="form_div">
                 <div className="row">
                 <div className="col-md-6 mb-3">
-                <input placeholder="Email" className="form-control"></input>
+                <input value={email} onChange={(e)=>{setEmail(e?.target?.value)}} type="email" required placeholder="Email" className="form-control"></input>
                 </div>
                 <div className="col-md-6 mb-3">
-                <input placeholder="Password" className="form-control"></input>
+                <input type="password" value={password} onChange={(e)=>{setPassword(e?.target?.value)}} required placeholder="Password" className="form-control"></input>
                 </div>
                 </div>
                 <div className="mt-3">

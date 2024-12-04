@@ -7,6 +7,7 @@ const environment = {
     contractorRoleId:process.env.REACT_APP_CONTRACTOR_ROLE_ID,
     supplierRoleId:process.env.REACT_APP_SUPPLIER_ROLE_ID,
     map_api_key: process.env.REACT_APP_MAP_API_KEY,
+    secretKey: process.env.REACT_APP_CRYPTO_SECRET_KEY
   };
   
   export default environment;
