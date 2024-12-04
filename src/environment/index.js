@@ -9,5 +9,5 @@ const environment = {
     map_api_key: process.env.REACT_APP_MAP_API_KEY,
     secretKey: process.env.REACT_APP_CRYPTO_SECRET_KEY
   };
-  
+
   export default environment;

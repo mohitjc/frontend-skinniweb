@@ -1,14 +1,14 @@
 import CryptoJS from 'crypto-js';
 
-const secretKey = process.env.REACT_APP_CRYPTO_SECRET_KEY || 'defaultSecretKey'; 
+const secretKey = process.env.REACT_APP_CRYPTO_SECRET_KEY || 'defaultSecretKey';
 
 export const encryptData = (data) => {
   let stringifiedData;
 
   if (typeof data === 'object') {
-    stringifiedData = JSON.stringify(data);  
+    stringifiedData = JSON.stringify(data);
   } else {
-    stringifiedData = data.toString();  
+    stringifiedData = data.toString();
 
   return CryptoJS.AES.encrypt(stringifiedData, secretKey).toString();
 };
@@ -34,12 +34,12 @@ export const decryptData = (p) => {
     }
     try {
       const parsedData = JSON.parse(decryptedString);
-      return parsedData;  
+      return parsedData;
     } catch (error) {
       if (!isNaN(Number(decryptedString))) {
-        return Number(decryptedString); 
+        return Number(decryptedString);
       }
-      return decryptedString;  
+      return decryptedString;
     }
   } catch (error) {
     console.error("Error during decryption:", error);
@@ -48,18 +48,18 @@ export const decryptData = (p) => {
 };
 
 export const getEncryptedUrl = () => {
-  const urlParams = new URLSearchParams(window.location.search);  
-  const encryptedUrlParam = urlParams.get('encryptedUrl'); 
-  return encryptedUrlParam; 
+  const urlParams = new URLSearchParams(window.location.search);
+  const encryptedUrlParam = urlParams.get('encryptedUrl');
+  return encryptedUrlParam;
 };
 
 export const getEncryptedUrlAndDecrypt = () => {
-  const urlParams = new URLSearchParams(window.location.search);  
-  const encryptedUrlParam = urlParams.get('encryptedUrl'); 
+  const urlParams = new URLSearchParams(window.location.search);
+  const encryptedUrlParam = urlParams.get('encryptedUrl');
 
   if (encryptedUrlParam) {
     const decryptedURL = decryptData(encryptedUrlParam);
-    return decryptedURL;  
+    return decryptedURL;
   } else {
     return null;
   }
@@ -69,9 +69,9 @@ export const encryptUrlData = (data) => {
   let stringifiedData;
 
   if (typeof data === 'object') {
-    stringifiedData = JSON.stringify(data);  
+    stringifiedData = JSON.stringify(data);
   } else {
-    stringifiedData = data.toString();  
+    stringifiedData = data.toString();
 
     let value=CryptoJS.AES.encrypt(stringifiedData, secretKey).toString();
     if(value) value=value.replaceAll('/','slAshD')

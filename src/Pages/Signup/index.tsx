@@ -20,32 +20,32 @@ const Signup = ({ setActiveTab }: any) => {
     firstName: "",
     lastName: "",
     dob: "",
-    gender: "",
-    dietType: "",
-    weight: "",
-    height: "",
 
   });
+  console.log(form,"formm")
   const [remember, setRemember] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [eyes, setEyes] = useState({
     password: false,
     confirmPassword: false,
-    currentPassword: false,
   });
 
 
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
-
-    let url = "user/register";
-
-    if (!remember) return;
-
+    const birthDate = new Date(form?.dob); // Convert DOB to a Date object
+    const today = new Date(); // Get current date
+    let newAge = today.getFullYear() - birthDate.getFullYear();
+    let fullName=form?.firstName + " " + form?.lastName;
+    let url = "webRegister";
+    // if (!remember) return;
     let data: any = {
-      role: environment.userRoleId,
+
       ...form,
+      fullName:fullName,
+      age:newAge,
+      role: "user",
     };
 
     loader(true);
@@ -56,9 +56,10 @@ const Signup = ({ setActiveTab }: any) => {
           toast.success("Please verify your email");
         }, 400);
         history(url);
-        setActiveTab(0)
+        loader(false);
+        // setActiveTab(0)
       }
-      loader(false);
+
     });
   };
 
@@ -89,22 +90,41 @@ const Signup = ({ setActiveTab }: any) => {
                 <h2>MEMBER REGISTER </h2>
                 <p>Please fill in this form to create an account.</p>
               </div>
-              <form className="form_div">
+              <form className="form_div" onSubmit={hendleSubmit}>
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="First Name" className="form-control"></input>
+                    <input type="text" placeholder="First Name" className="form-control"
+                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                      value={form.fullName}
+                    ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="last Name" className="form-control"></input>
+                    <input type="text" placeholder="last Name" className="form-control"
+                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                      value={form.lastName}
+                    ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="email" placeholder="E-Mail" className="form-control"></input>
+                    <input type="email" placeholder="E-Mail" className="form-control"
+                      onChange={(e) =>
+                       setForm({ ...form, email: e.target.value })
+
+                      }
+                      value={form.email}
+                    ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="date" placeholder="dd/mm/yyyy" className="form-control"></input>
+                    <input type="date" placeholder="dd/mm/yyyy" className="form-control"
+                     onChange={(e) => setForm({ ...form, dob: e.target.value })
+
+                    }
+                     value={form.dob}
+                    ></input>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <select className="form-select" aria-label="Default select example">
+
+                  {/* <div className="col-md-6 mb-3">
+                    <select className="form-select" aria-label="Default select example"
+                    >
                       <option selected>Open this select menu</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -118,14 +138,14 @@ const Signup = ({ setActiveTab }: any) => {
                       <option value="2">Two</option>
                       <option value="3">Three</option>
                     </select>
-                  </div>
-                  <div className="col-md-6 mb-3">
+                  </div> */}
+                  {/* <div className="col-md-6 mb-3">
                     <input type="text" placeholder="Current weight in pound" className="form-control"></input>
                   </div>
                   <div className="col-md-6 mb-3">
                     <input type="text" placeholder="Current height in pound" className="form-control"></input>
-                  </div>
-                  <div className="col-md-6 mb-3">
+                  </div> */}
+                  {/* <div className="col-md-6 mb-3">
                     <input type="text" placeholder="Goal Weight in pound" className="form-control"></input>
                   </div>
                   <div className="col-md-6 mb-3">
@@ -135,16 +155,42 @@ const Signup = ({ setActiveTab }: any) => {
                       <option value="2">Two</option>
                       <option value="3">Three</option>
                     </select>
+                  </div> */}
+                  <input
+                    type={eyes.password ? "text" : "password"}
+                    className="mb-5  bg-white w-full  rounded-lg h-12 flex items-center gap-2 overflow-hidden  mb-0 bginput w-full px-2"
+                    placeholder="Password"
+                    onChange={(e) => setForm({ ...form, password: e.target.value })}
+                    value={form.password}
+                    minLength={8}
+                    autoComplete="off"
+                    required
+                  />
+                  <div className="right-2 inset-y-0 flex items-center text-gray-500 text-sm">
+                    <i
+                      className={eyes.password ? "fa fa-eye" : "fa fa-eye-slash"}
+                      onClick={() => setEyes({ ...eyes, password: !eyes.password })}
+                    ></i>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <input type="password" placeholder="Password" className="form-control"></input>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <input type="password" placeholder="Confirm Password" className="form-control"></input>
+                  <input
+                    type={eyes.confirmPassword ? "text" : "password"}
+                    className="mb-5   bg-white w-full  rounded-lg h-12 flex items-center gap-2 overflow-hidden  mb-0 bginput w-full px-2"
+                    placeholder="Confirm Password"
+                    onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
+                    value={form.confirmPassword}
+                    minLength={8}
+                    autoComplete="off"
+                    required
+                  />
+                  <div className="right-2 inset-y-0 flex items-center text-gray-500 text-sm">
+                    <i
+                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
+                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
+                    ></i>
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="btn btn-dark">Sign Up</button>
+                  <button className="btn btn-dark" type="submit">Sign Up</button>
                 </div>
                 <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
               </form>
