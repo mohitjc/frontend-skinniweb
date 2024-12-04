@@ -2180,7 +2180,7 @@ background-image: url("../../public/assets/img/Rectangle 5121.png");
 background-repeat: no-repeat;
 background-size: 100%;
 background-position-x: center;
-height: 345px;
+height: 342px;
 
 }
 .set-bg-img{
@@ -2336,23 +2336,23 @@ body {
   font-family: "Montserrat", sans-serif !important;
 }
 .mainauth {
-  // background-image: url('./assets/img/balance-fitness.webp');
+  // background-image: url('/public/assets/img/balance-fitness.webp');
   background-color: #095575;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 .layout_auth {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 650px;
+  max-width: 620px;
   margin: auto;
+  padding: 4rem 0rem;
 }
 .main_auth {
   background: rgba(255, 255, 255, 0.7);
-  padding: 3rem;
+  padding: 3rem 2rem;
   width: 100%;
 }
 .main_heading h2 {
@@ -2369,15 +2369,15 @@ body {
 form.form_div input {
   border-radius: 0px;
   border: none !important;
-  height: 45px;
+  height: 42px;
 }
 
 .form_div .btn-dark {
   border-radius: 0px;
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  height: 45px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2438,4 +2438,26 @@ p.text_auth {
 }
 .link_div p:hover {
   text-decoration: underline;
+}
+form.form_div select {
+  height: 42px;
+  border-radius: 0px;
+}
+.text_signin {
+  color: #000;
+  text-align: center;
+}
+.text_signin span {
+  color: #000;
+  cursor: pointer;
+}
+.text_signin span:hover {
+  text-decoration: underline;
+}
+.logo_img {
+  padding: 0rem 3rem;
+  width: 270px;
+  object-fit: contain;
+  margin: auto;
+  margin-bottom: 1rem;
 }

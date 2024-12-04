@@ -76,6 +76,8 @@ const Signup = ({setActiveTab}: any) => {
     <>
          <AuthLayout>
          <div className="layout_auth">
+          <div className="main_page">
+            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img"/>
             <div className="main_auth">
               <div className="main_heading mb-4">
               <h2>MEMBER REGISTER </h2>
@@ -84,21 +86,61 @@ const Signup = ({setActiveTab}: any) => {
               <form className="form_div">
                 <div className="row">
                 <div className="col-md-6 mb-3">
-                <input placeholder="First Name" className="form-control"></input>
+                <input type="text" placeholder="First Name" className="form-control"></input>
                 </div>
                 <div className="col-md-6 mb-3">
-                <input placeholder="last Name" className="form-control"></input>
+                <input type="text" placeholder="last Name" className="form-control"></input>
                 </div>
                 <div className="col-md-6 mb-3">
-                <input placeholder="Email" className="form-control"></input>
+                <input type="email" placeholder="E-Mail" className="form-control"></input>
                 </div>
                 <div className="col-md-6 mb-3">
-                <input placeholder="Password" className="form-control"></input>
+                <input type="date" placeholder="dd/mm/yyyy" className="form-control"></input>
+                </div>
+                <div className="col-md-6 mb-3">
+                <select className="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</div>
+<div className="col-md-6 mb-3">
+<select className="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</div>
+                <div className="col-md-6 mb-3">
+                <input type="text" placeholder="Current weight in pound" className="form-control"></input>
+                </div>
+                <div className="col-md-6 mb-3">
+                <input type="text" placeholder="Current height in pound" className="form-control"></input>
+                </div>
+                <div className="col-md-6 mb-3">
+                <input type="text" placeholder="Goal Weight in pound" className="form-control"></input>
+                </div>
+                <div className="col-md-6 mb-3">
+                <select className="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</div>
+                <div className="col-md-6 mb-3">
+                <input type="password" placeholder="Password" className="form-control"></input>
+                </div>
+                <div className="col-md-6 mb-3">
+                <input type="password" placeholder="Confirm Password" className="form-control"></input>
                 </div>
                 </div>
                 <div className="mt-3">
-                <button className="btn btn-dark">Login</button>
+                <button className="btn btn-dark">Sign Up</button>
                 </div>
+                <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
               </form>
               <div className="more_info">
                 <div className="font_icon">
@@ -114,6 +156,7 @@ const Signup = ({setActiveTab}: any) => {
                 view Prescription
                 </div>
               </div>
+            </div>
             </div>
          </div>
       </AuthLayout>
