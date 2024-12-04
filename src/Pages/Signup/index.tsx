@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import "./style.scss";
-import environment from "../../environment";
+import environment from "../../envirement";
 import { toast } from "react-toastify";
 import methodModel from "../../methods/methods";
 import { useSelector } from "react-redux";
@@ -77,7 +77,7 @@ const Signup = ({setActiveTab}: any) => {
           onSubmit={hendleSubmit}
           autoComplete="off"
         >
-         
+
        <div className="px-[20px]">
           <input
             type="text"
