@@ -246,8 +246,8 @@ const Login = () => {
                           or
                         </p>
                       </div>
-{/* 
-                      <LoginSocialGoogle
+
+                      {/* <LoginSocialGoogle
                         client_id={process.env.REACT_APP_GG_APP_ID || ""}
                         onLoginStart={onLoginStart}
                         scope="openid profile email"
