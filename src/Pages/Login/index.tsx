@@ -127,7 +127,9 @@ const Login = () => {
   return (
     <>
       <AuthLayout>
-         <div className="layout_auth">
+         <div className="layout_auth layout_auth_2">
+          <div className="main_page">
+         <img src="/assets/img/Skinnii-Logo.webp" className="logo_img"/>
             <div className="main_auth">
               <div className="main_heading mb-4">
               <h2>Member Login</h2>
@@ -146,6 +148,7 @@ const Login = () => {
                 <button className="btn btn-dark">Login</button>
                 </div>
               </form>
+              <p className="text_signin mt-2">Don't have an account? <a href=""><span className="">Sign up</span></a></p>
               <div className="more_info">
                 <div className="font_icon">
                 <AiOutlineFileSearch />
@@ -160,6 +163,7 @@ const Login = () => {
                 view Prescription
                 </div>
               </div>
+            </div>
             </div>
          </div>
       </AuthLayout>

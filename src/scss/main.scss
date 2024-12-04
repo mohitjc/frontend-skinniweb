@@ -2340,7 +2340,6 @@ body {
   background-color: #095575;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 .layout_auth {
   display: flex;
@@ -2349,6 +2348,9 @@ body {
   max-width: 620px;
   margin: auto;
   padding: 4rem 0rem;
+}
+.layout_auth_2 {
+  height: 100vh;
 }
 .main_auth {
   background: rgba(255, 255, 255, 0.7);
