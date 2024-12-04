@@ -4,7 +4,9 @@ const AuthLayout = ({ children }: any) => {
       <div className="relative">
         <div className="">
           <div className="mainauth">
+            <div className="bg_div">
             <div className="">{children}</div>
+            </div>
           </div>
           <div className="footer_auth">
             <p className="text_auth">Skinii Corp.™ is a patient management platform that partners with independent physicians and practitioners who provide 
