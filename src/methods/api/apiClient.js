@@ -8,8 +8,7 @@ import axios from "axios";
 import { setAuthorizationToken } from "../auth";
 import { toast } from "react-toastify";
 import loader from "../loader";
-import environment from "../../environment";
-import methodModel from "../methods";
+import environment from "../../environment"; 
 
 var config = {
   headers: { "Content-Type": "application/json" },

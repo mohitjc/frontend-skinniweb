@@ -14,8 +14,7 @@ import configureStoreProd from "./Pages/config/configureStore.prod";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
-import { lazy } from "react";
-import ApiClient from "./methods/api/apiClient";
+import { lazy } from "react"; 
 import methodModel from "./methods/methods";
 
 const { persistor, store } = configureStoreProd();
@@ -100,23 +99,7 @@ function App() {
     {url:'businessforcast', path:"BusinessForecast/Business"},
   ];
 
-
-  // const getSiteDetails = () => {
-  //   let siteDetail=localStorage.getItem('siteDetail')
-  //   if(siteDetail){
-  //     siteDetail=JSON.parse(siteDetail)
-  //     // methodModel.updateSiteDetail(siteDetail)
-  //   }
-
-  //   ApiClient.get('site/detail').then((res) => {
-  //     if (res.success){
-  //       let data=res.data
-  //       methodModel.updateSiteDetail(data)
-  //       localStorage.setItem("siteDetail",JSON.stringify(data))
-  //     }
-  //   })
-  // }
-  // getSiteDetails()
+ 
   methodModel.updateSiteDetail({
     name:'Skinni Web',
     fabIcon:''

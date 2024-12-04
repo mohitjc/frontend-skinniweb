@@ -8,9 +8,7 @@ import { Menu, Transition } from "@headlessui/react";
 import methodModel from "../../../methods/methods";
 import { useDispatch, useSelector } from "react-redux";
 import { login_success, logout } from "../../../Pages/actions/user";
-import { sitedetail_success } from "../../../Pages/actions/sitedetail";
-import { subscription_success } from "../../../Pages/actions/subscription";
-import { encryptData } from "../../../models/crptoUtils";
+import { sitedetail_success } from "../../../Pages/actions/sitedetail"; 
 
 const PageLayout = ({ children }) => {
   const user = useSelector((state) => state.user);
@@ -23,39 +21,39 @@ const PageLayout = ({ children }) => {
   }
 
   const getSiteDetails = () => {
-    setLoader(true);
-    ApiClient.allApi('site/detail').then((res) => {
-      if (res.success){
-        let data=res.data
-        dispatch(sitedetail_success(data))
-        sessionStorage.setItem("siteload",true)
-      }
-      setLoader(false);
-    })
+    // setLoader(true);
+    // ApiClient.allApi('site/detail').then((res) => {
+    //   if (res.success){
+    //     let data=res.data
+    //     dispatch(sitedetail_success(data))
+    //     sessionStorage.setItem("siteload",true)
+    //   }
+    //   setLoader(false);
+    // })
   }
 
   const getActivePlan = () => {
-    if(!user.access_token) return
-    let param = { userId: user?.id };
-    ApiClient.get("subscription/active/subscription").then((res) => {
-      if (res.success) {
-        let data=res.data
-        dispatch(subscription_success(data))
-      }
-    });
+    // if(!user.access_token) return
+    // let param = { userId: user?.id };
+    // ApiClient.get("subscription/active/subscription").then((res) => {
+    //   if (res.success) {
+    //     let data=res.data
+    //     dispatch(subscription_success(data))
+    //   }
+    // });
   };
 
   const updateProfile=()=>{
-    if(!user.access_token) return
-    setLoader(true);
-    ApiClient.get("user/profile").then(async (res) => {
-      if (res.success) {
-        let data = { ...user, ...res.data };
-        dispatch(login_success(data));
-        sessionStorage.setItem("browseload",true)
-      }
-      setLoader(false);
-    });
+    // if(!user.access_token) return
+    // setLoader(true);
+    // ApiClient.get("user/profile").then(async (res) => {
+    //   if (res.success) {
+    //     let data = { ...user, ...res.data };
+    //     dispatch(login_success(data));
+    //     sessionStorage.setItem("browseload",true)
+    //   }
+    //   setLoader(false);
+    // });
   }
 
   useEffect(() => {
@@ -79,9 +77,9 @@ const PageLayout = ({ children }) => {
 
   const menus = [
     { name: "Home", url: "/" },
-    { name: "Blogs", url: "/blogs" },
-    { name: "About", url: "/about" },
-    { name: "Plan", url: "/plan" }
+    // { name: "Blogs", url: "/blogs" },
+    // { name: "About", url: "/about" },
+    // { name: "Plan", url: "/plan" }
   ];
   // if (user.loggedIn) {
   //   menus.push({ name: "Plan", url: "/plan" });
@@ -298,11 +296,6 @@ const PageLayout = ({ children }) => {
             <div className="grid grid-cols-12 gap-4">
               <div className="col-span-12 lg:col-span-4">
                 <div>
-                  {/* <img
-                    className="w-full  object-cover max-w-28"
-                    src="/assets/img/logo.png"
-                    alt=""
-                  /> */}
                   <img src={methodModel.noImg(sitedetail?.logo)} width="80" />
                   <p className="text-gray-300 my-8 w-1/2 text-sm">
                     In the fast-paced world of modern technology, many
@@ -312,22 +305,11 @@ const PageLayout = ({ children }) => {
                   <ul className="flex items-center">
                     {sitedetail && sitedetail?.socialMedia?.map((item, index) => (
                       <>
-                    <li className="border border-gray-300 p-2 rounded-3xl w-9	 h-9 text-center cursor-pointer hover:opacity-[80%] group mr-2">
-                      {/* <FaFacebookF className="text-white" /> */}
+                    <li className="border border-gray-300 p-2 rounded-3xl w-9	 h-9 text-center cursor-pointer hover:opacity-[80%] group mr-2"> 
                       <a href={item.link} target="_blank" rel="noopener noreferrer"><img src={methodModel.noImg(item?.icon)} width="120" className="rounded-full" /></a>
-                    </li>
-                    {/* {item.name} */}
+                    </li> 
                     </>
-                    ))}
-                    {/* <li className="border border-gray-300 p-2 rounded-3xl w-9	 h-9 text-center cursor-pointer hover:bg-blue-500 group ms-3">
-                      <FaDribbble className="text-white" />
-                    </li>
-                    <li className="border border-gray-300 p-2 rounded-3xl w-9	 h-9 text-center cursor-pointer hover:bg-blue-500 group ms-3">
-                      <FaGithub className="text-white" />
-                    </li>
-                    <li className="border border-gray-300 p-2 rounded-3xl w-9	 h-9 text-center cursor-pointer hover:bg-blue-500 group ms-3">
-                      <SlSocialTwitter className="text-white" />
-                    </li> */}
+                    ))} 
                   </ul>
                 </div>
               </div>
@@ -374,34 +356,7 @@ const PageLayout = ({ children }) => {
                       </li>
                       
                     </ul>
-                  </div>
-                  {/* <div className="col-span-12 lg:col-span-4">
-                    <h2 className="text-white font-bold text-lg mb-8">
-                      Community
-                    </h2>
-                    <ul>
-                      <li className=" text-gray-300 group">
-                        <p className="text-gray-300 group-hover:text-white cursor-pointer mb-2">
-                          Learners
-                        </p>
-                      </li>
-                      <li className=" text-gray-300 group">
-                        <p className="text-gray-300 group-hover:text-white cursor-pointer mb-2">
-                          Leadership
-                        </p>
-                      </li>
-                      <li className=" text-gray-300 group">
-                        <p className="text-gray-300 group-hover:text-white cursor-pointer mb-2">
-                          Partners
-                        </p>
-                      </li>
-                      <li className=" text-gray-300 group">
-                        <p className="text-gray-300 group-hover:text-white cursor-pointer">
-                          Developers
-                        </p>
-                      </li>
-                    </ul>
-                  </div> */}
+                  </div> 
                   <div className="col-span-12 lg:col-span-4">
                     <h2 className="text-white font-bold text-lg mb-8">
                       Newsletter
