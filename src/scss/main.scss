@@ -2336,10 +2336,11 @@ body {
   font-family: "Montserrat", sans-serif !important;
 }
 .mainauth {
-  // background-image: url('./assets/img/balance-fitness.webp');
+  // background-image: url('/public/assets/img/balance-fitness.webp');
   background-color: #095575;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 .layout_auth {
   display: flex;
