@@ -14,8 +14,7 @@ import configureStoreProd from "./Pages/config/configureStore.prod";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
-import { lazy } from "react";
-import ApiClient from "./methods/api/apiClient";
+import { lazy } from "react"; 
 import methodModel from "./methods/methods";
 
 const { persistor, store } = configureStoreProd();

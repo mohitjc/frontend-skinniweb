@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
-import "./style.scss";
-import environment from "../../environment";
+import "./style.scss"; 
 import { toast } from "react-toastify";
 import methodModel from "../../methods/methods";
 import { useSelector } from "react-redux";
+import environment from "../../environment";
 
 const Signup = ({setActiveTab}: any) => {
   const history = useNavigate();
