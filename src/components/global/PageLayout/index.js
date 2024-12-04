@@ -21,15 +21,15 @@ const PageLayout = ({ children }) => {
   }
 
   const getSiteDetails = () => {
-    setLoader(true);
-    ApiClient.allApi('site/detail').then((res) => {
-      if (res.success){
-        let data=res.data
-        dispatch(sitedetail_success(data))
-        sessionStorage.setItem("siteload",true)
-      }
-      setLoader(false);
-    })
+    // setLoader(true);
+    // ApiClient.allApi('site/detail').then((res) => {
+    //   if (res.success){
+    //     let data=res.data
+    //     dispatch(sitedetail_success(data))
+    //     sessionStorage.setItem("siteload",true)
+    //   }
+    //   setLoader(false);
+    // })
   }
 
   const getActivePlan = () => {
@@ -77,8 +77,8 @@ const PageLayout = ({ children }) => {
 
   const menus = [
     { name: "Home", url: "/" },
-    { name: "Blogs", url: "/blogs" },
-    { name: "About", url: "/about" },
+    // { name: "Blogs", url: "/blogs" },
+    // { name: "About", url: "/about" },
     // { name: "Plan", url: "/plan" }
   ];
   // if (user.loggedIn) {
