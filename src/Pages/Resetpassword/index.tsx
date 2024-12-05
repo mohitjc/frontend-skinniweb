@@ -17,11 +17,11 @@ const Resetpassword = () => {
   const params = new URLSearchParams(window.location.search);
 
   const user = useSelector((state: any) => state.user);
-  // useEffect(() => {
-  //   if (user?.access_token) {
-  //     history("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (user?.access_token) {
+      history("/");
+    }
+  }, []);
 
   const [form, setForm]: any = useState({
     confirmPassword: "",
@@ -32,6 +32,8 @@ const Resetpassword = () => {
     newPassword: false,
     confirmPassword: false,
   });
+
+  
 
   const hendleSubmit = (e: any) => {
     e.preventDefault();

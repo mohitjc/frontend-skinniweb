@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
-import loader from "../../methods/loader";
-import methodModel from "../../methods/methods";
+import loader from "../../methods/loader"; 
 import "./style.scss";
 import AuthLayout from "../../components/AuthLayout";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { decryptData } from "../../models/crptoUtils";
-import { AiOutlineFileSearch } from "react-icons/ai";
+import { toast } from "react-toastify"; 
 import { IoIosArrowBack } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 const ChangePassword = () => {
   const history = useNavigate();
+  const user = useSelector((state) => state.user); 
   const [form, setForm] = useState({
     confirmPassword: "",
     newPassword: "",
@@ -25,6 +22,12 @@ const ChangePassword = () => {
     confirmPassword: false,
     currentPassword: false,
   });
+
+  useEffect(() => {
+    if (user && user?.loggedIn) {
+      history("/");
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

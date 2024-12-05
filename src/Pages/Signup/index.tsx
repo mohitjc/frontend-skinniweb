@@ -5,10 +5,8 @@ import loader from "../../methods/loader";
 import "./style.scss";
 import { toast } from "react-toastify";
 import methodModel from "../../methods/methods";
-import { useSelector } from "react-redux";
-import environment from "../../environment";
-import AuthLayout from "../../components/AuthLayout";
-import { AiOutlineFileSearch } from "react-icons/ai";
+import { useSelector } from "react-redux"; 
+import AuthLayout from "../../components/AuthLayout"; 
 
 const Signup = ({ setActiveTab }: any) => {
   const history = useNavigate();
@@ -67,9 +65,9 @@ const Signup = ({ setActiveTab }: any) => {
 
   useEffect(() => {
     let email = methodModel.getPrams("email");
-    // if (user && user?.loggedIn) {
-    //   history("/dashboard");
-    // }
+    if (user && user?.loggedIn) {
+      history("/");
+    }
 
     if (email) {
       setForm({

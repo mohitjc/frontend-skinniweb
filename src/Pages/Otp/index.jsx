@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import AuthLayout from "../../components/AuthLayout";
 import OtpInput from "react-otp-input";
@@ -7,12 +7,20 @@ import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 const OTP = () => {
+    const user = useSelector((state) => state.user); 
   const [otp, setOtp] = useState();
   const location = useLocation();
   const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (user && user?.loggedIn) {
+      history("/");
+    }
+  }, []);
   const hendleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
