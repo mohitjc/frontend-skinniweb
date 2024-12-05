@@ -74,7 +74,7 @@ const Login = () => {
       password,
     };
     let url = "user/signin";
- 
+
     loader(true);
 
     ApiClient.post(url, data).then(async (res) => {
@@ -88,10 +88,10 @@ const Login = () => {
       }
       loader(false);
     });
-  }; 
-  const [profile, setProfile] = useState<any>(null); 
+  };
+  const [profile, setProfile] = useState<any>(null);
 
- 
+
 
   useEffect(() => {
     if (profile) {

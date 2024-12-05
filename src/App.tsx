@@ -14,13 +14,14 @@ import configureStoreProd from "./Pages/config/configureStore.prod";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
-import { lazy } from "react"; 
+import { lazy } from "react";
 import methodModel from "./methods/methods";
+import environment from "./environment";
 
 const { persistor, store } = configureStoreProd();
 
 function App() {
-  
+  console.log(environment?.secretKey,"environment?.secretKey")
   const routes = [
     { url: "/login", path: "Login" },
     { url: "/signup", path: "Signup" },
@@ -99,7 +100,7 @@ function App() {
     {url:'businessforcast', path:"BusinessForecast/Business"},
   ];
 
- 
+
   methodModel.updateSiteDetail({
     name:'Skinni Web',
     fabIcon:''

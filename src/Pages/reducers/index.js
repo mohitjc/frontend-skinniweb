@@ -14,11 +14,13 @@ import environment from '../../environment';
 
 // Encryption transform
 const encryptTransformF = encryptTransform({
-    secretKey: environment.secretKey,  
+
+    secretKey: environment?.secretKey,
     onError: function (error) {
         console.error('Encryption error:', error);
     },
 });
+
 
 const userPersistConfig = {
     key: 'skinniWeb-app',
