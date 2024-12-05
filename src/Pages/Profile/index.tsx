@@ -18,6 +18,12 @@ const Profile = () => {
   const user = useSelector((state: any) => state.user);
   const [data, setData]: any = useState("");
   const [editable, setEditable] = useState(false);
+   const [form,setForm] = useState({
+    fullName : "",
+     email : "",
+     dob : "",
+     gender : "",
+   })
   const gallaryData = () => {
     loader(true);
     ApiClient.get(`profile`).then((res) => {
@@ -34,7 +40,7 @@ const Profile = () => {
     }
   }, []);
 
-  console.log(data, "??????");
+ 
 
   return (
     <div className="">

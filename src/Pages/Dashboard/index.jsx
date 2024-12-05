@@ -35,40 +35,40 @@ const Dashboard = () => {
     getActivePlan()
   }, []);
   const getActivePlan = () => {
-    let param = { userId: user?.id };
-    ApiClient.get("subscription/active/subscription").then((res) => {
-      if (res.success) {
-        let data=res.data
-        dispatch(subscription_success(data))
-      }
-    });
+    // let param = { userId: user?.id };
+    // ApiClient.get("subscription/active/subscription").then((res) => {
+    //   if (res.success) {
+    //     let data=res.data
+    //     dispatch(subscription_success(data))
+    //   }
+    // });
   };
   const getData = (p = {}) => {
     loader(true);
-    let filter = { ...filters, ...p };
-    if (filter.startDate) filter.startDate = `${filter.startDate}`;
-    if (filter.endDate) filter.endDate = `${filter.endDate}`;
+    // let filter = { ...filters, ...p };
+    // if (filter.startDate) filter.startDate = `${filter.startDate}`;
+    // if (filter.endDate) filter.endDate = `${filter.endDate}`;
 
-    ApiClient.get("dashboard/cashflow", filter).then((res) => {
-      if (res.success) {
-        setData(
-          res.data.map((itm) => {
-            return itm;
-          })
-        );
-      }
-      loader(false);
-    });
-    ApiClient.get("dashboard/invoice-piechart", filter).then((res) => {
-      if (res.success) {
-        setPieData(
-          res.data.map((itm) => {
-            return itm;
-          })
-        );
-      }
-      loader(false);
-    });
+    // ApiClient.get("dashboard/cashflow", filter).then((res) => {
+    //   if (res.success) {
+    //     setData(
+    //       res.data.map((itm) => {
+    //         return itm;
+    //       })
+    //     );
+    //   }
+    //   loader(false);
+    // });
+    // ApiClient.get("dashboard/invoice-piechart", filter).then((res) => {
+    //   if (res.success) {
+    //     setPieData(
+    //       res.data.map((itm) => {
+    //         return itm;
+    //       })
+    //     );
+    //   }
+    //   loader(false);
+    // });
   };
 
   const filter = (p = {}) => {

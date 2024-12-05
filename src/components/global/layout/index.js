@@ -32,24 +32,24 @@ const Layout = memo(function Layout({ children }) {
     setIsContactOpen(false);
   }
   const updateUserProfile = () => {
-    if (!user.access_token) return;
-    ApiClient.get("user/profile").then(async (res) => {
-      if (res.success) {
-        let data = { ...user, ...res.data };
-        dispatch(login_success(data));
-        sessionStorage.setItem("browseload", true);
-      }
-    });
+    // if (!user.access_token) return;
+    // ApiClient.get("user/profile").then(async (res) => {
+    //   if (res.success) {
+    //     let data = { ...user, ...res.data };
+    //     dispatch(login_success(data));
+    //     sessionStorage.setItem("browseload", true);
+    //   }
+    // });
   };
 
   const getActivePlan = () => {
-    if (!user.access_token) return;
-    ApiClient.get("subscription/active/subscription").then((res) => {
-      if (res.success) {
-        let data = res.data;
-        dispatch(subscription_success(data));
-      }
-    });
+    // if (!user.access_token) return;
+    // ApiClient.get("subscription/active/subscription").then((res) => {
+    //   if (res.success) {
+    //     let data = res.data;
+    //     dispatch(subscription_success(data));
+    //   }
+    // });
   };
 
   useEffect(() => {
@@ -85,13 +85,13 @@ const Layout = memo(function Layout({ children }) {
 
   const [state, setstate] = useState(false);
   const getSiteDetails = () => {
-    ApiClient.allApi("site/detail").then((res) => {
-      if (res.success) {
-        let data = res.data;
-        dispatch(sitedetail_success(data));
-        sessionStorage.setItem("siteload", true);
-      }
-    });
+    // ApiClient.allApi("site/detail").then((res) => {
+    //   if (res.success) {
+    //     let data = res.data;
+    //     dispatch(sitedetail_success(data));
+    //     sessionStorage.setItem("siteload", true);
+    //   }
+    // });
   };
 
   useEffect(() => {

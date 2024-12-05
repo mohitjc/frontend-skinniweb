@@ -18,13 +18,13 @@ const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user && user?.loggedIn) {
-      history("/plan");
+      history("/");
     }
   }, []);
 
   useEffect(() => {
     if (user && user?.loggedIn) {
-      history("/plan");
+      history("/");
     }
   }, []);
 
@@ -155,7 +155,7 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text_right">Forgot Password</p>
+                <p onClick={()=>{history("/forgotpassword")}} className="text_right">Forgot Password</p>
                 <div className="mt-3">
                   <button className="btn btn-dark">Login</button>
                 </div>

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import "./style.scss";
-import { Link } from "react-router-dom";
 import AuthLayout from "../../components/AuthLayout";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -12,7 +11,7 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const Forgotpassword = () => {
   const history = useNavigate();
-  const user=useSelector((state:any)=>state.user)
+  const user = useSelector((state: any) => state.user);
 
   useEffect(() => {
     if (user?.access_token) {
@@ -28,9 +27,9 @@ const Forgotpassword = () => {
     e.preventDefault();
     loader(true);
 
-    ApiClient.post("user/forgot/password", form).then((res) => {
+    ApiClient.post("forgot/password", form).then((res) => {
       if (res.success) {
-        history("/login");
+        history("/otp");
         setTimeout(() => {
           toast.success(res.message);
         }, 100);
@@ -42,32 +41,38 @@ const Forgotpassword = () => {
   return (
     <>
       <AuthLayout>
-      <div className="layout_auth layout_auth_2">
+        <div className="layout_auth layout_auth_2">
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
-            <IoIosArrowBack className="back_arrow" />
+              <IoIosArrowBack className="back_arrow" />
               <div className="main_heading mb-4">
                 <h2>Forgot Password</h2>
-                <p> No worries! Just enter your email and we’ll send you a reset
-                password link.</p>
+                <p>
+                  {" "}
+                  No worries! Just enter your email and we’ll send you a reset
+                  password link.
+                </p>
               </div>
-              <form className="form_div">
+              <form onSubmit={hendleSubmit} className="form_div">
                 <div className="row">
-                <div className="col-md-12 mb-3">
+                  <div className="col-md-12 mb-3">
                     <input
+                    placeholder="Email"
                       type="email"
+                      className="shadow-[0 2px 3px -1px rgba(0, 0, 0, 0.1)] border-b-[1px] border-gray-300 bg-white  w-full text-[13px] h-10 flex items-center gap-2 overflow-hidden pl-2 pr-[35px]"
                       required
-                      placeholder="E-Mail"
-                      className="form-control"
-                    ></input>
+                      value={form.email}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
+                    />
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="btn btn-dark">Send Recovery Email</button>
+                  <button type="submit" className="btn btn-dark">Send Recovery Email</button>
                 </div>
-              </form>
-              <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
+              </form> 
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
