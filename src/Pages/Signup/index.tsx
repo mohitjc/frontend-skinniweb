@@ -21,9 +21,10 @@ const Signup = ({ setActiveTab }: any) => {
     lastName: "",
     dob: "",
   });
-  console.log(form, "formm");
-  const [remember, setRemember] = useState(false);
+ 
+  
   const [submitted, setSubmitted] = useState(false);
+  const [confirmpassword, setConfirmPassword] = useState("");
   const [eyes, setEyes] = useState({
     password: false,
     confirmPassword: false,
@@ -32,12 +33,11 @@ const Signup = ({ setActiveTab }: any) => {
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
-    const birthDate = new Date(form?.dob); // Convert DOB to a Date object
-    const today = new Date(); // Get current date
+    const birthDate = new Date(form?.dob) 
+    const today = new Date();  
     let newAge = today.getFullYear() - birthDate.getFullYear();
     let fullName = form?.firstName + " " + form?.lastName;
-    let url = "webRegister";
-    // if (!remember) return;
+    let url = "webRegister"; 
     let data: any = {
       ...form,
       fullName: fullName,
@@ -89,6 +89,7 @@ const Signup = ({ setActiveTab }: any) => {
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <input
+                      required
                       type="text"
                       placeholder="First Name"
                       className="form-control"
@@ -111,6 +112,7 @@ const Signup = ({ setActiveTab }: any) => {
                   </div>
                   <div className="col-md-6 mb-3">
                     <input
+                      required
                       type="email"
                       placeholder="E-Mail"
                       className="form-control"
@@ -122,6 +124,7 @@ const Signup = ({ setActiveTab }: any) => {
                   </div>
                   <div className="col-md-6 mb-3">
                     <input
+                      required
                       type="date"
                       placeholder="Dob"
                       className="form-control"
@@ -162,9 +165,9 @@ const Signup = ({ setActiveTab }: any) => {
                         className="form-control"
                         placeholder="Confirm Password"
                         onChange={(e) =>
-                          setForm({ ...form, confirmPassword: e.target.value })
+                          setConfirmPassword(e.target.value)
                         }
-                        value={form.confirmPassword}
+                        value={confirmpassword}
                         minLength={8}
                         autoComplete="off"
                         required
@@ -181,6 +184,13 @@ const Signup = ({ setActiveTab }: any) => {
                         }
                       ></i>
                     </div>
+                    {submitted &&
+                        form?.password != confirmpassword &&
+                        confirmpassword != "" ? (
+                          <div className="text-red-500 text-[13px] mt-1">
+                            Confirm Password is not matched with Password
+                          </div>
+                        ) : null}
                   </div>
                 </div>
                 <div className="mt-3">
@@ -189,7 +199,12 @@ const Signup = ({ setActiveTab }: any) => {
                   </button>
                 </div>
               </form>
-              <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
+              <p className="text_signin mt-2">
+                Already have an account?{" "}
+                <a href="/login">
+                  <span className="">Sign In</span>
+                </a>
+              </p>
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
