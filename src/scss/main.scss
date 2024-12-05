@@ -153,9 +153,17 @@ form.form_div select {
 .text_signin span {
   color: #000;
   cursor: pointer;
+  font-weight: 500;
 }
 .text_signin span:hover {
   text-decoration: underline;
+}
+.text_right {
+  text-align: right;
+  cursor: pointer;
+}
+.text_right:hover {
+ text-decoration: underline;
 }
 .logo_img {
   padding: 0rem 3rem;
@@ -222,7 +230,14 @@ form.form_div select {
 .password_div input {
   padding-right: 38px;
 }
-
+.otp_div input {
+  width: 42px !important;
+  height: 42px !important;
+}
+.otp_div div {
+  gap: 0px 8px;
+  justify-content: center;
+}
 
 ////////////############ Auth css end ############////////////
 

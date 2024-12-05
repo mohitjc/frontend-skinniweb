@@ -91,7 +91,7 @@ const Resetpassword = () => {
               </div>
               <form className="form_div">
                 <div className="row">
-                <div className="col-md-12 mb-3">
+                <div className="col-md-6 mb-3">
                 <div className="password_div">
                     <input
                       type="password"
@@ -105,7 +105,7 @@ const Resetpassword = () => {
                     ></i>
                     </div>
                   </div>
-                  <div className="col-md-12 mb-3">
+                  <div className="col-md-6 mb-3">
                     <div className="password_div">
                     <input
                       type="password"

@@ -155,6 +155,7 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
+                <p className="text_right">Forgot Password</p>
                 <div className="mt-3">
                   <button className="btn btn-dark">Login</button>
                 </div>
