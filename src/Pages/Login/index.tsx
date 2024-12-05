@@ -18,13 +18,13 @@ const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user && user?.loggedIn) {
-      history("/");
+      history("/profile");
     }
   }, []);
 
   useEffect(() => {
     if (user && user?.loggedIn) {
-      history("/");
+      history("/profile");
     }
   }, []);
 
@@ -52,7 +52,7 @@ const Login = () => {
   }, []);
 
   const setLogin = async (data: any) => {
-    let url = "/";
+    let url = "/profile";
     dispatch(login_success(data));
     history(url);
   };

@@ -33,7 +33,7 @@ function App() {
     { url: "/resetpassword", path: "Resetpassword" },
     { url: "/changepassword", path: "ChangePassword" },
     { url: "/plan", path: "Plans" },
-    { url: "/", path: 'Home' },
+    { url: "/", path: 'Profile' },
     { url: "/chat", path: "Chat" },
     { url: "/blogs", path: "Blogs" },
     { url: "/blogs/:id", path: "Blogs/View" },
