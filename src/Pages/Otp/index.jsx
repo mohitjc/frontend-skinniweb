@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { AiOutlineFileSearch } from "react-icons/ai";
 import AuthLayout from "../../components/AuthLayout";
 import OtpInput from "react-otp-input";
+import { IoIosArrowBack } from "react-icons/io";
  
  const OTP =()=>{
     const[otp,setOtp] = useState()
@@ -12,6 +13,7 @@ import OtpInput from "react-otp-input";
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
+            <IoIosArrowBack className="back_arrow" />
               <div className="main_heading mb-4">
                 <h2>Verification Code</h2>
                 <p> We have sent the verification code to your email address</p>
