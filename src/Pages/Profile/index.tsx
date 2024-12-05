@@ -13,22 +13,29 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { TbGenderBigender } from "react-icons/tb";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaSave } from "react-icons/fa";
+import ImageUpload from "../../components/common/ImageUpload";
 
 const Profile = () => {
   const user = useSelector((state: any) => state.user);
   const [data, setData]: any = useState("");
   const [editable, setEditable] = useState(false);
-   const [form,setForm] = useState({
-    fullName : "",
-     email : "",
-     dob : "",
-     gender : "",
-   })
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    dob: "",
+    gender: "",
+  });
   const gallaryData = () => {
     loader(true);
     ApiClient.get(`profile`).then((res) => {
       if (res.success) {
-        setData(res.data);
+        setForm({
+          ...form,
+          fullName: res?.data?.fullName,
+          email: res?.data?.email,
+          dob: res?.data?.dob,
+          gender: res?.data?.gender,
+        });
       }
       loader(false);
     });
@@ -40,7 +47,11 @@ const Profile = () => {
     }
   }, []);
 
- 
+  // const imageResult = (e, key) => {
+  //   images[key] = e.value;
+  //   setImages(images);
+  // };
+
 
   return (
     <div className="">
@@ -56,6 +67,13 @@ const Profile = () => {
             <div className="profile_main">
               <div className="profile_upload">
                 <img src="https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp" />
+                {/* <ImageUpload
+                          model="users"
+                          accept="image/*"
+                          result={(e) => imageResult(e, "image")}
+                          value={images.image || form.image}
+                          multiple={false}
+                        /> */}
                 <MdEdit className="edit_icon" />
               </div>
 
@@ -82,8 +100,14 @@ const Profile = () => {
                     <div className="col-md-3">
                       <div className="card_input">
                         <input
+                          required
                           className="form-control"
                           placeholder="Full Name"
+                          onChange={(e) => {
+                            setForm({ ...form, fullName: e?.target?.value });
+                          }}
+                          value={form?.fullName}
+                          disabled={!editable}
                         ></input>
                         <FaUser />
                       </div>
@@ -93,6 +117,11 @@ const Profile = () => {
                         <input
                           className="form-control"
                           placeholder="E-Mail"
+                          onChange={(e) => {
+                            setForm({ ...form, email: e?.target?.value });
+                          }}
+                          value={form?.email}
+                          disabled={!editable}
                         ></input>
                         <MdEmail />
                       </div>
@@ -100,18 +129,35 @@ const Profile = () => {
                     <div className="col-md-3">
                       <div className="card_input">
                         <input
+                          type="date"
                           className="form-control"
                           placeholder="dd/mm/yyy"
+                          onChange={(e) => {
+                            setForm({ ...form, dob: e?.target?.value });
+                          }}
+                          value={form?.dob}
+                          disabled={!editable}
                         ></input>
                         <FaCalendarAlt />
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="card_input">
-                        <input
+                        <select
                           className="form-control"
-                          placeholder="Gender"
-                        ></input>
+                          onChange={(e) => {
+                            setForm({ ...form, gender: e.target.value });
+                          }}
+                          value={form?.gender}
+                          disabled={!editable}
+                        >
+                          <option value="" disabled>
+                            Select Gender
+                          </option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option> 
+                        </select>
+
                         <TbGenderBigender />
                       </div>
                     </div>
