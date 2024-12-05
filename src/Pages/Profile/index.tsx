@@ -11,6 +11,8 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
 import { TbGenderBigender } from "react-icons/tb";
+import { IoIosArrowBack } from "react-icons/io";
+import { FaSave } from "react-icons/fa";
 
 const Profile = () => {
   const user = useSelector((state: any) => state.user);
@@ -210,7 +212,7 @@ const Profile = () => {
               <div className="bg_color_profile">
               <div className="container">
             <div className="bg_profile">
-
+            <IoIosArrowBack className="back_profile" />
               <div className="logo_profile">
           <img src="/assets/img/Skinnii-Logo.webp"/>
           </div>
@@ -230,6 +232,9 @@ const Profile = () => {
             <div className="edit_info">
             <MdEdit/> Edit Info
             </div>
+            {/* <div className="edit_info">
+            <FaSave/> Save
+            </div> */}
             </div>
           <div className="row">
               <div className="col-md-3">
