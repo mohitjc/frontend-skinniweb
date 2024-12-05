@@ -20,9 +20,8 @@ const Signup = ({ setActiveTab }: any) => {
     firstName: "",
     lastName: "",
     dob: "",
-
   });
-  console.log(form,"formm")
+  console.log(form, "formm");
   const [remember, setRemember] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [eyes, setEyes] = useState({
@@ -30,21 +29,19 @@ const Signup = ({ setActiveTab }: any) => {
     confirmPassword: false,
   });
 
-
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
     const birthDate = new Date(form?.dob); // Convert DOB to a Date object
     const today = new Date(); // Get current date
     let newAge = today.getFullYear() - birthDate.getFullYear();
-    let fullName=form?.firstName + " " + form?.lastName;
+    let fullName = form?.firstName + " " + form?.lastName;
     let url = "webRegister";
     // if (!remember) return;
     let data: any = {
-
       ...form,
-      fullName:fullName,
-      age:newAge,
+      fullName: fullName,
+      age: newAge,
       role: "user",
     };
 
@@ -59,7 +56,6 @@ const Signup = ({ setActiveTab }: any) => {
         loader(false);
         // setActiveTab(0)
       }
-
     });
   };
 
@@ -76,7 +72,6 @@ const Signup = ({ setActiveTab }: any) => {
         fullName: methodModel.getPrams("name"),
       });
     }
-
   }, []);
 
   return (
@@ -93,110 +88,112 @@ const Signup = ({ setActiveTab }: any) => {
               <form className="form_div" onSubmit={hendleSubmit}>
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="First Name" className="form-control"
-                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      className="form-control"
+                      onChange={(e) =>
+                        setForm({ ...form, firstName: e.target.value })
+                      }
                       value={form.fullName}
                     ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="last Name" className="form-control"
-                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                    <input
+                      type="text"
+                      placeholder="last Name"
+                      className="form-control"
+                      onChange={(e) =>
+                        setForm({ ...form, lastName: e.target.value })
+                      }
                       value={form.lastName}
                     ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="email" placeholder="E-Mail" className="form-control"
+                    <input
+                      type="email"
+                      placeholder="E-Mail"
+                      className="form-control"
                       onChange={(e) =>
-                       setForm({ ...form, email: e.target.value })
-
+                        setForm({ ...form, email: e.target.value })
                       }
                       value={form.email}
                     ></input>
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input type="date" placeholder="dd/mm/yyyy" className="form-control"
-                     onChange={(e) => setForm({ ...form, dob: e.target.value })
-
-                    }
-                     value={form.dob}
+                    <input
+                      type="date"
+                      placeholder="Dob"
+                      className="form-control"
+                      onChange={(e) =>
+                        setForm({ ...form, dob: e.target.value })
+                      }
+                      value={form.dob}
                     ></input>
                   </div>
-
-                  {/* <div className="col-md-6 mb-3">
-                    <select className="form-select" aria-label="Default select example"
-                    >
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
                   <div className="col-md-6 mb-3">
-                    <select className="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div> */}
-                  {/* <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="Current weight in pound" className="form-control"></input>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="Current height in pound" className="form-control"></input>
-                  </div> */}
-                  {/* <div className="col-md-6 mb-3">
-                    <input type="text" placeholder="Goal Weight in pound" className="form-control"></input>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <select className="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div> */}
-                     <div className="col-md-6 mb-3">
-                  <div className="password_div">
-                  <input
-                    type={eyes.password ? "text" : "password"}
-                    className="form-control"
-                    placeholder="Password"
-                    onChange={(e) => setForm({ ...form, password: e.target.value })}
-                    value={form.password}
-                    minLength={8}
-                    autoComplete="off"
-                    required
-                  />
-                    <i
-                      className={eyes.password ? "fa fa-eye" : "fa fa-eye-slash"}
-                      onClick={() => setEyes({ ...eyes, password: !eyes.password })}
-                    ></i>
+                    <div className="password_div">
+                      <input
+                        type={eyes.password ? "text" : "password"}
+                        className="form-control"
+                        placeholder="Password"
+                        onChange={(e) =>
+                          setForm({ ...form, password: e.target.value })
+                        }
+                        value={form.password}
+                        minLength={8}
+                        autoComplete="off"
+                        required
+                      />
+                      <i
+                        className={
+                          eyes.password ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({ ...eyes, password: !eyes.password })
+                        }
+                      ></i>
                     </div>
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <div className="password_div">
+                      <input
+                        type={eyes.confirmPassword ? "text" : "password"}
+                        className="form-control"
+                        placeholder="Confirm Password"
+                        onChange={(e) =>
+                          setForm({ ...form, confirmPassword: e.target.value })
+                        }
+                        value={form.confirmPassword}
+                        minLength={8}
+                        autoComplete="off"
+                        required
+                      />
+                      <i
+                        className={
+                          eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({
+                            ...eyes,
+                            confirmPassword: !eyes.confirmPassword,
+                          })
+                        }
+                      ></i>
                     </div>
-                    <div className="col-md-6 mb-3">
-                      <div className="password_div">
-                  <input
-                    type={eyes.confirmPassword ? "text" : "password"}
-                    className="form-control"
-                    placeholder="Confirm Password"
-                    onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
-                    value={form.confirmPassword}
-                    minLength={8}
-                    autoComplete="off"
-                    required
-                  />
-                    <i
-                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
-                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
-                    ></i>
-                </div>
-                </div>
+                  </div>
                 </div>
                 <div className="mt-3">
-                  <button className="btn btn-dark" type="submit">Sign Up</button>
+                  <button className="btn btn-dark" type="submit">
+                    Sign Up
+                  </button>
                 </div>
-                <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
+                <p className="text_signin mt-2">
+                  Already have an account?{" "}
+                  <a href="">
+                    <span className="">Sign In</span>
+                  </a>
+                </p>
               </form>
               <div className="more_info">
                 <div className="font_icon">
