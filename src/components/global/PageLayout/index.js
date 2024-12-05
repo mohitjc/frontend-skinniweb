@@ -178,7 +178,7 @@ const PageLayout = ({ children }) => {
                             <Menu.Item>
                               {({ active }) => (
                                 <Link
-                                  to="/profile/change-password"
+                                  to="/changepassword"
                                   className={classNames(
                                     active
                                       ? "bg-gray-100 text-gray-900"
