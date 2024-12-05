@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import methodModel from "../../methods/methods";
 import "./style.scss";
 import AuthLayout from "../../components/AuthLayout";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useSelector } from "react-redux"; 
 import { decryptData } from "../../models/crptoUtils";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
@@ -15,14 +14,18 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const Resetpassword = () => {
   const history = useNavigate();
+  const location = useLocation()
   const params = new URLSearchParams(window.location.search);
 
   const user = useSelector((state: any) => state.user);
-  useEffect(() => {
-    if (user?.access_token) {
-      history("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user?.access_token) {
+  //     history("/");
+  //   }
+  // }, []);
+
+ 
+  
 
   const formValidation = [
     {
@@ -36,8 +39,7 @@ const Resetpassword = () => {
   const [form, setForm]: any = useState({
     confirmPassword: "",
     newPassword: "",
-    code: "",
-    id: "",
+ 
   });
   const [submitted, setSubmitted] = useState(false);
   const [eyes, setEyes] = useState({ newPassword: false, confirmPassword: false });
@@ -46,15 +48,7 @@ const Resetpassword = () => {
     return methodModel.getError(key, form, formValidation);
   };
 
-  useEffect(() => {
-    let prm = {
-      // email: methodModel.getPrams('email'),
-      id: decryptData(methodModel.getPrams("id")),
-      code: decryptData(methodModel.getPrams("code")),
-    };
-
-    setForm({ ...form, ...prm });
-  }, []);
+ 
 
   const hendleSubmit = (e: any) => {
     e.preventDefault();
@@ -64,10 +58,10 @@ const Resetpassword = () => {
     loader(true);
     let payload = {
       password: form.newPassword,
-      verificationCode: String(form.code),
-      id: form.id,
+      confirmPassword: form?.confirmPassword,
+      email: location?.state,
     };
-    ApiClient.put("user/reset/user-password", payload).then((res) => {
+    ApiClient.put("resetPassword", payload).then((res) => {
       if (res.success) {
         setTimeout(() => {
           toast.success(res.message);
@@ -91,7 +85,7 @@ const Resetpassword = () => {
                 <h2>Reset Password</h2>
                 <p>  Please create a new password that you don’t use on any other site.</p>
               </div>
-              <form className="form_div">
+              <form onSubmit={hendleSubmit} className="form_div">
                 <div className="row">
                 <div className="col-md-6 mb-3">
                 <div className="password_div">
