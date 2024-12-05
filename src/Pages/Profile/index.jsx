@@ -92,6 +92,7 @@ const Profile = () => {
          gender : form?.gender,
          image : image 
        }
+       loader(true)
        ApiClient.put("editUserProfile", payload).then((res) => {
         if (res.success == true || res?.code == 200) {
           let uUser = { ...user, ...payload };
