@@ -243,7 +243,7 @@ const Signup = ({ setActiveTab }: any) => {
           </div>
         </div>
 
-<button onClick={()=>{setOpen(true)}} type="button" className="btn btn-primary" >
+{/* <button onClick={()=>{setOpen(true)}} type="button" className="btn btn-primary" >
   Launch static backdrop modal
 </button>
 
@@ -268,7 +268,7 @@ const Signup = ({ setActiveTab }: any) => {
     </div>
   </div>
 </div>
- : ""}
+ : ""} */}
       </AuthLayout>
     </>
   );
