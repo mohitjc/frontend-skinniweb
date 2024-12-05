@@ -116,6 +116,7 @@ const Profile = () => {
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
+            <div className="text_logout">Logout</div>
           </div>
           <div className="">
             <div className="profile_main">
@@ -129,14 +130,7 @@ const Profile = () => {
       disabled={!editable}
         className="edit_icon"
         onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
-        style={{
-          position: "absolute",
-          bottom: "10px",
-          right: "10px",
-          fontSize: "24px",
-          cursor: "pointer",
-        }}
-      /> 
+        style={{        }}/> 
       <input
        disabled={!editable}
         id="fileInput"
@@ -146,6 +140,7 @@ const Profile = () => {
         style={{ display: "none" }}   
       />
     </div>
+    <p className="text_changepassword mt-3">Change Password</p>
 
               <div className="my_profile">
               <div className="mb-5">
