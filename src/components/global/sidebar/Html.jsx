@@ -433,7 +433,7 @@ const Html = ({
       activeIcon: (
         <LuUser2 className="w-[35px] h-[35px] rounded-full bg-white p-[6px]" />
       ),
-      url: "/profile",
+      url: "/",
       isActive: subscription ? true : true,
     },
     {

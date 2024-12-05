@@ -92,7 +92,7 @@ const EditProfile = () => {
       if (res.success) {
         let uUser = { ...user, ...value };
         dispatch(login_success(uUser));
-        history("/profile");
+        history("/");
       }
       loader(false);
     });

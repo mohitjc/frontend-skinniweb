@@ -54,6 +54,17 @@ const Profile = () => {
     setImages(images);
   };
 
+   const handleSubmit=()=>{
+     const payload ={
+      fullName : form?.fullName,
+       email : form?.email,
+       dob : form?.dob,
+       gender : form?.gender
+     }
+
+    
+   }
+
 
   return (
     <div className="">
@@ -93,7 +104,7 @@ const Profile = () => {
                         <MdEdit /> Edit Info
                       </div>
                     ) : (
-                      <div className="edit_info">
+                      <div onClick={()=>{handleSubmit()}} className="edit_info">
                         <FaSave /> Save
                       </div>
                     )}
