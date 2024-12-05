@@ -466,8 +466,8 @@ form.form_div select {
   font-size: 12px;
 }
 .card_text img {
-  width: 25px;
-  height: 25px !important;
+  width: 35px;
+  height: 35px !important;
   object-fit: contain;
 }
 .row_div {
@@ -489,14 +489,15 @@ justify-content: space-between;
   text-shadow: 0px 0px 3px #ffd5bb;
 }
 .text_changepassword {
-  font-weight: 600;
   cursor: pointer;
   z-index: 9;
   position: relative;
   font-size: 12px;
   width: fit-content;
-  background: #ffffff7a;
-  padding: 4px 10px;
+  background: rgb(255 213 179 / 46%);
+  padding: 6px 15px;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 ////////////############ Profile css end ############////////////
