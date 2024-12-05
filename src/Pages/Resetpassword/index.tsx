@@ -141,7 +141,7 @@ const Resetpassword = () => {
                 </div>
               </form>
            
-              <div className="more_info">
+              {/* <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
                   view Prescription
@@ -154,7 +154,7 @@ const Resetpassword = () => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

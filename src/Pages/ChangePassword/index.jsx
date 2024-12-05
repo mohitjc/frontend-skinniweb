@@ -155,7 +155,7 @@ const ChangePassword = () => {
                   <button className="btn btn-dark">Update</button>
                 </div>
               </form>
-
+{/* 
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
@@ -169,7 +169,7 @@ const ChangePassword = () => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

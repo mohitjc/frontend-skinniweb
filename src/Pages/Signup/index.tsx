@@ -225,7 +225,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <span className="">Sign In</span>
                 </a>
               </p>
-              <div className="more_info">
+              {/* <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
                   view Prescription
@@ -238,7 +238,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

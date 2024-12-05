@@ -48,7 +48,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
   padding: 4rem 0rem;
 }
@@ -77,7 +77,7 @@ svg.back_arrow:hover {
   background: #fff;
 }
 .main_heading h2 {
-  font-size: 34px;
+  font-size: 32px;
   text-transform: uppercase;
   font-weight: 900;
   color: #fff;
@@ -91,6 +91,7 @@ form.form_div input {
   border-radius: 8px;
   border: none !important;
   height: 42px;
+  font-size: 12px;
 }
 
 .form_div .btn-dark {

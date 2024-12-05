@@ -93,7 +93,7 @@ const Forgotpassword = () => {
                   <button type="submit" className="btn btn-dark">Send Recovery Email</button>
                 </div>
               </form> 
-              <div className="more_info">
+              {/* <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
                   view Prescription
@@ -106,7 +106,7 @@ const Forgotpassword = () => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

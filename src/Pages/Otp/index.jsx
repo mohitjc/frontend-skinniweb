@@ -71,7 +71,7 @@ const OTP = () => {
                   </button>
                 </div>
               </form>
-
+{/* 
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
@@ -85,7 +85,7 @@ const OTP = () => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
