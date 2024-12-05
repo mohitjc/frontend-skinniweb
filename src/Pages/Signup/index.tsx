@@ -25,6 +25,7 @@ const Signup = ({ setActiveTab }: any) => {
   const [submitted, setSubmitted] = useState(false);
   const [confirmpassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const[open,setOpen] = useState(false)
   const [eyes, setEyes] = useState({
     password: false,
     confirmPassword: false,
@@ -242,12 +243,12 @@ const Signup = ({ setActiveTab }: any) => {
           </div>
         </div>
 
-<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+{/* <button onClick={()=>{setOpen(true)}} type="button" className="btn btn-primary" >
   Launch static backdrop modal
 </button>
 
-
-<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{open ? 
+<div  id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered">
     <div className="modal-content">
       <div className="modal-body">
@@ -267,6 +268,7 @@ const Signup = ({ setActiveTab }: any) => {
     </div>
   </div>
 </div>
+ : ""} */}
       </AuthLayout>
     </>
   );

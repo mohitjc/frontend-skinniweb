@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../components/global/layout";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
@@ -16,6 +16,7 @@ import { FaSave } from "react-icons/fa";
 import ImageUpload from "../../components/common/ImageUpload";
 
 const Profile = () => {
+  const history = useNavigate()
   const user = useSelector((state: any) => state.user);
   const [data, setData]: any = useState("");
   const [editable, setEditable] = useState(false);
@@ -58,7 +59,7 @@ const Profile = () => {
       <div className="bg_color_profile">
         <div className="container">
           <div className="bg_profile">
-            <IoIosArrowBack className="back_profile" />
+            <IoIosArrowBack onClick={()=>history(-1)} className="back_profile" />
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
