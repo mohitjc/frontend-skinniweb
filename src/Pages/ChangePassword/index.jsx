@@ -12,135 +12,150 @@ import { decryptData } from "../../models/crptoUtils";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 
-
 const ChangePassword = () => {
   const history = useNavigate();
-  const params = new URLSearchParams(window.location.search);
-
-  const user = useSelector((state) => state.user);
-//   useEffect(() => {
-//     if (user?.access_token) {
-//       history("/");
-//     }
-//   }, []);
-
-  const formValidation = [
-    {
-      key: "confirmPassword",
-      minLength: 8,
-      confirmMatch: ["confirmPassword", "newPassword"],
-    },
-    { key: "newPassword", minLength: 8 },
-  ];
-
   const [form, setForm] = useState({
     confirmPassword: "",
     newPassword: "",
-    code: "",
-    id: "",
+    currentPassword: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [eyes, setEyes] = useState({ newPassword: false, confirmPassword: false });
+  const [eyes, setEyes] = useState({
+    newPassword: false,
+    confirmPassword: false,
+    currentPassword: false,
+  });
 
-  const getError = (key) => {
-    return methodModel.getError(key, form, formValidation);
-  };
-
-  useEffect(() => {
-    let prm = {
-      // email: methodModel.getPrams('email'),
-      id: decryptData(methodModel.getPrams("id")),
-      code: decryptData(methodModel.getPrams("code")),
-    };
-
-    setForm({ ...form, ...prm });
-  }, []);
-
-  const hendleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    let invalid = methodModel.getFormError(formValidation, form);
-    if (invalid) return;
-    loader(true);
-    let payload = {
-      password: form.newPassword,
-      verificationCode: String(form.code),
-      id: form.id,
-    };
-    ApiClient.put("user/reset/user-password", payload).then((res) => {
-      if (res.success) {
-        setTimeout(() => {
+    if (
+      form?.newPassword != form.confirmPassword &&
+      form.confirmPassword != ""
+    ) {
+      return;
+    } else {
+      loader(true);
+      let payload = {
+        currentPassword: form.currentPassword,
+        newPassword: form.newPassword,
+        confirmPassword: form?.confirmPassword,
+      };
+      ApiClient.put("change/password", payload).then((res) => {
+        if (res.success) {
+          loader(false);
+          history("/login");
           toast.success(res.message);
-        }, 100);
-
-        history(`/login`);
-      }
-      loader(false);
-    });
+        }
+      });
+    }
   };
 
   return (
     <>
       <AuthLayout>
-      <div className="layout_auth layout_auth_2">
+        <div className="layout_auth layout_auth_2">
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
-            <IoIosArrowBack className="back_arrow" />
+              <IoIosArrowBack
+                onClick={() => history(-1)}
+                className="back_arrow"
+              />
               <div className="main_heading mb-4">
                 <h2>Change Password</h2>
-                <p>  Enter a new password below to change your password</p>
+                <p> Enter a new password below to change your password</p>
               </div>
-              <form className="form_div">
+              <form onSubmit={handleSubmit} className="form_div">
                 <div className="row">
-                <div className="col-md-12 mb-3">
-                <div className="password_div">
-                    <input
-                      type="password"
-                      required
-                      placeholder="Password"
-                      className="form-control"
-                    ></input>
+                  <div className="col-md-12 mb-3">
+                    <div className="password_div">
+                      <input
+                        type={eyes.currentPassword ? "text" : "password"}
+                        required
+                        placeholder="Password"
+                        className="form-control"
+                        onChange={(e) => {
+                          setForm({
+                            ...form,
+                            currentPassword: e?.target?.value,
+                          });
+                        }}
+                      ></input>
                       <i
-                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
-                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
-                    ></i>
-                    </div>
-                  </div>
-                <div className="col-md-6 mb-3">
-                <div className="password_div">
-                    <input
-                      type="password"
-                      required
-                      placeholder="New Password"
-                      className="form-control"
-                    ></input>
-                      <i
-                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
-                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
-                    ></i>
+                        className={
+                          eyes.currentPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({
+                            ...eyes,
+                            currentPassword: !eyes.currentPassword,
+                          })
+                        }
+                      ></i>
                     </div>
                   </div>
                   <div className="col-md-6 mb-3">
                     <div className="password_div">
-                    <input
-                      type="password"
-                      required
-                      placeholder="Confirm Password"
-                      className="form-control"
-                    ></input>
+                      <input
+                        type={eyes.newPassword ? "text" : "password"}
+                        required
+                        placeholder="New Password"
+                        className="form-control"
+                        onChange={(e) => {
+                          setForm({ ...form, newPassword: e?.target?.value });
+                        }}
+                      ></input>
                       <i
-                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
-                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
-                    ></i>
+                        className={
+                          eyes.newPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({ ...eyes, newPassword: !eyes.newPassword })
+                        }
+                      ></i>
+                    </div>
                   </div>
+                  <div className="col-md-6 mb-3">
+                    <div className="password_div">
+                      <input
+                        type={eyes.confirmPassword ? "text" : "password"}
+                        required
+                        placeholder="Confirm Password"
+                        className="form-control"
+                        onChange={(e) => {
+                          setForm({
+                            ...form,
+                            confirmPassword: e?.target?.value,
+                          });
+                        }}
+                      ></input>
+                      <i
+                        className={
+                          eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({
+                            ...eyes,
+                            confirmPassword: !eyes.confirmPassword,
+                          })
+                        }
+                      ></i>
+                    </div>
+                    {submitted &&
+                    form.newPassword != form?.confirmPassword &&
+                    form.confirmPassword != "" ? (
+                      <div className="text-red-500 text-[13px] mt-1">
+                        Confirm Password is not matched with Password
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 <div className="mt-3">
                   <button className="btn btn-dark">Update</button>
                 </div>
               </form>
-              <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
+
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
