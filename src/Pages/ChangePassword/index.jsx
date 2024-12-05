@@ -88,17 +88,31 @@ const ChangePassword = () => {
             <div className="main_auth">
             <IoIosArrowBack className="back_arrow" />
               <div className="main_heading mb-4">
-                <h2>Reset Password</h2>
-                <p>  Please create a new password that you don’t use on any other site.</p>
+                <h2>Change Password</h2>
+                <p>  Enter a new password below to change your password</p>
               </div>
               <form className="form_div">
                 <div className="row">
-                <div className="col-md-6 mb-3">
+                <div className="col-md-12 mb-3">
                 <div className="password_div">
                     <input
                       type="password"
                       required
                       placeholder="Password"
+                      className="form-control"
+                    ></input>
+                      <i
+                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
+                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
+                    ></i>
+                    </div>
+                  </div>
+                <div className="col-md-6 mb-3">
+                <div className="password_div">
+                    <input
+                      type="password"
+                      required
+                      placeholder="New Password"
                       className="form-control"
                     ></input>
                       <i
@@ -123,7 +137,7 @@ const ChangePassword = () => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="btn btn-dark">Save</button>
+                  <button className="btn btn-dark">Update</button>
                 </div>
               </form>
               <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
