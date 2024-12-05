@@ -1,14 +1,42 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import AuthLayout from "../../components/AuthLayout";
 import OtpInput from "react-otp-input";
- 
- const OTP =()=>{
-    const[otp,setOtp] = useState()
-    return (
-        <AuthLayout>
-        <div>
-                <div className="layout_auth layout_auth_2">
+import { toast } from "react-toastify";
+import loader from "../../methods/loader";
+import ApiClient from "../../methods/api/apiClient";
+import { useNavigate } from "react-router-dom";
+
+const OTP = () => {
+  const [otp, setOtp] = useState();
+  const history = useNavigate()
+  const [submitted, setSubmitted] = useState(false);
+  const hendleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    if (otp == "") {
+      toast?.error("Otp is required");
+    } else {
+      let url = "verifyOtp";
+      let data = { 
+        otp: otp,
+      };
+      loader(true);
+      ApiClient.post(url, data).then(async (res) => {
+        if (res.success == true) {
+          toast.success(res?.message);
+          history("/login")
+          loader(false);
+        } else {
+          loader(false);
+        }
+      });
+    }
+  };
+  return (
+    <AuthLayout>
+      <div>
+        <div className="layout_auth layout_auth_2">
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
@@ -16,20 +44,25 @@ import OtpInput from "react-otp-input";
                 <h2>Verification Code</h2>
                 <p> We have sent the verification code to your email address</p>
               </div>
-              <form className="form_div">
+              <form onSubmit={hendleSubmit} className="form_div">
                 <div className="otp_div mb-4">
-                      <OtpInput
-                        value={otp}
-                        onChange={setOtp}
-                        numInputs={4}
-                        renderInput={(props) => <input {...props} />}
-                      />
-                    </div>
+                  <OtpInput
+                    value={otp}
+                    onChange={setOtp}
+                    numInputs={4}
+                    renderInput={(props) => <input {...props} />}
+                  />
+                </div>
                 <div className="mt-3">
-                  <button className="btn btn-dark">Confirm</button>
+                  <button   type="submit" className="btn btn-dark">Confirm</button>
                 </div>
               </form>
-              <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
+              <p className="text_signin mt-2">
+                Just Remember?{" "}
+                <a href="">
+                  <span className="">Sign In</span>
+                </a>
+              </p>
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
@@ -47,9 +80,9 @@ import OtpInput from "react-otp-input";
             </div>
           </div>
         </div>
-        </div>
-        </AuthLayout>
-    )
- }
+      </div>
+    </AuthLayout>
+  );
+};
 
-  export default OTP ; 
+export default OTP;

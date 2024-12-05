@@ -53,9 +53,9 @@ const Signup = ({ setActiveTab }: any) => {
       loader(true);
       ApiClient.post(url, data).then(async (res) => {
         if (res.success) {
-          let url = "/login";
+          let url = "/otp";
           setTimeout(() => {
-            toast.success("Please verify your email");
+            toast.success(`Please check your email account,We've sent a code to${form?.email}`);
           }, 400);
           history(url);
           loader(false);
