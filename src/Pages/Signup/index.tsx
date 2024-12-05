@@ -253,7 +253,7 @@ const Signup = ({ setActiveTab }: any) => {
       <div className="modal-body">
         <div className="modal_login">
           <div className="check_img">
-            <img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png"></img>
+            <img src="/assets/img/check.png"></img>
           </div>
           <div className="mt-4 mb-4">
         <p>Please check your email account,</p>
