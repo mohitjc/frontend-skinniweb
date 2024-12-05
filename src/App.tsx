@@ -25,6 +25,7 @@ function App() {
   const routes = [
     { url: "/login", path: "Login" },
     { url: "/signup", path: "Signup" },
+    { url: "/otp", path: "Otp" },
     { url: "/dashboard", path: "Dashboard" },
     { url: "/profile", path: "Profile" },
     { url: "/profile/:tab", path: "Settings" },
