@@ -183,6 +183,27 @@ const Login = () => {
             </div>
           </div>
         </div>
+
+
+
+<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      <div className="modal-body">
+        <div className="modal_login">
+        <p>Please check your email account,</p>
+        <p>We've sent a code to puja@yopmail.com</p>
+        <button className="btn btn-primary"data-bs-dismiss="modal" aria-label="Close">Got it, thanks!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       </AuthLayout>
     </>
   );
