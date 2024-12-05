@@ -11,25 +11,42 @@ import { IoIosArrowBack } from "react-icons/io";
 
 const Forgotpassword = () => {
   const history = useNavigate();
+  const [error, setError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const user = useSelector((state: any) => state.user);
 
-  useEffect(() => {
-    if (user?.access_token) {
-      history("/dashboard");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user?.access_token) {
+  //     history("/dashboard");
+  //   }
+  // }, []);
 
   const [form, setForm] = useState({ email: "" });
 
-  useEffect(() => {}, []);
+  const handleEmailChange = (e: any) => {
+    const email = e.target.value;
+    setForm({ ...form, email: e.target.value });
+    if (!email) {
+      setError("Email is required");
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Please enter a valid email address");
+    } else {
+      setError("");
+    }
+  };
+  
 
-  const hendleSubmit = (e: any) => {
+  const hendleSubmit = (e: any) => { 
     e.preventDefault();
+    setSubmitted(true);
+    if (!form?.email || error) {
+      return;
+    }
     loader(true);
 
-    ApiClient.post("forgot/password", form).then((res) => {
+    ApiClient.post("forgotPassword", form).then((res) => {
       if (res.success) {
-        history("/otp");
+        history("/otp",{state : form?.email});
         setTimeout(() => {
           toast.success(res.message);
         }, 100);
@@ -45,7 +62,7 @@ const Forgotpassword = () => {
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
-              <IoIosArrowBack className="back_arrow" />
+              <IoIosArrowBack onClick={()=>{history(-1)}} className="back_arrow" />
               <div className="main_heading mb-4">
                 <h2>Forgot Password</h2>
                 <p>
@@ -56,17 +73,20 @@ const Forgotpassword = () => {
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
                 <div className="row">
-                  <div className="col-md-12 mb-3">
+                    <div className="col-md-12 mb-3">
                     <input
-                    placeholder="Email"
-                      type="email"
-                      className="shadow-[0 2px 3px -1px rgba(0, 0, 0, 0.1)] border-b-[1px] border-gray-300 bg-white  w-full text-[13px] h-10 flex items-center gap-2 overflow-hidden pl-2 pr-[35px]"
-                      required
                       value={form.email}
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
+                      onChange={handleEmailChange}
+                      type="email"
+                      required
+                      placeholder="Email"
+                      className={`form-control ${
+                        error && submitted ? "is-invalid" : ""
+                      }`}
                     />
+                    {error && submitted && (
+                      <div className="invalid-feedback d-block">{error}</div>
+                    )}
                   </div>
                 </div>
                 <div className="mt-3">

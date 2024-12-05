@@ -5,12 +5,13 @@ import OtpInput from "react-otp-input";
 import { toast } from "react-toastify";
 import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 
 const OTP = () => {
   const [otp, setOtp] = useState();
-  const history = useNavigate()
+  const location = useLocation();
+  const history = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const hendleSubmit = (e) => {
     e.preventDefault();
@@ -19,21 +20,25 @@ const OTP = () => {
       toast?.error("Otp is required");
     } else {
       let url = "verifyOtp";
-      let data = { 
+      let data = {
         otp: otp,
       };
       loader(true);
       ApiClient.post(url, data).then(async (res) => {
         if (res.success == true) {
           toast.success(res?.message);
-          history("/login")
+          location?.state
+            ? history("/resetpassword",{state : location?.state })
+            : history("/login");
+
           loader(false);
         } else {
           loader(false);
         }
       });
     }
-  };
+  }; 
+
   return (
     <AuthLayout>
       <div>
@@ -41,7 +46,12 @@ const OTP = () => {
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
-            <IoIosArrowBack className="back_arrow" />
+              <IoIosArrowBack
+                onClick={() => {
+                  history(-1);
+                }}
+                className="back_arrow"
+              />
               <div className="main_heading mb-4">
                 <h2>Verification Code</h2>
                 <p> We have sent the verification code to your email address</p>
@@ -56,15 +66,12 @@ const OTP = () => {
                   />
                 </div>
                 <div className="mt-3">
-                  <button   type="submit" className="btn btn-dark">Confirm</button>
+                  <button type="submit" className="btn btn-dark">
+                    Confirm
+                  </button>
                 </div>
               </form>
-              <p className="text_signin mt-2">
-                Just Remember?{" "}
-                <a href="">
-                  <span className="">Sign In</span>
-                </a>
-              </p>
+
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />

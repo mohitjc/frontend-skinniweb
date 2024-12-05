@@ -55,7 +55,7 @@ const Signup = ({ setActiveTab }: any) => {
         if (res.success) {
           let url = "/otp";
           setTimeout(() => {
-            toast.success(`Please check your email account,We've sent a code to${form?.email}`);
+            toast.success(`Please check your email account,We've sent a code to ${form?.email}`);
           }, 400);
           history(url);
           loader(false);
@@ -66,9 +66,9 @@ const Signup = ({ setActiveTab }: any) => {
 
   useEffect(() => {
     let email = methodModel.getPrams("email");
-    if (user && user?.loggedIn) {
-      history("/dashboard");
-    }
+    // if (user && user?.loggedIn) {
+    //   history("/dashboard");
+    // }
 
     if (email) {
       setForm({
