@@ -166,7 +166,7 @@ const Login = () => {
                   <span className="">Sign up</span>
                 </a>
               </p>
-              <div className="more_info">
+              {/* <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
                   view Prescription
@@ -179,7 +179,7 @@ const Login = () => {
                   <AiOutlineFileSearch />
                   view Prescription
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
