@@ -225,7 +225,7 @@ const Profile = () => {
 
           <div className="my_profile">
             <div className="mb-5">
-            <div className="header_frofile mb-5">
+            <div className="header_frofile mb-4">
             <h2>MY PROFILE</h2>
             <div className="edit_info">
             <MdEdit/> Edit Info
@@ -259,8 +259,8 @@ const Profile = () => {
           </div>
           </div>
           
-          <div className="">
-          <div className="header_frofile mb-5">
+          <div className="mb-5">
+          <div className="header_frofile mb-4">
             <h2>MY GOALS</h2>
             </div>
             <div className="row">
@@ -289,6 +289,32 @@ const Profile = () => {
                   <h3>60 Pound</h3>
                 </div>
                 <p>Goal Weight in Pound</p>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="">
+          <div className="header_frofile mb-4">
+            <h2>OTHER INFORMATION</h2>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+              <div className="card_box">
+                <div className="card_text mb-2">
+                <img src="/assets/img/profileimg4.png"/>
+                  <h3>Vegetarian</h3>
+                </div>
+                <p>Diet Type</p>
+              </div>
+              </div>
+              <div className="col-md-6">
+              <div className="card_box">
+                <div className="card_text mb-2">
+                <img src="/assets/img/profileimg5.png"/>
+                  <h3>Moderatly Active</h3>
+                </div>
+                <p>How Active You Are?</p>
               </div>
               </div>
             </div>
