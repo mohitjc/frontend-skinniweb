@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import AuthLayout from "../../components/AuthLayout";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { AiOutlineFileSearch } from "react-icons/ai";
 
 const Forgotpassword = () => {
   const history = useNavigate();
@@ -40,58 +41,48 @@ const Forgotpassword = () => {
   return (
     <>
       <AuthLayout>
-        <form
-          className=" bg-white border border-[#E4E7E9]  p-[24px] w-[500px] m-auto "
-          onSubmit={hendleSubmit}
-        >
-          <div className="">
-            <h1 className="text-[22px] font-[600]">
-              Forgot Password
-            </h1>
-            <span className="flex w-10 h-1 bg-[#0065FF] mt-1"></span>
-          </div>
-          <p className="text-[14px] font-normal text-[grey] mt-2 mb-4">
-            {" "}
-            No worries! Just enter your email and we’ll send you a reset
-            password link.
-          </p>
-          <div className=" mt-5">
-            <div className="relative">
-              <div className="absolute  z-[99] p-3 px-4 bg-[#00358512] text-[#0035859c] rounded-tl-[7px] rounded-bl-[7px]">
-                <i className="fa fa-envelope " aria-hidden="true"></i>
+      <div className="layout_auth layout_auth_2">
+          <div className="main_page">
+            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
+            <div className="main_auth">
+              <div className="main_heading mb-4">
+                <h2>Forgot Password</h2>
+                <p> No worries! Just enter your email and we’ll send you a reset
+                password link.</p>
               </div>
-              <input
-                type="email"
-                className="mb-5 relative  bg-white w-full  rounded-lg h-12 flex items-center gap-2 overflow-hidden  mb-0 bginput w-full pl-[55px]"
-                placeholder="Email*"
-                value={form.email}
-                required
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-              />
+              <form className="form_div">
+                <div className="row">
+                <div className="col-md-12 mb-3">
+                    <input
+                      type="email"
+                      required
+                      placeholder="E-Mail"
+                      className="form-control"
+                    ></input>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <button className="btn btn-dark">Send Recovery Email</button>
+                </div>
+              </form>
+              <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
+              <div className="more_info">
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="flex items-center justify-center mt-6">
-            <button
-              type="submit"
-              className="h-10 rounded-sm w-full  font-semibold text-center text-white   hover:opacity-80 transition-all "
-            >
-              Send Recovery Email
-            </button>
-          </div>
-
-          <p className="text-[#333] text-center font-normal text-[14px] mt-4">
-            {" "}
-            Just Remember?
-            <Link
-              className="text-[#0065FF] text-[14px] !font-semibold"
-              to="/login"
-            >
-              {" "}
-              Sign In
-            </Link>
-          </p>
-        </form>
+        </div>
       </AuthLayout>
     </>
   );

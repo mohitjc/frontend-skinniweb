@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { decryptData } from "../../models/crptoUtils";
+import { AiOutlineFileSearch } from "react-icons/ai";
 
 
 const Resetpassword = () => {
@@ -80,112 +81,67 @@ const Resetpassword = () => {
   return (
     <>
       <AuthLayout>
-        <form
-          className="   bg-white border border-[#E4E7E9]  p-[24px] w-[500px] m-auto "
-          onSubmit={hendleSubmit}
-        >
-          <div className=" mb-4">
-            <h3 className="text-[22px] font-[600] ">
-              New Password
-            </h3>
-            <span className="flex w-10 h-1 bg-[#0065FF] mt-1"></span>
-            <p className="text-[14px] font-normal text-[grey] mt-2 mb-4">
-              Please create a new password that you don’t use on any other site.
-            </p>
-          </div>
-
-          <div className="mb-3">
-          <div className="relative">
-                <div className="absolute  z-[99] p-3 px-4 bg-[#00358512] text-[#0035859c] rounded-tl-[7px] rounded-bl-[7px]">
-                  <i className="fa fa-lock " aria-hidden="true"></i>
-                </div>
-                <input
-                  type={eyes.newPassword ? "text" : "password"}
-                  className="mb-5 relative  bg-white w-full  rounded-lg h-12 flex items-center gap-2 overflow-hidden  mb-0 bginput w-full pl-[55px]"
-                  value={form.newPassword}
-                  maxLength={16}
-                  onChange={(e) =>
-                    setForm({ ...form, newPassword: e.target.value })
-                  }
-                  placeholder="New Password"
-                  required
-                />
-               {eyes.newPassword ? (
-                    <FiEye
-                      className="top-4 right-3 absolute text-[#333] cursor-pointer"
-                      onClick={() =>
-                        setEyes({ ...eyes, newPassword: !eyes.newPassword })
-                      }
-                    />
-                  ) : (
-                    <FiEyeOff
-                      className="top-4 right-3 absolute text-[#333] cursor-pointer"
-                      onClick={() =>
-                        setEyes({ ...eyes, newPassword: !eyes.newPassword })
-                      }
-                    />
-                  )}
+      <div className="layout_auth layout_auth_2">
+          <div className="main_page">
+            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
+            <div className="main_auth">
+              <div className="main_heading mb-4">
+                <h2>Reset Password</h2>
+                <p>  Please create a new password that you don’t use on any other site.</p>
               </div>
-
-              {submitted && getError("newPassword").invalid ? (
-                <div className="invalid-feedback d-block">
-                  Min Length must be 8 characters long
+              <form className="form_div">
+                <div className="row">
+                <div className="col-md-12 mb-3">
+                <div className="password_div">
+                    <input
+                      type="password"
+                      required
+                      placeholder="Password"
+                      className="form-control"
+                    ></input>
+                      <i
+                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
+                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
+                    ></i>
+                    </div>
+                  </div>
+                  <div className="col-md-12 mb-3">
+                    <div className="password_div">
+                    <input
+                      type="password"
+                      required
+                      placeholder="Confirm Password"
+                      className="form-control"
+                    ></input>
+                      <i
+                      className={eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"}
+                      onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
+                    ></i>
+                  </div>
+                  </div>
                 </div>
-              ) : (
-                <></>
-              )}
-            <div className="mb-3">
-              <div className="relative">
-              <div className="absolute  z-[99] p-3 px-4 bg-[#00358512] text-[#0035859c] rounded-tl-[7px] rounded-bl-[7px]">
-                  <i className="fa fa-lock " aria-hidden="true"></i>
+                <div className="mt-3">
+                  <button className="btn btn-dark">Save</button>
                 </div>
-                <input
-                  type={eyes.confirmPassword ? "text" : "password"}
-                  className="mb-5 relative  bg-white w-full  rounded-lg h-12 flex items-center gap-2 overflow-hidden  mb-0 bginput w-full pl-[55px]"
-                  value={form.confirmPassword}
-                  maxLength={16}
-                  onChange={(e) =>
-                    setForm({ ...form, confirmPassword: e.target.value })
-                  }
-                  placeholder="Confirm Password"
-                  required
-                />
-                  {eyes.confirmPassword ? (
-                    <FiEye
-                      className="top-4 right-3 absolute text-[#333] cursor-pointer"
-                      onClick={() =>
-                        setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })
-                      }
-                    />
-                  ) : (
-                    <FiEyeOff
-                      className="top-4 right-3 absolute text-[#333] cursor-pointer"
-                      onClick={() =>
-                        setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })
-                      }
-                    />
-                  )}
+              </form>
+              <p className="text_signin mt-2">Just Remember?  <a href=""><span className="">Sign In</span></a></p>
+              <div className="more_info">
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
+                <div className="font_icon">
+                  <AiOutlineFileSearch />
+                  view Prescription
+                </div>
               </div>
-              {submitted && getError("confirmPassword").err.confirmMatch ? (
-                <div className="invalid-feedback d-block">
-                  Confirm Password is not matched with New Password
-                </div>
-              ) : (
-                <></>
-              )}
             </div>
           </div>
-
-          <div className=" mt-6">
-            <button
-              type="submit"
-              className="h-10 rounded-sm w-full  font-semibold text-center text-white   hover:opacity-80 transition-all "
-            >
-              Save
-            </button>
-          </div>
-
-        </form>
+        </div>
       </AuthLayout>
     </>
   );

@@ -196,8 +196,8 @@ const Signup = ({ setActiveTab }: any) => {
                 <div className="mt-3">
                   <button className="btn btn-dark" type="submit">Sign Up</button>
                 </div>
-                <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
               </form>
+              <p className="text_signin mt-2">Already have an account? <a href=""><span className="">Sign In</span></a></p>
               <div className="more_info">
                 <div className="font_icon">
                   <AiOutlineFileSearch />
