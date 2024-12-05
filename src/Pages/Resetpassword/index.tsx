@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { decryptData } from "../../models/crptoUtils";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { IoIosArrowBack } from "react-icons/io";
 
 
 const Resetpassword = () => {
@@ -85,6 +86,7 @@ const Resetpassword = () => {
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
+            <IoIosArrowBack className="back_arrow" />
               <div className="main_heading mb-4">
                 <h2>Reset Password</h2>
                 <p>  Please create a new password that you don’t use on any other site.</p>

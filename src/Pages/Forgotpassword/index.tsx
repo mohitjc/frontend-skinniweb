@@ -8,6 +8,7 @@ import AuthLayout from "../../components/AuthLayout";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Forgotpassword = () => {
   const history = useNavigate();
@@ -45,6 +46,7 @@ const Forgotpassword = () => {
           <div className="main_page">
             <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
+            <IoIosArrowBack className="back_arrow" />
               <div className="main_heading mb-4">
                 <h2>Forgot Password</h2>
                 <p> No worries! Just enter your email and we’ll send you a reset
