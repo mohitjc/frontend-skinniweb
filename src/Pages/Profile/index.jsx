@@ -69,9 +69,8 @@ const Profile = () => {
   return (
     <div className="">
       <div className="bg_color_profile">
-        <div className="container">
+        <div className="container ">
           <div className="bg_profile">
-            <IoIosArrowBack onClick={()=>history(-1)} className="back_profile" />
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
@@ -87,12 +86,68 @@ const Profile = () => {
                           value={images.image || form.image}
                           multiple={false}
                         />
-                <MdEdit className="edit_icon" />
               </div>
 
               <div className="my_profile">
+              <div className="mb-5">
+                  {/* <div className="header_frofile mb-3">
+                    <h2>MY GOALS</h2>
+                  </div> */}
+                  <div className="row_div">
+                      <div className="card_box">
+                        <div className="card_text mb-1">
+                          <img src="/assets/img/profileimg1.png" />
+                          <div className="">
+                          <h3>100 Pound</h3>
+                          <p>Current Weight in Pound</p>
+                          </div>
+                        </div>
+                       
+                      </div>
+                      <div className="card_box">
+                        <div className="card_text mb-1">
+                          <img src="/assets/img/profileimg2.png" />
+                          <div className="">
+                          <h3>100 Pound</h3>
+                          <p>Current Height in Pound</p>
+                        </div>
+                        </div>
+                     
+                      </div>
+                      <div className="card_box">
+                        <div className="card_text mb-1">
+                          <img src="/assets/img/profileimg3.png" />
+                          <div className="">
+                          <h3>60 Pound</h3>
+                          <p>Goal Weight in Pound</p>
+                        </div>
+                        </div>
+                      
+                      </div>
+                      <div className="card_box">
+                        <div className="card_text mb-1">
+                          <img src="/assets/img/profileimg4.png" />
+                          <div className="">
+                          <h3>Vegetarian</h3>
+                          <p>Diet Type</p>
+                          </div>
+                        </div>
+                       
+                      </div>
+                      <div className="card_box">
+                        <div className="card_text mb-1">
+                          <img src="/assets/img/profileimg5.png" />
+                          <div className="">
+                          <h3>Moderatly Active</h3>
+                          <p>How Active You Are?</p>
+                        </div>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </div>
                 <div className="mb-5">
-                  <div className="header_frofile mb-4">
+                  <div className="header_frofile mb-3">
                     <h2>MY PROFILE</h2>
                     {!editable ? (
                       <div
@@ -177,66 +232,6 @@ const Profile = () => {
                   </div>
                 </div>
 
-                <div className="mb-5">
-                  <div className="header_frofile mb-4">
-                    <h2>MY GOALS</h2>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="card_box">
-                        <div className="card_text mb-2">
-                          <img src="/assets/img/profileimg1.png" />
-                          <h3>100 Pound</h3>
-                        </div>
-                        <p>Current Weight in Pound</p>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="card_box">
-                        <div className="card_text mb-2">
-                          <img src="/assets/img/profileimg2.png" />
-                          <h3>100 Pound</h3>
-                        </div>
-                        <p>Current Height in Pound</p>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="card_box">
-                        <div className="card_text mb-2">
-                          <img src="/assets/img/profileimg3.png" />
-                          <h3>60 Pound</h3>
-                        </div>
-                        <p>Goal Weight in Pound</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="">
-                  <div className="header_frofile mb-4">
-                    <h2>OTHER INFORMATION</h2>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="card_box">
-                        <div className="card_text mb-2">
-                          <img src="/assets/img/profileimg4.png" />
-                          <h3>Vegetarian</h3>
-                        </div>
-                        <p>Diet Type</p>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="card_box">
-                        <div className="card_text mb-2">
-                          <img src="/assets/img/profileimg5.png" />
-                          <h3>Moderatly Active</h3>
-                        </div>
-                        <p>How Active You Are?</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

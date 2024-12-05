@@ -1,6 +1,7 @@
 import React from "react";
 import methodModel from "../../../methods/methods";
 import { FiPlus } from "react-icons/fi";
+import { MdEdit } from "react-icons/md";
 
 const Html = ({
   inputElement,
@@ -19,7 +20,7 @@ const Html = ({
   return (
     <>
       <label
-        className={`block cursor-pointer text-gray-500 bg-white border border-dashed border-[#00358575] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-8 py-2 text-center ${img && !multiple ? "d-none" : ""
+        className={` ${img && !multiple ? "d-none" : ""
           }`}
       >
         <input
@@ -33,9 +34,8 @@ const Html = ({
             uploadImage(e);
           }}
         />
-        <div className="flex  items-center justify-center">
-          <FiPlus className="text-2xl text-[#0065FF] me-2" />
-          <span>{label || "Please upload images"}</span>
+        <div className="">
+          <span className="lable_upload">  <MdEdit className="" />{label || ""}</span>
         </div>
       </label>
 
