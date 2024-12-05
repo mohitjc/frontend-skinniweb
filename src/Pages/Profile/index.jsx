@@ -17,9 +17,10 @@ import ImageUpload from "../../components/common/ImageUpload";
 
 const Profile = () => {
   const history = useNavigate()
-  const user = useSelector((state: any) => state.user);
-  const [data, setData]: any = useState("");
+  const user = useSelector((state) => state.user);
+  const [data, setData]= useState("");
   const [editable, setEditable] = useState(false);
+  const [images, setImages] = useState({ image: "" });
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -48,10 +49,10 @@ const Profile = () => {
     }
   }, []);
 
-  // const imageResult = (e, key) => {
-  //   images[key] = e.value;
-  //   setImages(images);
-  // };
+  const imageResult = (e ,key) => {
+    images[key] = e.value;
+    setImages(images);
+  };
 
 
   return (
@@ -68,13 +69,13 @@ const Profile = () => {
             <div className="profile_main">
               <div className="profile_upload">
                 <img src="https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp" />
-                {/* <ImageUpload
+                <ImageUpload
                           model="users"
                           accept="image/*"
                           result={(e) => imageResult(e, "image")}
                           value={images.image || form.image}
                           multiple={false}
-                        /> */}
+                        />
                 <MdEdit className="edit_icon" />
               </div>
 
