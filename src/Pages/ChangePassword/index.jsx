@@ -23,11 +23,11 @@ const ChangePassword = () => {
     currentPassword: false,
   });
 
-  useEffect(() => {
-    if (user && user?.loggedIn) {
-      history("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user && user?.loggedIn) {
+  //     history("/");
+  //   }
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

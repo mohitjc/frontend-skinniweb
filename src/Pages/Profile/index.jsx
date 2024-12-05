@@ -13,7 +13,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { TbGenderBigender } from "react-icons/tb"; 
 import { FaSave } from "react-icons/fa"; 
 import { toast } from "react-toastify";
-import { login_success } from "../actions/user";
+import { login_success, logout } from "../actions/user";
 import environment from "../../environment";
 
 const Profile = () => {
@@ -71,6 +71,7 @@ const Profile = () => {
           dob: res?.data?.dob,
           gender: res?.data?.gender,
         });
+        setImage(res?.data?.image)
       }
       loader(false);
     });
@@ -109,6 +110,12 @@ const Profile = () => {
  
   }
 
+   const handleLogout =()=>{
+    dispatch(logout());
+    localStorage.removeItem("token");
+    history("/login");
+   }
+
   return (
     <div className="">
       <div className="bg_color_profile">
@@ -117,7 +124,7 @@ const Profile = () => {
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
-            <div className="text_logout">Logout</div>
+            <div onClick={()=>{handleLogout()}} className="text_logout">Logout</div>
           </div>
           <div className="">
             <div className="profile_main">
@@ -141,7 +148,7 @@ const Profile = () => {
         style={{ display: "none" }}   
       />
     </div>
-    <p className="text_changepassword mt-3">Change Password</p>
+    <p onClick={()=>{history("/changepassword")}} className="text_changepassword mt-3">Change Password</p>
 
               <div className="my_profile">
               <div className="mb-5">
