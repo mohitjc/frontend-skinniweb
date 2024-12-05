@@ -27,18 +27,20 @@ const Login = () => {
     }
   }, []);
 
-  const [ip, setIp] = useState("");
   const [email, setEmail] = useState("");
   const [remember, setRemember] = useState(false);
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [eyes, setEyes] = useState({
     password: false,
     confirmPassword: false,
     currentPassword: false,
   });
-  const [step, setStep] = useState(1);
-  const [otp, setOTP] = useState("");
-  const [resp, setRes]: any = useState();
+  const inValidEmail = methodModel.emailvalidation(email);
+  const formValidation = [
+    { key: "email", required: true, message: "Email is required", email: true },
+  ];
+
   useEffect(() => {
     let r = localStorage.getItem("remember");
     if (r) {
@@ -47,15 +49,6 @@ const Login = () => {
       setPassword(data.password);
       setRemember(true);
     }
-
-    // fetch("https://api.ipify.org?format=json")
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     let ip = data.ip;
-    //     localStorage.setItem("IP", ip);
-    //     setIp(ip);
-    //   })
-    //   .catch((error) => console.error("Error fetching IP address:", error));
 
     let email = methodModel.getPrams("email");
     if (email) setEmail(email);
@@ -69,12 +62,14 @@ const Login = () => {
 
   const hendleSubmit = (e: any) => {
     e.preventDefault();
+    setSubmitted(true);
     let data: any = {
       email: email,
       password,
     };
+    let invalid = methodModel.getFormError(formValidation,email);
+    if (invalid) return;
     let url = "user/signin";
-
     loader(true);
 
     ApiClient.post(url, data).then(async (res) => {
@@ -91,63 +86,82 @@ const Login = () => {
   };
   const [profile, setProfile] = useState<any>(null);
 
-
-
   useEffect(() => {
     if (profile) {
-      sessionStorage.setItem("gtoken", profile?.access_token)
-      // setToken()
+      sessionStorage.setItem("gtoken", profile?.access_token);
     }
   }, [profile]);
-  const onLoginStart = useCallback(() => {
-    console.log("Google login started");
-  }, []);
 
-  const onLoginFailure = useCallback((err: any) => {
-    console.error("Google login failed", err);
-  }, []);
   return (
     <>
       <AuthLayout>
-         <div className="layout_auth layout_auth_2">
+        <div className="layout_auth layout_auth_2">
           <div className="main_page">
-         <img src="/assets/img/Skinnii-Logo.webp" className="logo_img"/>
+            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
             <div className="main_auth">
               <div className="main_heading mb-4">
-              <h2>Member Login</h2>
-              <p>Access your account.</p>
+                <h2>Member Login</h2>
+                <p>Access your account.</p>
               </div>
-              <form   onSubmit={hendleSubmit} className="form_div">
+              <form onSubmit={hendleSubmit} className="form_div">
                 <div className="row">
-                <div className="col-md-6 mb-3">
-                <input value={email} onChange={(e)=>{setEmail(e?.target?.value)}} type="email" required placeholder="Email" className="form-control"></input>
-                </div>
-                <div className="col-md-6 mb-3">
-                <input type="password" value={password} onChange={(e)=>{setPassword(e?.target?.value)}} required placeholder="Password" className="form-control"></input>
-                </div>
+                  <div className="col-md-6 mb-3">
+                    <input
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e?.target?.value);
+                      }}
+                      type="email"
+                      required
+                      placeholder="Email"
+                      className="form-control"
+                    ></input>
+                    {email && submitted && !inValidEmail && (
+                      <div className="invalid-feedback d-block">
+                        Please enter valid email
+                      </div>
+                    )}
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e?.target?.value);
+                      }}
+                      required
+                      placeholder="Password"
+                      className="form-control"
+                    ></input>
+                  </div>
                 </div>
                 <div className="mt-3">
-                <button className="btn btn-dark">Login</button>
+                  <button className="btn btn-dark">Login</button>
                 </div>
               </form>
-              <p className="text_signin mt-2">Don't have an account? <a href="/signup"><span className="">Sign up</span></a></p>
+              <p className="text_signin mt-2">
+                Don't have an account?{" "}
+                <a href="/signup">
+                  <span className="">Sign up</span>
+                </a>
+              </p>
               <div className="more_info">
                 <div className="font_icon">
-                <AiOutlineFileSearch />
-                view Prescription
+                  <AiOutlineFileSearch />
+                  view Prescription
                 </div>
                 <div className="font_icon">
-                <AiOutlineFileSearch />
-                view Prescription
+                  <AiOutlineFileSearch />
+                  view Prescription
                 </div>
                 <div className="font_icon">
-                <AiOutlineFileSearch />
-                view Prescription
+                  <AiOutlineFileSearch />
+                  view Prescription
                 </div>
               </div>
             </div>
-            </div>
-         </div>
+          </div>
+        </div>
       </AuthLayout>
     </>
   );
