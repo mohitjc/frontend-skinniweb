@@ -21,10 +21,10 @@ const Signup = ({ setActiveTab }: any) => {
     lastName: "",
     dob: "",
   });
- 
-  
+
   const [submitted, setSubmitted] = useState(false);
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const [eyes, setEyes] = useState({
     password: false,
     confirmPassword: false,
@@ -33,30 +33,35 @@ const Signup = ({ setActiveTab }: any) => {
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
-    const birthDate = new Date(form?.dob) 
-    const today = new Date();  
-    let newAge = today.getFullYear() - birthDate.getFullYear();
-    let fullName = form?.firstName + " " + form?.lastName;
-    let url = "webRegister"; 
-    let data: any = {
-      ...form,
-      fullName: fullName,
-      age: newAge,
-      role: "user",
-    };
+    if (!form?.email || error) {
+      return;
+    } else if (form?.password != confirmpassword && confirmpassword != "") {
+      return;
+    } else {
+      const birthDate = new Date(form?.dob);
+      const today = new Date();
+      let newAge = today.getFullYear() - birthDate.getFullYear();
+      let fullName = form?.firstName + " " + form?.lastName;
+      let url = "webRegister";
+      let data: any = {
+        ...form,
+        fullName: fullName,
+        age: newAge,
+        role: "user",
+      };
 
-    loader(true);
-    ApiClient.post(url, data).then(async (res) => {
-      if (res.success) {
-        let url = "/login";
-        setTimeout(() => {
-          toast.success("Please verify your email");
-        }, 400);
-        history(url);
-        loader(false);
-        // setActiveTab(0)
-      }
-    });
+      loader(true);
+      ApiClient.post(url, data).then(async (res) => {
+        if (res.success) {
+          let url = "/login";
+          setTimeout(() => {
+            toast.success("Please verify your email");
+          }, 400);
+          history(url);
+          loader(false);
+        }
+      });
+    }
   };
 
   useEffect(() => {
@@ -74,6 +79,18 @@ const Signup = ({ setActiveTab }: any) => {
     }
   }, []);
 
+  const handleEmailChange = (e: any) => {
+    const email = e.target.value;
+    setForm({ ...form, email: e.target.value });
+    if (!email) {
+      setError("Email is required");
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Please enter a valid email address");
+    } else {
+      setError("");
+    }
+  };
+
   return (
     <>
       <AuthLayout>
@@ -90,6 +107,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <div className="col-md-6 mb-3">
                     <input
                       required
+                      pattern="[A-Za-z]+"
                       type="text"
                       placeholder="First Name"
                       className="form-control"
@@ -112,15 +130,18 @@ const Signup = ({ setActiveTab }: any) => {
                   </div>
                   <div className="col-md-6 mb-3">
                     <input
-                      required
-                      type="email"
-                      placeholder="E-Mail"
-                      className="form-control"
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
                       value={form.email}
-                    ></input>
+                      onChange={handleEmailChange}
+                      type="email"
+                      required
+                      placeholder="Email"
+                      className={`form-control ${
+                        error && submitted ? "is-invalid" : ""
+                      }`}
+                    />
+                    {error && submitted && (
+                      <div className="invalid-feedback d-block">{error}</div>
+                    )}
                   </div>
                   <div className="col-md-6 mb-3">
                     <input
@@ -164,9 +185,7 @@ const Signup = ({ setActiveTab }: any) => {
                         type={eyes.confirmPassword ? "text" : "password"}
                         className="form-control"
                         placeholder="Confirm Password"
-                        onChange={(e) =>
-                          setConfirmPassword(e.target.value)
-                        }
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmpassword}
                         minLength={8}
                         autoComplete="off"
@@ -185,12 +204,12 @@ const Signup = ({ setActiveTab }: any) => {
                       ></i>
                     </div>
                     {submitted &&
-                        form?.password != confirmpassword &&
-                        confirmpassword != "" ? (
-                          <div className="text-red-500 text-[13px] mt-1">
-                            Confirm Password is not matched with Password
-                          </div>
-                        ) : null}
+                    form?.password != confirmpassword &&
+                    confirmpassword != "" ? (
+                      <div className="text-red-500 text-[13px] mt-1">
+                        Confirm Password is not matched with Password
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 <div className="mt-3">
