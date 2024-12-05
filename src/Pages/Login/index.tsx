@@ -8,18 +8,19 @@ import AuthLayout from "../../components/AuthLayout";
 import methodModel from "../../methods/methods";
 import { useDispatch, useSelector } from "react-redux";
 import { login_success } from "../actions/user";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { FaArrowRight } from "react-icons/fa6";
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import Signup from "../Signup";
-import { LoginSocialGoogle, IResolveParams } from "reactjs-social-login";
+
 import { AiOutlineFileSearch } from "react-icons/ai";
 
 const Login = () => {
-  const [activeTab, setActiveTab]: any = useState(0);
+  const [error, setError] = useState("");
   const history = useNavigate();
   const user = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (user && user?.loggedIn) {
+      history("/plan");
+    }
+  }, []);
 
   useEffect(() => {
     if (user && user?.loggedIn) {
@@ -36,10 +37,6 @@ const Login = () => {
     confirmPassword: false,
     currentPassword: false,
   });
-  const inValidEmail = methodModel.emailvalidation(email);
-  const formValidation = [
-    { key: "email", required: true, message: "Email is required", email: true },
-  ];
 
   useEffect(() => {
     let r = localStorage.getItem("remember");
@@ -63,12 +60,15 @@ const Login = () => {
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
+    if (!email || error) {
+      return;
+    }
+
     let data: any = {
       email: email,
       password,
     };
-    let invalid = methodModel.getFormError(formValidation,email);
-    if (invalid) return;
+
     let url = "user/signin";
     loader(true);
 
@@ -92,6 +92,18 @@ const Login = () => {
     }
   }, [profile]);
 
+  const handleEmailChange = (e: any) => {
+    const email = e.target.value;
+    setEmail(email);
+    if (!email) {
+      setError("Email is required");
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Please enter a valid email address");
+    } else {
+      setError("");
+    }
+  };
+
   return (
     <>
       <AuthLayout>
@@ -108,31 +120,39 @@ const Login = () => {
                   <div className="col-md-6 mb-3">
                     <input
                       value={email}
-                      onChange={(e) => {
-                        setEmail(e?.target?.value);
-                      }}
+                      onChange={handleEmailChange}
                       type="email"
                       required
                       placeholder="Email"
-                      className="form-control"
-                    ></input>
-                    {email && submitted && !inValidEmail && (
-                      <div className="invalid-feedback d-block">
-                        Please enter valid email
-                      </div>
+                      className={`form-control ${
+                        error && submitted ? "is-invalid" : ""
+                      }`}
+                    />
+                    {error && submitted && (
+                      <div className="invalid-feedback d-block">{error}</div>
                     )}
                   </div>
                   <div className="col-md-6 mb-3">
-                    <input
-                      type="password"
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e?.target?.value);
-                      }}
-                      required
-                      placeholder="Password"
-                      className="form-control"
-                    ></input>
+                    <div className="password_div">
+                      <input
+                        type={eyes.password ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e?.target?.value);
+                        }}
+                        required
+                        placeholder="Password"
+                        className="form-control"
+                      ></input>
+                      <i
+                        className={
+                          eyes.password ? "fa fa-eye" : "fa fa-eye-slash"
+                        }
+                        onClick={() =>
+                          setEyes({ ...eyes, password: !eyes.password })
+                        }
+                      ></i>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-3">
