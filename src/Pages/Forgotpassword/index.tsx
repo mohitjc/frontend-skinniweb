@@ -15,11 +15,11 @@ const Forgotpassword = () => {
   const [submitted, setSubmitted] = useState(false);
   const user = useSelector((state: any) => state.user);
 
-  // useEffect(() => {
-  //   if (user?.access_token) {
-  //     history("/dashboard");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (user?.access_token) {
+      history("/");
+    }
+  }, []);
 
   const [form, setForm] = useState({ email: "" });
 

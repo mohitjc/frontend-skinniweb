@@ -5,28 +5,61 @@ import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import "./profile.scss";
 import methodModel from "../../methods/methods";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MdEdit } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
-import { TbGenderBigender } from "react-icons/tb";
-import { IoIosArrowBack } from "react-icons/io";
-import { FaSave } from "react-icons/fa";
-import ImageUpload from "../../components/common/ImageUpload";
+import { TbGenderBigender } from "react-icons/tb"; 
+import { FaSave } from "react-icons/fa"; 
+import { toast } from "react-toastify";
+import { login_success } from "../actions/user";
+import environment from "../../environment";
 
 const Profile = () => {
   const history = useNavigate()
-  const user = useSelector((state) => state.user);
-  const [data, setData]= useState("");
-  const [editable, setEditable] = useState(false);
-  const [images, setImages] = useState({ image: "" });
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user); 
+  const [editable, setEditable] = useState(false); 
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     dob: "",
     gender: "",
   });
+  const [image, setImage] = useState(
+    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
+  );
+  useEffect(() => {
+    if (user.loggedIn) {
+      gallaryData();
+    }
+     else {
+      history("/login")
+     }
+  }, []);
+
+
+
+  const uploadImage = async (e) => {  
+   const url = "upload/image?modelName=user"
+    loader(true);
+      let file = e; 
+      const res = await ApiClient.postFormData(url , { file: file });
+      if (res.success == true || res?.code == 200) {
+        toast?.success(res?.message) 
+          setImage(environment?.api + "images/user/" +  res?.data?.fullpath)
+         
+      }  
+   loader(false) 
+    } 
+  
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; 
+    if (file) {
+      uploadImage(file)
+    }
+  };
   const gallaryData = () => {
     loader(true);
     ApiClient.get(`profile`).then((res) => {
@@ -43,52 +76,76 @@ const Profile = () => {
     });
   };
 
-  useEffect(() => {
-    if (user.loggedIn) {
-      gallaryData();
-    }
-  }, []);
 
-  const imageResult = (e ,key) => {
-    images[key] = e.value;
-    setImages(images);
-  };
+
 
    const handleSubmit=()=>{
-     const payload ={
-      fullName : form?.fullName,
-       email : form?.email,
-       dob : form?.dob,
-       gender : form?.gender
+    if(!form?.fullName || !form?.email || !form?.gender || !form?.dob || !image) {
+      toast?.error ("All Fields are required")
+      return
+    }
+     else {
+      const payload ={
+        fullName : form?.fullName,
+         email : form?.email,
+         dob : form?.dob,
+         gender : form?.gender,
+         image : image 
+       }
+       ApiClient.put("editUserProfile", payload).then((res) => {
+        if (res.success == true || res?.code == 200) {
+          let uUser = { ...user, ...payload };
+          dispatch(login_success(uUser));
+          setEditable(false)
+          toast?.success(res?.message);
+          loader(false);
+        } else {
+          toast?.error(res?.message);
+          loader(false);
+        }
+      });
      }
-
-    
-   }
-
+ 
+  }
 
   return (
     <div className="">
       <div className="bg_color_profile">
         <div className="container">
           <div className="bg_profile">
-            <IoIosArrowBack onClick={()=>history(-1)} className="back_profile" />
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
           </div>
           <div className="">
             <div className="profile_main">
-              <div className="profile_upload">
-                <img src="https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp" />
-                <ImageUpload
-                          model="users"
-                          accept="image/*"
-                          result={(e) => imageResult(e, "image")}
-                          value={images.image || form.image}
-                          multiple={false}
-                        />
-                <MdEdit className="edit_icon" />
-              </div>
+            <div className="profile_upload" style={{ position: "relative", display: "inline-block" }}>
+      <img
+        src={image}
+        alt="Profile"
+        style={{ width: 150, height: 150, objectFit: "cover", borderRadius: "50%" }}
+      /> 
+      <MdEdit
+      disabled={!editable}
+        className="edit_icon"
+        onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
+        style={{
+          position: "absolute",
+          bottom: "10px",
+          right: "10px",
+          fontSize: "24px",
+          cursor: "pointer",
+        }}
+      /> 
+      <input
+       disabled={!editable}
+        id="fileInput"
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}   
+        style={{ display: "none" }}   
+      />
+    </div>
 
               <div className="my_profile">
                 <div className="mb-5">
