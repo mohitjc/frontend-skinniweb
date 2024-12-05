@@ -25,6 +25,9 @@
 img.loaderlogo {
   max-width: 50px;
 }
+.modal-content {
+  border-radius: 15px;
+}
 
 ////////////############ Auth css ############////////////
 
@@ -253,6 +256,45 @@ form.form_div select {
   gap: 0px 8px;
   justify-content: center;
 }
+.modal_login p {
+  text-align: center;
+  font-weight: 500;
+  color: #555555;
+}
+.btn_modal {
+  color: #fff !important;
+  background: #000 !important;
+  border: none;
+  font-weight: 500;
+  border-radius: 8px;
+}
+.btn_modal:hover {
+  background: #000 !important;
+  opacity: 90%;
+}
+.btn_modal {
+  padding: 8px 25px;
+  height: 40px;
+  width: 220px;
+}
+.check_img img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  border: 8px solid #fff;
+  left: 0;
+  right: 0;
+  top: -65px;
+  position: absolute;
+  margin: auto;
+}
+.modal_login {
+  position: relative;
+  padding: 2rem 0rem;
+}
+
 
 ////////////############ Auth css end ############////////////
 

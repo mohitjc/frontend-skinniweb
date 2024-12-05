@@ -241,6 +241,32 @@ const Signup = ({ setActiveTab }: any) => {
             </div>
           </div>
         </div>
+
+<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      <div className="modal-body">
+        <div className="modal_login">
+          <div className="check_img">
+            <img src="/assets/img/check.png"></img>
+          </div>
+          <div className="mt-4 mb-4">
+        <p>Please check your email account,</p>
+        <p>We've sent a code to puja@yopmail.com</p>
+        </div>
+        <div className="d-flex justify-content-center mt-4">
+        <button className="btn_modal"data-bs-dismiss="modal" aria-label="Close">Got it, thanks!</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       </AuthLayout>
     </>
   );
