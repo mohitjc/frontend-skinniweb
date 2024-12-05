@@ -158,6 +158,13 @@ form.form_div select {
 .text_signin span:hover {
   text-decoration: underline;
 }
+.text_right {
+  text-align: right;
+  cursor: pointer;
+}
+.text_right:hover {
+ text-decoration: underline;
+}
 .logo_img {
   padding: 0rem 3rem;
   width: 270px;
