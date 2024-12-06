@@ -594,21 +594,7 @@ const Profile = () => {
                     </div>
 
 
-                <h2>SURVAY DATA</h2>
-                {surwayData?.length > 0 ? 
-
-                <ul>
-                  {/* {surwayData?.map((item, index) => ( 
-                    
-                    <li key={index}>
-                      <strong>{item?.question}</strong>: {item?.answer}
-                    </li>
-                  ))} */}
-                </ul>
-
-                </div>
-
-                 : "No Servay data "}
+              
 
               </div>
             </div>
