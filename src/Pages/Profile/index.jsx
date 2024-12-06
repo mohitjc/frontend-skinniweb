@@ -194,9 +194,9 @@ const Profile = () => {
   };
 
   const handleSurvayData = (apiData) => {
-    const mappedData = data.map((item) => { 
-      const contactDetailsKey = Object.keys(apiData).find((key) =>
-        key.includes(item.answer)
+    const mappedData = data?.map((item) => { 
+      const contactDetailsKey = Object?.keys(apiData)?.find((key) =>
+        key?.includes(item?.answer)
       );
   
       if (contactDetailsKey) {
@@ -262,7 +262,7 @@ const Profile = () => {
       else {
         return { question: item.question, answer: "No answer available" };
       } 
-    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available" && itm?.answer !="No BMI data available" );
+    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available"   );
   
     // Update the state with the mapped data
     setSurwayData(mappedData);
