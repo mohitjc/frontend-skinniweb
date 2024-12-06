@@ -211,9 +211,8 @@ const Profile = () => {
           }
           else if (item.answer === "checkoutYour") {
             try {
-              const parsedAnswer = JSON.parse(answer); // Parse the JSON string
-              if (parsedAnswer.special_1000 && parsedAnswer.special_1000.item_0) {
-                answer = `Special Offer: Item 0 = ${parsedAnswer.special_1000.item_0}`;
+              if (answer.special_1000 && answer.special_1000.item_0) {
+                answer = `Special Offer= ${answer.special_1000.item_0}`;
               } else {
                 answer = "No special offer details available";
               }
@@ -221,6 +220,9 @@ const Profile = () => {
               answer = "Invalid data for checkoutYour";
             }
           }
+           else if (item.answer == "phoneNumber"){
+            answer = `${answer?.full}`
+           }
           else if (answer.first && answer.last) {
             answer = `${answer.first} ${answer.last}`;
           } 
@@ -234,16 +236,19 @@ const Profile = () => {
             answer = JSON.stringify(answer);
           }
         }
-        else if (item.answer === "bmiCalculator" && typeof answer === "string") {
-          try {
+        else if (item.answer === "bmiCalculator" && typeof answer === "string") { 
+          try { 
             const bmiData = JSON.parse(answer);
-            if (Array.isArray(bmiData) && bmiData.length > 0) {
-              const { bmi, weight, height } = bmiData[0];
-              answer = `BMI: ${bmi}, Weight: ${weight}, Height: ${height}`;
+        
+            if (Array.isArray(bmiData) && bmiData.length > 0) { 
+              let bmiResults = bmiData.map((itm) => {
+                return `BMI: ${itm.bmi}, Weight: ${itm["weight(Lbs)"]}, Height: ${itm["height(feet/inches)"]}`;
+              }); 
+              answer = bmiResults.join("\n");
             } else {
               answer = "No BMI data available";
             }
-          } catch (e) { 
+          } catch (e) {
             answer = "Invalid BMI data";
           }
         }
@@ -252,10 +257,12 @@ const Profile = () => {
         }
   
         return { question: item.question, answer };
-      } else {
-        return { question: item.question, answer: "No answer available" };
       }
-    });
+      
+      else {
+        return { question: item.question, answer: "No answer available" };
+      } 
+    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available" );
   
     // Update the state with the mapped data
     setSurwayData(mappedData);
@@ -303,7 +310,7 @@ const Profile = () => {
     history("/login");
   };
 
-  console.log(surwayData,'surwayayayayayayay');
+ 
   
 
   return (
