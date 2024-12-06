@@ -1,31 +1,49 @@
-.profileImage {
-    width: 72px;
-    height: 72px;
+/* Accordion container styling */
+.accordion {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  /* Each card (question + answer) */
+  .card {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Card header styling */
+  .card-header {
+    background-color: #f7f7f7;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Badge styling for question numbers */
+  .badge {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
     border-radius: 50%;
-}
-
-.profileImageLabel {
+    margin-right: 10px;
+  }
+  
+  /* Card body with answer */
+  .card-body {
+    padding: 10px;
+    background-color: #f9f9f9;
+    display: none;
+  }
+  
+  .card-body p {
     margin: 0;
-    position: relative;
-
-    >i {
-        position: absolute;
-        bottom: -3px;
-        right: -3px;
-    }
-}
-
-
-
-p.bg-light.rounded.py-2.fieldcls {
-    background-color: #0065FF2b !important;
-
-}
-
-.ViewUser {
-    // font-weight: 500;
-    color: #202020;
-    font-weight: 600;
-    font-size: 36px;
-    margin-bottom: 32px;
-}
+  }
+  
+  /* When active index is selected, show the card body */
+  .card-body {
+    display: block;
+  }
+  

@@ -506,7 +506,7 @@ justify-content: space-between;
 
 .card_data {
   border: 1px solid #c1c1c1;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 0px;
   margin-bottom: 10px;
   background: #ede2db;
@@ -514,6 +514,7 @@ justify-content: space-between;
 .data-title {
   padding: 12px 12px;
   cursor: pointer;
+  display: flex;
 }
 .text_data {
   border-top: 1px solid #c1c1c1;
@@ -522,7 +523,12 @@ justify-content: space-between;
   .data-title span {
     color: #fff;
     background: #828282;
-    width: 30px;
+    width: 25px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
 }
 .max_width h2 {
   margin: auto;
@@ -532,6 +538,11 @@ justify-content: space-between;
   max-width: 800px;
   margin: auto;
   margin-top: 5rem;
+}
+.max_width {
+  background: #00000008;
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 ////////////############ Profile css end ############////////////

@@ -14,7 +14,17 @@ import { TbGenderBigender } from "react-icons/tb";
 import { FaSave } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { login_success, logout } from "../actions/user";
+import { Accordion, Card, Button } from 'react-bootstrap';
 import environment from "../../environment";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import {
+  ArchiveBoxXMarkIcon,
+  ChevronDownIcon,
+  PencilIcon,
+  Square2StackIcon,
+  TrashIcon,
+} from '@heroicons/react/16/solid'
 
 const Profile = () => {
   const history = useNavigate();
@@ -29,6 +39,12 @@ const Profile = () => {
     gender: "",
   });
   const [image, setImage] = useState("");
+  const [activeIndex, setActiveIndex] = useState(null); 
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+   
   useEffect(() => {
     if (user.loggedIn) {
       gallaryData();
@@ -321,14 +337,37 @@ const Profile = () => {
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
-            <div
-              onClick={() => {
+        
+            <div className="text_logout w-52 text-right">
+      <Menu>
+        <MenuButton className="inline-flex items-center gap-2 rounded-md text-sm/6 font-semibold text-[#000] shadow-inner shadow-white/10 focus:outline-none ">
+          My Account
+          <ChevronDownIcon className="size-4" />
+        </MenuButton>
+
+        <MenuItems
+          transition
+          anchor="bottom end"
+          className="w-fit origin-top-right rounded-xl border border-white/5 bg-[#000] p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+        >
+          <MenuItem>
+            <button onClick={() => {
                 handleLogout();
-              }}
-              className="text_logout"
-            >
+              }} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 whitespace-nowrap">
               Logout
-            </div>
+            </button>
+          </MenuItem>
+          <div className="my-1 h-px bg-white/5" />
+          <MenuItem>
+            <button onClick={() => {
+                  history("/changepassword");
+                }} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 whitespace-nowrap">
+              Change Password
+            </button>
+          </MenuItem>
+        </MenuItems>
+      </Menu>
+    </div>
           </div>
           <div className="">
             <div className="profile_main">
@@ -364,14 +403,6 @@ const Profile = () => {
                   style={{ display: "none" }}
                 />
               </div>
-              <p
-                onClick={() => {
-                  history("/changepassword");
-                }}
-                className="text_changepassword mt-3"
-              >
-                Change Password
-              </p>
 
               <div className="my_profile">
                 <div className="mb-5">
@@ -522,21 +553,27 @@ const Profile = () => {
                 </div>
                     <div class="">
                         <div class="data_div" id="accordion">
-                            <div class="card_data">
-                                <div class="card-header" id="dataHeading-1">
-                                    <div class="mb-0">
-                                        <h5 class="data-title" data-toggle="collapse" data-target="#dataCollapse-1" data-aria-expanded="true" data-aria-controls="dataCollapse-1">
-                                            <span class="badge mr-2">1</span>What is Lorem Ipsum?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="dataCollapse-1" class="text_data collapse" aria-labelledby="dataHeading-1" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                                    </div>
-                                </div>
+                      <div className="accordion">
+                        {surwayData?.map((item, index) => (
+                          <div className="card_data" key={index}>
+                            <div className="" onClick={() => toggleAccordion(index)}>
+                              <h5 className="data-title">
+                                <span className="badge mr-2">{index + 1}</span>{item?.question}
+                              </h5>
+                          
                             </div>
-                            <div class="card_data">
+
+                            {activeIndex === index && (
+                              <div className="text_data">
+                                <p>{item?.answer}</p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+
+
+                            {/* <div class="card_data">
                                 <div class="card-header" id="dataHeading-2">
                                     <div class="mb-0">
                                         <h5 class="data-title" data-toggle="text_data collapse" data-target="#dataCollapse-2" data-aria-expanded="false" data-aria-controls="dataCollapse-2">
@@ -549,17 +586,17 @@ const Profile = () => {
                                         <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
                 <ul>
-                  {surwayData?.map((item, index) => ( 
+                  {/* {surwayData?.map((item, index) => ( 
                     
                     <li key={index}>
                       <strong>{item?.question}</strong>: {item?.answer}
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
                 </div>
               </div>
