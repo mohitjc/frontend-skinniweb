@@ -10,54 +10,151 @@ import { MdEdit } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
-import { TbGenderBigender } from "react-icons/tb"; 
-import { FaSave } from "react-icons/fa"; 
+import { TbGenderBigender } from "react-icons/tb";
+import { FaSave } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { login_success, logout } from "../actions/user";
 import environment from "../../environment";
 
 const Profile = () => {
-  const history = useNavigate()
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user); 
-  const [editable, setEditable] = useState(false); 
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const [editable, setEditable] = useState(false);
+  const [surwayData, setSurwayData] = useState();
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     dob: "",
     gender: "",
   });
-  const [image, setImage] = useState(
-    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
-  );
+  const [image, setImage] = useState("");
   useEffect(() => {
     if (user.loggedIn) {
       gallaryData();
+    } else {
+      history("/login");
     }
-     else {
-      history("/login")
-     }
   }, []);
 
+  const data = [
+    { question: "How Much Weight Do You Want To Lose?", answer: "typeA" },
+    { question: "What are your weight management goals?", answer: "whatAre" },
+    {
+      question: "What compounded management medication do you have in mind?",
+      answer: "whatCompounded",
+    },
+    { question: "Contact Details", answer: "contactDetails" },
+    { question: "Email", answer: "email" },
+    { question: "Phone Number", answer: "phoneNumber" },
+    { question: "Sex Assigned At Birth", answer: "sexAssigned" },
+    { question: "Preferred Gender Pronouns", answer: "preferredGender" },
+    { question: "Terms & Conditions", answer: "httpsskiniicomlegal-notice" },
+    {
+      question:
+        "I consent to receive marketing and SMS communications on offers from Skinii Corp.",
+      answer: "iConsent",
+    },
+    { question: "General Health Questionnaire", answer: "generalHealth" },
+    { question: "BMI Calculator", answer: "bmiCalculator" },
+    {
+      question: "Do you currently have a government insurance plan?",
+      answer: "doYou",
+    },
+    {
+      question: "Which type of health insurance do you have?",
+      answer: "whichType",
+    },
+    {
+      question:
+        "Have you seen your primary care provider in the past 12 months?",
+      answer: "haveYou",
+    },
+    {
+      question: "Are you currently pregnant or trying to become pregnant?",
+      answer: "areYou",
+    },
+    { question: "Are you currently breastfeeding?", answer: "areYou54" },
+    {
+      question:
+        "Do you currently have, or have you ever been diagnosed with, any of the following heart or heart-related conditions?",
+      answer: "doYou35",
+    },
+    {
+      question:
+        "Do you currently have, or have you ever been diagnosed with, any of these hormones, kidney, or liver conditions?",
+      answer: "doYou36",
+    },
+    {
+      question:
+        "Do you currently have or have you ever been diagnosed with type 2 diabetes?",
+      answer: "doYou37",
+    },
+    {
+      question:
+        "Do you currently have or have you ever been diagnosed with diabetic retinopathy?",
+      answer: "doYou38 ",
+    },
+    {
+      question:
+        "Do you currently have, or have a history of, any of these gastrointestinal conditions or procedures?",
+      answer: "doYou39",
+    },
+    {
+      question:
+        "Do you currently have, or have you ever been diagnosed with, any of these additional following conditions?",
+      answer: "doYou40",
+    },
+    { question: "Do you have any allergies?", answer: "doYou41" },
+    { question: "List any allergies below", answer: "listAny" },
+    {
+      question: "Do you have an allergy to GLP-1 agonist medications?",
+      answer: "doYou44",
+    },
+    {
+      question: "Do you currently take any of the following medications?",
+      answer: "doYou45",
+    },
+    {
+      question:
+        "List any medications, vitamins, dietary supplements, and topical creams you are currently taking or using.",
+      answer: "listAny46",
+    },
+    {
+      question: "How would you describe yourself? Select all that apply.",
+      answer: "whatAre",
+    },
+    { question: "What are your weight management goals?", answer: "howWould" },
+    {
+      question:
+        "Is there anything else you want your health care provider to know about your health?",
+      answer: "isThere",
+    },
+    {
+      question: "Checkout Your Preferred Membership Tier",
+      answer: "checkoutYour",
+    },
+    { question: "What state do you live in?", answer: "whatState" },
+    { question: "Provide your shipping address", answer: "address" },
+    { question: "Appointment", answer: "appointment" },
+  ];
 
-
-  const uploadImage = async (e) => {  
-   const url = "upload/image?modelName=user"
+  const uploadImage = async (e) => {
+    const url = "upload/image?modelName=user";
     loader(true);
-      let file = e; 
-      const res = await ApiClient.postFormData(url , { file: file });
-      if (res.success == true || res?.code == 200) {
-        toast?.success(res?.message) 
-          setImage(environment?.api + "images/user/" +  res?.data?.fullpath)
-         
-      }  
-   loader(false) 
-    } 
-  
+    let file = e;
+    const res = await ApiClient.postFormData(url, { file: file });
+    if (res.success == true || res?.code == 200) {
+      toast?.success(res?.message);
+      setImage(environment?.api + "images/user/" + res?.data?.fullpath);
+    }
+    loader(false);
+  };
+
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
     if (file) {
-      uploadImage(file)
+      uploadImage(file);
     }
   };
   const gallaryData = () => {
@@ -71,34 +168,107 @@ const Profile = () => {
           dob: res?.data?.dob,
           gender: res?.data?.gender,
         });
-        setImage(res?.data?.image)
+        setImage(res?.data?.image);
+        handleSurvayData(res?.data?.surveyData);
+        // setSurwayData(formatData(res?.data?.surveyCompleteData));
+        // setSurwayData(res?.data?.surveyCompleteData
+        // )
       }
       loader(false);
     });
   };
 
+  const formatData = (rawData) => {
+    const keyValuePairs = rawData.split(",").map((item) => item.split(":"));
+    const structuredData = keyValuePairs.map(([question, answer]) => {
+      if (answer?.startsWith("[") && answer?.endsWith("]")) {
+        answer = JSON.parse(answer);
+      }
+      return {
+        question: question?.trim(),
+        answer: answer?.trim(),
+      };
+    });
 
+    return structuredData;
+  };
 
+  const handleSurvayData = (apiData) => {
+    const mappedData = data.map((item) => { 
+      const contactDetailsKey = Object.keys(apiData).find((key) =>
+        key.includes(item.answer)
+      );
+  
+      if (contactDetailsKey) {
+        let answer = apiData[contactDetailsKey]; 
+        if (Array.isArray(answer)) {
+          answer = answer.join(", "); 
+        } 
+        else if (typeof answer === "object" && answer !== null) { 
+          if (answer.first && answer.last) {
+            answer = `${answer.first} ${answer.last}`;
+          } 
+          else if (answer.addr_line1) {
+            answer = `${answer.addr_line1}, ${answer.addr_line2}, ${answer.city}, ${answer.state}, ${answer.postal}`;
+          } 
+          else if (answer.date) {
+            answer = new Date(answer.date).toLocaleString(); 
+          } 
+          else {
+            answer = JSON.stringify(answer);
+          }
+        }
+        else if (item.answer === "bmiCalculator" && typeof answer === "string") {
+          try {
+            const bmiData = JSON.parse(answer);
+            if (Array.isArray(bmiData) && bmiData.length > 0) {
+              const { bmi, weight, height } = bmiData[0];
+              answer = `BMI: ${bmi}, Weight: ${weight}, Height: ${height}`;
+            } else {
+              answer = "No BMI data available";
+            }
+          } catch (e) { 
+            answer = "Invalid BMI data";
+          }
+        }
+        else if (typeof answer === "string" || typeof answer === "number") {
+          answer = answer.toString();
+        }
+  
+        return { question: item.question, answer };
+      } else {
+        return { question: item.question, answer: "No answer available" };
+      }
+    });
+    setSurwayData(mappedData);
+  };
+  
+  
 
-   const handleSubmit=()=>{
-    if(!form?.fullName || !form?.email || !form?.gender || !form?.dob || !image) {
-      toast?.error ("All Fields are required")
-      return
-    }
-     else {
-      const payload ={
-        fullName : form?.fullName,
-         email : form?.email,
-         dob : form?.dob,
-         gender : form?.gender,
-         image : image 
-       }
-       loader(true)
-       ApiClient.put("editUserProfile", payload).then((res) => {
+  const handleSubmit = () => {
+    if (
+      !form?.fullName ||
+      !form?.email ||
+      !form?.gender ||
+      !form?.dob ||
+      !image
+    ) {
+      toast?.error("All Fields are required");
+      return;
+    } else {
+      const payload = {
+        fullName: form?.fullName,
+        email: form?.email,
+        dob: form?.dob,
+        gender: form?.gender,
+        image: image,
+      };
+      loader(true);
+      ApiClient.put("editUserProfile", payload).then((res) => {
         if (res.success == true || res?.code == 200) {
           let uUser = { ...user, ...payload };
           dispatch(login_success(uUser));
-          setEditable(false)
+          setEditable(false);
           toast?.success(res?.message);
           loader(false);
         } else {
@@ -106,15 +276,17 @@ const Profile = () => {
           loader(false);
         }
       });
-     }
- 
-  }
+    }
+  };
 
-   const handleLogout =()=>{
+  const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem("token");
     history("/login");
-   }
+  };
+
+  console.log(surwayData,'surwayayayayayayay');
+  
 
   return (
     <div className="">
@@ -124,87 +296,108 @@ const Profile = () => {
             <div className="logo_profile">
               <img src="/assets/img/Skinnii-Logo.webp" />
             </div>
-            <div onClick={()=>{handleLogout()}} className="text_logout">Logout</div>
+            <div
+              onClick={() => {
+                handleLogout();
+              }}
+              className="text_logout"
+            >
+              Logout
+            </div>
           </div>
           <div className="">
             <div className="profile_main">
-            <div className="profile_upload" style={{ position: "relative", display: "inline-block" }}>
-      <img
-        src={image}
-        alt="Profile"
-        style={{ width: 150, height: 150, objectFit: "cover", borderRadius: "50%" }}
-      /> 
-      <MdEdit
-      disabled={!editable}
-        className="edit_icon"
-        onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
-        style={{        }}/> 
-      <input
-       disabled={!editable}
-        id="fileInput"
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}   
-        style={{ display: "none" }}   
-      />
-    </div>
-    <p onClick={()=>{history("/changepassword")}} className="text_changepassword mt-3">Change Password</p>
+              <div
+                className="profile_upload"
+                style={{ position: "relative", display: "inline-block" }}
+              >
+                <img
+                  src={
+                    image ||
+                    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
+                  }
+                  alt="Profile"
+                  style={{
+                    width: 150,
+                    height: 150,
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+                <MdEdit
+                  disabled={!editable}
+                  className="edit_icon"
+                  onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
+                  style={{}}
+                />
+                <input
+                  disabled={!editable}
+                  id="fileInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
+              </div>
+              <p
+                onClick={() => {
+                  history("/changepassword");
+                }}
+                className="text_changepassword mt-3"
+              >
+                Change Password
+              </p>
 
               <div className="my_profile">
-              <div className="mb-5">
+                <div className="mb-5">
                   {/* <div className="header_frofile mb-3">
                     <h2>MY GOALS</h2>
                   </div> */}
                   <div className="row_div">
-                      <div className="card_box">
-                        <div className="card_text mb-1">
-                          <img src="/assets/img/profileimg1.png" />
-                          <div className="">
+                    <div className="card_box">
+                      <div className="card_text mb-1">
+                        <img src="/assets/img/profileimg1.png" />
+                        <div className="">
                           <h3>100 Pound</h3>
                           <p>Current Weight in Pound</p>
-                          </div>
                         </div>
-                       
                       </div>
-                      <div className="card_box">
-                        <div className="card_text mb-1">
-                          <img src="/assets/img/profileimg2.png" />
-                          <div className="">
+                    </div>
+                    <div className="card_box">
+                      <div className="card_text mb-1">
+                        <img src="/assets/img/profileimg2.png" />
+                        <div className="">
                           <h3>100 Pound</h3>
                           <p>Current Height in Pound</p>
                         </div>
-                        </div>
-                     
                       </div>
-                      <div className="card_box">
-                        <div className="card_text mb-1">
-                          <img src="/assets/img/profileimg3.png" />
-                          <div className="">
+                    </div>
+                    <div className="card_box">
+                      <div className="card_text mb-1">
+                        <img src="/assets/img/profileimg3.png" />
+                        <div className="">
                           <h3>60 Pound</h3>
                           <p>Goal Weight in Pound</p>
                         </div>
-                        </div>
-                      
                       </div>
-                      <div className="card_box">
-                        <div className="card_text mb-1">
-                          <img src="/assets/img/profileimg4.png" />
-                          <div className="">
+                    </div>
+                    <div className="card_box">
+                      <div className="card_text mb-1">
+                        <img src="/assets/img/profileimg4.png" />
+                        <div className="">
                           <h3>Vegetarian</h3>
                           <p>Diet Type</p>
-                          </div>
                         </div>
-                       
                       </div>
-                      <div className="card_box">
-                        <div className="card_text mb-1">
-                          <img src="/assets/img/profileimg5.png" />
-                          <div className="">
+                    </div>
+                    <div className="card_box">
+                      <div className="card_text mb-1">
+                        <img src="/assets/img/profileimg5.png" />
+                        <div className="">
                           <h3>Moderatly Active</h3>
                           <p>How Active You Are?</p>
                         </div>
-                        </div>
-                      
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -221,7 +414,12 @@ const Profile = () => {
                         <MdEdit /> Edit Info
                       </div>
                     ) : (
-                      <div onClick={()=>{handleSubmit()}} className="edit_info">
+                      <div
+                        onClick={() => {
+                          handleSubmit();
+                        }}
+                        className="edit_info"
+                      >
                         <FaSave /> Save
                       </div>
                     )}
@@ -285,7 +483,7 @@ const Profile = () => {
                             Select Gender
                           </option>
                           <option value="male">Male</option>
-                          <option value="female">Female</option> 
+                          <option value="female">Female</option>
                         </select>
 
                         <TbGenderBigender />
@@ -293,7 +491,16 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-
+                <h2>SURVAY DATA</h2>
+                <ul>
+                  {surwayData?.map((item, index) => (
+                    console.log(item,'iemmmmmmmmmmmmmmm'),
+                    
+                    <li key={index}>
+                      {/* <strong>{item?.question}</strong>: {item?.answer} */}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
