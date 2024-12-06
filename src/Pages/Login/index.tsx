@@ -108,23 +108,23 @@ const Login = () => {
     <>
       <AuthLayout>
         <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
-            <div className="main_auth">
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <div className="main_heading mb-4">
-                <h2>Member Login</h2>
-                <p>Access your account.</p>
+                <h2 className="text-[32px] uppercase w-[900] text-center color-[#fff]">Member Login</h2>
+                <p className="text-[16px] text-center">Access your account.</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="row">
-                  <div className="col-md-6 mb-3">
+                <div className="grid grid-cols-2 gap-5 mb-3">
+                  <div className="">
                     <input
                       value={email}
                       onChange={handleEmailChange}
                       type="email"
                       required
                       placeholder="Email"
-                      className={`form-control ${
+                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -132,8 +132,8 @@ const Login = () => {
                       <div className="invalid-feedback d-block">{error}</div>
                     )}
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.password ? "text" : "password"}
                         value={password}
@@ -142,11 +142,11 @@ const Login = () => {
                         }}
                         required
                         placeholder="Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                       ></input>
                       <i
                         className={
-                          eyes.password ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.password ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })
@@ -155,15 +155,15 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
-                <p onClick={()=>{history("/forgotpassword")}} className="text_right">Forgot Password</p>
+                <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline">Forgot Password</p>
                 <div className="mt-3">
-                  <button className="btn btn-dark">Login</button>
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Login</button>
                 </div>
               </form>
-              <p className="text_signin mt-2">
+              <p className="text-[#000] text-center mt-2">
                 Don't have an account?{" "}
                 <a href="/signup">
-                  <span className="">Sign up</span>
+                  <span className="cursor-pointer font-[500] text-[#000]">Sign up</span>
                 </a>
               </p>
               {/* <div className="more_info">

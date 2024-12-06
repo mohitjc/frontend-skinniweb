@@ -185,10 +185,7 @@ const Profile = () => {
           gender: res?.data?.gender,
         });
         setImage(res?.data?.image);
-        handleSurvayData(res?.data?.surveyData);
-        // setSurwayData(formatData(res?.data?.surveyCompleteData));
-        // setSurwayData(res?.data?.surveyCompleteData
-        // )
+        handleSurvayData(res?.data?.surveyData ?  res?.data?.surveyData : "");
       }
       loader(false);
     });
@@ -210,78 +207,84 @@ const Profile = () => {
   };
 
   const handleSurvayData = (apiData) => {
-    const mappedData = data?.map((item) => { 
-      const contactDetailsKey = Object?.keys(apiData)?.find((key) =>
-        key?.includes(item?.answer)
-      );
-  
-      if (contactDetailsKey) {
-        let answer = apiData[contactDetailsKey]; 
-        if (Array.isArray(answer)) {
-          answer = answer.join(", "); 
-        } 
-        else if (typeof answer === "object" && answer !== null) { 
-          if (item.answer === "generalHealth") {
-            const { field_5, field_6, field_7, field_4 } = answer; 
-            answer = `Height: ${field_5}, Weight: ${field_6}, Age: ${field_7}, Date of Birth: ${field_4}`;
+    if(apiData == "") {
+      setSurwayData([])
+    }
+     else {
+      const mappedData = data?.map((item) => { 
+        const contactDetailsKey = Object?.keys(apiData)?.find((key) =>
+          key?.includes(item?.answer)
+        );
+    
+        if (contactDetailsKey) {
+          let answer = apiData[contactDetailsKey]; 
+          if (Array.isArray(answer)) {
+            answer = answer.join(", "); 
+          } 
+          else if (typeof answer === "object" && answer !== null) { 
+            if (item.answer === "generalHealth") {
+              const { field_5, field_6, field_7, field_4 } = answer; 
+              answer = `Height: ${field_5}, Weight: ${field_6}, Age: ${field_7}, Date of Birth: ${field_4}`;
+            }
+            else if (item.answer === "checkoutYour") {
+              try {
+                if (answer.special_1000 && answer.special_1000.item_0) {
+                  answer = `Special Offer= ${answer.special_1000.item_0}`;
+                } else {
+                  answer = "No special offer details available";
+                }
+              } catch (e) {
+                answer = "Invalid data for checkoutYour";
+              }
+            }
+             else if (item.answer == "phoneNumber"){
+              answer = `${answer?.full}`
+             }
+            else if (answer.first && answer.last) {
+              answer = `${answer.first} ${answer.last}`;
+            } 
+            else if (answer.addr_line1) {
+              answer = `${answer.addr_line1}, ${answer.addr_line2}, ${answer.city}, ${answer.state}, ${answer.postal}`;
+            } 
+            else if (answer.date) {
+              answer = new Date(answer.date).toLocaleString(); 
+            } 
+            else {
+              answer = JSON.stringify(answer);
+            }
           }
-          else if (item.answer === "checkoutYour") {
-            try {
-              if (answer.special_1000 && answer.special_1000.item_0) {
-                answer = `Special Offer= ${answer.special_1000.item_0}`;
+          else if (item.answer === "bmiCalculator" && typeof answer === "string") { 
+            try { 
+              const bmiData = JSON.parse(answer);
+          
+              if (Array.isArray(bmiData) && bmiData.length > 0) { 
+                let bmiResults = bmiData.map((itm) => {
+                  return `BMI: ${itm.bmi}, Weight(Lbs): ${itm["weight(Lbs)"]}, Height(feet/inches): ${itm["height(feet/inches)"]},Weight(KGs) : ${itm["weight(KGs)"]}, Height(cm) : ${itm["height(cm)"]}`;
+                }); 
+                answer = bmiResults.join("\n");
               } else {
-                answer = "No special offer details available";
+                answer = "No BMI data available";
               }
             } catch (e) {
-              answer = "Invalid data for checkoutYour";
+              answer = "Invalid BMI data";
             }
           }
-           else if (item.answer == "phoneNumber"){
-            answer = `${answer?.full}`
-           }
-          else if (answer.first && answer.last) {
-            answer = `${answer.first} ${answer.last}`;
-          } 
-          else if (answer.addr_line1) {
-            answer = `${answer.addr_line1}, ${answer.addr_line2}, ${answer.city}, ${answer.state}, ${answer.postal}`;
-          } 
-          else if (answer.date) {
-            answer = new Date(answer.date).toLocaleString(); 
-          } 
-          else {
-            answer = JSON.stringify(answer);
+          else if (typeof answer === "string" || typeof answer === "number") {
+            answer = answer.toString();
           }
+    
+          return { question: item.question, answer };
         }
-        else if (item.answer === "bmiCalculator" && typeof answer === "string") { 
-          try { 
-            const bmiData = JSON.parse(answer);
         
-            if (Array.isArray(bmiData) && bmiData.length > 0) { 
-              let bmiResults = bmiData.map((itm) => {
-                return `BMI: ${itm.bmi}, Weight(Lbs): ${itm["weight(Lbs)"]}, Height(feet/inches): ${itm["height(feet/inches)"]},Weight(KGs) : ${itm["weight(KGs)"]}, Height(cm) : ${itm["height(cm)"]}`;
-              }); 
-              answer = bmiResults.join("\n");
-            } else {
-              answer = "No BMI data available";
-            }
-          } catch (e) {
-            answer = "Invalid BMI data";
-          }
-        }
-        else if (typeof answer === "string" || typeof answer === "number") {
-          answer = answer.toString();
-        }
-  
-        return { question: item.question, answer };
-      }
-      
-      else {
-        return { question: item.question, answer: "No answer available" };
-      } 
-    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available"   );
-  
-    // Update the state with the mapped data
-    setSurwayData(mappedData);
+        else {
+          return { question: item.question, answer: "No answer available" };
+        } 
+      })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available"   );
+    
+      // Update the state with the mapped data
+      setSurwayData(mappedData);
+     }
+
   };
   
   
@@ -547,6 +550,7 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div className="max_width">
                   <div className="header_frofile mb-3">
                 <h2 className="mb-3">SURVAY DATA</h2>
@@ -590,6 +594,10 @@ const Profile = () => {
                         </div>
                     </div>
 
+=======
+                <h2>SURVAY DATA</h2>
+                {surwayData?.length > 0 ? 
+>>>>>>> 8946b157722748b2fdf9f8fe8e78f44f798a13ac
                 <ul>
                   {/* {surwayData?.map((item, index) => ( 
                     
@@ -598,7 +606,11 @@ const Profile = () => {
                     </li>
                   ))} */}
                 </ul>
+<<<<<<< HEAD
                 </div>
+=======
+                 : "No Servay data "}
+>>>>>>> 8946b157722748b2fdf9f8fe8e78f44f798a13ac
               </div>
             </div>
           </div>
