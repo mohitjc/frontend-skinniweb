@@ -242,7 +242,7 @@ const Profile = () => {
         
             if (Array.isArray(bmiData) && bmiData.length > 0) { 
               let bmiResults = bmiData.map((itm) => {
-                return `BMI: ${itm.bmi}, Weight: ${itm["weight(Lbs)"]}, Height: ${itm["height(feet/inches)"]}`;
+                return `BMI: ${itm.bmi}, Weight(Lbs): ${itm["weight(Lbs)"]}, Height(feet/inches): ${itm["height(feet/inches)"]},Weight(KGs) : ${itm["weight(KGs)"]}, Height(cm) : ${itm["height(cm)"]}`;
               }); 
               answer = bmiResults.join("\n");
             } else {
@@ -262,7 +262,7 @@ const Profile = () => {
       else {
         return { question: item.question, answer: "No answer available" };
       } 
-    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available" );
+    })?.filter((itm)=> itm?.answer != "" && itm?.answer != "No answer available" && itm?.answer !="No BMI data available" );
   
     // Update the state with the mapped data
     setSurwayData(mappedData);
