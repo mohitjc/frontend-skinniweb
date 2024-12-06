@@ -205,7 +205,23 @@ const Profile = () => {
           answer = answer.join(", "); 
         } 
         else if (typeof answer === "object" && answer !== null) { 
-          if (answer.first && answer.last) {
+          if (item.answer === "generalHealth") {
+            const { field_5, field_6, field_7, field_4 } = answer; 
+            answer = `Height: ${field_5}, Weight: ${field_6}, Age: ${field_7}, Date of Birth: ${field_4}`;
+          }
+          else if (item.answer === "checkoutYour") {
+            try {
+              const parsedAnswer = JSON.parse(answer); // Parse the JSON string
+              if (parsedAnswer.special_1000 && parsedAnswer.special_1000.item_0) {
+                answer = `Special Offer: Item 0 = ${parsedAnswer.special_1000.item_0}`;
+              } else {
+                answer = "No special offer details available";
+              }
+            } catch (e) {
+              answer = "Invalid data for checkoutYour";
+            }
+          }
+          else if (answer.first && answer.last) {
             answer = `${answer.first} ${answer.last}`;
           } 
           else if (answer.addr_line1) {
@@ -240,6 +256,8 @@ const Profile = () => {
         return { question: item.question, answer: "No answer available" };
       }
     });
+  
+    // Update the state with the mapped data
     setSurwayData(mappedData);
   };
   
@@ -493,11 +511,10 @@ const Profile = () => {
                 </div>
                 <h2>SURVAY DATA</h2>
                 <ul>
-                  {surwayData?.map((item, index) => (
-                    console.log(item,'iemmmmmmmmmmmmmmm'),
+                  {surwayData?.map((item, index) => ( 
                     
                     <li key={index}>
-                      {/* <strong>{item?.question}</strong>: {item?.answer} */}
+                      <strong>{item?.question}</strong>: {item?.answer}
                     </li>
                   ))}
                 </ul>
