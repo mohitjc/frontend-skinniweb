@@ -516,7 +516,43 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <h2>SURVAY DATA</h2>
+                <div className="max_width">
+                  <div className="header_frofile mb-3">
+                <h2 className="mb-3">SURVAY DATA</h2>
+                </div>
+                    <div class="">
+                        <div class="data_div" id="accordion">
+                            <div class="card_data">
+                                <div class="card-header" id="dataHeading-1">
+                                    <div class="mb-0">
+                                        <h5 class="data-title" data-toggle="collapse" data-target="#dataCollapse-1" data-aria-expanded="true" data-aria-controls="dataCollapse-1">
+                                            <span class="badge mr-2">1</span>What is Lorem Ipsum?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="dataCollapse-1" class="text_data collapse" aria-labelledby="dataHeading-1" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card_data">
+                                <div class="card-header" id="dataHeading-2">
+                                    <div class="mb-0">
+                                        <h5 class="data-title" data-toggle="text_data collapse" data-target="#dataCollapse-2" data-aria-expanded="false" data-aria-controls="dataCollapse-2">
+                                            <span class="badge mr-2">2</span> Where does it come from?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="dataCollapse-2" class="collapse" aria-labelledby="dataHeading-2" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 <ul>
                   {surwayData?.map((item, index) => ( 
                     
@@ -525,6 +561,7 @@ const Profile = () => {
                     </li>
                   ))}
                 </ul>
+                </div>
               </div>
             </div>
           </div>

@@ -386,7 +386,6 @@ form.form_div select {
 .bg_color_profile {
   background: #fed6b680;
   padding-bottom: 2rem;
-  height: 100vh;
 }
 .header_frofile {
   display: flex;
@@ -498,6 +497,41 @@ justify-content: space-between;
   padding: 6px 15px;
   border-radius: 8px;
   font-weight: 500;
+}
+
+
+
+
+
+
+.card_data {
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  padding: 0px;
+  margin-bottom: 10px;
+  background: #ede2db;
+}
+.data-title {
+  padding: 12px 12px;
+  cursor: pointer;
+}
+.text_data {
+  border-top: 1px solid #c1c1c1;
+  padding: 12px 12px;
+}
+  .data-title span {
+    color: #fff;
+    background: #828282;
+    width: 30px;
+}
+.max_width h2 {
+  margin: auto;
+  font-size: 28px !important;
+}
+.max_width {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 5rem;
 }
 
 ////////////############ Profile css end ############////////////
