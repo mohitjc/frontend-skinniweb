@@ -45,6 +45,8 @@ const Profile = () => {
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  console.log(activeIndex,"activeIndexactiveIndex")
    
   useEffect(() => {
     if (user.loggedIn) {
@@ -548,7 +550,7 @@ const Profile = () => {
                 </div>
                 <div className="bg-[#00000008] p-[2rem] rounded-[10px] max-w-[800px] mx-auto">
                 <h2 className="text-center text-[20px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
-                    <div class="">
+                    {/* <div class="">
                         <div class="data_div" id="accordion">
                       <div className="accordion">
                         {surwayData?.map((item, index) => (
@@ -569,23 +571,23 @@ const Profile = () => {
                         ))}
                       </div>
                         </div>
-                     </div>
+                     </div> */}
                        
-                       <div className="max-w-[600px] mx-auto">
-                        <div className="grid grid-cols-1 gap-5">
-                        <Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={true}>
-          <DisclosureButton className="bg-[#ede2db] group flex w-full items-center justify-between rounded-[8px] p-3">
-            <span className="text-sm font-medium">
-              What is your refund policy?
-            </span>
-            <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />
-          </DisclosureButton>
-          <DisclosurePanel className="border-t !border-[#c1c1c1] bg-[#efe9e4] text-sm rounded-b-[8px] p-3">
-            If you're unhappy with your purchase, we'll refund you in full.
-          </DisclosurePanel>
-        </Disclosure>
-        </div>
-        </div>
+                  <div className="max-w-[600px] mx-auto">
+                    <div className="grid grid-cols-1 gap-3">
+                      {surwayData?.map((item, index) => (<Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={false}>
+                        <DisclosureButton className="bg-[#ede2db] group flex w-full items-center justify-between rounded-[8px] p-3" >
+                          <span className="text-sm font-medium">
+                            {item?.question}
+                          </span>
+                          <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />
+                        </DisclosureButton>
+                        <DisclosurePanel className="border-t !border-[#c1c1c1] bg-[#efe9e4] text-sm rounded-b-[8px] p-3">
+                          {item?.answer}
+                        </DisclosurePanel>
+                      </Disclosure>))}
+                    </div>
+                  </div>
 
               
 
