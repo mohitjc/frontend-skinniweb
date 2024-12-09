@@ -3,7 +3,7 @@ const AuthLayout = ({ children }: any) => {
     <>
       <div className="relative">
         <div className="">
-          <div className="mainauth">
+          <div className="mainauth bg-cover bg-bottom bg-no-repeat">
             <div className="bg_div">
             <div className="">{children}</div>
             </div>
