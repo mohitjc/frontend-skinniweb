@@ -25,6 +25,7 @@ import {
   Square2StackIcon,
   TrashIcon,
 } from '@heroicons/react/16/solid'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 
 const Profile = () => {
   const history = useNavigate();
@@ -545,10 +546,8 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="max_width">
-                  <div className="header_frofile mb-3">
-                <h2 className="mb-3">SURVAY DATA</h2>
-                </div>
+                <div className="bg-[#00000008] p-[2rem] rounded-[10px] max-w-[800px] mx-auto">
+                <h2 className="text-center text-[20px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
                     <div class="">
                         <div class="data_div" id="accordion">
                       <div className="accordion">
@@ -569,25 +568,24 @@ const Profile = () => {
                           </div>
                         ))}
                       </div>
-
-
-                            {/* <div class="card_data">
-                                <div class="card-header" id="dataHeading-2">
-                                    <div class="mb-0">
-                                        <h5 class="data-title" data-toggle="text_data collapse" data-target="#dataCollapse-2" data-aria-expanded="false" data-aria-controls="dataCollapse-2">
-                                            <span class="badge mr-2">2</span> Where does it come from?
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div id="dataCollapse-2" class="collapse" aria-labelledby="dataHeading-2" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                                    </div>
-                                </div>
-                            </div> */}
                         </div>
-                    </div>
-
+                     </div>
+                       
+                       <div className="max-w-[600px] mx-auto">
+                        <div className="grid grid-cols-1 gap-5">
+                        <Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={true}>
+          <DisclosureButton className="bg-[#ede2db] group flex w-full items-center justify-between rounded-[8px] p-3">
+            <span className="text-sm font-medium">
+              What is your refund policy?
+            </span>
+            <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />
+          </DisclosureButton>
+          <DisclosurePanel className="border-t !border-[#c1c1c1] bg-[#efe9e4] text-sm rounded-b-[8px] p-3">
+            If you're unhappy with your purchase, we'll refund you in full.
+          </DisclosurePanel>
+        </Disclosure>
+        </div>
+        </div>
 
               
 
@@ -600,6 +598,8 @@ const Profile = () => {
                   ))} */}
                 </ul>
                 </div>
+
+
               </div>
             </div>
           </div>
