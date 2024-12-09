@@ -58,29 +58,29 @@ const Forgotpassword = () => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
-            <div className="main_auth">
-              <IoIosArrowBack onClick={()=>{history(-1)}} className="back_arrow" />
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
+              <IoIosArrowBack onClick={()=>{history(-1)}} className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer" />
               <div className="main_heading mb-4">
-                <h2>Forgot Password</h2>
-                <p>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Forgot Password</h2>
+                <p className="text-[16px] text-center">
                   {" "}
                   No worries! Just enter your email and we’ll send you a reset
                   password link.
                 </p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="row">
-                    <div className="col-md-12 mb-3">
+                <div className="grid grid-cols-2 gap-5 mb-3">
+                    <div className="col-span-2">
                     <input
                       value={form.email}
                       onChange={handleEmailChange}
                       type="email"
                       required
                       placeholder="Email"
-                      className={`form-control ${
+                      className={`form-control w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8 ${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -89,8 +89,8 @@ const Forgotpassword = () => {
                     )}
                   </div>
                 </div>
-                <div className="mt-3">
-                  <button type="submit" className="btn btn-dark">Send Recovery Email</button>
+                <div className="mt-4">
+                  <button type="submit" className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Send Recovery Email</button>
                 </div>
               </form> 
               {/* <div className="more_info">

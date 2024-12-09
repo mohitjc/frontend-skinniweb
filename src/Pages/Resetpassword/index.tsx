@@ -65,28 +65,28 @@ const Resetpassword = () => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
-            <div className="main_auth">
-              <IoIosArrowBack onClick={()=>{history(-1)}} className="back_arrow" />
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
+              <IoIosArrowBack onClick={()=>{history(-1)}} className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer" />
               <div className="main_heading mb-4">
-                <h2>Reset Password</h2>
-                <p>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Reset Password</h2>
+                <p className="text-[16px] text-center">
                   {" "}
                   Please create a new password that you don’t use on any other
                   site.
                 </p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                <div className="grid grid-cols-2 gap-5 mb-3">
+                  <div className="">
+                    <div className="relative">
                       <input
                          type={eyes.newPassword ? "text" : "password"}
                         required
                         placeholder="Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         value={form?.newPassword}
                         onChange={(e) => {
                           setForm({ ...form, newPassword: e?.target?.value });
@@ -94,7 +94,7 @@ const Resetpassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.newPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.newPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, newPassword: !eyes.newPassword })
@@ -102,13 +102,13 @@ const Resetpassword = () => {
                       ></i>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
                         required
                         placeholder="Confirm Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         value={form?.confirmPassword}
                         onChange={(e) => {
                           setForm({
@@ -119,7 +119,7 @@ const Resetpassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.confirmPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -138,8 +138,8 @@ const Resetpassword = () => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-3">
-                  <button className="btn btn-dark">Save</button>
+                <div className="mt-4">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Save</button>
                 </div>
               </form>
            

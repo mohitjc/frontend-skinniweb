@@ -57,27 +57,27 @@ const ChangePassword = () => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
-            <div className="main_auth">
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <IoIosArrowBack
                 onClick={() => history(-1)}
-                className="back_arrow"
+                className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
               />
               <div className="main_heading mb-4">
-                <h2>Change Password</h2>
-                <p> Enter a new password below to change your password</p>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Change Password</h2>
+                <p className="text-[16px] text-center"> Enter a new password below to change your password</p>
               </div>
               <form onSubmit={handleSubmit} className="form_div">
-                <div className="row">
-                  <div className="col-md-12 mb-3">
-                    <div className="password_div">
+                <div className="grid grid-cols-2 gap-5 mb-3">
+                  <div className="col-span-2">
+                    <div className="relative">
                       <input
                         type={eyes.currentPassword ? "text" : "password"}
                         required
                         placeholder="Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
@@ -87,7 +87,7 @@ const ChangePassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.currentPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.currentPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -98,20 +98,20 @@ const ChangePassword = () => {
                       ></i>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.newPassword ? "text" : "password"}
                         required
                         placeholder="New Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({ ...form, newPassword: e?.target?.value });
                         }}
                       ></input>
                       <i
                         className={
-                          eyes.newPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.newPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, newPassword: !eyes.newPassword })
@@ -119,13 +119,13 @@ const ChangePassword = () => {
                       ></i>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
                         required
                         placeholder="Confirm Password"
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
@@ -135,7 +135,7 @@ const ChangePassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.confirmPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -154,8 +154,8 @@ const ChangePassword = () => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-3">
-                  <button className="btn btn-dark">Update</button>
+                <div className="mt-4">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Update</button>
                 </div>
               </form>
 {/* 

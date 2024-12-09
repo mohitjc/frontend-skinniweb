@@ -4,7 +4,9 @@
 @import "./colors";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
+body {
+  font-family: "Montserrat", sans-serif !important;
+}
 
 .loaderDiv {
   z-index: 99999;
@@ -25,280 +27,28 @@
 img.loaderlogo {
   max-width: 50px;
 }
-.modal-content {
-  border-radius: 15px;
-}
 .container {
   max-width: 1280px !important;
 }
 
 ////////////############ Auth css ############////////////
 
-body {
-  font-family: "Montserrat", sans-serif !important;
-}
 .mainauth {
   background-image: url('/assets/img/balance-fitness.webp');
   background-color: #095575;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
 }
 .bg_div {
   background: #0000005e;
 }
-.layout_auth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 500px;
-  margin: auto;
-  padding: 4rem 0rem;
-}
-.layout_auth_2 {
-  height: 100vh;
-}
-.main_auth {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 3rem 2rem;
-  width: 100%;
-  border-radius: 20px;
-  position: relative;
-}
-svg.back_arrow {
-  background: #ffffffa1;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  padding: 5px;
-  position: absolute;
-  left: 2rem;
-  top: 1rem;
-  cursor: pointer;
-}
-svg.back_arrow:hover {
-  background: #fff;
-}
-.main_heading h2 {
-  font-size: 32px;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-}
-.main_heading p {
-  font-size: 16px;
-  text-align: center;
-}
-form.form_div input {
-  border-radius: 8px;
-  border: none !important;
-  height: 42px;
-  font-size: 12px;
-}
-
-.form_div .btn-dark {
-  border-radius: 8px;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 400;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-control:focus {
-  box-shadow: none !important;
-}
-.more_info {
-  border-top: 1px solid #fff;
-  padding-top: 2rem;
-  margin-top: 2rem;
-  display: flex;
-  gap: 20px;
-}
-.font_icon {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  gap: 0px 5px;
-  font-weight: 300;
-}
-.font_icon {
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 0px 5px;
-  font-weight: 300;
-  text-transform: uppercase;
-}
-.font_icon svg {
-  font-size: 22px;
-}
-.footer_auth {
-  background: #ffd6b6;
-  padding: 1rem;
-}
-.footer_auth {
-  background: #ffd6b6;
-  padding: 1rem;
-  color: #5a5c5b;
-}
-.link_div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0px 10px;
-  margin-top: 5px;
-}
-p.text_auth {
-  font-weight: 600;
-  font-size: 12px;
-}
-.link_div p {
-  font-size: 18px;
-  font-weight: 300;
-  cursor: pointer;
-}
-.link_div p:hover {
-  text-decoration: underline;
-}
-form.form_div select {
-  height: 42px;
-  border-radius: 8px;
-}
-.text_signin {
-  color: #000;
-  text-align: center;
-}
-.text_signin span {
-  color: #000;
-  cursor: pointer;
-  font-weight: 500;
-}
-.text_signin span:hover {
-  text-decoration: underline;
-}
-.text_right {
-  text-align: right;
-  cursor: pointer;
-}
-.text_right:hover {
- text-decoration: underline;
-}
-.logo_img {
-  padding: 0rem 3rem;
-  width: 270px;
-  object-fit: contain;
-  margin: auto;
-  margin-bottom: 1rem;
-}
-.relative_div {
-  position: relative;
-}
-.light_box {
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  background: #e3e3e3;
-  padding: 4px 4px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  font-size: 14px;
-}
-.toggle_div {
-  display: flex;
-  background: #fff;
-  width: fit-content;
-  border-radius: 30px;
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  box-shadow: 0px 0px 10px -7px #000;
-}
-.toggle_div p {
-  font-size: 14px;
-  justify-content: center;
-  width: 38px;
-  display: flex;
-  height: 30px;
-  align-items: center;
-  cursor: pointer;
-}
-.left_toggle {
-  border-radius: 15px 0px 0px 15px;
-}
-.right_toggle {
-  border-radius: 0px 15px 15px 0px;
-}
-.active_toggle {
-  background-color: #ffd5b8;
-}
-.password_div {
-  position: relative;
-}
-.password_div i {
-  position: absolute;
-  right: 12px;
-  top: 15px;
-  font-size: 14px;
-  color: #707780;
-  cursor: pointer;
-}
-.password_div input {
-  padding-right: 38px;
-}
 .otp_div input {
   width: 42px !important;
   height: 42px !important;
+  border-radius: 8px;
 }
 .otp_div div {
   gap: 0px 8px;
   justify-content: center;
 }
-.modal_login p {
-  text-align: center;
-  font-weight: 500;
-  color: #555555;
-}
-.btn_modal {
-  color: #fff !important;
-  background: #000 !important;
-  border: none;
-  font-weight: 500;
-  border-radius: 8px;
-}
-.btn_modal:hover {
-  background: #000 !important;
-  opacity: 90%;
-}
-.btn_modal {
-  padding: 8px 25px;
-  height: 40px;
-  width: 220px;
-}
-.check_img img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 50%;
-  background: #fff;
-  border: 8px solid #fff;
-  left: 0;
-  right: 0;
-  top: -65px;
-  position: absolute;
-  margin: auto;
-}
-.modal_login {
-  position: relative;
-  padding: 2rem 0rem;
-}
-
 
 ////////////############ Auth css end ############////////////
 
@@ -307,14 +57,6 @@ form.form_div select {
 
 .bg_profile {
   background-image: url('/assets/img/profile_bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 284px;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 .back_profile {
   width: 50px;
@@ -333,22 +75,6 @@ form.form_div select {
   display: flex;
   justify-content: center;
 }
-.bg_profile img {
-  width: 150px;
-  object-fit: contain;
-}
-.profile_upload img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #FED6B6;
-  box-shadow: 0px 0px 0px 15px #828282;
-}
-.profile_upload {
-  position: relative;
-  width: fit-content;
-}
 .lable_upload {
   width: 40px;
   height: 40px;
@@ -360,23 +86,6 @@ form.form_div select {
   position: absolute;
   bottom: 18px;
   right: 15px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-.edit_icon {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #828282;
-  background: #D9D9D9;
-  border-radius: 50%;
-  padding: 10px;
-  color: #828282;
-  position: absolute;
-  bottom: -10px;
-  right: 8px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -415,10 +124,6 @@ form.form_div select {
 }
 .my_profile {
   margin-top: 6rem;
-}
-.profile_main {
-  margin-top: -200px;
-  padding: 0rem 5rem;
 }
 .card_input input {
   border: 1px solid #c1c1c1 !important;
@@ -519,16 +224,18 @@ justify-content: space-between;
 .text_data {
   border-top: 1px solid #c1c1c1;
   padding: 12px 12px;
+  background: #efe9e4;
+  border-radius: 0px 0px 8px 8px;
 }
   .data-title span {
     color: #fff;
     background: #828282;
-    width: 25px;
-    border-radius: 3px;
+    width: 23px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 22px;
+    height: 23px;
 }
 .max_width h2 {
   margin: auto;

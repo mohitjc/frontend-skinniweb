@@ -93,48 +93,48 @@ const Signup = ({ setActiveTab }: any) => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
-            <div className="main_auth">
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <div className="main_heading mb-4">
-                <h2>MEMBER REGISTER </h2>
-                <p>Please fill in this form to create an account.</p>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">MEMBER REGISTER </h2>
+                <p className="text-[16px] text-center">Please fill in this form to create an account.</p>
               </div>
               <form className="form_div" onSubmit={hendleSubmit}>
-                <div className="row">
-                  <div className="col-md-6 mb-3">
+                <div className="grid grid-cols-2 gap-5 mb-3">
+                  <div className="">
                     <input
                       required
                       pattern="[A-Za-z]+"
                       type="text"
                       placeholder="First Name"
-                      className="form-control"
+                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, firstName: e.target.value })
                       }
                       value={form.fullName}
                     ></input>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="">
                     <input
                       type="text"
                       placeholder="last Name"
-                      className="form-control"
+                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, lastName: e.target.value })
                       }
                       value={form.lastName}
                     ></input>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="">
                     <input
                       value={form.email}
                       onChange={handleEmailChange}
                       type="email"
                       required
                       placeholder="Email"
-                      className={`form-control ${
+                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8 ${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -142,23 +142,23 @@ const Signup = ({ setActiveTab }: any) => {
                       <div className="invalid-feedback d-block">{error}</div>
                     )}
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="">
                     <input
                       required
                       type="date"
                       placeholder="Dob"
-                      className="form-control"
+                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, dob: e.target.value })
                       }
                       value={form.dob}
                     ></input>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.password ? "text" : "password"}
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         placeholder="Password"
                         onChange={(e) =>
                           setForm({ ...form, password: e.target.value })
@@ -170,7 +170,7 @@ const Signup = ({ setActiveTab }: any) => {
                       />
                       <i
                         className={
-                          eyes.password ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.password ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })
@@ -178,11 +178,11 @@ const Signup = ({ setActiveTab }: any) => {
                       ></i>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <div className="password_div">
+                  <div className="">
+                    <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
-                        className="form-control"
+                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
                         placeholder="Confirm Password"
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmpassword}
@@ -192,7 +192,7 @@ const Signup = ({ setActiveTab }: any) => {
                       />
                       <i
                         className={
-                          eyes.confirmPassword ? "fa fa-eye" : "fa fa-eye-slash"
+                          eyes.confirmPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -211,16 +211,16 @@ const Signup = ({ setActiveTab }: any) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-3">
-                  <button className="btn btn-dark" type="submit">
+                <div className="mt-4">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white" type="submit">
                     Sign Up
                   </button>
                 </div>
               </form>
-              <p className="text_signin mt-2">
+              <p className="text-[#000] text-center mt-2">
                 Already have an account?{" "}
                 <a href="/login">
-                  <span className="">Sign In</span>
+                  <span className="cursor-pointer font-[500] text-[#000]">Sign In</span>
                 </a>
               </p>
               {/* <div className="more_info">
