@@ -576,7 +576,7 @@ const Profile = () => {
                   <div className="max-w-[600px] mx-auto">
                     <div className="grid grid-cols-1 gap-3">
                       {surwayData?.map((item, index) => (<Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={false}>
-                        <DisclosureButton className="bg-[#ede2db] group flex w-full items-center justify-between rounded-[8px] p-3" >
+                        <DisclosureButton className="bg-[#ede2db] group flex w-full justify-between rounded-[8px] p-3" >
                           <span className="text-sm font-medium">
                             {item?.question}
                           </span>
