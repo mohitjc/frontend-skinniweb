@@ -53,7 +53,7 @@ const OTP = () => {
         <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-[#ffffffad] p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
               <IoIosArrowBack
                 onClick={() => {
                   history(-1);

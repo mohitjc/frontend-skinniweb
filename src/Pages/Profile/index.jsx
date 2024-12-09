@@ -338,15 +338,15 @@ const Profile = () => {
   return (
     <div className="">
       <div className="bg-[#ffeadc] pb-[2rem]">
-        <div className="container ">
-          <div className="bg_profile bg-cover bg-no-repeat h-[284px] bg-center flex justify-center items-center relative">
+        <div className="max-[575px]:pl-0 max-[575px]:pr-0 container xl:!max-w-[1280px]">
+          <div className="bg_profile bg-cover bg-no-repeat max-[575px]:h-[140px] h-[115px] sm:h-[138px] md:h-[167px] lg:h-[225px] xl:h-[283px] bg-center flex justify-center items-center relative">
             <div className="logo_profile">
-              <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain" />
+              <img src="/assets/img/Skinnii-Logo.webp" className="w-[100px] lg:w-[150px] object-contain" />
             </div>
         
-            <div className="text_logout w-52 text-right">
+            <div className="absolute top-[10px] right-[1rem] sm:right-[2rem] font-[600] cursor-pointer text-right">
       <Menu>
-        <MenuButton className="inline-flex items-center gap-2 rounded-md text-sm/6 font-semibold text-[#000] shadow-inner shadow-white/10 focus:outline-none ">
+        <MenuButton className="inline-flex items-center gap-2 rounded-md text-sm/6 font-semibold text-[#000] shadow-inner shadow-white/10 focus:outline-none bg-[#ffffff1f] px-2">
           My Account
           <ChevronDownIcon className="size-4" />
         </MenuButton>
@@ -376,11 +376,12 @@ const Profile = () => {
       </Menu>
     </div>
           </div>
+          </div>
+          <div className="container xl:!max-w-[1280px]">
           <div className="">
-            <div className="mt-[-200px] p-[0rem_5rem]">
+            <div className="max-md:mt-8 md:mt-[-90px] lg:mt-[-145px] xl:mt-[-200px] md:p-[0rem_5rem]">
               <div
-                className="relative w-fit"
-                style={{ position: "relative", display: "inline-block" }}
+                className="relative w-fit max-md:mx-auto"
               >
                 <img
                   src={
@@ -388,11 +389,11 @@ const Profile = () => {
                     "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
                   }
                   alt="Profile"
-                 className="w-[200px] h-[200px] object-cover rounded-full border-[3px] border-[#FED6B6] shadow-[0px_0px_0px_15px_#828282]"
+                 className="w-[120px] lg:w-[150px] xl:w-[200px] h-[120px] lg:h-[150px] xl:h-[200px] object-cover rounded-full border-[3px] border-[#FED6B6] shadow-[0px_0px_0px_10px_#828282] lg:shadow-[0px_0px_0px_15px_#828282]"
                 />
                 <MdEdit
                   disabled={!editable}
-                  className="w-[40px] h-[40px] border-[1px] border-[#828282] p-[10px] rounded-full bg-[#D9D9D9] text-[#828282] absolute bottom-[0px] right-[8px] cursor-pointer flex justify-center items-center text-[20px]"
+                  className="w-[40px] h-[40px] border-[1px] border-[#828282] p-[10px] rounded-full bg-[#D9D9D9] text-[#828282] absolute bottom-[-5px] xl:bottom-[0px] right-[0px] xl:right-[8px] cursor-pointer flex justify-center items-center text-[20px]"
                   onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
                   style={{}}
                 />
@@ -406,12 +407,9 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="my_profile">
+              <div className="my_profile mt-[3rem] md:mt-[4rem] xl:mt-[6rem]">
                 <div className="mb-5">
-                  {/* <div className="header_frofile mb-3">
-                    <h2>MY GOALS</h2>
-                  </div> */}
-                  <div className="grid grid-cols-5 gap-5">
+                  <div className="max-[480px]:!grid-cols-1 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                     <div className="card_box">
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg1.png" className="h-[35px] w-[35px] object-contain" />
@@ -460,8 +458,8 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className="mb-5">
-                  <div className="header_frofile mb-3">
-                    <h2>MY PROFILE</h2>
+                  <div className="flex justify-between gap-5 items-center mb-3">
+                    <h2 className="text-[20px] text-[#828282] font-[600]">MY PROFILE</h2>
                     {!editable ? (
                       <div
                         onClick={() => {
@@ -482,12 +480,12 @@ const Profile = () => {
                       </div>
                     )}
                   </div>
-                  <div className="grid grid-cols-4 gap-5">
+                  <div className="grid max-[480px]:!grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-5">
                     <div className="">
                       <div className="relative">
                         <input
                           required
-                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600] rounded-[8px]"
                           placeholder="Full Name"
                           onChange={(e) => {
                             setForm({ ...form, fullName: e?.target?.value });
@@ -501,7 +499,7 @@ const Profile = () => {
                     <div className="">
                       <div className="relative">
                         <input
-                           className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
+                           className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600] rounded-[8px]"
                           placeholder="E-Mail"
                           onChange={(e) => {
                             setForm({ ...form, email: e?.target?.value });
@@ -516,7 +514,7 @@ const Profile = () => {
                       <div className="relative">
                         <input
                           type="date"
-                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600] rounded-[8px]"
                           placeholder="dd/mm/yyy"
                           onChange={(e) => {
                             setForm({ ...form, dob: e?.target?.value });
@@ -530,7 +528,7 @@ const Profile = () => {
                     <div className="">
                       <div className="relative">
                         <select
-                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600] rounded-[8px]"
                           onChange={(e) => {
                             setForm({ ...form, gender: e.target.value });
                           }}
@@ -548,7 +546,7 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#00000008] p-[2rem] rounded-[10px] max-w-[800px] mx-auto">
+                <div className="bg-[#00000008] px-[1rem] sm:px-[1rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
                 <h2 className="text-center text-[20px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
                     {/* <div class="">
                         <div class="data_div" id="accordion">
@@ -577,7 +575,7 @@ const Profile = () => {
                     <div className="grid grid-cols-1 gap-3">
                       {surwayData?.map((item, index) => (<Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={false}>
                         <DisclosureButton className="bg-[#ede2db] group flex w-full justify-between rounded-[8px] p-3" >
-                          <span className="text-sm font-medium">
+                          <span className="text-sm text-left font-medium">
                             {item?.question}
                           </span>
                           <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />

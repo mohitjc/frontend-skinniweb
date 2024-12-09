@@ -4,7 +4,7 @@ const AuthLayout = ({ children }: any) => {
       <div className="relative">
         <div className="">
           <div className="mainauth bg-cover bg-bottom bg-no-repeat">
-            <div className="bg_div">
+            <div className="bg_div bg-[#0000005e] p-3">
             <div className="">{children}</div>
             </div>
           </div>
@@ -16,7 +16,7 @@ const AuthLayout = ({ children }: any) => {
                E #150 Salt Lake City UT 84102. The information on this website is for informational purposes only and is not a 
                substitute for professional medical advice, diagnosis, or treatment. If you have questions or concerns about your health,
                 please consult your doctor. This site is an advertisement for services, not for any specific medication.</p>
-                <div className="flex justify-center items-center mt-[5px] gap-3">
+                <div className="flex justify-center items-center mt-[5px] flex-wrap gap-3">
                   <p>support@skinii.com</p>
                    | 
                   <p>Legal Notice</p>

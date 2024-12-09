@@ -60,7 +60,7 @@ const ChangePassword = () => {
         <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-[#ffffffad] p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
               <IoIosArrowBack
                 onClick={() => history(-1)}
                 className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
@@ -70,8 +70,8 @@ const ChangePassword = () => {
                 <p className="text-[16px] text-center"> Enter a new password below to change your password</p>
               </div>
               <form onSubmit={handleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-3">
-                  <div className="col-span-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-3">
+                  <div className="sm:col-span-2">
                     <div className="relative">
                       <input
                         type={eyes.currentPassword ? "text" : "password"}

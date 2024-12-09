@@ -68,7 +68,7 @@ const Resetpassword = () => {
         <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-[#ffffffad] p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
               <IoIosArrowBack onClick={()=>{history(-1)}} className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer" />
               <div className="main_heading mb-4">
                 <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Reset Password</h2>
@@ -79,7 +79,7 @@ const Resetpassword = () => {
                 </p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-3">
                   <div className="">
                     <div className="relative">
                       <input
