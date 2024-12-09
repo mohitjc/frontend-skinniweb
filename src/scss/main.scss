@@ -30,6 +30,12 @@ img.loaderlogo {
 .container {
   max-width: 1280px !important;
 }
+input:focus-visible {
+  outline: none !important;
+}
+select:focus-visible {
+  outline: none !important;
+}
 
 ////////////############ Auth css ############////////////
 
