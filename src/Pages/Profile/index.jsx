@@ -346,7 +346,7 @@ const Profile = () => {
         
             <div className="absolute top-[10px] right-[1rem] sm:right-[2rem] font-[600] cursor-pointer text-right">
       <Menu>
-        <MenuButton className="inline-flex items-center gap-2 rounded-md text-sm/6 font-semibold text-[#000] shadow-inner shadow-white/10 focus:outline-none bg-[#ffffff1f] px-2">
+        <MenuButton className="inline-flex items-center gap-2 rounded-md text-sm/6 font-semibold text-[#000] shadow-inner shadow-white/10 focus:outline-none bg-[#ffffff4f] px-2">
           My Account
           <ChevronDownIcon className="size-4" />
         </MenuButton>
