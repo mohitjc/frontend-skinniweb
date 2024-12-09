@@ -408,49 +408,49 @@ const Profile = () => {
                   {/* <div className="header_frofile mb-3">
                     <h2>MY GOALS</h2>
                   </div> */}
-                  <div className="row_div">
+                  <div className="grid grid-cols-5 gap-5">
                     <div className="card_box">
-                      <div className="card_text mb-1">
-                        <img src="/assets/img/profileimg1.png" />
-                        <div className="">
-                          <h3>100 Pound</h3>
-                          <p>Current Weight in Pound</p>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/img/profileimg1.png" className="h-[35px] w-[35px] object-contain" />
+                        <div className="w-full">
+                          <h3 className="text-[14px] front-[500]">100 Pound</h3>
+                          <p className="text-[12px] text-[#828282]">Current Weight in Pound</p>
                         </div>
                       </div>
                     </div>
                     <div className="card_box">
-                      <div className="card_text mb-1">
-                        <img src="/assets/img/profileimg2.png" />
-                        <div className="">
-                          <h3>100 Pound</h3>
-                          <p>Current Height in Pound</p>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/img/profileimg2.png" className="h-[35px] w-[35px] object-contain"/>
+                        <div className="w-full">
+                          <h3 className="text-[14px] front-[500]">100 Pound</h3>
+                          <p className="text-[12px] text-[#828282]">Current Height in Pound</p>
                         </div>
                       </div>
                     </div>
                     <div className="card_box">
-                      <div className="card_text mb-1">
-                        <img src="/assets/img/profileimg3.png" />
-                        <div className="">
-                          <h3>60 Pound</h3>
-                          <p>Goal Weight in Pound</p>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/img/profileimg3.png" className="h-[35px] w-[35px] object-contain"/>
+                        <div className="w-full">
+                          <h3 className="text-[14px] front-[500]">60 Pound</h3>
+                          <p className="text-[12px] text-[#828282]">Goal Weight in Pound</p>
                         </div>
                       </div>
                     </div>
                     <div className="card_box">
-                      <div className="card_text mb-1">
-                        <img src="/assets/img/profileimg4.png" />
-                        <div className="">
-                          <h3>Vegetarian</h3>
-                          <p>Diet Type</p>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/img/profileimg4.png" className="h-[35px] w-[35px] object-contain"/>
+                        <div className="w-full">
+                          <h3 className="text-[14px] front-[500]">Vegetarian</h3>
+                          <p className="text-[12px] text-[#828282]">Diet Type</p>
                         </div>
                       </div>
                     </div>
                     <div className="card_box">
-                      <div className="card_text mb-1">
-                        <img src="/assets/img/profileimg5.png" />
-                        <div className="">
-                          <h3>Moderatly Active</h3>
-                          <p>How Active You Are?</p>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/img/profileimg5.png" className="h-[35px] w-[35px] object-contain"/>
+                        <div className="w-full">
+                          <h3 className="text-[14px] front-[500]">Moderatly Active</h3>
+                          <p className="text-[12px] text-[#828282]">How Active You Are?</p>
                         </div>
                       </div>
                     </div>
@@ -464,18 +464,18 @@ const Profile = () => {
                         onClick={() => {
                           setEditable(true);
                         }}
-                        className="edit_info"
+                        className="flex items-center gap-2 text-[#828282] text-[14px] cursor-pointer hover:text-[#252525]"
                       >
-                        <MdEdit /> Edit Info
+                        <MdEdit className="relative top-[-1px]"/> Edit Info
                       </div>
                     ) : (
                       <div
                         onClick={() => {
                           handleSubmit();
                         }}
-                        className="edit_info"
+                        className="flex items-center gap-2 text-[#828282] text-[14px] cursor-pointer hover:text-[#252525]"
                       >
-                        <FaSave /> Save
+                        <FaSave className="relative top-[-1px]"/> Save
                       </div>
                     )}
                   </div>
