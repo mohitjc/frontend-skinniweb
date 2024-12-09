@@ -353,19 +353,20 @@ const Profile = () => {
           anchor="bottom end"
           className="w-fit origin-top-right rounded-xl border border-white/5 bg-[#000] p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
         >
-          <MenuItem>
-            <button onClick={() => {
-                handleLogout();
-              }} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 whitespace-nowrap">
-              Logout
-            </button>
-          </MenuItem>
-          <div className="my-1 h-px bg-white/5" />
+       
           <MenuItem>
             <button onClick={() => {
                   history("/changepassword");
                 }} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 whitespace-nowrap">
               Change Password
+            </button>
+          </MenuItem>
+          <div className="my-1 h-px bg-white/5" />
+          <MenuItem>
+            <button onClick={() => {
+                handleLogout();
+              }} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10 whitespace-nowrap">
+              Logout
             </button>
           </MenuItem>
         </MenuItems>
