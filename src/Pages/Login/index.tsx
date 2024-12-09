@@ -108,7 +108,7 @@ const Login = () => {
     <>
       <AuthLayout>
         <div className="layout_auth layout_auth_2">
-          <div className="main_page w-full">
+          <div className="main_page w-full w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
             <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <div className="main_heading mb-4">
@@ -116,7 +116,7 @@ const Login = () => {
                 <p className="text-[16px] text-center">Access your account.</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-3">
+                <div className="grid grid-cols-2 gap-5 mb-4">
                   <div className="">
                     <input
                       value={email}

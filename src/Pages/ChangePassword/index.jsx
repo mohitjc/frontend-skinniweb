@@ -58,8 +58,8 @@ const ChangePassword = () => {
     <>
       <AuthLayout>
         <div className="layout_auth layout_auth_2">
-          <div className="main_page">
-            <img src="/assets/img/Skinnii-Logo.webp" className="logo_img" />
+          <div className="main_page w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
             <div className="main_auth">
               <IoIosArrowBack
                 onClick={() => history(-1)}

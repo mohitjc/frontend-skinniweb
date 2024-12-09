@@ -550,7 +550,6 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div className="max_width">
                   <div className="header_frofile mb-3">
                 <h2 className="mb-3">SURVAY DATA</h2>
@@ -594,10 +593,6 @@ const Profile = () => {
                         </div>
                     </div>
 
-=======
-                <h2>SURVAY DATA</h2>
-                {surwayData?.length > 0 ? 
->>>>>>> 8946b157722748b2fdf9f8fe8e78f44f798a13ac
                 <ul>
                   {/* {surwayData?.map((item, index) => ( 
                     
@@ -606,11 +601,7 @@ const Profile = () => {
                     </li>
                   ))} */}
                 </ul>
-<<<<<<< HEAD
                 </div>
-=======
-                 : "No Servay data "}
->>>>>>> 8946b157722748b2fdf9f8fe8e78f44f798a13ac
               </div>
             </div>
           </div>
