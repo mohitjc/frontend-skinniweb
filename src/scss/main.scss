@@ -57,14 +57,6 @@ img.loaderlogo {
 
 .bg_profile {
   background-image: url('/assets/img/profile_bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 284px;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 .back_profile {
   width: 50px;
@@ -83,22 +75,6 @@ img.loaderlogo {
   display: flex;
   justify-content: center;
 }
-.bg_profile img {
-  width: 150px;
-  object-fit: contain;
-}
-.profile_upload img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #FED6B6;
-  box-shadow: 0px 0px 0px 15px #828282;
-}
-.profile_upload {
-  position: relative;
-  width: fit-content;
-}
 .lable_upload {
   width: 40px;
   height: 40px;
@@ -110,23 +86,6 @@ img.loaderlogo {
   position: absolute;
   bottom: 18px;
   right: 15px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-.edit_icon {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #828282;
-  background: #D9D9D9;
-  border-radius: 50%;
-  padding: 10px;
-  color: #828282;
-  position: absolute;
-  bottom: -10px;
-  right: 8px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -165,10 +124,6 @@ img.loaderlogo {
 }
 .my_profile {
   margin-top: 6rem;
-}
-.profile_main {
-  margin-top: -200px;
-  padding: 0rem 5rem;
 }
 .card_input input {
   border: 1px solid #c1c1c1 !important;

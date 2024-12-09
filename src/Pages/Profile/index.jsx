@@ -334,11 +334,11 @@ const Profile = () => {
 
   return (
     <div className="">
-      <div className="bg_color_profile">
+      <div className="bg-[#ffeadc] pb-[2rem]">
         <div className="container ">
-          <div className="bg_profile">
+          <div className="bg_profile bg-cover bg-no-repeat h-[284px] bg-center flex justify-center items-center relative">
             <div className="logo_profile">
-              <img src="/assets/img/Skinnii-Logo.webp" />
+              <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain" />
             </div>
         
             <div className="text_logout w-52 text-right">
@@ -374,9 +374,9 @@ const Profile = () => {
     </div>
           </div>
           <div className="">
-            <div className="profile_main">
+            <div className="mt-[-200px] p-[0rem_5rem]">
               <div
-                className="profile_upload"
+                className="relative w-fit"
                 style={{ position: "relative", display: "inline-block" }}
               >
                 <img
@@ -385,16 +385,11 @@ const Profile = () => {
                     "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
                   }
                   alt="Profile"
-                  style={{
-                    width: 150,
-                    height: 150,
-                    objectFit: "cover",
-                    borderRadius: "50%",
-                  }}
+                 className="w-[200px] h-[200px] object-cover rounded-full border-[3px] border-[#FED6B6] shadow-[0px_0px_0px_15px_#828282]"
                 />
                 <MdEdit
                   disabled={!editable}
-                  className="edit_icon"
+                  className="w-[40px] h-[40px] border-[1px] border-[#828282] p-[10px] rounded-full bg-[#D9D9D9] text-[#828282] absolute bottom-[0px] right-[8px] cursor-pointer flex justify-center items-center text-[20px]"
                   onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
                   style={{}}
                 />
