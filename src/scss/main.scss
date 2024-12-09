@@ -107,21 +107,7 @@ img.loaderlogo {
   font-size: 20px;
   font-weight: 600;
 }
-.edit_info {
-  display: flex;
-  align-items: center;
-  gap: 0px 5px;
-  color: rgba(130, 130, 130, 0.6509803922);
-  font-size: 14px;
-  cursor: pointer;
-}
-.edit_info:hover {
- color: #252525;
-}
-.edit_info svg {
-  position: relative;
-  top: -1px;
-}
+
 .my_profile {
   margin-top: 6rem;
 }
@@ -165,10 +151,7 @@ img.loaderlogo {
 .card_text p {
   color: #828282;
 }
-.card_box p {
-  color: #828282;
-  font-size: 12px;
-}
+
 .card_text img {
   width: 35px;
   height: 35px !important;
@@ -179,9 +162,7 @@ img.loaderlogo {
   flex-wrap: wrap;
 justify-content: space-between;
 }
-.card_box {
-  width: 19%;
-}
+
 .text_logout {
   position: absolute;
   top: 10px;
