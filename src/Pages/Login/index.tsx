@@ -107,12 +107,12 @@ const Login = () => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
             <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <div className="main_heading mb-4">
-                <h2 className="text-[32px] uppercase w-[900] text-center color-[#fff]">Member Login</h2>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Member Login</h2>
                 <p className="text-[16px] text-center">Access your account.</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
@@ -156,8 +156,8 @@ const Login = () => {
                   </div>
                 </div>
                 <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline">Forgot Password</p>
-                <div className="mt-3">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4">Login</button>
+                <div className="mt-4">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Login</button>
                 </div>
               </form>
               <p className="text-[#000] text-center mt-2">

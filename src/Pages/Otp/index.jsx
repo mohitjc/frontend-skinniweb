@@ -50,19 +50,19 @@ const OTP = () => {
   return (
     <AuthLayout>
       <div>
-        <div className="layout_auth layout_auth_2">
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth">
+            <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <IoIosArrowBack
                 onClick={() => {
                   history(-1);
                 }}
-                className="back_arrow"
+                className="bg-[#ffffffad] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
               />
               <div className="main_heading mb-4">
-                <h2>Verification Code</h2>
-                <p> We have sent the verification code to your email address</p>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Verification Code</h2>
+                <p className="text-[16px] text-center"> We have sent the verification code to your email address</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
                 <div className="otp_div mb-4">
@@ -73,8 +73,8 @@ const OTP = () => {
                     renderInput={(props) => <input {...props} />}
                   />
                 </div>
-                <div className="mt-3">
-                  <button type="submit" className="btn btn-dark">
+                <div className="mt-4">
+                  <button type="submit" className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">
                     Confirm
                   </button>
                 </div>

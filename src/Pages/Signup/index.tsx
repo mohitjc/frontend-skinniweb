@@ -93,12 +93,12 @@ const Signup = ({ setActiveTab }: any) => {
   return (
     <>
       <AuthLayout>
-        <div className="layout_auth layout_auth_2">
+        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
             <div className="main_auth bg-[#ffffffad] p-[3rem_2rem] relative rounded-[20px] w-full">
               <div className="main_heading mb-4">
-                <h2 className="text-[32px] uppercase w-[900] text-center color-[#fff]">MEMBER REGISTER </h2>
+                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">MEMBER REGISTER </h2>
                 <p className="text-[16px] text-center">Please fill in this form to create an account.</p>
               </div>
               <form className="form_div" onSubmit={hendleSubmit}>
@@ -211,8 +211,8 @@ const Signup = ({ setActiveTab }: any) => {
                     ) : null}
                   </div>
                 </div>
-                <div className="mt-3">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4" type="submit">
+                <div className="mt-4">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white" type="submit">
                     Sign Up
                   </button>
                 </div>
