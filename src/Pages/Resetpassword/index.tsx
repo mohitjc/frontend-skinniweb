@@ -79,7 +79,7 @@ const Resetpassword = () => {
                 </p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-4">
+                <div className="grid grid-cols-2 gap-5 mb-3">
                   <div className="">
                     <div className="password_div">
                       <input
@@ -139,7 +139,7 @@ const Resetpassword = () => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Save</button>
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4">Save</button>
                 </div>
               </form>
            

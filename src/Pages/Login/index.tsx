@@ -116,7 +116,7 @@ const Login = () => {
                 <p className="text-[16px] text-center">Access your account.</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-4">
+                <div className="grid grid-cols-2 gap-5 mb-3">
                   <div className="">
                     <input
                       value={email}
@@ -157,7 +157,7 @@ const Login = () => {
                 </div>
                 <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline">Forgot Password</p>
                 <div className="mt-3">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Login</button>
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4">Login</button>
                 </div>
               </form>
               <p className="text-[#000] text-center mt-2">

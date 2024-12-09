@@ -72,7 +72,7 @@ const Forgotpassword = () => {
                 </p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-2 gap-5 mb-4">
+                <div className="grid grid-cols-2 gap-5 mb-3">
                     <div className="col-span-2">
                     <input
                       value={form.email}
@@ -90,7 +90,7 @@ const Forgotpassword = () => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button type="submit" className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Send Recovery Email</button>
+                  <button type="submit" className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4">Send Recovery Email</button>
                 </div>
               </form> 
               {/* <div className="more_info">

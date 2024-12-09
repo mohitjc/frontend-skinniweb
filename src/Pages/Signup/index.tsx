@@ -102,7 +102,7 @@ const Signup = ({ setActiveTab }: any) => {
                 <p className="text-[16px] text-center">Please fill in this form to create an account.</p>
               </div>
               <form className="form_div" onSubmit={hendleSubmit}>
-                <div className="grid grid-cols-2 gap-5 mb-4">
+                <div className="grid grid-cols-2 gap-5 mb-3">
                   <div className="">
                     <input
                       required
@@ -212,7 +212,7 @@ const Signup = ({ setActiveTab }: any) => {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white" type="submit">
+                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white mt-4" type="submit">
                     Sign Up
                   </button>
                 </div>
