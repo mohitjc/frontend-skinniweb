@@ -81,7 +81,7 @@ const Resetpassword = () => {
               <form onSubmit={hendleSubmit} className="form_div">
                 <div className="grid grid-cols-2 gap-5 mb-3">
                   <div className="">
-                    <div className="password_div">
+                    <div className="relative">
                       <input
                          type={eyes.newPassword ? "text" : "password"}
                         required
@@ -103,7 +103,7 @@ const Resetpassword = () => {
                     </div>
                   </div>
                   <div className="">
-                    <div className="password_div">
+                    <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
                         required
