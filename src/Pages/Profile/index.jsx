@@ -479,12 +479,12 @@ const Profile = () => {
                       </div>
                     )}
                   </div>
-                  <div className="row">
-                    <div className="col-md-3">
-                      <div className="card_input">
+                  <div className="grid grid-cols-4 gap-5">
+                    <div className="">
+                      <div className="relative">
                         <input
                           required
-                          className="form-control"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
                           placeholder="Full Name"
                           onChange={(e) => {
                             setForm({ ...form, fullName: e?.target?.value });
@@ -492,13 +492,13 @@ const Profile = () => {
                           value={form?.fullName}
                           disabled={!editable}
                         ></input>
-                        <FaUser />
+                        <FaUser className="absolute top-[0px] left-[0px] w-[40px] h-[40px] p-[10px] text-[#828282]" />
                       </div>
                     </div>
-                    <div className="col-md-3">
-                      <div className="card_input">
+                    <div className="">
+                      <div className="relative">
                         <input
-                          className="form-control"
+                           className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
                           placeholder="E-Mail"
                           onChange={(e) => {
                             setForm({ ...form, email: e?.target?.value });
@@ -506,14 +506,14 @@ const Profile = () => {
                           value={form?.email}
                           disabled={!editable}
                         ></input>
-                        <MdEmail />
+                        <MdEmail className="absolute top-[0px] left-[0px] w-[40px] h-[40px] p-[10px] text-[#828282]"/>
                       </div>
                     </div>
-                    <div className="col-md-3">
-                      <div className="card_input">
+                    <div className="">
+                      <div className="relative">
                         <input
                           type="date"
-                          className="form-control"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
                           placeholder="dd/mm/yyy"
                           onChange={(e) => {
                             setForm({ ...form, dob: e?.target?.value });
@@ -521,13 +521,13 @@ const Profile = () => {
                           value={form?.dob}
                           disabled={!editable}
                         ></input>
-                        <FaCalendarAlt />
+                        <FaCalendarAlt className="absolute top-[0px] left-[0px] w-[40px] h-[40px] p-[10px] text-[#828282]"/>
                       </div>
                     </div>
-                    <div className="col-md-3">
-                      <div className="card_input">
+                    <div className="">
+                      <div className="relative">
                         <select
-                          className="form-control"
+                          className="w-full border-[1px] border-[#c1c1c1] bg-[#ede2db] h-[40px] pr-3 pl-[40px] text-[12px] font-[600]"
                           onChange={(e) => {
                             setForm({ ...form, gender: e.target.value });
                           }}
@@ -540,8 +540,7 @@ const Profile = () => {
                           <option value="male">Male</option>
                           <option value="female">Female</option>
                         </select>
-
-                        <TbGenderBigender />
+                        <TbGenderBigender className="absolute top-[0px] left-[0px] w-[40px] h-[40px] p-[10px] text-[#828282]"/>
                       </div>
                     </div>
                   </div>
