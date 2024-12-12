@@ -297,8 +297,8 @@ const Profile = () => {
       !form?.fullName ||
       !form?.email ||
       !form?.gender ||
-      !form?.dob ||
-      !image
+      !form?.dob 
+      // !image
     ) {
       toast?.error("All Fields are required");
       return;
