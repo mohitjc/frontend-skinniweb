@@ -18,6 +18,7 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 import environment from "../../environment";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import {
   ArchiveBoxXMarkIcon,
   ChevronDownIcon,
@@ -386,7 +387,7 @@ const Profile = () => {
                 <img
                   src={
                     image ||
-                    "https://d2v5dzhdg4zhx3.cloudfront.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
+                    "https://d2v5dzhdg4zhx3.cloudfont.net/web-assets/images/storypages/short/linkedin-profile-picture-maker/dummy_image/thumb/004.webp"
                   }
                   alt="Profile"
                  className="w-[120px] lg:w-[150px] xl:w-[200px] h-[120px] lg:h-[150px] xl:h-[200px] object-cover rounded-full border-[3px] border-[#FED6B6] shadow-[0px_0px_0px_10px_#828282] lg:shadow-[0px_0px_0px_15px_#828282]"
@@ -414,7 +415,7 @@ const Profile = () => {
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg1.png" className="h-[35px] w-[35px] object-contain" />
                         <div className="w-full">
-                          <h3 className="text-[14px] front-[500]">100 Pound</h3>
+                          <h3 className="text-[14px] font-[600] text-center text-[#828282]">100 Pound</h3>
                           <p className="text-[12px] text-[#828282]">Current Weight in Pound</p>
                         </div>
                       </div>
@@ -423,7 +424,7 @@ const Profile = () => {
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg2.png" className="h-[35px] w-[35px] object-contain"/>
                         <div className="w-full">
-                          <h3 className="text-[14px] front-[500]">100 Pound</h3>
+                          <h3 className="text-[14px] font-[600] text-center text-[#828282]">100 Pound</h3>
                           <p className="text-[12px] text-[#828282]">Current Height in Pound</p>
                         </div>
                       </div>
@@ -432,7 +433,7 @@ const Profile = () => {
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg3.png" className="h-[35px] w-[35px] object-contain"/>
                         <div className="w-full">
-                          <h3 className="text-[14px] front-[500]">60 Pound</h3>
+                          <h3 className="text-[14px] font-[600] text-center text-[#828282]">60 Pound</h3>
                           <p className="text-[12px] text-[#828282]">Goal Weight in Pound</p>
                         </div>
                       </div>
@@ -441,7 +442,7 @@ const Profile = () => {
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg4.png" className="h-[35px] w-[35px] object-contain"/>
                         <div className="w-full">
-                          <h3 className="text-[14px] front-[500]">Vegetarian</h3>
+                          <h3 className="text-[14px] font-[600] text-center text-[#828282]">Vegetarian</h3>
                           <p className="text-[12px] text-[#828282]">Diet Type</p>
                         </div>
                       </div>
@@ -450,7 +451,7 @@ const Profile = () => {
                       <div className="flex items-center gap-2">
                         <img src="/assets/img/profileimg5.png" className="h-[35px] w-[35px] object-contain"/>
                         <div className="w-full">
-                          <h3 className="text-[14px] front-[500]">Moderatly Active</h3>
+                          <h3 className="text-[14px] font-[600] text-center text-[#828282]">Moderatly Active</h3>
                           <p className="text-[12px] text-[#828282]">How Active You Are?</p>
                         </div>
                       </div>
@@ -546,8 +547,128 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-[#00000008] px-[1rem] sm:px-[1rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
-                <h2 className="text-center text-[20px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
+
+
+
+
+
+
+
+                <div className="">
+      <div className="">
+        <TabGroup>
+          <TabList className="flex justify-center gap-4">
+              <Tab
+                key={"tab_1"}
+                className="rounded-full focus:outline-none bg-[#fff] data-[selected]:bg-[#FED6B6] data-[hover]:bg-[#FED6B6] rounded-full w-[100px] h-[100px] flex justify-center items-center p-3"
+              >
+                {""}<img src="/assets/img/tab_select.png" className="w-[60px] h-[60px] object-contain"/>
+              </Tab>
+              <Tab
+                key={"tab_2"}
+                className="rounded-full focus:outline-none bg-[#fff] data-[selected]:bg-[#FED6B6] data-[hover]:bg-[#FED6B6] w-[100px] h-[100px] rounded-full flex justify-center items-center p-3 "
+              >
+              {""}<img src="/assets/img/tab_select2.png" className="w-[60px] h-[60px] object-contain"/>
+              </Tab>
+          </TabList>
+          <TabPanels className="mt-3">
+              <TabPanel key={"tab_1"} className="rounded-xl bg-white/5 p-3">
+          <div className="bg-white px-[1rem] sm:px-[2rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
+           <div className="">
+            <div className="flex items-center gap-2">
+              <h2 className="text-[#FFBF8B] font-[600] text-[20px] whitespace-nowrap">Activity</h2>
+              <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+            </div>
+            <div className="py-8">
+              <div className="flex gap-20">
+              <div className="flex gap-2 items-center">
+              <img src="/assets/img/activity1.png" className="w-[70px] h-[70px] bg-[#828282] object-contain p-3 rounded-full"></img>
+              <div className="">
+                <h2 className="text-[15px] font-[600] text-[#828282]">Vegetarian</h2>
+                <p className="text-[12px] font-[400] text-[#828282]">Diet Type</p>
+              </div>
+              </div>
+              <div className="flex gap-2 items-center">
+              <img src="/assets/img/activity2.png" className="w-[70px] h-[70px] bg-[#FED6B6] object-contain p-3 rounded-full"></img>
+              <div className="">
+                <h2 className="text-[15px] font-[600] text-[#828282]">Moderately Active</h2>
+                <p className="text-[12px] font-[400] text-[#828282]">How Active You Are?</p>
+              </div>
+              </div>
+              </div>
+            </div>
+            </div>
+            <div className="">
+           <div className="flex items-center gap-2">
+              <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">December 2024</h2>
+              <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+            </div>
+            <div className="py-8">
+            <div className="grid grid-cols-1 gap-5">
+              <div className="grid grid-cols-7 gap-5">
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Su</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Mo</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Tu</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">We</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Th</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Fr</h3>
+                <h3 className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">Sa</h3>
+              </div>
+              <div className="grid grid-cols-7 gap-5">
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">8</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">9</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">10</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">11</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto bg-[#FFEBDC]">12</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">13</p>
+                <p className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">14</p>
+              </div>
+            </div>
+           </div>
+           </div>
+
+           <div className="">
+           <div className="flex items-center gap-2">
+              <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">Your Diet Measures</h2>
+              <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+            </div>
+            <div className="py-8">
+             <div className="grid grid-cols-3 gap-5">
+              <div className="bg-[#F7F7F7] p-3">
+                <img src="/assets/img/diet1.png" className="w-[100px] h-[100px] bg-[#828282] object-contain p-3 rounded-full mx-auto"/>
+                <h2 className="text-[15px] font-[600] text-[#828282] text-center">Breakfast</h2>
+                <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+              </div>
+             </div>
+              </div>
+            </div>
+
+            <div className="">
+           <div className="flex items-center gap-2">
+              <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">Diet Plan</h2>
+              <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+            </div>
+            <div className="py-8">
+
+              </div>
+            </div>
+
+            <div className="">
+           <div className="flex items-center gap-2">
+              <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">Video</h2>
+              <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+            </div>
+            <div className="py-8">
+
+              </div>
+            </div>
+
+           
+          </div>
+              </TabPanel>
+              <TabPanel key={"tab_2"} className="rounded-xl bg-white/5 p-3">
+              <div className="bg-[#00000008] px-[1rem] sm:px-[1rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
+                <h2 className="text-center text-[18px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
                     {/* <div class="">
                         <div class="data_div" id="accordion">
                       <div className="accordion">
@@ -598,6 +719,18 @@ const Profile = () => {
                   ))} */}
                 </ul>
                 </div>
+              </TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </div>
+    </div>
+
+
+
+
+
+                
+           
 
 
               </div>
