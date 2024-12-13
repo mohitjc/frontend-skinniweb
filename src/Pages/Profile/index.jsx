@@ -633,14 +633,7 @@ const Profile = () => {
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
             <div className="py-8">
-             <div className="grid grid-cols-3 gap-5">
-              <div className="bg-[#F7F7F7] p-3">
-                <img src="/assets/img/diet1.png" className="w-[100px] h-[100px] bg-[#828282] object-contain p-3 rounded-full mx-auto"/>
-                <h2 className="text-[15px] font-[600] text-[#828282] text-center">Breakfast</h2>
-                <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
-              </div>
-             </div>
-              </div>
+            
             </div>
 
             <div className="">
@@ -649,7 +642,84 @@ const Profile = () => {
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
             <div className="py-8">
-
+            <div className="grid grid-cols-3 gap-5 mt-[4rem]">
+              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+                <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                <img src="/assets/img/diet1.png" className="w-[70px] h-[70px] object-contain"/>
+                </div>
+                <div className="mt-3">
+                <h2 className="text-[15px] font-[600] text-[#828282] text-center">Breakfast</h2>
+                <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+              <div className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Potato</p>
+                  <p className="text-[10px] text-[#828282] text-[400]">1</p>
+                </div>
+                <div class="flex gap-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                  <p className="text-[10px] text-[#FF0000] text-[400]">8.8g </p>
+                </div>
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                  <p className="text-[10px] text-[#828282] text-[400]"> 38.5</p>
+                </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+              <div className="w-[90px] h-[90px] bg-[#FED6B6] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                <img src="/assets/img/diet2.png" className="w-[70px] h-[70px] object-contain"/>
+                </div>
+                <div className="mt-3">
+                <h2 className="text-[15px] font-[600] text-[#828282] text-center">Lunch</h2>
+                <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+              <div className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Potato</p>
+                  <p className="text-[10px] text-[#828282] text-[400]">1</p>
+                </div>
+                <div class="flex gap-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                  <p className="text-[10px] text-[#FF0000] text-[400]">8.8g </p>
+                </div>
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                  <p className="text-[10px] text-[#828282] text-[400]"> 38.5</p>
+                </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+              <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                <img src="/assets/img/diet3.png" className="w-[70px] h-[70px] object-contain"/>
+                </div>
+                <div className="mt-3">
+                <h2 className="text-[15px] font-[600] text-[#828282] text-center">Dinner</h2>
+                <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+              <div className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Potato</p>
+                  <p className="text-[10px] text-[#828282] text-[400]">1</p>
+                </div>
+                <div class="flex gap-2">
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                  <p className="text-[10px] text-[#FF0000] text-[400]">8.8g </p>
+                </div>
+                <div className="">
+                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                  <p className="text-[10px] text-[#828282] text-[400]"> 38.5</p>
+                </div>
+                </div>
+              </div>
+              </div>
+              </div>
+             </div>
+              </div>
               </div>
             </div>
 
@@ -659,7 +729,20 @@ const Profile = () => {
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
             <div className="py-8">
-
+              <div className="bg-[#EEEEEE] rounded-[15px] p-[1.5rem]">
+               <div className="grid grid-cols-2 gap-5">
+                <div className="bg-white rounded-[12px]">
+                <video class="h-[190px] bg-[#000] w-full rounded-t-[15px]" controls>
+      <source
+        src="https://docs.material-tailwind.com/demo.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+    <p className="p-3 mb-4">Full Body Mobility Stretches</p>
+                </div>
+                </div>
+               </div>
               </div>
             </div>
 
