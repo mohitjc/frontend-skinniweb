@@ -40,9 +40,19 @@ const Profile = () => {
   });
   const [image, setImage] = useState("");
   const [activeIndex, setActiveIndex] = useState(null);
-  const [dietMeasures, setDietMeasures] = useState(["Type",])
+  const [dietMeasures, setDietMeasures] = useState([""])
   const [dietPlan, setDietPlan] = useState([])
   const [videos, setVideos] = useState([])
+
+  const [month, setMonth] = useState([])
+
+  const moderatelyActive = [
+    { value: 1, text: "Sedentary" },
+    { value: 2, text: "Lightly Active" },
+    { value: 3, text: "Moderately Active" },
+    { value: 4, text: "Very Active" },
+    { value: 5, text: "Extra Active" },
+  ]
 
   const getVideoId = (url) => {
     const regExp = /(?:https?:\/\/(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/))([a-zA-Z0-9_-]{11})/;
@@ -52,13 +62,12 @@ const Profile = () => {
 
   const embedUrl = `https://www.youtube.com/embed/${getVideoId(videos?.[0]?.url)}`;
 
-  console.log(embedUrl, '==embedUrl');
-
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   useEffect(() => {
+    generateCurrentMonth()
     if (user.loggedIn) {
       gallaryData();
       getVideos()
@@ -191,7 +200,7 @@ const Profile = () => {
     loader(true);
     ApiClient.get(`profile`).then((res) => {
       if (res.success) {
-        getDietPlan(res?.data)
+        getDietPlan(res?.data,moment().format("YYYY-MM-DD"))
         setForm({
           ...form,
           fullName: res?.data?.fullName,
@@ -206,29 +215,26 @@ const Profile = () => {
     });
   };
 
-  const getDietPlan = (data) => {
+  const getDietPlan = (data,date) => {
     const fitnessGoalId = data?.caloriesInfo?.map((item) => item?.id)
     const calories = data?.caloriesInfo?.map((item) => item?.calories)
     const payload = {
-      date: moment().format("YYYY-MM-DD"),
+      date: date,
       fitnessGoalId: String(fitnessGoalId),
       calories: String(calories)
     }
     ApiClient.get(`getFoodList`, payload).then(res => {
       if (res.success) {
-        setDietPlan(res?.data)
-        setDietMeasures(res?.data)
+        if(res?.data?.length > 0){
+          setDietPlan(res?.data)
+          setDietMeasures(res?.data)
+        }else{
+          setDietPlan([res?.data])
+          setDietMeasures([res?.data])
+        }
       }
     })
   }
-
-  // ['Product', 'Sales', 'Price', 'Year'],
-  //   ['Tofu', 235, 5, 2011],
-  //   ['Dumpling', 341, 25, 2011],
-  //   ['Cake', 143, 30, 2012],
-  //   ['Cereal', 201, 19, 2012],
-  //   ['Cake', 153, 28, 2013],
-  //   ['Cereal', 181, 21, 2013]
 
   const getVideos = () => {
     ApiClient.get(`getExerciseVideo?goalType=${"Loss Weight"}`).then(res => {
@@ -374,25 +380,53 @@ const Profile = () => {
     history("/login");
   };
 
-  const generateCurrentWeek = () => {
+  const generateCurrentMonth = (selectedDate = "") => {
     const today = new Date();
-    const currentDate = today.getDate();
-    const currentDay = today.getDay();
-    const startOfWeek = new Date(today);
-    startOfWeek.setDate(currentDate - currentDay);
-    const weekArray = [];
-    // Loop through each day of the week (Sunday to Saturday)
-    for (let i = 0; i < 7; i++) {
-      const dayOfWeek = new Date(startOfWeek);
-      dayOfWeek.setDate(startOfWeek.getDate() + i);
-      const dayName = dayOfWeek.toLocaleDateString('en-US', { weekday: 'short' });
-      weekArray.push({
-        day: dayName,
-        date: dayOfWeek.getDate(),
-        currentDate: dayOfWeek.getDate() === currentDate
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+    const startDay = firstDayOfMonth.getDay();
+    const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const daysArray = [];
+  
+    // Get today's date in local format (YYYY-MM-DD)
+    const todayFormatted = today.toLocaleDateString('en-CA'); // Using 'en-CA' gives us YYYY-MM-DD format
+  
+    // Use the provided selectedDate or today's date as the filter date
+    const filterDate = selectedDate || todayFormatted;
+  
+    // Loop through the days of the month, including empty days before the first day of the month
+    for (let i = 0; i < startDay; i++) {
+      const dayDate = new Date(currentYear, currentMonth, 1 - startDay + i);
+      const formattedDate = dayDate.toLocaleDateString('en-CA');  // Format as YYYY-MM-DD
+      daysArray.push({
+        day: dayDate.toLocaleDateString('en-US', { weekday: 'short' }),
+        date: dayDate.getDate(),
+        currentDate: formattedDate,
+        filterDate: false  // These are empty spaces, so filterDate is false
       });
     }
-    return weekArray;
+  
+    // Loop through each day of the current month
+    for (let i = 1; i <= totalDaysInMonth; i++) {
+      const dayDate = new Date(currentYear, currentMonth, i);
+      const day = dayDate.toLocaleDateString('en-US', { weekday: 'short' });
+      const formattedDate = dayDate.toLocaleDateString('en-CA');  // Format as YYYY-MM-DD
+      
+      // Compare the formatted dates to set filterDate
+      daysArray.push({
+        day: day,
+        date: i,
+        currentDate: formattedDate,
+        filterDate: formattedDate === filterDate  // Set filterDate true if this is the selected date
+      });
+    }
+    setMonth(daysArray)
+  };
+  
+  const handleDateFilter=(date)=>{
+    generateCurrentMonth(date)
+    getDietPlan(user,date)
   }
 
   return (
@@ -630,14 +664,14 @@ const Profile = () => {
                                   <div className="flex gap-2 items-center">
                                     <img src="/assets/img/activity1.png" className="w-[70px] h-[70px] bg-[#828282] object-contain p-3 rounded-full"></img>
                                     <div className="">
-                                      <h2 className="text-[15px] font-[600] text-[#828282]">Vegetarian</h2>
+                                      <h2 className="text-[15px] font-[600] text-[#828282]">{user?.dietType || ""}</h2>
                                       <p className="text-[12px] font-[400] text-[#828282]">Diet Type</p>
                                     </div>
                                   </div>
                                   <div className="flex gap-2 items-center">
                                     <img src="/assets/img/activity2.png" className="w-[70px] h-[70px] bg-[#FED6B6] object-contain p-3 rounded-full"></img>
                                     <div className="">
-                                      <h2 className="text-[15px] font-[600] text-[#828282]">Moderately Active</h2>
+                                      <h2 className="text-[15px] font-[600] text-[#828282]">{moderatelyActive?.find((item) => item?.value === user?.exercise)?.text || ""}</h2>
                                       <p className="text-[12px] font-[400] text-[#828282]">How Active You Are?</p>
                                     </div>
                                   </div>
@@ -646,19 +680,33 @@ const Profile = () => {
                             </div>
                             <div className="">
                               <div className="flex items-center gap-2">
-                                <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">{moment().format("MMMM YYYY")}</h2>
+                                <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">
+                                  {moment().format("MMMM YYYY")}
+                                </h2>
                                 <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
                               </div>
                               <div className="py-8">
                                 <div className="grid grid-cols-1 gap-5">
                                   <div className="grid grid-cols-7 gap-5">
-                                    {generateCurrentWeek()?.map((item, index) => {
-                                      return <h3 key={index} className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">{item?.day}</h3>
+                                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => {
+                                      return (
+                                        <h3 key={index} className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">
+                                          {day}
+                                        </h3>
+                                      );
                                     })}
                                   </div>
                                   <div className="grid grid-cols-7 gap-5">
-                                    {generateCurrentWeek()?.map((item, index) => {
-                                      return <p key={index} className={`text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto ${item?.currentDate ? "bg-[#FFEBDC]" : ""}`}>{item?.date}</p>
+                                    {month?.map((item, index) => {
+                                      return (
+                                        <p
+                                          key={index}
+                                          onClick={e=>handleDateFilter(item.currentDate)}
+                                          className={`text-[14px] cursor-pointer font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto ${item?.filterDate ? "bg-[#FFEBDC]" : ""}`}
+                                        >
+                                          {item ? item.date : ""}
+                                        </p>
+                                      );
                                     })}
                                   </div>
                                 </div>
@@ -748,6 +796,94 @@ const Profile = () => {
                                         <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.dinner?.map((itm, i) => {
+                                            return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                                              <div className="">
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.foodname}</p>
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.qty}</p>
+                                              </div>
+                                              <div class="flex gap-2">
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                                                  <p className="text-[10px] text-[#FF0000] text-[400]">{itm?.carbs}g</p>
+                                                </div>
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                                                  <p className="text-[10px] text-[#828282] text-[400]">{itm?.calories}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          })
+                                        })}
+                                      </div>
+                                    </div>
+
+                                    <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3 mt-12">
+                                      <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                                        <img src="/assets/img/diet1.png" className="w-[70px] h-[70px] object-contain" />
+                                      </div>
+                                      <div className="mt-3">
+                                        <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 1</h2>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        {dietPlan?.map((item, index) => {
+                                          return item?.snacks1?.map((itm, i) => {
+                                            return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                                              <div className="">
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.foodname}</p>
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.qty}</p>
+                                              </div>
+                                              <div class="flex gap-2">
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                                                  <p className="text-[10px] text-[#FF0000] text-[400]">{itm?.carbs}g </p>
+                                                </div>
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                                                  <p className="text-[10px] text-[#828282] text-[400]">{itm?.calories}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          })
+                                        })}
+                                      </div>
+                                    </div>
+                                    <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3 mt-12">
+                                      <div className="w-[90px] h-[90px] bg-[#FED6B6] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                                        <img src="/assets/img/diet2.png" className="w-[70px] h-[70px] object-contain" />
+                                      </div>
+                                      <div className="mt-3">
+                                        <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 2</h2>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        {dietPlan?.map((item, index) => {
+                                          return item?.snacks2?.map((itm, i) => {
+                                            return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
+                                              <div className="">
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.foodname}</p>
+                                                <p className="text-[10px] text-[#828282] text-[400]">{itm?.qty}</p>
+                                              </div>
+                                              <div class="flex gap-2">
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Carbs</p>
+                                                  <p className="text-[10px] text-[#FF0000] text-[400]">{itm?.carbs}g</p>
+                                                </div>
+                                                <div className="">
+                                                  <p className="text-[10px] text-[#828282] text-[400]">Cals</p>
+                                                  <p className="text-[10px] text-[#828282] text-[400]">{itm?.calories}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          })
+                                        })}
+                                      </div>
+                                    </div>
+                                    <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3 mt-12">
+                                      <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
+                                        <img src="/assets/img/diet3.png" className="w-[70px] h-[70px] object-contain" />
+                                      </div>
+                                      <div className="mt-3">
+                                        <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 3</h2>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        {dietPlan?.map((item, index) => {
+                                          return item?.snacks3?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
                                               <div className="">
                                                 <p className="text-[10px] text-[#828282] text-[400]">{itm?.foodname}</p>

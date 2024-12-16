@@ -42,6 +42,9 @@ const PieChart = ({ data }) => {
     }
   ];
 
+  // Define the two colors for the charts
+  const colors = ['#ffbc8f', '#828282'];
+
   useEffect(() => {
     // Initialize the first chart for Calories
     const myChart1 = echarts.init(chartRef1.current);
@@ -59,6 +62,7 @@ const PieChart = ({ data }) => {
           label: {
             show: false,
           },
+          color: colors,  // Apply colors to the pie chart
         },
       ],
       dataset: chartData[0], // Data for the first chart (Calories)
@@ -80,6 +84,7 @@ const PieChart = ({ data }) => {
           label: {
             show: false,
           },
+          color: colors,  // Apply colors to the pie chart
         },
       ],
       dataset: chartData[1], // Data for the second chart (Protein)
@@ -101,6 +106,7 @@ const PieChart = ({ data }) => {
           label: {
             show: false,
           },
+          color: colors,  // Apply colors to the pie chart
         },
       ],
       dataset: chartData[2], // Data for the third chart (Fat)
