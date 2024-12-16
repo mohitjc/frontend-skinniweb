@@ -580,7 +580,7 @@ const Profile = () => {
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
             <div className="py-8">
-              <div className="flex gap-20">
+              <div className="flex flex-wrap gap-5 sm:gap-20">
               <div className="flex gap-2 items-center">
               <img src="/assets/img/activity1.png" className="w-[70px] h-[70px] bg-[#828282] object-contain p-3 rounded-full"></img>
               <div className="">
@@ -642,8 +642,8 @@ const Profile = () => {
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
             <div className="py-8">
-            <div className="grid grid-cols-3 gap-5 mt-[4rem]">
-              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-[4rem]">
+              <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3">
                 <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
                 <img src="/assets/img/diet1.png" className="w-[70px] h-[70px] object-contain"/>
                 </div>
@@ -668,7 +668,7 @@ const Profile = () => {
               </div>
               </div>
               </div>
-              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+              <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3">
               <div className="w-[90px] h-[90px] bg-[#FED6B6] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
                 <img src="/assets/img/diet2.png" className="w-[70px] h-[70px] object-contain"/>
                 </div>
@@ -693,7 +693,7 @@ const Profile = () => {
               </div>
               </div>
               </div>
-              <div className="bg-[#F7F7F7] rounded-[12px] p-3">
+              <div className="bg-[#F7F7F7] rounded-[12px] mb-[4rem] lg:mb-[0rem] p-3">
               <div className="w-[90px] h-[90px] bg-[#828282] rounded-full mx-auto flex justify-center items-center p-3 mt-[-70px]">
                 <img src="/assets/img/diet3.png" className="w-[70px] h-[70px] object-contain"/>
                 </div>
@@ -730,16 +730,16 @@ const Profile = () => {
             </div>
             <div className="py-8">
               <div className="bg-[#EEEEEE] rounded-[15px] p-[1.5rem]">
-               <div className="grid grid-cols-2 gap-5">
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="bg-white rounded-[12px]">
-                <video class="h-[190px] bg-[#000] w-full rounded-t-[15px]" controls>
+                <video class="max-[480px]:h-[150px] h-[190px] bg-[#000] w-full rounded-t-[15px]" controls>
       <source
         src="https://docs.material-tailwind.com/demo.mp4"
         type="video/mp4"
       />
       Your browser does not support the video tag.
     </video>
-    <p className="p-3 mb-4">Full Body Mobility Stretches</p>
+    <p className="text-[14px] sm:text-[16px] p-3 mb-4">Full Body Mobility Stretches</p>
                 </div>
                 </div>
                </div>
