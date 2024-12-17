@@ -916,10 +916,10 @@ const Profile = () => {
                               <div className="py-8">
                                 <div className="bg-[#EEEEEE] rounded-[15px] p-[1.5rem]">
                                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                                    <div className="bg-white rounded-[12px]">
+                                    <div className="video_div bg-white rounded-[12px]">
                                       <iframe
-                                        width="560"
-                                        height="315"
+                                        width="100%"
+                                        height="220"
                                         src={embedUrl}
                                         title="YouTube video player"
                                         frameBorder="0"
