@@ -124,19 +124,19 @@ const PieChart = ({ data }) => {
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       {/* Chart for Calories */}
       <div style={{ textAlign: 'center', width: '33%' }}>
-        <div ref={chartRef1} style={{ height: '400px' }} />
+        <div ref={chartRef1} style={{ height: '150px' }} />
         <h3>Calories</h3>
       </div>
       
       {/* Chart for Protein */}
       <div style={{ textAlign: 'center', width: '33%' }}>
-        <div ref={chartRef2} style={{ height: '400px' }} />
+        <div ref={chartRef2} style={{ height: '150px' }} />
         <h3>Protein</h3>
       </div>
       
       {/* Chart for Fat */}
       <div style={{ textAlign: 'center', width: '33%' }}>
-        <div ref={chartRef3} style={{ height: '400px' }} />
+        <div ref={chartRef3} style={{ height: '150px' }} />
         <h3>Fat</h3>
       </div>
     </div>
