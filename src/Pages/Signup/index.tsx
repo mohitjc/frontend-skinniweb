@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import "./style.scss";
 import { toast } from "react-toastify";
 import methodModel from "../../methods/methods";
-import { useSelector } from "react-redux"; 
-import AuthLayout from "../../components/AuthLayout"; 
+import { useSelector } from "react-redux";
+import AuthLayout from "../../components/AuthLayout";
 
 const Signup = ({ setActiveTab }: any) => {
   const history = useNavigate();
   const user = useSelector((state: any) => state.user);
-  const[open,setOpen] = useState(false)
+  const surveyId:any = methodModel.getPrams("id")
+  const [open, setOpen] = useState(false)
 
   const [form, setForm]: any = useState({
     email: "",
@@ -47,6 +48,7 @@ const Signup = ({ setActiveTab }: any) => {
         fullName: fullName,
         age: newAge,
         role: "user",
+        surveyId: surveyId
       };
 
       loader(true);
@@ -134,9 +136,8 @@ const Signup = ({ setActiveTab }: any) => {
                       type="email"
                       required
                       placeholder="Email"
-                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8 ${
-                        error && submitted ? "is-invalid" : ""
-                      }`}
+                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""
+                        }`}
                     />
                     {error && submitted && (
                       <div className="invalid-feedback d-block">{error}</div>
@@ -203,8 +204,8 @@ const Signup = ({ setActiveTab }: any) => {
                       ></i>
                     </div>
                     {submitted &&
-                    form?.password != confirmpassword &&
-                    confirmpassword != "" ? (
+                      form?.password != confirmpassword &&
+                      confirmpassword != "" ? (
                       <div className="text-red-500 text-[13px] mt-1">
                         Confirm Password is not matched with Password
                       </div>
@@ -241,7 +242,7 @@ const Signup = ({ setActiveTab }: any) => {
           </div>
         </div>
 
-{/* <button onClick={()=>{setOpen(true)}} type="button" className="btn btn-primary" >
+        {/* <button onClick={()=>{setOpen(true)}} type="button" className="btn btn-primary" >
   Launch static backdrop modal
 </button>
 
