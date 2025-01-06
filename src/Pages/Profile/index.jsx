@@ -25,6 +25,7 @@ import {
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import PieChart from "../../components/eCharts/PieChart";
 import moment from "moment";
+import { Tooltip } from "antd";
 
 const Profile = () => {
   const history = useNavigate();
@@ -200,7 +201,7 @@ const Profile = () => {
     loader(true);
     ApiClient.get(`profile`).then((res) => {
       if (res.success) {
-        getDietPlan(res?.data,moment().format("YYYY-MM-DD"))
+        getDietPlan(res?.data, moment().format("YYYY-MM-DD"))
         setForm({
           ...form,
           fullName: res?.data?.fullName,
@@ -215,7 +216,7 @@ const Profile = () => {
     });
   };
 
-  const getDietPlan = (data,date) => {
+  const getDietPlan = (data, date) => {
     const fitnessGoalId = data?.caloriesInfo?.map((item) => item?.id)
     const calories = data?.caloriesInfo?.map((item) => item?.calories)
     const payload = {
@@ -225,10 +226,10 @@ const Profile = () => {
     }
     ApiClient.get(`getFoodList`, payload).then(res => {
       if (res.success) {
-        if(res?.data?.length > 0){
+        if (res?.data?.length > 0) {
           setDietPlan(res?.data)
           setDietMeasures(res?.data)
-        }else{
+        } else {
           setDietPlan([res?.data])
           setDietMeasures([res?.data])
         }
@@ -388,13 +389,13 @@ const Profile = () => {
     const startDay = firstDayOfMonth.getDay();
     const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     const daysArray = [];
-  
+
     // Get today's date in local format (YYYY-MM-DD)
     const todayFormatted = today.toLocaleDateString('en-CA'); // Using 'en-CA' gives us YYYY-MM-DD format
-  
+
     // Use the provided selectedDate or today's date as the filter date
     const filterDate = selectedDate || todayFormatted;
-  
+
     // Loop through the days of the month, including empty days before the first day of the month
     for (let i = 0; i < startDay; i++) {
       const dayDate = new Date(currentYear, currentMonth, 1 - startDay + i);
@@ -406,13 +407,13 @@ const Profile = () => {
         filterDate: false  // These are empty spaces, so filterDate is false
       });
     }
-  
+
     // Loop through each day of the current month
     for (let i = 1; i <= totalDaysInMonth; i++) {
       const dayDate = new Date(currentYear, currentMonth, i);
       const day = dayDate.toLocaleDateString('en-US', { weekday: 'short' });
       const formattedDate = dayDate.toLocaleDateString('en-CA');  // Format as YYYY-MM-DD
-      
+
       // Compare the formatted dates to set filterDate
       daysArray.push({
         day: day,
@@ -423,10 +424,10 @@ const Profile = () => {
     }
     setMonth(daysArray)
   };
-  
-  const handleDateFilter=(date)=>{
+
+  const handleDateFilter = (date) => {
     generateCurrentMonth(date)
-    getDietPlan(user,date)
+    getDietPlan(user, date)
   }
 
   return (
@@ -480,20 +481,24 @@ const Profile = () => {
                   alt="Profile"
                   className="w-[120px] lg:w-[150px] xl:w-[200px] h-[120px] lg:h-[150px] xl:h-[200px] object-cover rounded-full border-[3px] border-[#FED6B6] shadow-[0px_0px_0px_10px_#828282] lg:shadow-[0px_0px_0px_15px_#828282]"
                 />
-                <MdEdit
-                  disabled={!editable}
-                  className="w-[40px] h-[40px] border-[1px] border-[#828282] p-[10px] rounded-full bg-[#D9D9D9] text-[#828282] absolute bottom-[-5px] xl:bottom-[0px] right-[0px] xl:right-[8px] cursor-pointer flex justify-center items-center text-[20px]"
-                  onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
-                  style={{}}
-                />
-                <input
-                  disabled={!editable}
-                  id="fileInput"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  style={{ display: "none" }}
-                />
+                {editable &&
+                  <>
+                    <MdEdit
+                      disabled={!editable}
+                      className="w-[40px] h-[40px] border-[1px] border-[#828282] p-[10px] rounded-full bg-[#D9D9D9] text-[#828282] absolute bottom-[-5px] xl:bottom-[0px] right-[0px] xl:right-[8px] cursor-pointer flex justify-center items-center text-[20px]"
+                      onClick={() => document.getElementById("fileInput").click()} // Trigger file input on edit icon click
+                      style={{}}
+                    />
+                    <input
+                      disabled={!editable}
+                      id="fileInput"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: "none" }}
+                    />
+                  </>
+                }
               </div>
               <div className="my_profile mt-[3rem] md:mt-[4rem] xl:mt-[6rem]">
                 <div className="mb-5">
@@ -642,17 +647,68 @@ const Profile = () => {
                           key={"tab_1"}
                           className="rounded-full focus:outline-none bg-[#fff] data-[selected]:bg-[#FED6B6] data-[hover]:bg-[#FED6B6] rounded-full w-[100px] h-[100px] flex justify-center items-center p-3"
                         >
-                          {""}<img src="/assets/img/tab_select.png" className="w-[60px] h-[60px] object-contain" />
+                          <Tooltip title="Survay Data">
+                            <img src="/assets/img/tab_select2.png" className="w-[60px] h-[60px] object-contain" />
+                          </Tooltip>
                         </Tab>
                         <Tab
                           key={"tab_2"}
                           className="rounded-full focus:outline-none bg-[#fff] data-[selected]:bg-[#FED6B6] data-[hover]:bg-[#FED6B6] w-[100px] h-[100px] rounded-full flex justify-center items-center p-3 "
                         >
-                          {""}<img src="/assets/img/tab_select2.png" className="w-[60px] h-[60px] object-contain" />
+                          <Tooltip title="Diet Plan">
+                            <img src="/assets/img/tab_select.png" className="w-[60px] h-[60px] object-contain" />
+                          </Tooltip>
                         </Tab>
                       </TabList>
                       <TabPanels className="mt-3">
                         <TabPanel key={"tab_1"} className="rounded-xl bg-white/5 p-3">
+                          <div className="bg-[#00000008] px-[1rem] sm:px-[1rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
+                            <h2 className="text-center text-[18px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
+                            {/* <div class="">
+                              <div class="data_div" id="accordion">
+                                <div className="accordion">
+                                  {surwayData?.map((item, index) => (
+                                    <div className="card_data" key={index}>
+                                      <div className="" onClick={() => toggleAccordion(index)}>
+                                        <h5 className="data-title">
+                                          <span className="badge mr-2">{index + 1}</span>{item?.question}
+                                        </h5>
+                                      </div>
+                                      {activeIndex === index && (
+                                        <div className="text_data">
+                                          <p>{item?.answer}</p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div> */}
+                            <div className="max-w-[600px] mx-auto">
+                              <div className="grid grid-cols-1 gap-3">
+                                {surwayData?.map((item, index) => (<Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={false}>
+                                  <DisclosureButton className="bg-[#ede2db] group flex w-full justify-between rounded-[8px] p-3" >
+                                    <span className="text-sm text-left font-medium">
+                                      {item?.question}
+                                    </span>
+                                    <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />
+                                  </DisclosureButton>
+                                  <DisclosurePanel className="border-t !border-[#c1c1c1] bg-[#efe9e4] text-sm rounded-b-[8px] p-3">
+                                    {item?.answer}
+                                  </DisclosurePanel>
+                                </Disclosure>))}
+                              </div>
+                            </div>
+                            <ul>
+                              {/* {surwayData?.map((item, index) => (
+                                <li key={index}>
+                                  <strong>{item?.question}</strong>: {item?.answer}
+                                </li>
+                              ))} */}
+                            </ul>
+                          </div>
+                        </TabPanel>
+                        <TabPanel key={"tab_2"} className="rounded-xl bg-white/5 p-3">
                           <div className="bg-white px-[1rem] sm:px-[2rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
                             <div className="">
                               <div className="flex items-center gap-2">
@@ -701,7 +757,7 @@ const Profile = () => {
                                       return (
                                         <p
                                           key={index}
-                                          onClick={e=>handleDateFilter(item.currentDate)}
+                                          onClick={e => handleDateFilter(item.currentDate)}
                                           className={`text-[14px] cursor-pointer font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto ${item?.filterDate ? "bg-[#FFEBDC]" : ""}`}
                                         >
                                           {item ? item.date : ""}
@@ -939,53 +995,6 @@ const Profile = () => {
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </TabPanel>
-                        <TabPanel key={"tab_2"} className="rounded-xl bg-white/5 p-3">
-                          <div className="bg-[#00000008] px-[1rem] sm:px-[1rem] py-[2rem] rounded-[10px] max-w-[800px] mx-auto">
-                            <h2 className="text-center text-[18px] text-[#828282] font-[600] mb-3">SURVAY DATA</h2>
-                            {/* <div class="">
-                              <div class="data_div" id="accordion">
-                                <div className="accordion">
-                                  {surwayData?.map((item, index) => (
-                                    <div className="card_data" key={index}>
-                                      <div className="" onClick={() => toggleAccordion(index)}>
-                                        <h5 className="data-title">
-                                          <span className="badge mr-2">{index + 1}</span>{item?.question}
-                                        </h5>
-                                      </div>
-                                      {activeIndex === index && (
-                                        <div className="text_data">
-                                          <p>{item?.answer}</p>
-                                        </div>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div> */}
-                            <div className="max-w-[600px] mx-auto">
-                              <div className="grid grid-cols-1 gap-3">
-                                {surwayData?.map((item, index) => (<Disclosure as="div" className="border !border-[#c1c1c1] rounded-[8px]" defaultOpen={false}>
-                                  <DisclosureButton className="bg-[#ede2db] group flex w-full justify-between rounded-[8px] p-3" >
-                                    <span className="text-sm text-left font-medium">
-                                      {item?.question}
-                                    </span>
-                                    <ChevronDownIcon className="size-5 group-data-[open]:rotate-180" />
-                                  </DisclosureButton>
-                                  <DisclosurePanel className="border-t !border-[#c1c1c1] bg-[#efe9e4] text-sm rounded-b-[8px] p-3">
-                                    {item?.answer}
-                                  </DisclosurePanel>
-                                </Disclosure>))}
-                              </div>
-                            </div>
-                            <ul>
-                              {/* {surwayData?.map((item, index) => (
-                                <li key={index}>
-                                  <strong>{item?.question}</strong>: {item?.answer}
-                                </li>
-                              ))} */}
-                            </ul>
                           </div>
                         </TabPanel>
                       </TabPanels>
