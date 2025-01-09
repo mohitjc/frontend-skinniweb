@@ -109,22 +109,23 @@ const Login = () => {
       <AuthLayout>
         <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full w-full">
-            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth bg-[#ffffffad] p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-white p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
-                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">Member Login</h2>
-                <p className="text-[16px] text-center">Access your account.</p>
+                <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">Member Login</h2>
+                <p className="text-[14px] text-center text-[#000] leading-[16px]">Access your account.</p>
               </div>
               <form onSubmit={hendleSubmit} className="form_div">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-3">
+                <div className="grid grid-cols-1 gap-y-4 gap-x-3 mb-2">
                   <div className="">
+                    <label className="text-[14px] text-[#000] mb-1 ml-3">Email Id<span className="text-[#FF0028]">*</span></label>
                     <input
                       value={email}
                       onChange={handleEmailChange}
                       type="email"
                       required
-                      placeholder="Email"
-                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8${
+                      placeholder=""
+                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -133,6 +134,7 @@ const Login = () => {
                     )}
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Password<span className="text-[#FF0028]">*</span></label>
                     <div className="relative">
                       <input
                         type={eyes.password ? "text" : "password"}
@@ -141,12 +143,12 @@ const Login = () => {
                           setPassword(e?.target?.value);
                         }}
                         required
-                        placeholder="Password"
-                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
+                        placeholder=""
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-10"
                       ></input>
                       <i
                         className={
-                          eyes.password ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })
@@ -155,12 +157,12 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
-                <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline">Forgot Password</p>
+                <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline mr-3">Forgot Password?</p>
                 <div className="mt-4">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white">Login</button>
+                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]">Sign In</button>
                 </div>
               </form>
-              <p className="text-[#000] text-center mt-2">
+              <p className="text-[#000] text-center mt-3">
                 Don't have an account?{" "}
                 <a href="/signup">
                   <span className="cursor-pointer font-[500] text-[#000]">Sign up</span>
