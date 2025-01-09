@@ -65,7 +65,7 @@ const Resetpassword = () => {
   return (
     <>
       <AuthLayout>
-        <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] p-3">
+        <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] px-3 py-[6rem]">
           <div className="main_page w-full">
             <div className="main_auth bg-white p-[3rem_2rem] sm:p-[3rem_3rem] relative rounded-[20px] w-full">
               <IoIosArrowBack onClick={()=>{history(-1)}} className="bg-[#ebebeb] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer" />
