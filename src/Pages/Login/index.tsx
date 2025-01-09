@@ -125,7 +125,7 @@ const Login = () => {
                       type="email"
                       required
                       placeholder=""
-                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8${
+                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -144,7 +144,7 @@ const Login = () => {
                         }}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-10"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-10"
                       ></input>
                       <i
                         className={

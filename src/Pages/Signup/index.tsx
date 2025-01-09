@@ -112,7 +112,7 @@ const Signup = ({ setActiveTab }: any) => {
                       pattern="[A-Za-z]+"
                       type="text"
                       placeholder=""
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, firstName: e.target.value })
                       }
@@ -124,7 +124,7 @@ const Signup = ({ setActiveTab }: any) => {
                     <input
                       type="text"
                       placeholder=""
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, lastName: e.target.value })
                       }
@@ -139,7 +139,7 @@ const Signup = ({ setActiveTab }: any) => {
                       type="email"
                       required
                       placeholder=""
-                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""
+                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""
                         }`}
                     />
                     {error && submitted && (
@@ -152,7 +152,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                       type="date"
                       placeholder=""
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, dob: e.target.value })
                       }
@@ -164,7 +164,7 @@ const Signup = ({ setActiveTab }: any) => {
                     <div className="relative">
                       <input
                         type={eyes.password ? "text" : "password"}
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                         placeholder=""
                         onChange={(e) =>
                           setForm({ ...form, password: e.target.value })
@@ -189,7 +189,7 @@ const Signup = ({ setActiveTab }: any) => {
                     <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                         placeholder=""
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmpassword}

@@ -79,7 +79,7 @@ const ChangePassword = () => {
                         type={eyes.currentPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
@@ -107,7 +107,7 @@ const ChangePassword = () => {
                         type={eyes.newPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({ ...form, newPassword: e?.target?.value });
                         }}
@@ -129,7 +129,7 @@ const ChangePassword = () => {
                         type={eyes.confirmPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[12px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
