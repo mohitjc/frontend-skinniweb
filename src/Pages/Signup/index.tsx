@@ -95,9 +95,9 @@ const Signup = ({ setActiveTab }: any) => {
   return (
     <>
       <AuthLayout>
-        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+        <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
           <div className="main_page w-full">
-            <div className="main_auth bg-white p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-white p-[3rem_1.5rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
             <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">MEMBER REGISTER </h2>
@@ -120,7 +120,7 @@ const Signup = ({ setActiveTab }: any) => {
                     ></input>
                   </div>
                   <div className="">
-                  <label className="text-[14px] text-[#000] mb-1 ml-3">last Name</label>
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Last Name</label>
                     <input
                       type="text"
                       placeholder=""
