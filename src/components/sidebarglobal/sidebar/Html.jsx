@@ -51,6 +51,12 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
       // key: "readDashboard",
     },
     {
+      name: 'My Profile',
+      icon:  <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      url: "/myprofile",
+      // key: "readcustomer",
+    },
+    {
       name: 'My Orders',
       icon: <PiKeyThin className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/myorders",
@@ -60,7 +66,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
     {
       name: "My Subscription",
       icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/staffManger",
+      url: "/subscription",
       // key: "readstaff",
     },
     {
