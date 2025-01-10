@@ -6,13 +6,13 @@ const Orders = () => {
     <Layout>
     <div className="">
       {/* Order Details Section */}
-      <div className="bg-white p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-4 rounded-[12px] mb-[3rem]">
+      <div className="bg-white p-[2rem] rounded-[12px] mb-8">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[3rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
           <div className="">
         <h1 className="text-[22px] font-bold mb-1">ORDER #000036462</h1>
        
-          <span className="text-[#828282] text-sm">December 25</span>
+          <p className="text-[#828282] text-sm">December 25</p>
         </div>
         <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button>
         </div>
@@ -60,7 +60,7 @@ const Orders = () => {
           <TabPanels className="">
             {/* Items Ordered Panel */}
             <TabPanel>
-              <div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+              <div className="bg-[#FFF2E8] rounded-[12px] !rounded-tl-[0px] p-[2rem] ">
                 <div className="bg-white rounded-[12px] p-[2rem]">
 
 <div className="grid grid-cols-12">
@@ -136,7 +136,7 @@ const Orders = () => {
 
             {/* Invoices Panel */}
 <TabPanel>
-<div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+<div className="bg-[#FFF2E8] rounded-[12px] !rounded-tl-[0px] p-[2rem] ">
                 <div className="bg-white rounded-[12px] p-[2rem]">
                 <div className="border-b pb-3">
   <div className="flex justify-between flex-wrap items-end gap-y-2 gap-x-5">
@@ -219,7 +219,7 @@ const Orders = () => {
           
 
 <TabPanel>
-<div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+<div className="bg-[#FFF2E8] rounded-[12px] !rounded-tl-[0px] p-[2rem] ">
                 <div className="bg-white rounded-[12px] p-[2rem]">
                 <div className="border-b pb-3">
   <div className="flex justify-between flex-wrap items-end gap-y-2 gap-x-5">
@@ -291,7 +291,7 @@ const Orders = () => {
       </div>
 
       {/* Order Information Section */}
-      <div className="bg-white p-6 mt-6 rounded-lg shadow">
+      <div className="bg-white p-6 rounded-[12px] shadow">
         <h2 className="border-b text-[18px] pb-4 px-4">ORDER INFORMATION</h2>
       <div className="grid grid-cols-12 gap-5 px-5">
    <div className="col-span-3">
