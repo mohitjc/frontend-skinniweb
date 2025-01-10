@@ -59,16 +59,6 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
           <FiX className="w-full h-full" />
         )}
       </button>
-      <div className="ml-auto text-center hidden md:block">
-          <h1 className="text-green-600 font-bold text-[20px] lg:text-[22px] redhat">Compliance With Deadline Reminders</h1>
-
-          <div>
-            <p className="text-green-500 font-bold text-[15px]">
-              {" "}
-              {weekName} {formattedDate} <span className="px-1"></span> Time {formattedTime} <span>(EST)</span>
-            </p>
-          </div>
-        </div>
       <div className="flex items-center gap-4 ml-auto">
        
 

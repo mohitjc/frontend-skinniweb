@@ -51,31 +51,19 @@ const Layout = memo(function Layout({ children,t }) {
         <Header isOpen={isOpen} setIsOpen={setIsopen} t={t} />
 
         <div className={`main-wrapper flex ${isOpen ? "active-sidebar" : ""}`}>
-          <div className="main-sidebar scrollbar transition-[width] duration-300 ">
-            <div className="bg-gray-50 p-2">
-              <div className="sidebar-brand text-center">
+          <div className="main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[5rem] !pl-[3rem]">
+            <div className="">
+              <div className="sidebar-brand">
                 <Link to="/">
                   <div className="editLogo pt-3">
                     <img
-                      src={logowhite()}
-                      className=" show-logo h-20 object-contain w-full"
-                    />
-                    <img
-                      src={logos()}
-                      className="hide-logo object-contain w-full"
+                      src="/assets/img/skinnii_logo.png"
+                      className=" show-logo w-[140px] object-contain "
                     />
                   </div>
                 </Link>
               </div>
-              {user?.logo ? (
-                <div className="flex justify-center items-center">
-                  <img
-                    src={methodModel.userImg(user?.logo || "")}
-                    alt="photo"
-                    className="w-[40px] h-[40px] mb-[2px] rounded-full"
-                  />
-                </div>
-              ) : null}
+            
             </div>
             <div className="">
               <Sidebar isOpen={isOpen} t={t} />

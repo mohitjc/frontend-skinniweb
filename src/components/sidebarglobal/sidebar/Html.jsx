@@ -6,37 +6,15 @@ import { Tooltip } from "antd";
 import { RiContactsLine, RiCoupon2Line, RiDiscountPercentLine, RiHome6Line, RiMoneyDollarCircleLine, RiUserSettingsLine } from "react-icons/ri";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { TbCategory2, TbCategoryPlus, TbReportMoney, TbUsers } from "react-icons/tb";
-import { BiCartAdd } from "react-icons/bi";
-import { PiBellSimpleLight, PiNewspaper } from "react-icons/pi";
-import { GrUserSettings } from "react-icons/gr";
-import { VscSymbolMisc } from "react-icons/vsc";
-import { GoCodeReview, GoFileMedia } from "react-icons/go";
-import { TfiLayoutMediaCenterAlt } from "react-icons/tfi";
-import { MdOutlineAssignment } from "react-icons/md";
-import { RiContractLine } from "react-icons/ri";
-import { FaQuestion } from "react-icons/fa6";
-import { MdOutlineQuestionMark } from "react-icons/md";
-import { FaTags } from "react-icons/fa6";
-import { MdOutlineEmail } from "react-icons/md";
-import { IconName } from "react-icons/fi";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
-import { FiSettings } from "react-icons/fi";
-import { CgNotes } from "react-icons/cg";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
-import { RxFileText } from "react-icons/rx";
-
-
-import {
-  MdContentPaste,
-  MdOutlineGroups,
-} from "react-icons/md";
-
-import environment from "../../../environment";
-import ApiClient from "../../../methods/api/apiClient";
-import { FiUsers } from "react-icons/fi";
-import { LiaBlogSolid } from "react-icons/lia";
-import { BsFiletypeDoc } from "react-icons/bs";
 import { LuCalendarClock } from "react-icons/lu";
+import { CiUser } from "react-icons/ci";
+import { PiKeyThin } from "react-icons/pi";
+import { PiUserListLight } from "react-icons/pi";
+import { GoGoal } from "react-icons/go";
+import { CiLock } from "react-icons/ci";
+import { IoLogOutOutline } from "react-icons/io5";
 
 const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
   // const [activeplan, setActiveplan] = useState();
@@ -67,151 +45,51 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
       name: "Compliance With Deadline Reminders",
     },
     {
-      name: 'dashboard',
-      icon: <RiHome6Line className="text-inherit shrink-0 text-lg" />,
+      name: 'My Account',
+      icon: <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/dashboard",
       // key: "readDashboard",
     },
-    // {
-    //   name: "Manager Management",
-    //   icon: <RiContractLine className="text-inherit shrink-0 text-lg" />,
-    //   url: "/manager",
-    //   key: "managerstaff",
-    // },
-
-
-    // { 
-    //   name: "Users",
-    //   icon: <FiUsers className="text-inherit shrink-0 text-lg" />,
-    //   url: "/user",
-    //   key: "",
-    // },  
     {
-      name: 'users',
-      icon: <AiOutlineUsergroupAdd className="text-inherit shrink-0 text-lg" />,
+      name: 'My Orders',
+      icon: <PiKeyThin className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/customers",
       // key: "readcustomer",
     },
     {
-      name: "staffManager",
-      icon: <TbUsers className="text-inherit shrink-0 text-lg" />,
+      name: "My Subscription",
+      icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/staffManger",
       // key: "readstaff",
     },
     {
-      name: "Plans",
-      icon: <RiMoneyDollarCircleLine className="text-inherit shrink-0 text-lg" />,
+      name: "My Goals",
+      icon: <GoGoal className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/plan",
       // key: "readplan",
     },
     {
-      name: "ReminderTypes",
-      icon: <LuCalendarClock className="text-inherit shrink-0 text-lg" />,
+      name: "Change Password",
+      icon: <CiLock className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/documenttype",
       // key: "readdocumenttype",
     },
     {
-      name: "Workspaces",
-      icon: <VscWorkspaceTrusted  className="text-inherit shrink-0 text-lg" />,
+      name: "Logout",
+      icon: <IoLogOutOutline  className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/Workspaces",
       // key: "readworkspaces",
     },
-    // {
-    //   name: "Roles and Permissions",
-    //   icon: <GrUserSettings className="text-inherit shrink-0 text-lg" />,
-    //   url: "/roles",
-    //   // key: "readroles",
-    // },
-    {
-      name: "EmailTemplates",
-      icon: <MdOutlineEmail className="text-inherit shrink-0 text-lg" />,
-      url: "/email-template",
-      // key: "reademail",
-    },
-    {
-      name: "ExpirationItems",
-      icon: <CgNotes className="text-inherit shrink-0 text-lg" />,
-      url: "/expirationitem",
-      // key: "readsetting",
-    },
-    {
-      name: "Tags",
-      icon: <RiDiscountPercentLine className="text-inherit shrink-0 text-lg" />,
-      url: "/tags",
-      // key: "readtags",
-    },
-
-    {
-      name: "Blogs",
-      icon: <LiaBlogSolid className="text-inherit shrink-0 text-lg" />,
-      url: "/blogs",
-      // key: "readblogs",
-    },
-    {
-      name: 'Transactions',
-      icon: <RiMoneyDollarCircleLine className="text-inherit shrink-0 text-lg" />,
-      url: '/transactions',
-      // key: 'readTransactions',
-    },
-    {
-      name: 'Testimonials',
-      icon: <GoCodeReview className="text-inherit shrink-0 text-lg" />,
-      url: '/testimonials',
-      // key: 'readTransactions',
-    },
-    {
-      name: 'Promotions',
-      icon: <RiCoupon2Line className="text-inherit shrink-0 text-lg" />,
-      url: '/promotions',
-      // key: 'readTransactions',
-    },
-    {
-      name: "Category",
-      icon: <TbCategory2 className="text-inherit shrink-0 text-lg" />,
-      url: "/category",
-      // key: "readsetting",
-    },
-    {
-      name: 'Content',
-      icon: <RxFileText className="text-inherit shrink-0 text-lg" />,
-      url: '/content',
-      // key: 'readTransactions',
-    },
-    {
-      name: 'ContactUs',
-      icon: <RiContactsLine className="text-inherit shrink-0 text-lg" />,
-      url: '/contact',
-      // key: 'readTransactions',
-    },
-    {
-      name: 'Our Team',
-      icon: <RiContactsLine className="text-inherit shrink-0 text-lg" />,
-      url: '/team',
-      // key: 'readTransactions',
-    },
-    {
-      name: "FAQ",
-      icon: <FaQuestion className="text-inherit shrink-0 text-lg font-normal" />,
-      url: "/faqs",
-      // key: "readsetting",
-    },
-    
-    {
-      name: "Settings",
-      icon: <FiSettings className="text-inherit shrink-0 text-lg" />,
-      url: "/setting",
-      // key: "readsetting",
-    },  
      
   ];
 
   return (
     <>
       <div
-        className={`px-[8px] ${isOpen && styles.sm_sidebar}`}
+        className={` ${isOpen && styles.sm_sidebar}`}
         component="siderbar"
       >
-        <ul className="space-y-2 px-2">
+        <ul className="space-y-2">
           {menus.map((itm) => {
             return (
               <>
@@ -304,9 +182,9 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
                                 <NavLink
                                   to={itm.url}
                                   className={(isActive) =>
-                                    "p-2.5 rounded-md flex items-center gap-[12px] text-sm font-normal text-[#454242] hover:!text-[#454242] hover:bg-[#26ddd3] !no-underline transition-all " +
+                                    "p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
                                     (location?.pathname === itm.url &&
-                                      " !text-[#454242] !bg-[#26ddd3] !font-medium")
+                                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                                   }
                                 >
                                   {itm.icon}
@@ -332,10 +210,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
                           : "p-[12px] text-center text-md"
                           } text-xs font-medium text-[#7E8B99] mt-[12px]`}
                       >
-                        <span className=" sidebar_text text-center">
-                          {" "}
-                          {itm.name}{" "}
-                        </span>
+                     
                       </h6>
                     </li>
                   </>

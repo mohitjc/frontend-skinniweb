@@ -61,3 +61,30 @@ select:focus-visible {
 }
 
 ////////////############ Profile css end ############////////////
+
+
+.rounded_div {
+  position: relative;
+}
+.rounded_div:before {
+  content: '';
+  position: absolute;
+  top: -55px;
+  right: -1px;
+  width: 70px;
+  height: 55px;
+  background: transparent;
+  border-radius: 50% 0px;
+  box-shadow: 10px 10px 0 #828282;
+}
+.rounded_div:after {
+  content: "";
+  position: absolute;
+  bottom: -55px;
+  right: -1px;
+  width: 70px;
+  height: 55px;
+  background: transparent;
+  border-radius: 0px 50%;
+  box-shadow: 10px -10px 0 #828282;
+}
