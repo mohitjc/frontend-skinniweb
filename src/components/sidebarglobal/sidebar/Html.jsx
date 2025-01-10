@@ -47,15 +47,15 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
     {
       name: 'My Account',
       icon: <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/dashboard",
+      url: "/myprofile",
       // key: "readDashboard",
     },
-    {
-      name: 'My Profile',
-      icon:  <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/myprofile",
-      // key: "readcustomer",
-    },
+    // {
+    //   name: 'My Profile',
+    //   icon:  <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+    //   url: "/myprofile",
+    //   // key: "readcustomer",
+    // },
     {
       name: 'My Orders',
       icon: <PiKeyThin className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
