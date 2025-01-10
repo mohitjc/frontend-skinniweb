@@ -1,9 +1,9 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
-import PageLayout from "../../components/sidebarglobal/PageLayout";
+import Layout from "../../components/sidebarglobal/layout";
 
 const Orders = () => {
   return (
-    <PageLayout>
+    <Layout>
     <div className="max-w-4xl mx-auto p-6">
       {/* Order Details Section */}
       <div className="bg-gray-100 p-4 rounded-lg shadow">
@@ -212,7 +212,7 @@ const Orders = () => {
         </div>
       </div>
     </div>
-    </PageLayout>
+    </Layout>
   );
 };
 
