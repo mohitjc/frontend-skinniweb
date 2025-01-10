@@ -7,6 +7,8 @@ import Sidebar from "../sidebar";
 import { FiMenu, FiX } from "react-icons/fi";
 import { LuLogOut, LuUser } from "react-icons/lu";
 import { GoLock } from "react-icons/go";
+import { HiMiniBars3BottomLeft } from "react-icons/hi2";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -46,17 +48,17 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
       component="header"
       className={`${
         isOpen ? "min-sidebar w-[calc(100%-80px)]" : "w-[calc(100%-280px)] "
-      } shadow-btn py-1.5 bg-[#5F5F5F] border-b  fixed transition-[width] duration-300 ml-auto right-0 z-10 flex items-center !px-5
+      } shadow-btn py-1.5 bg-[#5F5F5F] fixed transition-[width] duration-300 ml-auto right-0 z-10 flex items-center h-[80px] !px-5
       `}
     >
       <button
         onClick={toggle}
-        className="h-9 w-9 shrink-0 shadow-btn hover:shadow-none p-1 rounded-lg border border-gray-100 !text-primary"
+        className="h-9 w-9 text-[#FEE4D0] shrink-0 p-1 "
       >
         {!isOpen ? (
-          <FiMenu className="w-full h-full" />
+          <HiMiniBars3BottomLeft className="w-full h-full" />
         ) : (
-          <FiX className="w-full h-full" />
+          <HiMiniBars3BottomLeft className="w-full h-full" />
         )}
       </button>
       <div className="flex items-center gap-4 ml-auto">
@@ -68,23 +70,23 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
         </div>
         <Menu as="div" className="relative">
           <div>
-            <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-1 text-sm font-semibold text-gray-900 ">
+            <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 text-sm font-semibold text-gray-900 ">
               <div className="flex items-center">
-                <div className="flex items-center">
+                <div className="flex gap-2 items-center">
                   <img
                     alt="image"
                     src={methodModel.userImg(user.image)}
-                    className="h-12 w-12 rounded-full object-cover"
+                    className="h-10 w-10 rounded-full object-cover"
                   />
-                  <div className="ml-2 text-left">
-                    <b className="capitalize">{user.fullName}</b>
+                  <div className="text-[#FEE4D0]">
+                    <span className="capitalize">{user.fullName}</span>
                     <p className="grayCls mb-0 text-capitalize">
                       {user.customerRole?.name}
                     </p>
                   </div>
                 </div>
                 <i
-                  className="fa fa-angle-down top-1 relative h-5 w-5 text-gray-400"
+                  className="fa fa-angle-down top-1 relative h-5 w-5 text-[#FEE4D0]"
                   aria-hidden="true"
                 />
               </div>

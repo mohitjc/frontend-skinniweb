@@ -4,24 +4,33 @@ import Layout from "../../components/sidebarglobal/layout";
 const Orders = () => {
   return (
     <Layout>
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="">
       {/* Order Details Section */}
-      <div className="bg-gray-100 p-4 rounded-lg shadow">
-        <h1 className="text-lg font-bold mb-4">Order #000036462</h1>
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-sm text-gray-500">December 25</span>
-          <button className="bg-gray-200 px-4 py-2 rounded">Reorder</button>
+      <div className="bg-white p-[2rem] rounded-[12px]">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-4 rounded-[12px] mb-[3rem]">
+          <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
+          <div className="">
+        <h1 className="text-[26px] font-bold mb-1">ORDER #000036462</h1>
+       
+          <span className="text-[#828282]">December 25</span>
+        </div>
+        <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button>
+        </div>
+        <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
+          <p className="text-[#828282] font-[600]">Reorder</p>
+          <p className="text-[#828282] font-[600]">Print Order</p>
+        </div>
         </div>
 
         {/* Tab Group for Order Sections */}
         <TabGroup>
-          <TabList className="flex space-x-4 border-b">
+          <TabList className="flex space-x-3">
             {/* Items Ordered Tab */}
             <Tab
               className={({ selected }) =>
                 selected
-                  ? "px-4 py-2 border-b-2 border-black font-semibold"
-                  : "px-4 py-2 text-gray-500"
+                  ? "px-4 py-2.5 bg-[#FEE4D0] rounded-t-[12px] font-semibold !outline-0"
+                  : "px-4 py-2.5 bg-[#828282] rounded-t-[12px] text-white !outline-0"
               }
             >
               Items Ordered
@@ -30,8 +39,8 @@ const Orders = () => {
             <Tab
               className={({ selected }) =>
                 selected
-                  ? "px-4 py-2 border-b-2 border-black font-semibold"
-                  : "px-4 py-2 text-gray-500"
+                  ? "px-4 py-2 bg-[#FEE4D0] rounded-t-[12px] font-semibold font-semibold !outline-0"
+                  : "px-4 py-2 bg-[#828282] rounded-t-[12px] text-white !outline-0"
               }
             >
               Invoices
@@ -40,31 +49,31 @@ const Orders = () => {
             <Tab
               className={({ selected }) =>
                 selected
-                  ? "px-4 py-2 border-b-2 border-black font-semibold"
-                  : "px-4 py-2 text-gray-500"
+                  ? "px-4 py-2 bg-[#FEE4D0] rounded-t-[12px] font-semibold font-semibold !outline-0"
+                  : "px-4 py-2 bg-[#828282] rounded-t-[12px] text-white !outline-0"
               }
             >
               Order Shipping
             </Tab>
           </TabList>
 
-          <TabPanels className="mt-4">
+          <TabPanels className="">
             {/* Items Ordered Panel */}
             <TabPanel>
-              <div className="bg-white p-4 rounded-lg shadow">
-                <h2 className="text-md font-semibold mb-2">Items Ordered</h2>
+              <div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+                <div className="bg-white rounded-[12px] p-[2rem]">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr>
-                      <th className="border-b p-2 text-left">Product Name</th>
-                      <th className="border-b p-2">SKU</th>
-                      <th className="border-b p-2">Price</th>
-                      <th className="border-b p-2">Qty</th>
-                      <th className="border-b p-2">Subtotal</th>
+                      <th className="border-b px-2 py-4">Product Name</th>
+                      <th className="border-b px-2 py-4">SKU</th>
+                      <th className="border-b px-2 py-4">Price</th>
+                      <th className="border-b px-2 py-4">Qty</th>
+                      <th className="border-b px-2 py-4">Subtotal</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className="">
                       <td className="border-b p-2">Landing Page</td>
                       <td className="border-b p-2">LP-GEN-UI</td>
                       <td className="border-b p-2">$3.00</td>
@@ -78,6 +87,7 @@ const Orders = () => {
                   <p>Discount: -$9.00</p>
                   <p>Shipping and Handling: $0.00</p>
                   <p className="font-bold">Grand Total: $81.00</p>
+                </div>
                 </div>
               </div>
             </TabPanel>
