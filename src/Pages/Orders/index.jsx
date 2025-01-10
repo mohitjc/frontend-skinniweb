@@ -62,31 +62,73 @@ const Orders = () => {
             <TabPanel>
               <div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
                 <div className="bg-white rounded-[12px] p-[2rem]">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr>
-                      <th className="border-b px-2 py-4">Product Name</th>
-                      <th className="border-b px-2 py-4">SKU</th>
-                      <th className="border-b px-2 py-4">Price</th>
-                      <th className="border-b px-2 py-4">Qty</th>
-                      <th className="border-b px-2 py-4">Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="">
-                      <td className="border-b p-2">Landing Page</td>
-                      <td className="border-b p-2">LP-GEN-UI</td>
-                      <td className="border-b p-2">$3.00</td>
-                      <td className="border-b p-2">30</td>
-                      <td className="border-b p-2">$90.00</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="mt-4 text-right">
-                  <p>Subtotal: $90.00</p>
-                  <p>Discount: -$9.00</p>
-                  <p>Shipping and Handling: $0.00</p>
-                  <p className="font-bold">Grand Total: $81.00</p>
+
+<div className="grid grid-cols-12">
+   <div className="col-span-4">
+   <h2 className="border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <div className="px-2 py-3">
+    <p className="">Landing Page</p>
+    <div className="mt-3">
+     <h2 className="font-bold">State Name</h2>
+     <p>Florida (13001)</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Subscription Acknowledgement</h2>
+     <p>I Understand h2at by clicking h2is box, i am</p>
+     <p>signing up............</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Select Sdivengh2</h2>
+     <p>20 MG</p>
+    </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">SKU</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">
+      <p> LP -</p>
+      <p>GEN -</p>
+      <p>UI -</p>
+       </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">PRICE</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">$3.00</div>
+     </div>
+</div>
+
+<div className="col-span-2">
+<h2 className="border-b font-bold px-2 py-4">QTY</h2>
+     <div className="px-2 py-3">
+     <p>Shipped - 30</p>
+     <p>Shipped - 30</p>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">SUBTOTAL</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">$90.00</div>
+     </div>
+     </div>
+
+
+ </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 bg-[#F1F1F1] mt-4 text-right rounded-[12px] p-4">
+                  <div className=""></div>
+                  <div className="grid grid-cols-1 gap-3">
+                  <p className="flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
+                  </div>
+            
                 </div>
                 </div>
               </div>
@@ -94,96 +136,154 @@ const Orders = () => {
 
             {/* Invoices Panel */}
 <TabPanel>
-  <div className="bg-white p-4 rounded-lg shadow">
-    <h2 className="text-md font-semibold mb-4">Invoice #000032792</h2>
-    <button className="text-blue-500 text-sm underline mb-4">
-      Print All Invoices
-    </button>
-    <table className="w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="border-b p-2 text-left">Product Name</th>
-          <th className="border-b p-2">SKU</th>
-          <th className="border-b p-2">Price</th>
-          <th className="border-b p-2">Qty</th>
-          <th className="border-b p-2">Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td className="border-b p-2">
-            Landing Page Generic
-            <br />
-            <span className="text-sm text-gray-500">State Name</span>
-            <br />
-            <span className="text-sm text-gray-500">Price: $90.00</span>
-            <br />
-            <span className="text-sm text-gray-500">
-              Subscription Acknowledgement
-              <br />
-              I understand that by clicking this box, I am signing up for...
-            </span>
-            <br />
-            <span className="text-sm text-gray-500">Select Strength: 30 MG</span>
-          </td>
-          <td className="border-b p-2">LP-GEN-*</td>
-          <td className="border-b p-2">$3.00</td>
-          <td className="border-b p-2">30</td>
-          <td className="border-b p-2">$90.00</td>
-        </tr>
-      </tbody>
-    </table>
-    <div className="mt-4 text-right">
-      <p>Subtotal: $90.00</p>
-      <p>Discount (SMPLYCODES 10): -$9.00</p>
-      <p>Shipping and Handling: $0.00</p>
-      <p className="font-bold">Grand Total: $81.00</p>
-    </div>
+<div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+                <div className="bg-white rounded-[12px] p-[2rem]">
+                <div className="border-b pb-3">
+  <div className="flex justify-between items-end gap-y-2 gap-x-5">
+    <div className="">
+  <p className="text-sm text-[#828282]">Print All Invoices</p>
+  <p className="text-[#000]">Invoice#000032792</p>
   </div>
+  <p className="text-sm text-[#828282]">Print Invoice</p>
+  </div>
+</div>
+<div className="grid grid-cols-12">
+   <div className="col-span-4">
+   <h2 className="border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <div className="px-2 py-3">
+    <p className="">Landing Page</p>
+    <div className="mt-3">
+     <h2 className="font-bold">State Name</h2>
+     <p>Florida (13001)</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Subscription Acknowledgement</h2>
+     <p>I Understand h2at by clicking h2is box, i am</p>
+     <p>signing up............</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Select Sdivengh2</h2>
+     <p>20 MG</p>
+    </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">SKU</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">
+      <p> LP -</p>
+      <p>GEN -</p>
+       </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">PRICE</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">$3.00</div>
+     </div>
+</div>
+
+<div className="col-span-2">
+<h2 className="border-b font-bold px-2 py-4">QTY</h2>
+     <div className="px-2 py-3">
+     <p>Shipped - 30</p>
+     <p>Shipped - 30</p>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">SUBTOTAL</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">$90.00</div>
+     </div>
+     </div>
+
+
+ </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 bg-[#F1F1F1] mt-4 text-right rounded-[12px] p-4">
+                  <div className=""></div>
+                  <div className="grid grid-cols-1 gap-3">
+                  <p className="flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
+                  </div>
+            
+                </div>
+                </div>
+              </div>
 </TabPanel>
           
 
 <TabPanel>
-  <div className="bg-white p-4 rounded-lg shadow">
-    <h2 className="text-md font-semibold mb-4">Shipment #000031341</h2>
-    <button className="text-blue-500 text-sm underline mb-4">
-      Print Shipment
-    </button>
-
-    <div className="mb-4">
-      <span className="font-bold">Tracking Number(s): </span>
-      <span>9400111105502313678298</span>
-    </div>
-
-    <table className="w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="border-b p-2 text-left">Product Name</th>
-          <th className="border-b p-2">SKU</th>
-          <th className="border-b p-2">QTY Shipped</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td className="border-b p-2">
-            Landing Page Generic
-            <br />
-            <span className="text-sm text-gray-500">State Name: Florida ($0.00)</span>
-            <br />
-            <span className="text-sm text-gray-500">
-              Subscription Acknowledgement:
-              <br />
-              I understand that by clicking this box, I am signing up...
-            </span>
-            <br />
-            <span className="text-sm text-gray-500">Select Strength: 20 MG</span>
-          </td>
-          <td className="border-b p-2">LP-GEN-*</td>
-          <td className="border-b p-2">30</td>
-        </tr>
-      </tbody>
-    </table>
+<div className="bg-[#FFF2E8] p-4 rounded-[12px] !rounded-tl-[0px] !p-[2.5rem] ">
+                <div className="bg-white rounded-[12px] p-[2rem]">
+                <div className="border-b pb-3">
+  <div className="flex justify-between items-end gap-y-2 gap-x-5">
+    <div className="">
+  <p className="text-sm text-[#828282]">Track All Shipments Print All Shipments</p>
+  <p className="text-[#000]">Shipment #000031341</p>
+  <p className="text-[12px] text-[#828282] font-[500]">Print Shipment</p>
   </div>
+  <p className="text-sm text-[#828282]">Track this shipment</p>
+  </div>
+</div>
+<div className="grid grid-cols-12">
+   <div className="col-span-8">
+   <h2 className="border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <div className="px-2 py-3">
+    <p className="">Landing Page</p>
+    <div className="mt-3">
+     <h2 className="font-bold">State Name</h2>
+     <p>Florida (13001)</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Subscription Acknowledgement</h2>
+     <p>I Understand h2at by clicking h2is box, i am</p>
+     <p>signing up............</p>
+    </div>
+    <div className="mt-3">
+     <h2 className="font-bold">Select Sdivengh2</h2>
+     <p>20 MG</p>
+    </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">SKU</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">
+      <p> LP -</p>
+      <p>GEN -</p>
+       </div>
+     </div>
+     </div>
+
+     <div className="col-span-2">
+     <h2 className="border-b font-bold px-2 py-4">QTY Shipped</h2>
+     <div className="px-2 py-3">
+     <div className="px-2 py-3">$3.00</div>
+     </div>
+</div>
+
+
+ </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 bg-[#F1F1F1] mt-4 text-right rounded-[12px] p-4">
+                  <div className=""></div>
+                  <div className="grid grid-cols-1 gap-3">
+                  <p className="flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
+                  </div>
+            
+                </div>
+                </div>
+              </div>
 </TabPanel>
 
           </TabPanels>
@@ -192,35 +292,51 @@ const Orders = () => {
 
       {/* Order Information Section */}
       <div className="bg-white p-6 mt-6 rounded-lg shadow">
-        <h2 className="text-md font-bold mb-4">Order Information</h2>
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          {/* Shipping Address */}
-          <div>
-            <h3 className="font-semibold">Shipping Address</h3>
-            <p>Lawrence 103869</p>
-            <p>Lorem Ipsum</p>
-            <p>11089</p>
-          </div>
-          {/* Shipping Method */}
-          <div>
-            <h3 className="font-semibold">Shipping Method</h3>
-            <p>Rate</p>
-          </div>
-          {/* Billing Address */}
-          <div>
-            <h3 className="font-semibold">Billing Address</h3>
-            <p>Lawrence 103869</p>
-            <p>Lorem Ipsum</p>
-            <p>11089</p>
-          </div>
-          {/* Payment Method */}
-          <div>
-            <h3 className="font-semibold">Payment Method</h3>
-            <p>Credit Card - Visa</p>
-            <p>Credit Card Number: **** **** **** 1234</p>
-          </div>
-        </div>
-      </div>
+        <h2 className="border-b text-[18px] pb-4 px-4">ORDER INFORMATION</h2>
+      <div className="grid grid-cols-12 px-5">
+   <div className="col-span-3">
+   <h2 className="font-bold py-4">Shipping Address	</h2>
+    <div className="">
+     <p>Lawrance 103689</p>
+     <p>Lorem Ipsum</p>
+     <p>Lorem</p>
+     <p>11489</p>
+    </div>
+     </div>
+
+     <div className="col-span-3">
+   <h2 className="font-bold py-4">Shipping Method	</h2>
+    <div className="">
+     <p>Rate</p>
+    </div>
+     </div>
+
+     <div className="col-span-3">
+   <h2 className="font-bold py-4">Billing Address	</h2>
+    <div className="">
+     <p>Lawrance 103689</p>
+     <p>Lorem Ipsum</p>
+     <p>Lorem</p>
+     <p>11489</p>
+    </div>
+     </div>
+
+     <div className="col-span-3">
+   <h2 className="font-bold py-4">Payment Method	</h2>
+    <div className="">
+     <p>Payment Method</p>
+     <p>Lorem Ipsum</p>
+     <div className="border-t pt-2 mt-2">
+     <p className="flex">Credit Card    <span className="ml-3">Visa</span></p>
+     </div>
+     <div className="border-t pt-2 mt-2">
+     <p className="flex">Credit Card Number <span className="ml-3">xxx</span></p>
+     </div>
+    </div>
+     </div>
+
+</div>
+ </div>
     </div>
     </Layout>
   );
