@@ -27,6 +27,7 @@ function App() {
     { url: "/signup", path: "Signup" },
     { url: "/otp", path: "Otp" },
     { url: "/dashboard", path: "Dashboard" },
+    { url: "/myorders", path: "Orders" },
     // { url: "/profile", path: "Profile" },
     { url: "/profile/:tab", path: "Settings" },
     { url: "/forgotpassword", path: "Forgotpassword" },

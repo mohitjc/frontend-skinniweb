@@ -95,23 +95,24 @@ const Signup = ({ setActiveTab }: any) => {
   return (
     <>
       <AuthLayout>
-        <div className="h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem]">
+        <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] px-3 py-[6rem]">
           <div className="main_page w-full">
-            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] object-contain mx-auto mb-3" />
-            <div className="main_auth bg-[#ffffffad] p-[3rem_1rem] sm:p-[3rem_2rem] relative rounded-[20px] w-full">
+            <div className="main_auth bg-white p-[3rem_2rem] sm:p-[3rem_3rem] relative rounded-[20px] w-full">
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
-                <h2 className="text-[32px] uppercase font-[900] text-center text-[#fff]">MEMBER REGISTER </h2>
-                <p className="text-[16px] text-center">Please fill in this form to create an account.</p>
+                <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">MEMBER REGISTER </h2>
+                <p className="text-[14px] text-center text-[#000] leading-[16px]">Please fill in this form to create an account.</p>
               </div>
               <form className="form_div" onSubmit={hendleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-3 mb-3">
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">First Name</label>
                     <input
                       required
                       pattern="[A-Za-z]+"
                       type="text"
-                      placeholder="First Name"
-                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
+                      placeholder=""
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, firstName: e.target.value })
                       }
@@ -119,10 +120,11 @@ const Signup = ({ setActiveTab }: any) => {
                     ></input>
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Last Name</label>
                     <input
                       type="text"
-                      placeholder="last Name"
-                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
+                      placeholder=""
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, lastName: e.target.value })
                       }
@@ -130,13 +132,14 @@ const Signup = ({ setActiveTab }: any) => {
                     ></input>
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Email</label>
                     <input
                       value={form.email}
                       onChange={handleEmailChange}
                       type="email"
                       required
-                      placeholder="Email"
-                      className={`w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""
+                      placeholder=""
+                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""
                         }`}
                     />
                     {error && submitted && (
@@ -144,11 +147,12 @@ const Signup = ({ setActiveTab }: any) => {
                     )}
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Date Of Birth</label>
                     <input
                       required
                       type="date"
-                      placeholder="Dob"
-                      className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
+                      placeholder=""
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
                       onChange={(e) =>
                         setForm({ ...form, dob: e.target.value })
                       }
@@ -156,11 +160,12 @@ const Signup = ({ setActiveTab }: any) => {
                     ></input>
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Password</label>
                     <div className="relative">
                       <input
                         type={eyes.password ? "text" : "password"}
-                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
-                        placeholder="Password"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                        placeholder=""
                         onChange={(e) =>
                           setForm({ ...form, password: e.target.value })
                         }
@@ -171,7 +176,7 @@ const Signup = ({ setActiveTab }: any) => {
                       />
                       <i
                         className={
-                          eyes.password ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })
@@ -180,11 +185,12 @@ const Signup = ({ setActiveTab }: any) => {
                     </div>
                   </div>
                   <div className="">
+                  <label className="text-[14px] text-[#000] mb-1 ml-3">Confirm Password</label>
                     <div className="relative">
                       <input
                         type={eyes.confirmPassword ? "text" : "password"}
-                        className="w-full rounded-[8px] border-0 h-[42px] text-[12px] px-3 !pr-8"
-                        placeholder="Confirm Password"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                        placeholder=""
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         value={confirmpassword}
                         minLength={8}
@@ -193,7 +199,7 @@ const Signup = ({ setActiveTab }: any) => {
                       />
                       <i
                         className={
-                          eyes.confirmPassword ? "fa fa-eye absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[12px] top-[15px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -213,12 +219,12 @@ const Signup = ({ setActiveTab }: any) => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button className="border-0 bg-[#343a40] rounded-[8px] w-full text-[16px] font-[400] h-[42px] flex items-center justify-center text-white" type="submit">
+                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]" type="submit">
                     Sign Up
                   </button>
                 </div>
               </form>
-              <p className="text-[#000] text-center mt-2">
+              <p className="text-[#000] text-center mt-3">
                 Already have an account?{" "}
                 <a href="/login">
                   <span className="cursor-pointer font-[500] text-[#000]">Sign In</span>

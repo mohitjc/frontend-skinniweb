@@ -37,13 +37,14 @@ select:focus-visible {
 ////////////############ Auth css ############////////////
 
 .mainauth {
-  background-image: url('/assets/img/balance-fitness.webp');
+  background-image: url('/assets/img/bg-img.png');
   background-color: #095575;
 }
 .otp_div input {
   width: 42px !important;
   height: 42px !important;
   border-radius: 8px;
+  background: #E7E7E7;
 }
 .otp_div div {
   gap: 0px 8px;
