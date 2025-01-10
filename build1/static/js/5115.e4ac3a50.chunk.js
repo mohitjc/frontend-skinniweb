@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[5115],{75115:(e,n,i)=>{i.r(n),i.d(n,{default:()=>t});const t={check:"accounting",title:"Hubspot",addTitle:"Account Transaction",url:"transactions",status:[{id:"VOIDED",name:"Voided"},{id:"PAID",name:"Paid"},{id:"AUTHORISED",name:"Authorized"},{id:"DELETED",name:"Deleted"}]}}}]);
+//# sourceMappingURL=5115.e4ac3a50.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[4523,1899],{44523:(e,s,n)=>{n.r(s),n.d(s,{default:()=>k});const k={}}}]);
+//# sourceMappingURL=4523.b82e7e11.chunk.js.map

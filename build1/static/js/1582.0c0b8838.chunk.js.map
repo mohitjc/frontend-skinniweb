@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/1582.0c0b8838.chunk.js","mappings":"0FAAAA,EAAOC,QAAU,EAAjBD,M","sources":["Pages/config/index.js"],"sourcesContent":["module.exports = require('./configureStore.prod');"],"names":["module","exports"],"sourceRoot":""}

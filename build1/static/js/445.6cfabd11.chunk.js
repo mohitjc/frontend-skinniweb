@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[445],{20445:(e,d,l)=>{l.r(d),l.d(d,{default:()=>n});const n={check:"Calendly",title:"Calendly",addTitle:"Calendly",url:"calendly",status:[{id:"VOIDED",name:"Voided"},{id:"PAID",name:"Paid"},{id:"AUTHORISED",name:"Authorized"},{id:"DELETED",name:"Deleted"}]}}}]);
+//# sourceMappingURL=445.6cfabd11.chunk.js.map

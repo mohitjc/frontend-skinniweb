@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[2264],{32264:(s,e,n)=>{n.r(e),n.d(e,{login_success:()=>t,logout:()=>c});const t=s=>({type:"LOGIN_SUCCESS",data:s}),c=()=>({type:"LOG_OUT"})}}]);
+//# sourceMappingURL=2264.8b66dabf.chunk.js.map

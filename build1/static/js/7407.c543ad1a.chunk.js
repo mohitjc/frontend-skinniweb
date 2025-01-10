@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[7407],{97407:(e,a,l)=>{l.r(a),l.d(a,{default:()=>i});const i={check:"Plan",title:"Plans",addTitle:"Plan",url:"plan",types:[{id:"Product",name:"Product"},{id:"Blog",name:"Blog"},{id:"FAQ",name:"FAQ"}],addApi:"plan/add",editApi:"plan/update",detailApi:"plan/detail",listApi:"plan/listing",statusApi:"plan/status/change",deleteApi:"plan/delete"}}}]);
+//# sourceMappingURL=7407.c543ad1a.chunk.js.map

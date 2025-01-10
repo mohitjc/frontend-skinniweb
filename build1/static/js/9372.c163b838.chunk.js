@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[9372],{39372:(e,l,i)=>{i.r(l),i.d(l,{default:()=>t});const t={check:"Blog",title:"Blogs",addTitle:"Blog",url:"blogs",addApi:"blog/add",editApi:"blog/update",detailApi:"blog/detail",listApi:"blog/listing",statusApi:"blog/status/change",deleteApi:"blog/delete"}}}]);
+//# sourceMappingURL=9372.c163b838.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[6566],{96566:(i,e,n)=>{n.r(e),n.d(e,{default:()=>t});const t={check:"billing",title:"Billings",addTitle:"Billing",url:"activeplan",types:[{id:"Product",name:"Product"},{id:"Blog",name:"Blog"},{id:"FAQ",name:"FAQ"}],detailApi:"transaction/detail",listApi:"transaction/list",planType:[{id:"stripe",name:"Stripe"},{id:"frontend",name:"Frontend"}]}}}]);
+//# sourceMappingURL=6566.93ea90d2.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[1995],{31995:(s,e,c)=>{c.r(e),c.d(e,{search_success:()=>n});const n=s=>({type:"SEARCH_SUCCESS",data:s})}}]);
+//# sourceMappingURL=1995.2f48f85d.chunk.js.map

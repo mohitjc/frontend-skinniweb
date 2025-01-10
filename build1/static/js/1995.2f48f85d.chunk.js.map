@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/1995.2f48f85d.chunk.js","mappings":"4IAAO,MAAMA,EAAkBC,IAAI,CAAQC,KAAM,iBAAkBD,Q","sources":["Pages/actions/search.js"],"sourcesContent":["export const search_success = (data) => ({ type: 'SEARCH_SUCCESS', data });"],"names":["search_success","data","type"],"sourceRoot":""}

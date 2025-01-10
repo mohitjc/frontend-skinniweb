@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[8869],{28869:(e,n,t)=>{t.r(n),t.d(n,{default:()=>i});const s={isLoading:!1};function i(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:s,n=arguments.length>1?arguments[1]:void 0;switch(n.type){case"IS_LOADING":return{...e,isLoading:n.status};case"LOG_OUT":return{...s};default:return e}}}}]);
+//# sourceMappingURL=8869.b46fb9f7.chunk.js.map

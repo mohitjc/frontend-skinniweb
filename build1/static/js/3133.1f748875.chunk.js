@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[3133],{83133:(s,e,i)=>{i.r(e),i.d(e,{sitedetail_success:()=>n});const n=s=>({type:"SITE_DETAIL_SUCCESS",data:s})}}]);
+//# sourceMappingURL=3133.1f748875.chunk.js.map

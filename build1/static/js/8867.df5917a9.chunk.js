@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[8867],{68867:(e,s,l)=>{l.r(s),l.d(s,{default:()=>r});const r={check:"usersRole",title:"User Roles",addTitle:"User Role",url:"userroles",addApi:"userroles/add",editApi:"userroles/update",detailApi:"userroles/detail",listApi:"userroles/listing",statusApi:"userroles/status/change",deleteApi:"userroles/delete"}}}]);
+//# sourceMappingURL=8867.df5917a9.chunk.js.map

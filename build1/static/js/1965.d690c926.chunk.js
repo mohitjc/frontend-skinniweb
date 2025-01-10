@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[1965],{71965:(e,i,s)=>{s.r(i),s.d(i,{default:()=>t});const t={check:"Customers",title:"Faq's",addTitle:"Faq",url:"faqs",detailApi:"faq/detail",listApi:"faq/listing"}}}]);
+//# sourceMappingURL=1965.d690c926.chunk.js.map

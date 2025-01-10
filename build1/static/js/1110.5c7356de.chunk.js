@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkskinniweb=self.webpackChunkskinniweb||[]).push([[1110],{41110:(e,i,n)=>{n.r(i),n.d(i,{default:()=>d});const d={check:"Invoice",title:"Invoices",addTitle:"Invoice",url:"invoice",status:[{id:"VOIDED",name:"Voided"},{id:"PAID",name:"Paid"},{id:"AUTHORISED",name:"Authorized"},{id:"DELETED",name:"Deleted"},{id:"DRAFT",name:"Draft"}],listApi:"xero/invoices"}}}]);
+//# sourceMappingURL=1110.5c7356de.chunk.js.map

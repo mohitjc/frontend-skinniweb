@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/9650.31a8d4f9.chunk.js","mappings":"kJAAO,MAAMA,EAAwBC,IAAI,CAAQC,KAAM,uBAAwBD,Q","sources":["Pages/actions/subscription.js"],"sourcesContent":["export const subscription_success = (data) => ({ type: 'SUBSCRIPTION_SUCCESS', data });"],"names":["subscription_success","data","type"],"sourceRoot":""}
