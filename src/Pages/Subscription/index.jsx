@@ -44,7 +44,7 @@ const Subscription = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-white border-t hover:bg-gray-100">
+          <tr className="bg-white border-t">
             <td className="px-6 py-4">1000001737</td>
             <td className="px-6 py-4">Landing Page</td>
             <td className="px-6 py-4">Active</td>

@@ -113,7 +113,8 @@ const MyProfile = () => {
                 className="w-full h-full rounded-full border-[5px] border-[#FED6B6]"
               />
               {editable && (
-                <label htmlFor="imageInput" className="absolute bottom-0 right-0 cursor-pointer">
+                <div className="absolute bottom-0 right-0 cursor-pointer">
+                <label htmlFor="imageInput" className="relative">
                   <input
                     id="imageInput"
                     type="file"
@@ -122,8 +123,9 @@ const MyProfile = () => {
                     style={{ display: "none" }}
                   />
                   
-                  <LiaEdit className="bg-[#fff] rounded-full p-2 text-[26px] cursor-pointer "/>
+                  <LiaEdit className="bg-[#fff] rounded-full p-[6px] text-[30px] cursor-pointer absolute right-[28px] bottom-[4px] "/>
                 </label>
+                </div>
               )}
             </div>
             {!editable && <div className="grid grid-cols-2 gap-y-2 gap-x-[6rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[10rem] mt-[12px] pr-[6rem] py-4 w-full rounded-r-full">
@@ -236,8 +238,10 @@ const MyProfile = () => {
       <h2 className="">Address Book</h2>
       <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]"/>Manage Address</p>
       </div>
-      <div className="bg-[#F7F7F7] px-[2rem] py-[3rem] grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="relative border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
+      <div className="bg-[#F7F7F7] px-[2rem] py-[3rem] grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-[3rem]">
+        <div className="flex items-center gap-x-5">
+        <img src="/assets/img/line_div.png" className="h-[130px]"/>
+        <div className="relative w-full border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
           <h3 className="text-lg font-semibold mb-2">Billing Address</h3>
           <div className="">
           <p className="text-sm text-[#828282]">John Doe</p>
@@ -248,8 +252,10 @@ const MyProfile = () => {
           <LiaEdit className="text-[24px] cursor-pointer absolute right-[22px] top-[22px]" />
           </div>
         </div>
-
-        <div className="relative border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
+        </div>
+        <div className="flex items-center gap-x-5">
+        <img src="/assets/img/line_div.png" className="h-[130px]"/>
+        <div className="w-full relative border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
           <h3 className="text-lg font-semibold mb-2">Shipping Address</h3>
           <p className="text-sm text-[#828282]">Jane Doe</p>
           <p className="text-sm text-[#828282]">456 Oak Avenue</p>
@@ -258,6 +264,7 @@ const MyProfile = () => {
           <p className="text-sm text-[#828282]">Phone: (555) 987-6543</p>
           <LiaEdit className="text-[24px] cursor-pointer absolute right-[22px] top-[22px]" />
         </div>
+      </div>
       </div>
 
       <h2 className="text-xl font-semibold mb-4 mt-8"></h2>
@@ -290,8 +297,8 @@ const MyProfile = () => {
                </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
-            <tr>
+          <tbody className="">
+            <tr className="border-t">
               <td className="px-6 py-3 whitespace-nowrap">
                 <div className="text-sm ">0000345</div>
               </td>
