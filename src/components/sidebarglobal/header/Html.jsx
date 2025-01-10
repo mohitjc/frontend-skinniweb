@@ -1,0 +1,180 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import methodModel from "../../../methods/methods";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import Sidebar from "../sidebar";
+import { FiMenu, FiX } from "react-icons/fi";
+import { LuLogOut, LuUser } from "react-icons/lu";
+import { GoLock } from "react-icons/go";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
+  const [dateTime, setDateTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000); // Update every second
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // Convert to EST timezone
+  const estDateTime = new Date(
+    dateTime.toLocaleString("en-US", { timeZone: "America/New_York" })
+  );
+
+  // Format the date and time
+  const formattedDate = estDateTime.toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  const formattedTime = estDateTime.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  });
+  const weekName = estDateTime.toLocaleDateString("en-US", { weekday: "long" });
+  return (
+    <nav
+      component="header"
+      className={`${
+        isOpen ? "min-sidebar w-[calc(100%-80px)]" : "w-[calc(100%-280px)] "
+      } shadow-btn py-1.5 bg-white border-b  fixed transition-[width] duration-300 ml-auto right-0 z-10 flex items-center !px-5
+      `}
+    >
+      <button
+        onClick={toggle}
+        className="h-9 w-9 shrink-0 shadow-btn hover:shadow-none p-1 rounded-lg border border-gray-100 !text-primary"
+      >
+        {!isOpen ? (
+          <FiMenu className="w-full h-full" />
+        ) : (
+          <FiX className="w-full h-full" />
+        )}
+      </button>
+      <div className="ml-auto text-center hidden md:block">
+          <h1 className="text-green-600 font-bold text-[20px] lg:text-[22px] redhat">Compliance With Deadline Reminders</h1>
+
+          <div>
+            <p className="text-green-500 font-bold text-[15px]">
+              {" "}
+              {weekName} {formattedDate} <span className="px-1"></span> Time {formattedTime} <span>(EST)</span>
+            </p>
+          </div>
+        </div>
+      <div className="flex items-center gap-4 ml-auto">
+       
+
+        <div className="relative">
+         {/* <div id="google_translate_element"></div> */}
+          <span className="w-full bg-white absolute bottom-0 z-20 h-4"></span>
+        </div>
+        <Menu as="div" className="relative">
+          <div>
+            <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-1 text-sm font-semibold text-gray-900 ">
+              <div className="flex items-center">
+                <div className="flex items-center">
+                  <img
+                    alt="image"
+                    src={methodModel.userImg(user.image)}
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
+                  <div className="ml-2 text-left">
+                    <b className="capitalize">{user.fullName}</b>
+                    <p className="grayCls mb-0 text-capitalize">
+                      {user.customerRole?.name}
+                    </p>
+                  </div>
+                </div>
+                <i
+                  className="fa fa-angle-down top-1 relative h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </div>
+            </Menu.Button>
+          </div>
+
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <div className="py-1">
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/profile"
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2 text-sm flex items-center gap-2"
+                      )}
+                    >
+                      <LuUser /> {"profile"}
+                    </Link>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/profile/change-password"
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block px-4 py-2 text-sm flex items-center gap-2"
+                      )}
+                    >
+                      <GoLock />
+                      Change Password
+                    </Link>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item className="divide-y-1 divide-gray-800 pt-1  mt-2">
+                  <p className="border-t"></p>
+                </Menu.Item>
+
+                <Menu.Item className="">
+                  {({ active }) => (
+                    <a
+                      type="submit"
+                      onClick={() => Logout()}
+                      className={classNames(
+                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        "block w-full px-4 py-2 text-left text-sm ancortag flex items-center gap-2"
+                      )}
+                    >
+                      <LuLogOut /> Logout
+                    </a>
+                  )}
+                </Menu.Item>
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
+
+        {/* <button onClick={()=>transChange('en')} className={`${currentLng=='en'?'bg-primary':'bg-success'}`}>En</button>
+        <button onClick={()=>transChange('fr')} className={`${currentLng=='fr'?'bg-primary':'bg-success'}`}>Sp</button> */}
+      </div>
+      {isOpen1 ? (
+        <div className="w-100 mobi-dropdown">
+          <Sidebar />
+        </div>
+      ) : (
+        <></>
+      )}
+    </nav>
+  );
+};
+
+export default Html;
