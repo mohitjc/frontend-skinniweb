@@ -75,7 +75,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
                 <div className="flex gap-2 items-center">
                   <img
                     alt="image"
-                    src={methodModel.userImg(user.image)}
+                    src={user.image}
                     className="h-10 w-10 rounded-full object-cover"
                   />
                   <div className="text-[#FEE4D0]">
@@ -93,7 +93,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
             </Menu.Button>
           </div>
 
-          <Transition
+          {/* <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
             enterFrom="transform opacity-0 scale-95"
@@ -152,7 +152,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
                 </Menu.Item>
               </div>
             </Menu.Items>
-          </Transition>
+          </Transition> */}
         </Menu>
 
         {/* <button onClick={()=>transChange('en')} className={`${currentLng=='en'?'bg-primary':'bg-success'}`}>En</button>
