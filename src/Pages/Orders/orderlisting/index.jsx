@@ -64,7 +64,7 @@ const history = useNavigate()
         </div>
         <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] p-3">
         Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.
-      </p>
+      </p> 
         </div>
         </div>
 
