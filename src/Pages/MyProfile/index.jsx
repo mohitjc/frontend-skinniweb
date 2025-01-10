@@ -19,6 +19,7 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 
 
 const MyProfile = () => {
+  const user = useSelector((state) => state.user);
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -98,7 +99,9 @@ const MyProfile = () => {
   };
 
   useEffect(() => {
+    if (user?._id) {
     fetchProfileData(); // Fetch profile data when the component mounts
+    }
   }, []);
 
   return (

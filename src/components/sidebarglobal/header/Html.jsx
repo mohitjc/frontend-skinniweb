@@ -51,7 +51,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
       } shadow-btn py-1.5 bg-[#5F5F5F] fixed transition-[width] duration-300 ml-auto right-0 z-10 flex items-center h-[80px] z-20 !px-5
       `}
     >
-      <button
+      {/* <button
         onClick={toggle}
         className="h-9 w-9 text-[#FEE4D0] shrink-0 p-1 "
       >
@@ -60,7 +60,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
         ) : (
           <HiMiniBars3BottomLeft className="w-full h-full" />
         )}
-      </button>
+      </button> */}
       <div className="flex items-center gap-4 ml-auto">
        
 

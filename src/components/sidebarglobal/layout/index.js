@@ -13,15 +13,15 @@ const Layout = memo(function Layout({ children,t }) {
   const history = useNavigate();
   const [isOpen, setIsopen] = useState(false);
 
-  // useEffect(() => {
-  //   if (!user.loggedIn) {
-  //     history("/login");
-  //   } else {
-  //     let permissions = user.roleDetail?.permissions?.[0];
-  //     if (!permissionModel.urlAllow(permissions)) {
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!user.loggedIn) {
+      history("/login");
+    } else {
+      let permissions = user.roleDetail?.permissions?.[0];
+      if (!permissionModel.urlAllow(permissions)) {
+      }
+    }
+  }, []);
 
   const logowhite = () => {
     let value = "/assets/img/new-logo.png";

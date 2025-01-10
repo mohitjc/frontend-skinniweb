@@ -35,7 +35,7 @@ function App() {
     { url: "/forgotpassword", path: "Forgotpassword" },
     { url: "/resetpassword", path: "Resetpassword" },
     { url: "/changepassword", path: "ChangePassword" },
-    { url: "/plan", path: "Plans" },
+    { url: "/Goals", path: "Goals" },
     { url: "/", path: 'MyProfile' },
     { url: "/chat", path: "Chat" },
     { url: "/blogs", path: "Blogs" },
