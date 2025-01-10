@@ -16,7 +16,7 @@ import { GoGoal } from "react-icons/go";
 import { CiLock } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
 
-const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
+const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) => {
   // const [activeplan, setActiveplan] = useState();
   // const role = user?.customerRole?.name === "Group Leader";
   // const getactivePlan = () => {
@@ -47,7 +47,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
     {
       name: 'My Account',
       icon: <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/myprofile",
+      url: "/",
       // key: "readDashboard",
     },
     // {
@@ -78,15 +78,15 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
     {
       name: "Change Password",
       icon: <CiLock className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/documenttype",
+      url: "/changepassword",
       // key: "readdocumenttype",
     },
-    {
-      name: "Logout",
-      icon: <IoLogOutOutline  className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/Workspaces",
-      // key: "readworkspaces",
-    },
+    // {
+    //   name: "Logout",
+    //   icon: <IoLogOutOutline  className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+    //   url: "/Workspaces",
+    //   // key: "readworkspaces",
+    // },
      
   ];
 
@@ -97,6 +97,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
         component="siderbar"
       >
         <ul className="space-y-2">
+          
           {menus.map((itm) => {
             return (
               <>
@@ -217,7 +218,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
                           : "p-[12px] text-center text-md"
                           } text-xs font-medium text-[#7E8B99] mt-[12px]`}
                       >
-                     
+
                       </h6>
                     </li>
                   </>
@@ -225,6 +226,30 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
               </>
             );
           })}
+          <li>
+            <>
+              <tooltip
+                placement="top"
+                color="#26ddd3"
+                title={"Logout"}
+              >
+                <NavLink
+                  to={"/login"}
+                  className={(isActive) =>
+                    "p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
+                    (location?.pathname === "" &&
+                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                  }
+                  onClick={Logout}
+                >
+                  <IoLogOutOutline className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+                  <span className="text-inherit leading-none sidebar_text">
+                    LogOut
+                  </span>
+                </NavLink>
+              </tooltip>
+            </>
+          </li>
         </ul>
       </div>
     </>

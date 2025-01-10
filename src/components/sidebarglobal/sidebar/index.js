@@ -3,10 +3,12 @@ import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Html from "./Html";
 import environment from "../../../environment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../Pages/actions/user";
 
 const Sidebar = ({ isOpen }) => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch()
   const history = useNavigate();
   const [role, setRole] = useState(user.customerRole);
   const menus = {
@@ -69,6 +71,13 @@ const Sidebar = ({ isOpen }) => {
     history(p);
   };
 
+    const Logout = () => {
+      dispatch(logout());
+      localStorage.removeItem("persist:admin-app");
+      localStorage.removeItem("token");
+      history("/login");
+    };
+
   return (
     <>
       <Html
@@ -78,6 +87,7 @@ const Sidebar = ({ isOpen }) => {
         isAllow={isAllow}
         ListItemLink={ListItemLink}
         isOpen={isOpen}
+        Logout={Logout}
       />
     </>
   );
