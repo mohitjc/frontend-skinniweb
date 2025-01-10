@@ -53,9 +53,10 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user }) => {
     {
       name: 'My Orders',
       icon: <PiKeyThin className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/customers",
+      url: "/myorders",
       // key: "readcustomer",
     },
+    
     {
       name: "My Subscription",
       icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
