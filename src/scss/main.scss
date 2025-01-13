@@ -114,6 +114,14 @@ select:focus-visible {
  .active-sidebar .sidebar-brand img {
   width: 50px;
 }
+@media (max-width: 1199px) {
+  .hide_show {
+    display: none;
+  }
+  .active-sidebar .hide_show {
+    display: block !important;
+  }
+}
 
 ///////////////########## active-sidebar end ###########//////////////////
 

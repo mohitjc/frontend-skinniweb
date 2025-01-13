@@ -109,7 +109,7 @@ const MyProfile = () => {
     <div className="bg-white p-[2rem] rounded-[12px]">
         <div className="flex items-center justify-between mb-10">
           <div className="relative w-full flex items-center">
-            <div className="min-w-[200px] w-[200px] h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] absolute top-[0px] left-[0px] z-10">
+            <div className=" min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] absolute top-[0px] left-[0px] z-10">
               <img
                 src={image || "https://via.placeholder.com/150"}
                 alt="Profile Picture"
@@ -131,7 +131,7 @@ const MyProfile = () => {
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-2 gap-y-2 gap-x-[6rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[10rem] mt-[12px] pr-[6rem] py-4 w-full rounded-r-full">
+            {!editable && <div className="grid grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[6rem] py-4 w-full rounded-r-full">
               <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>
@@ -152,9 +152,9 @@ const MyProfile = () => {
               </div>
             </div>}
 
-          {editable && <div className="grid grid-cols-2 gap-y-2 gap-x-[6rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[10rem] mt-[12px] pr-[6rem] py-4 w-full rounded-r-full">
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px] ">Full Name</label>
+          {editable && <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-bl-[20px] rounded-r-[20px] xl:rounded-r-full">
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px] ">Full Name</label>
               <input
                 type="text"
                 value={form.fullName}
@@ -164,8 +164,8 @@ const MyProfile = () => {
               />
             </div>
 
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px]">Email</label>
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Email</label>
               <input
                 type="email"
                 value={form.email}
@@ -174,8 +174,8 @@ const MyProfile = () => {
                 className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
               />
             </div>
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px]">Date of Birth</label>
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Date of Birth</label>
               <input
                 type="date"
                 value={form.dob}
@@ -184,8 +184,8 @@ const MyProfile = () => {
                 className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
               />
             </div>
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px]">Phone</label>
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Phone</label>
               <input
                 type="text"
                 value={form.phone}
@@ -194,8 +194,8 @@ const MyProfile = () => {
                 className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
               />
             </div>
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px]">Gender</label>
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Gender</label>
               <select
                 value={form.gender}
                 onChange={(e) => setForm({ ...form, gender: e.target.value })}
@@ -206,8 +206,8 @@ const MyProfile = () => {
                 <option value="female">Female</option>
               </select>
             </div>
-            <div className="flex items-center input-field">
-              <label className="text-sm mb-0 min-w-[120px]">Address</label>
+            <div className="flex max-md:flex-wrap items-center input-field">
+              <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Address</label>
               <input
                 type="text"
                 value={form.address}
@@ -219,12 +219,12 @@ const MyProfile = () => {
           </div>}
           <div className="">
             {editable ? (<>
-            <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[35px] right-[50px]" />
+            <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[35px] right-[11px] xl:right-[50px]" />
 
               </>
             ) : (
            
-              <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[35px] right-[50px]" />
+              <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[35px] right-[11px] xl:right-[50px]" />
             )}
           </div>
           </div>
@@ -241,7 +241,7 @@ const MyProfile = () => {
       <h2 className="">Address Book</h2>
       <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]"/>Manage Address</p>
       </div>
-      <div className="bg-[#F7F7F7] px-[2rem] py-[3rem] grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-[3rem]">
+      <div className="bg-[#F7F7F7] px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
         <div className="flex items-center gap-x-5">
         <img src="/assets/img/line_div.png" className="h-[130px]"/>
         <div className="relative w-full border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
