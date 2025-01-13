@@ -4,8 +4,8 @@ import { FaLongArrowAltDown } from "react-icons/fa";
 const Subscription = () => {
   return (
     <Layout>
-       <div className="bg-white p-[2rem] rounded-[12px] mb-8">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[3rem]">
+       <div className="bg-white p-[2rem] rounded-[12px]">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[2.5rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
           <div className="">
         <h1 className="text-[22px] font-bold mb-1">My Subscriptions</h1>
@@ -30,7 +30,7 @@ const Subscription = () => {
         </div>
 
         <div className="bg-[#FFF2E8] rounded-[12px] p-[2rem] ">
-        <div className="bg-white p-[2rem] rounded-[12px] mb-8">
+        <div className="bg-white p-[2rem] rounded-[12px]">
         <table className="w-full text-sm text-left">
         <thead className="uppercase ">
           <tr className="">
@@ -59,7 +59,7 @@ const Subscription = () => {
         </tbody>
       </table>
         </div>
-        <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] p-3">
+        <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] mt-8 p-3">
         Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.
       </p>
         </div>

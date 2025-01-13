@@ -6,8 +6,8 @@ const Orders = () => {
     <Layout>
     <div className="">
       {/* Order Details Section */}
-      <div className="bg-white p-[2rem] rounded-[12px] mb-8">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[3rem]">
+      <div className="bg-white p-[2rem] rounded-[12px]">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[2.5rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
           <div className="">
         <h1 className="text-[22px] font-bold mb-1">ORDER #000036462</h1>
@@ -291,7 +291,7 @@ const Orders = () => {
       </div>
 
       {/* Order Information Section */}
-      <div className="bg-white p-6 rounded-[12px] shadow">
+      <div className="bg-white p-6 rounded-[12px] mt-8 shadow">
         <h2 className="border-b text-[18px] pb-4 px-4">ORDER INFORMATION</h2>
       <div className="grid grid-cols-12 gap-5 px-5">
    <div className="col-span-3">

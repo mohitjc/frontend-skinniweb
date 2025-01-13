@@ -72,7 +72,7 @@ const Layout = memo(function Layout({ children,t }) {
             <img src="/assets/img/sidebar_img.png" className="absolute bottom-[0px] left-[0px]"/>
           </div>
           </div>
-          <main className="main w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] p-[3rem]">
+          <main className="main w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] p-[2.5rem]">
             <div className="mainarea ">{children}</div>
           </main>
         </div>

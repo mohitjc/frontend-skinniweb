@@ -242,7 +242,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                   }
                   onClick={Logout}
                 >
-                  <IoLogOutOutline className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+                  <IoLogOutOutline className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />
                   <span className="text-inherit leading-none sidebar_text">
                     LogOut
                   </span>
