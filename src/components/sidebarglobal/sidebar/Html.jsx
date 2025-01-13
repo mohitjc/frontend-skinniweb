@@ -70,6 +70,12 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
       // key: "readstaff",
     },
     {
+      name: "My Payments",
+      icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      url: "/mypayments",
+      // key: "readstaff",
+    },
+    {
       name: "My Goals",
       icon: <GoGoal className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/Goals",
