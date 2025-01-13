@@ -56,7 +56,7 @@ const Header = memo(function Header({ setIsOpen, isOpen ,t}) {
   };
   useEffect(() => {
     if (user?._id || user?.id) {
-      ApiClient.get(`user/detail`, { id: user?._id || user?.id }).then(
+      ApiClient.get(`user/details`, { id: user?._id || user?.id }).then(
         (res) => {
           if (res.success) {
             dispatch(login_success({ ...user, ...res.payload }));

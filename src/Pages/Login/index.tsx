@@ -52,7 +52,7 @@ const Login = () => {
   }, []);
 
   const setLogin = async (data: any) => {
-    let url = "/";
+    let url = data?.isVerified == "Y" ? "/" : "/otp";
     dispatch(login_success(data));
     history(url);
   };

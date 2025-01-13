@@ -48,7 +48,7 @@ const Signup = ({ setActiveTab }: any) => {
         fullName: fullName,
         age: newAge,
         role: "user",
-        surveyId: surveyId
+        // surveyId: surveyId
       };
 
       loader(true);
