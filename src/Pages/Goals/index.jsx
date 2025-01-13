@@ -31,8 +31,8 @@ const Goals = () => {
 
   return (
     <Layout>
-      <div className="bg-white p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[2.5rem]">
+       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
             <div className="">
               <h1 className="text-[22px] font-bold mb-1">My Goals</h1>
@@ -56,42 +56,43 @@ const Goals = () => {
           </div>
         </div>
 
-        <div className="bg-[#FFF2E8] rounded-[12px] p-[2rem] ">
-          <div className="bg-white p-[2rem] rounded-[12px]">
-            <table className="w-full text-sm text-left">
-              <thead className="uppercase ">
-                <tr className="">
-                  <th className="whitespace-nowrap px-3 pb-4">Ref#</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Description</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Status</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Frequency</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Subtotal</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Last Run</th>
-                  <th className="whitespace-nowrap px-3 pb-4">Next Run</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-white border-t">
-                  <td className="px-6 py-4">1000001737</td>
-                  <td className="px-6 py-4">Landing Page</td>
-                  <td className="px-6 py-4">Active</td>
-                  <td className="px-6 py-4">Every Month</td>
-                  <td className="px-6 py- 4">890.00</td>
-                  <td className="px-6 py-4">12/25/24</td>
-                  <td className="px-6 py-4">1/25/25</td>
-                  <td className="w-[100px] px-6 py-4">
-                    <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1">View</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] p-3 mt-8">
-            Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.
-          </p>
-        </div>
+        <div className="bg-[#FFF2E8] rounded-[12px]  p-[1.5rem]  sm:p-[2rem] ">
+        <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px] ">
+          <div className="overflow-x-auto">
+        <table className="w-full text-sm text-left">
+        <thead className="uppercase ">
+          <tr className="">
+            <th className="whitespace-nowrap px-3 pb-4">Ref#</th>
+            <th className="whitespace-nowrap px-3 pb-4">Description</th>
+            <th className="whitespace-nowrap px-3 pb-4">Status</th>
+            <th className="whitespace-nowrap px-3 pb-4">Frequency</th>
+            <th className="whitespace-nowrap px-3 pb-4">Subtotal</th>
+            <th className="whitespace-nowrap px-3 pb-4">Last Run</th>
+            <th className="whitespace-nowrap px-3 pb-4">Next Run</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="bg-white border-t">
+            <td className="px-6 py-4">1000001737</td>
+            <td className="px-6 py-4">Landing Page</td>
+            <td className="px-6 py-4">Active</td>
+            <td className="px-6 py-4">Every Month</td>
+            <td className="px-6 py- 4">890.00</td>
+            <td className="px-6 py-4">12/25/24</td>
+            <td className="px-6 py-4">1/25/25</td>
+            <td className="w-[100px] px-6 py-4">
+              <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
-
+        </div>
+        <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] p-3 mt-8">
+        Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.
+      </p>
+        </div>
+        </div>
     </Layout>
   );
 };
