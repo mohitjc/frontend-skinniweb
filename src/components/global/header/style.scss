@@ -167,8 +167,8 @@ input.Searchbar:focus {
 
 .min-sidebar {
   ~div>.main-sidebar {
-    width: 78px;
-    min-width: 68px;
+    width: 80px;
+    min-width: 80px;
 
     // .sidebar-brand {
     //   width: 0;
@@ -203,8 +203,8 @@ input.Searchbar:focus {
 
 .min-sidebar {
   ~div>.main-sidebar {
-    width: 78px;
-    min-width: 68px;
+    width: 80px;
+    min-width: 80px;
 
     // .sidebar-brand {
     //   width: 0;
@@ -225,7 +225,7 @@ input.Searchbar:focus {
   }
 
   ~div>main.main {
-    width: calc(100% - 66px);
+    width: calc(100% - 80px);
   }
 }
 

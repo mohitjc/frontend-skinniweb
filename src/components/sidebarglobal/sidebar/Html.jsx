@@ -92,8 +92,8 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
 
   return (
     <>
-      <div
-        className={` ${isOpen && styles.sm_sidebar}`}
+      <div 
+        className={` ${isOpen && styles.sm_sidebar} duration-300`}
         component="siderbar"
       >
         <ul className="space-y-2">
@@ -190,7 +190,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                 <NavLink
                                   to={itm.url}
                                   className={(isActive) =>
-                                    "p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
+                                    "p-2.5 rounded-l-full duration-300 flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
                                     (location?.pathname === itm.url &&
                                       " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                                   }
