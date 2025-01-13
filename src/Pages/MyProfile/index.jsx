@@ -99,7 +99,7 @@ const MyProfile = () => {
   };
 
   useEffect(() => {
-    if (user?._id) {
+    if (user?._id || user?.id) {
     fetchProfileData(); // Fetch profile data when the component mounts
     }
   }, []);
