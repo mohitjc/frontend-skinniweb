@@ -1,14 +1,14 @@
 import Layout from "../../components/sidebarglobal/layout";
 import { FaLongArrowAltDown } from "react-icons/fa";
 
-const Subscription = () => {
+const Goals = () => {
   return (
     <Layout>
        <div className="bg-white p-[2rem] rounded-[12px] mb-8">
         <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[3rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
           <div className="">
-        <h1 className="text-[22px] font-bold mb-1">My Subscriptions</h1>
+        <h1 className="text-[22px] font-bold mb-1">My Goals</h1>
           <p className="text-sm text-[#828282]">1 item</p>
         </div>
         </div>
@@ -69,4 +69,4 @@ const Subscription = () => {
   );
 };
 
-export default Subscription;
+export default Goals;
