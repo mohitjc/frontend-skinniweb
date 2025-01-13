@@ -51,8 +51,8 @@ const Layout = memo(function Layout({ children,t }) {
         <Header isOpen={isOpen} setIsOpen={setIsopen} t={t} />
 
         <div className={`main-wrapper flex ${isOpen ? "active-sidebar" : ""}`}>
-          <div className="main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[5rem] fixed">
-            <div className="!pl-[3rem] h-full relative">
+          <div className="main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[3rem] fixed">
+            <div className="min_sidbar !pl-[3rem] h-full relative">
             <div className="">
               <div className="sidebar-brand">
                 <Link to="/">
