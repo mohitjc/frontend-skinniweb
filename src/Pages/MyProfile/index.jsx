@@ -16,17 +16,20 @@ import { LiaEdit } from "react-icons/lia";
 import { FaEye } from "react-icons/fa";
 import { PiDotsSixVerticalBold } from "react-icons/pi";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
+import environment from "../../environment";
+import { login_success } from "../actions/user";
 
 
 const MyProfile = () => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch()
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     phone: "",
     address: "",
     dob: "",
-    gender: "",
+    gender: "male",
   });
 
   const [editable, setEditable] = useState(false);
@@ -56,7 +59,7 @@ const MyProfile = () => {
       return;
     }
 
-    const payload = {
+    let payload = {
       fullName: form.fullName,
       email: form.email,
       phone: form.phone,
@@ -70,6 +73,8 @@ const MyProfile = () => {
     ApiClient.put("editUserProfile", payload)
       .then((res) => {
         if (res.success) {
+          let UserDetail = { ...user, ...res.data }
+          dispatch(login_success(UserDetail));
           toast.success("Profile updated successfully");
           setEditable(false);
         } else {
@@ -81,14 +86,12 @@ const MyProfile = () => {
 
   // Handle image upload
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-      ApiClient.postFormData("upload/image?modelName=user", formData)
+      ApiClient.postFormData("upload/image?modelName=user", {file:file})
         .then((res) => {
           if (res.success) {
-            setImage(res.data.fullpath); 
+            setImage(environment?.api + "images/user/" + res?.data?.fullpath); 
             toast.success("Image uploaded successfully");
           } else {
             toast.error("Image upload failed");

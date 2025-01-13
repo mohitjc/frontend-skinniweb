@@ -153,39 +153,35 @@ class ApiClient {
   }
 
   /*************** Form-Data Method ***********/
-  static postFormData(url1, params) {
-    let url = baseUrl + url1;
-    if (url1.includes('https')) url = url1;
+  static postFormData(url, params) {
+    url = baseUrl + url
     setAuthorizationToken(axios);
     return new Promise(function (fulfill, reject) {
-      var body = new FormData();
-      let oArr = Object.keys(params);
-      oArr.map((itm) => {
-        body.append(itm, params[itm]);
-      });
-
-      let configupdate = {
-        headers: { "Content-Type": "multipart/form-data" },
-      };
-
-      axios
-        .post(url, body, {...config,...configupdate})
-        .then(function (response) {
-          fulfill(response && response.data);
+        var body = new FormData();
+        let oArr = Object.keys(params)
+        oArr.map(itm => {
+            body.append(itm, params[itm]);
         })
-        .catch(function (error) {
-          loader(false);
-          if (error && error.response) {
-            let eres = error.response;
-            handleError(eres.data);
-            fulfill(eres.data);
-          } else {
-            toast.error("Network Error");
-            reject(error);
-          }
-        });
+
+        axios
+            .postForm(url, body, {headers:{ 'Content-Type': 'multipart/form-data' }})
+
+            .then(function (response) {
+                fulfill(response && response.data);
+            })
+            .catch(function (error) {
+                loader(false)
+                if (error && error.response) {
+                    let eres = error.response;
+                    handleError(eres.data)
+                    fulfill(eres.data);
+                } else {
+                    toast.error('Network Error')
+                    reject(error);
+                }
+            });
     });
-  }
+}
 
   static postFormFileData(url, params) {
     let configupdate = {
