@@ -7,8 +7,8 @@ const history = useNavigate()
 
   return (
     <Layout>
-       <div className="bg-white p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[2rem] rounded-[12px] mb-[2.5rem]">
+       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
           <div className="">
         <h1 className="text-[22px] font-bold mb-1">My Orders</h1>
@@ -32,9 +32,10 @@ const history = useNavigate()
         </div>
         </div>
 
-        <div className="bg-[#FFF2E8] rounded-[12px] p-[2rem] ">
-        <div className="bg-white p-[2rem] rounded-[12px]">
-        <table className="w-full text-sm text-left">
+        <div className="bg-[#FFF2E8] rounded-[12px]  p-[1.5rem]  sm:p-[2rem] ">
+        <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px] ">
+          <div className="overflow-x-auto">
+        <table className="w-full text-sm text-left ">
         <thead className="uppercase ">
           <tr className="">
             <th className="whitespace-nowrap px-3 pb-4">Ref#</th>
@@ -61,6 +62,7 @@ const history = useNavigate()
           </tr>
         </tbody>
       </table>
+        </div>
         </div>
         <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] mt-8 p-3">
         Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.

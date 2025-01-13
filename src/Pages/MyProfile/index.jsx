@@ -106,10 +106,10 @@ const MyProfile = () => {
 
   return (
     <Layout>
-    <div className="bg-white p-[2rem] rounded-[12px]">
+    <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
         <div className="flex items-center justify-between mb-10">
-          <div className="relative w-full flex items-center">
-            <div className=" min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] absolute top-[0px] left-[0px] z-10">
+          <div className="relative w-full max-sm:flex-wrap flex items-center">
+            <div className="relative min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] sm:absolute top-[0px] left-[0px] z-10 mx-auto">
               <img
                 src={image || "https://via.placeholder.com/150"}
                 alt="Profile Picture"
@@ -126,12 +126,12 @@ const MyProfile = () => {
                     style={{ display: "none" }}
                   />
                   
-                  <LiaEdit className="bg-[#fff] rounded-full p-[6px] text-[30px] cursor-pointer absolute right-[28px] bottom-[4px] "/>
+                  <LiaEdit className="bg-[#fff] rounded-full p-[6px] text-[30px] cursor-pointer absolute shadow-lg right-[13px] md:right-[28px] bottom-[4px] "/>
                 </label>
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[6rem] py-4 w-full rounded-r-full">
+            {!editable && <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[4rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] lg:rounded-r-full">
               <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>
@@ -152,7 +152,7 @@ const MyProfile = () => {
               </div>
             </div>}
 
-          {editable && <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] ml-[5rem] !pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-bl-[20px] rounded-r-[20px] xl:rounded-r-full">
+          {editable && <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] xl:rounded-r-full">
             <div className="flex max-md:flex-wrap items-center input-field">
               <label className="max-md:w-full text-sm mb-0 min-w-[95px] ">Full Name</label>
               <input
@@ -219,12 +219,12 @@ const MyProfile = () => {
           </div>}
           <div className="">
             {editable ? (<>
-            <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[35px] right-[11px] xl:right-[50px]" />
+            <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[11px] xl:right-[50px]" />
 
               </>
             ) : (
            
-              <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[35px] right-[11px] xl:right-[50px]" />
+              <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[32px] xl:right-[50px]" />
             )}
           </div>
           </div>
@@ -237,15 +237,15 @@ const MyProfile = () => {
 
       
   
-<div className="flex justify-between gap-x-5 gap-y-2 bg-[#FEE4D0] mt-10 px-4 py-3">
+<div className="flex justify-between flex-wrap gap-x-5 gap-y-2 bg-[#FEE4D0] mt-10 px-4 py-3">
       <h2 className="">Address Book</h2>
       <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]"/>Manage Address</p>
       </div>
-      <div className="bg-[#F7F7F7] px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
-        <div className="flex items-center gap-x-5">
+      <div className="bg-[#F7F7F7] px-[1.5rem] sm:px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
+        <div className="flex items-center gap-x-3  sm:gap-x-5">
         <img src="/assets/img/line_div.png" className="h-[130px]"/>
         <div className="relative w-full border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
-          <h3 className="text-lg font-semibold mb-2">Billing Address</h3>
+          <h3 className="text-lg font-semibold pr-[2rem] mb-2">Billing Address</h3>
           <div className="">
           <p className="text-sm text-[#828282]">John Doe</p>
           <p className="text-sm text-[#828282]">123 Main Street</p>
@@ -256,10 +256,10 @@ const MyProfile = () => {
           </div>
         </div>
         </div>
-        <div className="flex items-center gap-x-5">
+        <div className="flex items-center gap-x-3  sm:gap-x-5">
         <img src="/assets/img/line_div.png" className="h-[130px]"/>
         <div className="w-full relative border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
-          <h3 className="text-lg font-semibold mb-2">Shipping Address</h3>
+          <h3 className="text-lg font-semibold pr-[2rem] mb-2">Shipping Address</h3>
           <p className="text-sm text-[#828282]">Jane Doe</p>
           <p className="text-sm text-[#828282]">456 Oak Avenue</p>
           <p className="text-sm text-[#828282]">Townsville, CA 90001</p>
@@ -275,7 +275,7 @@ const MyProfile = () => {
       <h2 className="">Recent Orders</h2>
       <p className="text-[#828282] text-sm flex items-center gap-1"><FaEye className="text-[22px]"/>View All</p>
       </div>
-      <div className="bg-[#F7F7F7] rounded-b-[12px]">
+      <div className="bg-[#F7F7F7] rounded-b-[12px] px-[1rem]">
       <div className="overflow-x-auto">
         <table className="min-w-full ">
           <thead>
