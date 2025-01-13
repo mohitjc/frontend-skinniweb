@@ -55,7 +55,7 @@ const Header = memo(function Header({ setIsOpen, isOpen ,t}) {
     // dispatch(search_success(''))
   };
   useEffect(() => {
-    if (user?._id) {
+    if (user?._id || user?.id) {
       ApiClient.get(`user/detail`, { id: user?._id || user?.id }).then(
         (res) => {
           if (res.success) {
