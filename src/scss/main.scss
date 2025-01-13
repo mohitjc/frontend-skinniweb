@@ -90,6 +90,33 @@ select:focus-visible {
   box-shadow: 10px -10px 0 #828282;
 }
 
+///////////////########## active-sidebar ###########//////////////////
+
+.active-sidebar .min_sidbar {
+  padding-left: 0px !important;
+}
+.active-sidebar .min_sidbar a {
+  margin: 0px;
+  margin-left: 15px;
+  width: 100%;
+}
+.active-sidebar .rounded_div:before {
+ display: none !important;
+}
+.active-sidebar .rounded_div:after {
+  display: none !important;
+ }
+ .active-sidebar .sidebar-brand a {
+  margin-left: 0px !important;
+  display: flex;
+  justify-content: center;
+}
+ .active-sidebar .sidebar-brand img {
+  width: 50px;
+}
+
+///////////////########## active-sidebar end ###########//////////////////
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;

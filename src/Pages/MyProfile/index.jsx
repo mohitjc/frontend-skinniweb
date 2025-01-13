@@ -106,7 +106,7 @@ const MyProfile = () => {
 
   return (
     <Layout>
-    <div className="bg-white p-[2rem] rounded-[12px] mb-8">
+    <div className="bg-white p-[2rem] rounded-[12px]">
         <div className="flex items-center justify-between mb-10">
           <div className="relative w-full flex items-center">
             <div className="min-w-[200px] w-[200px] h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] absolute top-[0px] left-[0px] z-10">
@@ -142,7 +142,7 @@ const MyProfile = () => {
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]"/>{form.dob}</span>
               </div>
               <div className="flex items-center">
-                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]"/>{form.phone} 45454545</span>
+                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]"/>{form.phone} </span>
               </div>
               <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm "><BsGenderMale className="text-[#828282] text-[22px]"/>{form.gender}</span>

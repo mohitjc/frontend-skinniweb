@@ -51,8 +51,8 @@ const Layout = memo(function Layout({ children,t }) {
         <Header isOpen={isOpen} setIsOpen={setIsopen} t={t} />
 
         <div className={`main-wrapper flex ${isOpen ? "active-sidebar" : ""}`}>
-          <div className="main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[5rem] fixed">
-            <div className="!pl-[3rem] h-full relative">
+          <div className="main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[3rem] fixed">
+            <div className="min_sidbar !pl-[3rem] h-full relative">
             <div className="">
               <div className="sidebar-brand">
                 <Link to="/">
@@ -72,7 +72,7 @@ const Layout = memo(function Layout({ children,t }) {
             <img src="/assets/img/sidebar_img.png" className="absolute bottom-[0px] left-[0px]"/>
           </div>
           </div>
-          <main className="main w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] p-[3rem]">
+          <main className="main w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] p-[2.5rem]">
             <div className="mainarea ">{children}</div>
           </main>
         </div>
