@@ -14,16 +14,19 @@ const Subscription = () => {
         </div>
         <div className="flex justify-end flex-wrap gap-y-2 gap-x-1">
         <div className="flex items-center">
-          <span className="text-gray-600 mr-2">Sort By</span>
-          <select className="bg-[#828282] text-white rounded-[10px] px-3 py-2">
-            <option value="ref">Ref</option>
-            <option value="description">Description</option>
-            <option value="status">Status</option>
-            <option value="frequency">Frequency</option>
-            <option value="subtotal">Subtotal</option>
-            <option value="lastRun">Last Run</option>
-            <option value="nextRun">Next Run</option>
+          <span className="text-gray-600 mb-0 mr-2">Sort By</span>
+          <div className="relative bg-[#828282] rounded-[10px]">
+          <select className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2">
+            <option className="text-[#828282]" value="ref">Ref</option>
+            <option className="text-[#828282]" value="description">Description</option>
+            <option className="text-[#828282]" value="status">Status</option>
+            <option className="text-[#828282]" value="frequency">Frequency</option>
+            <option className="text-[#828282]" value="subtotal">Subtotal</option>
+            <option className="text-[#828282]" value="lastRun">Last Run</option>
+            <option className="text-[#828282]" value="nextRun">Next Run</option>
           </select>
+          <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+          </div>
           <FaLongArrowAltDown className="text-[#828282]" />
         </div>
         </div>
@@ -35,26 +38,26 @@ const Subscription = () => {
         <table className="w-full text-sm text-left">
         <thead className="uppercase ">
           <tr className="">
-            <th className="whitespace-nowrap px-3 pb-4">Ref#</th>
-            <th className="whitespace-nowrap px-3 pb-4">Description</th>
-            <th className="whitespace-nowrap px-3 pb-4">Status</th>
-            <th className="whitespace-nowrap px-3 pb-4">Frequency</th>
-            <th className="whitespace-nowrap px-3 pb-4">Subtotal</th>
-            <th className="whitespace-nowrap px-3 pb-4">Last Run</th>
-            <th className="whitespace-nowrap px-3 pb-4">Next Run</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Ref#</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Description</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Status</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Frequency</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Subtotal</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Last Run</th>
+            <th className="whitespace-nowrap text-[13px] px-3 pb-4">Next Run</th>
           </tr>
         </thead>
         <tbody>
           <tr className="bg-white border-t">
-            <td className="px-3 py-4">1000001737</td>
-            <td className="px-3 py-4">Landing Page</td>
-            <td className="px-3 py-4">Active</td>
-            <td className="px-3 py-4">Every Month</td>
-            <td className="px-6 py- 4">890.00</td>
-            <td className="px-3 py-4">12/25/24</td>
-            <td className="px-3 py-4">1/25/25</td>
-            <td className="w-[100px] px-3 py-4">
-              <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1">View</button>
+            <td className="px-3 py-4 text-[12px]">1000001737</td>
+            <td className="px-3 py-4 text-[12px]">Landing Page</td>
+            <td className="px-3 py-4 text-[12px]">Active</td>
+            <td className="px-3 py-4 text-[12px]">Every Month</td>
+            <td className="px-6 py-4 text-[12px]">890.00</td>
+            <td className="px-3 py-4 text-[12px]">12/25/24</td>
+            <td className="px-3 py-4 text-[12px]">1/25/25</td>
+            <td className="w-[100px] px-3 py-4 text-[12px]">
+              <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] text-[12px] font-[500] px-3 py-1">View</button>
             </td>
           </tr>
         </tbody>
