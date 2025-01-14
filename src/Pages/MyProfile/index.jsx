@@ -332,22 +332,22 @@ const MyProfile = () => {
         <table className="min-w-full ">
           <thead>
             <tr>
-              <th scope="col" className="whitespace-nowrap px-3 py-4">
+              <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
               Order#
               </th>
-              <th scope="col" className="whitespace-nowrap px-3 py-4">
+              <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
               Date
               </th>
-              <th scope="col" className="whitespace-nowrap px-3 py-4">
+              <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
               Ship to             
                </th>
-              <th scope="col" className="whitespace-nowrap px-3 py-4">
+              <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
               Order Total             
                </th>
-               <th scope="col" className="whitespace-nowrap px-3 py-4">
+               <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
                Status            
                </th>
-               <th scope="col" className="whitespace-nowrap px-3 py-4">
+               <th scope="col" className="whitespace-nowrap px-3 py-4 text-[12px]">
                Action             
                </th>
             </tr>
@@ -369,7 +369,7 @@ const MyProfile = () => {
               <td className="px-6 py-3 whitespace-nowrap">
                 <div className="text-sm ">Complete</div>
               </td>
-              <td className="px-3 py-4 whitespace-nowrap">
+              <td className="px-3 py-4 text-[12px] whitespace-nowrap">
               <div className="">
                 <button className="flex gap-1 text-sm items-center cursor-pointer"><FaEye className="text-[18px]"/>View Reorder</button>
                 </div>

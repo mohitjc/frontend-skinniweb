@@ -114,28 +114,28 @@ const OrderListing = () => {
                 <tbody>
                   {data.map((order) => (
                     <tr key={order.id} className="bg-white border-t">
-                      <td className="px-3 py-4">{order.id}</td>
-                      <td className="px-3 py-4">
+                      <td className="px-3 py-4 text-[12px]">{order.id}</td>
+                      <td className="px-3 py-4 text-[12px]">
                         {order.products
                           .map((product) => product.productName)
                           .join(", ")}
                       </td>
-                      <td className="px-3 py-4">{order.status}</td>
-                      <td className="px-3 py-4">Every Month</td>
-                      <td className="px-3 py-4">
+                      <td className="px-3 py-4 text-[12px]">{order.status}</td>
+                      <td className="px-3 py-4 text-[12px]">Every Month</td>
+                      <td className="px-3 py-4 text-[12px]">
                         {order.total.toFixed(2)} USD
                       </td>
-                      <td className="px-3 py-4">
+                      <td className="px-3 py-4 text-[12px]">
                         {new Date(order.createdAt).toLocaleDateString()}
                       </td>
-                      {/* <td className="px-3 py-4">
+                      {/* <td className="px-3 py-4 text-[12px]">
                         {new Date(order.createdAt)
                           .setFullYear(new Date(order.createdAt).getFullYear() + 1)
                           .toLocaleDateString()}
                       </td> */}
-                      <td className="w-[100px] px-3 py-4">
+                      <td className="w-[100px] px-3 py-4 text-[12px]">
                         <button
-                          className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1"
+                          className="bg-[#828282] text-white rounded-full hover:opacity-[90%] text-[12px] font-[500] px-3 py-1"
                           onClick={() => history(`/myordersDetail/${order.id}`)}
                         >
                           View

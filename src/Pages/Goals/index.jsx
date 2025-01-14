@@ -92,14 +92,14 @@ const Goals = () => {
                 <tbody>
                   {data && (
                     <tr className="bg-white border-t">
-                      <td className="px-3 py-4">{data.fatInGrams}</td>
-                      <td className="px-3 py-4">{data.proteinInGrams}</td>
-                      <td className="px-3 py-4">{data.carbsInGrams}</td>
-                      <td className="px-3 py-4">{data.caloriesInGrams}</td>
-                      <td className="px-3 py-4">{data.consumeFat}</td>
-                      <td className="px-3 py-4">{data.consumeProtein}</td>
-                      <td className="px-3 py-4">{data.consumeCarbs}</td>
-                      <td className="px-3 py-4">{data.consumeCalories}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.fatInGrams}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.proteinInGrams}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.carbsInGrams}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.caloriesInGrams}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.consumeFat}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.consumeProtein}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.consumeCarbs}</td>
+                      <td className="px-3 py-4 text-[12px]">{data.consumeCalories}</td>
                     </tr>
                   )}
                 </tbody>
