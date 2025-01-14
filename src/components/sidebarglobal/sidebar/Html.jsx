@@ -15,6 +15,7 @@ import { PiUserListLight } from "react-icons/pi";
 import { GoGoal } from "react-icons/go";
 import { CiLock } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
+import { MdOutlinePayments } from "react-icons/md";
 
 const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) => {
   // const [activeplan, setActiveplan] = useState();
@@ -71,7 +72,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
     },
     {
       name: "My Payments",
-      icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/mypayments",
       // key: "readstaff",
     },
@@ -203,9 +204,9 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                 <NavLink
                                   to={itm.url}
                                   className={(isActive) =>
-                                    "p-2.5 rounded-l-full duration-300 flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
+                                    "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline " +
                                     (location?.pathname === itm.url &&
-                                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                                   }
                                 >
                                   {itm.icon}
@@ -249,9 +250,9 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                 <NavLink
                   to={"/login"}
                   className={(isActive) =>
-                    "p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
+                    "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
                     (location?.pathname === "" &&
-                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                   }
                   onClick={Logout}
                 >

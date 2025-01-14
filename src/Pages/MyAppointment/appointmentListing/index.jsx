@@ -29,6 +29,7 @@ ApiClient.get("appointmentList", filter).then((res) => {
 if (res.success) {
 const { orders} = res.data;
 setData(Array.isArray(orders) ? orders : []);
+setTotal(res.data.pagination.totalRecords); 
 } else {
 setData([]);
 setTotal(0); 
@@ -56,11 +57,15 @@ useEffect(() => {
 if (data.length > 0) {
 setData((prevData) => sortData([...prevData])); // Sorting a copy of the data
 }
-}, [sortBy, sortOrder, data]); // Trigger sorting after fetching and whenever sortBy or sortOrder changes
+}, [sortBy, sortOrder]); // Trigger sorting after fetching and whenever sortBy or sortOrder changes
 const handlePageSizeChange = (e) => {
 const count = parseInt(e.target.value);
 setFilter({ ...filters, count, page: 1 }); // Reset to page 1 when count changes
 };
+const handlePageChange = (newPage) => {
+    setFilter({ ...filters, page: newPage });
+  };
+
 return (
 <Layout>
 <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
@@ -68,7 +73,7 @@ return (
 <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
 <div>
 <h1 className="text-[22px] font-bold mb-1">My Appointment</h1>
-<p className="text-sm text-[#828282]">{total} items</p>
+{/* <p className="text-sm text-[#828282]">{total} items</p> */}
 </div>
 </div>
 <div className="flex justify-end flex-wrap gap-y-2 gap-x-1">
@@ -127,7 +132,7 @@ onChange={(e) => setSortOrder(e.target.value)}
 <td className="w-[100px] px-6 py-4">
 <button
 className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1"
-onClick={() => history(`/myappointmentDetail/${appointment.id}`)}
+onClick={() => history(`/myappointmentData/${appointment.id}`)}
 >
 View
 </button>
@@ -160,7 +165,7 @@ className="bg-[#828282] text-white rounded-[10px] px-3 py-2"
 currentPage={filters.page}
 totalSize={total}
 sizePerPage={filters.count}
-changeCurrentPage={handlePageSizeChange}
+changeCurrentPage={handlePageChange}
 />
 </div>
 )}
