@@ -762,7 +762,7 @@ const Html = ({
                                               <>{itm?.activeIcon}</>
                                             )}
 
-                                            <span className="text-inherit leading-none sidebar_text duration-300" >
+                                            <span className="text-inherit leading-none sidebar_text duration-300">
                                               {itm.name}
                                             </span>
                                           </NavLink>
