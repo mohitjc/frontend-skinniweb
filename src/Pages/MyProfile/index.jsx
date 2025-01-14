@@ -1,9 +1,6 @@
-
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { MdEdit } from "react-icons/md";
-import ApiClient from "../../methods/api/apiClient";
 import Layout from "../../components/sidebarglobal/layout";
 import { FaCog, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -18,7 +15,8 @@ import { PiDotsSixVerticalBold } from "react-icons/pi";
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import environment from "../../environment";
 import { login_success } from "../actions/user";
-
+import ApiClient from "../../methods/api/apiClient";
+import loader from "../../methods/loader";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.user);
@@ -35,6 +33,56 @@ const MyProfile = () => {
   const [editable, setEditable] = useState(false);
   const [image, setImage] = useState(""); // Profile image URL
   const [loading, setLoading] = useState(false);
+  const history = useNavigate();
+  const [filters, setFilter] = useState({
+    page: 1,
+    email: user?.email,
+    count: 10,
+    search: "",
+  });
+  const [data, setData] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [sortBy, setSortBy] = useState("id"); // Default sort by Ref#
+  const [sortOrder, setSortOrder] = useState("asc"); // Default order: ascending
+
+  // Fetching the data from API
+  const getData = (p = {}) => {
+    loader(true);
+    let filter = { ...filters, ...p };
+
+    ApiClient.get("orderList", filter).then((res) => {
+      if (res.success) {
+        setData(res.data.orders);  // Set data to orders
+        setTotal(res.data.total);   // Update total
+      }
+      loader(false);
+    });
+  };
+
+  // Sorting logic
+  const sortData = (data) => {
+    return data.sort((a, b) => {
+      const fieldA = a[sortBy];
+      const fieldB = b[sortBy];
+
+      if (sortOrder === "asc") {
+        return fieldA > fieldB ? 1 : fieldA < fieldB ? -1 : 0;
+      } else {
+        return fieldA < fieldB ? 1 : fieldA > fieldB ? -1 : 0;
+      }
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, [filters]);
+
+  useEffect(() => {
+    // Sort the data when it's first loaded
+    if (data.length > 0) {
+      setData((prevData) => sortData([...prevData])); // Sorting a copy of the data
+    }
+  }, [sortBy, sortOrder, data]);
 
   // Fetch user profile data
   const fetchProfileData = () => {

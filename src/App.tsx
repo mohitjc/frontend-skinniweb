@@ -29,7 +29,7 @@ function App() {
     { url: "/dashboard", path: "Dashboard" },
     { url: "/myorders", path: "Orders/orderlisting" },
     { url: "/mypayments", path: "MyPayments" },
-    { url: "/myordersDetail", path: "Orders" },
+    { url: "/myordersDetail/:id", path: "Orders" },
     // { url: "/myprofile", path: "MyProfile" },
     { url: "/subscription", path: "Subscription" },
     { url: "/profile/:tab", path: "Settings" },
