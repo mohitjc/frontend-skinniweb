@@ -15,6 +15,7 @@ import { PiUserListLight } from "react-icons/pi";
 import { GoGoal } from "react-icons/go";
 import { CiLock } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
+import { MdOutlinePayments } from "react-icons/md";
 
 const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) => {
   // const [activeplan, setActiveplan] = useState();
@@ -71,7 +72,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
     },
     {
       name: "My Payments",
-      icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/mypayments",
       // key: "readstaff",
     },
