@@ -41,20 +41,26 @@
 
 .main-sidebar {
   position: fixed;
-  overflow: auto;
-  overflow-x: hidden;
   max-width: 280px;
   z-index: 99;
   background-repeat: no-repeat;
   background-size: 100%;
   min-width: 280px;
   width: 100%;
-  height: 100vh;
   // margin-top: -72px;
   padding: 0px 0px;
 
   .sidebar-brand img {
   }
+}
+
+.overflow_sidebar {
+  overflow: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 120px);
+}
+.active-sidebar .overflow_sidebar {
+  height: calc(100vh - 87px) !important;
 }
 
 ///////////*********** Select_tag css ***********///////////

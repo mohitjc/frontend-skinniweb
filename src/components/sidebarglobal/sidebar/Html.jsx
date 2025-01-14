@@ -110,7 +110,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
         className={` ${isOpen && styles.sm_sidebar} duration-300`}
         component="siderbar"
       >
-        <ul className="space-y-2">
+        <ul className="space-y-2 overflow_sidebar mt-2">
           
           {menus.map((itm) => {
             return (
