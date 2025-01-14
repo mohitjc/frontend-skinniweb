@@ -17,6 +17,7 @@ import environment from "../../environment";
 import { login_success } from "../actions/user";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
+import { useNavigate } from "react-router-dom";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.user);
