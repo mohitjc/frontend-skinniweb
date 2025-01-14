@@ -9,7 +9,7 @@ const Payments = () => {
    <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
     <div className="grid grid-cols-12 gap-5">
     <div className="col-span-12 lg:col-span-5">
-    <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
+    <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem]">
              <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
                <div className="">
                  <h1 className="text-[22px] font-bold mb-1">My Payment Options</h1>
@@ -17,7 +17,7 @@ const Payments = () => {
                </div>
              </div>
            </div>
-           <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px]">
+           <div className="bg-[#FFF1E7] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px]">
               <div className="grid grid-cols-1 gap-5">
               <div className="bg-white rounded-[12px] p-4">
                 <div className="">
@@ -54,7 +54,7 @@ const Payments = () => {
            </div>
 
            <div className="col-span-12 lg:col-span-7">
-           <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] p-[1.5rem] rounded-[12px]">
+           <div className="bg-[#FFF1E7] p-[1.5rem] rounded-[12px]">
            <div className="bg-white p-[1.5rem] rounded-[12px]">
             <h2 className="border-b font-[600] text-[18px] pb-2 mb-5">Add A Credit Card</h2>
             <div className="mb-5">
