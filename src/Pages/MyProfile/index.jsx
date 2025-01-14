@@ -369,7 +369,7 @@ const MyProfile = () => {
               <td className="px-6 py-3 whitespace-nowrap">
                 <div className="text-sm ">Complete</div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-3 py-4 whitespace-nowrap">
               <div className="">
                 <button className="flex gap-1 text-sm items-center cursor-pointer"><FaEye className="text-[18px]"/>View Reorder</button>
                 </div>

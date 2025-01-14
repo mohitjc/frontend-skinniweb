@@ -46,14 +46,14 @@ const Subscription = () => {
         </thead>
         <tbody>
           <tr className="bg-white border-t">
-            <td className="px-6 py-4">1000001737</td>
-            <td className="px-6 py-4">Landing Page</td>
-            <td className="px-6 py-4">Active</td>
-            <td className="px-6 py-4">Every Month</td>
+            <td className="px-3 py-4">1000001737</td>
+            <td className="px-3 py-4">Landing Page</td>
+            <td className="px-3 py-4">Active</td>
+            <td className="px-3 py-4">Every Month</td>
             <td className="px-6 py- 4">890.00</td>
-            <td className="px-6 py-4">12/25/24</td>
-            <td className="px-6 py-4">1/25/25</td>
-            <td className="w-[100px] px-6 py-4">
+            <td className="px-3 py-4">12/25/24</td>
+            <td className="px-3 py-4">1/25/25</td>
+            <td className="w-[100px] px-3 py-4">
               <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1">View</button>
             </td>
           </tr>
