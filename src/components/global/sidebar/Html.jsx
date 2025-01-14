@@ -560,7 +560,7 @@ const Html = ({
                                                               {/* <span className="w-[7px] h-[7px] bg-[#596b77] rounded-full block absolute -left-[4px]"></span> */}
                                                               {sitm.icon}
                                                               <span
-                                                                className="text-inherit leading-none sidebar_text ps-5"
+                                                                className="text-inherit leading-none sidebar_text duration-300 ps-5"
                                                                 title={
                                                                   sitm.name
                                                                 }
@@ -612,7 +612,7 @@ const Html = ({
                                           <>{itm?.activeIcon}</>
                                         )}
 
-                                        <span className="text-inherit leading-none sidebar_text">
+                                        <span className="text-inherit leading-none sidebar_text duration-300">
                                           {itm.name}
                                         </span>
                                       </NavLink>
@@ -762,7 +762,7 @@ const Html = ({
                                               <>{itm?.activeIcon}</>
                                             )}
 
-                                            <span className="text-inherit leading-none sidebar_text" >
+                                            <span className="text-inherit leading-none sidebar_text duration-300" >
                                               {itm.name}
                                             </span>
                                           </NavLink>
@@ -809,7 +809,7 @@ const Html = ({
                       <tooltip placement="top" color="#0065FF" title={itm.name}>
                         <div className="px-4 py-2 gap-4 rounded-md flex items-center w-full text-sm font-normal text-[#333] hover:!text-[#0065FF] hover:bg-[#e5edfa] transition-all">
                           {itm.icon}
-                          <span className="text-inherit leading-none sidebar_text">
+                          <span className="text-inherit leading-none sidebar_text duration-300">
                             {itm.name}
                           </span>
                         </div>
@@ -828,7 +828,7 @@ const Html = ({
                         {!location?.pathname.includes(itm.url)
                           ? itm.icon
                           : itm.activeIcon}
-                        <span className="text-inherit leading-none sidebar_text">
+                        <span className="text-inherit leading-none sidebar_text duration-300">
                           {itm.name}
                         </span>
                       </NavLink>

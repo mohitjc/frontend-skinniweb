@@ -47,57 +47,57 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
     },
     {
       name: 'My Account',
-      icon: <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <CiUser className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/",
       // key: "readDashboard",
     },
     // {
     //   name: 'My Profile',
-    //   icon:  <CiUser className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+    //   icon:  <CiUser className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
     //   url: "/myprofile",
     //   // key: "readcustomer",
     // },
     {
       name: 'My Orders',
-      icon: <PiKeyThin className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <PiKeyThin className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/myorders",
       // key: "readcustomer",
     },
     
     {
       name: "My Subscription",
-      icon: <PiUserListLight className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <PiUserListLight className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/subscription",
       // key: "readstaff",
     },
     {
       name: "My Payments",
-      icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/mypayments",
       // key: "readstaff",
     },
     {
       name: "My Goals",
-      icon: <GoGoal className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <GoGoal className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/Goals",
       // key: "readplan",
     },
     {
       name: "My Appointments",
-      icon: <GoGoal className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <GoGoal className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/myappointment",
       // key: "readstaff",
       },
       
     {
       name: "Change Password",
-      icon: <CiLock className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon: <CiLock className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/changepassword",
       // key: "readdocumenttype",
     },
     // {
     //   name: "Logout",
-    //   icon: <IoLogOutOutline  className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+    //   icon: <IoLogOutOutline  className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
     //   url: "/Workspaces",
     //   // key: "readworkspaces",
     // },
@@ -134,7 +134,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                       <Disclosure.Button className="w-full p-2.5 rounded-md flex items-center justify-between text-[#fff]  hover:!text-[#fff] gap-[12px] hover:bg-[#26ddd3] transition-all duration-300">
                                         <span className="text-sm font-normal text-inherit flex items-center gap-[12px] crm">
                                           {itm.icon}
-                                          <span className=" text-inherit leading-none sidebar_text">
+                                          <span className=" text-inherit leading-none sidebar_text duration-300">
                                             {itm.name}
                                           </span>
                                         </span>
@@ -170,7 +170,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                                       to={sitm.url}
                                                     >
                                                       <span
-                                                        className="text-inherit leading-none sidebar_text"
+                                                        className="text-inherit leading-none sidebar_text duration-300"
                                                         title={sitm.name}
                                                       >
                                                         {sitm.name}
@@ -210,7 +210,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                   }
                                 >
                                   {itm.icon}
-                                  <span className="text-inherit leading-none sidebar_text">
+                                  <span className="text-inherit leading-none sidebar_text duration-300">
                                     {itm.name}
                                   </span>
                                 </NavLink>
@@ -256,8 +256,8 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                   }
                   onClick={Logout}
                 >
-                  <IoLogOutOutline className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />
-                  <span className="text-inherit leading-none sidebar_text">
+                  <IoLogOutOutline className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />
+                  <span className="text-inherit leading-none sidebar_text duration-300">
                     LogOut
                   </span>
                 </NavLink>
