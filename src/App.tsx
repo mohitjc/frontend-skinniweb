@@ -31,6 +31,9 @@ function App() {
     { url: "/mypayments", path: "MyPayments" },
     { url: "/myordersDetail", path: "Orders" },
     // { url: "/myprofile", path: "MyProfile" },
+    { url: "/myappointment", path: "MyAppointment/appointmentListing" },
+{ url: "/myappointmentDetail/:id", path: "MyAppointment" },
+
     { url: "/subscription", path: "Subscription" },
     { url: "/profile/:tab", path: "Settings" },
     { url: "/forgotpassword", path: "Forgotpassword" },
