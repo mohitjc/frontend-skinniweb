@@ -199,7 +199,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                   className={(isActive) =>
                                     "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline" +
                                     (location?.pathname === itm.url &&
-                                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                                   }
                                 >
                                   {itm.icon}
@@ -245,7 +245,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                   className={(isActive) =>
                     "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#00000014] !no-underline transition-all " +
                     (location?.pathname === "" &&
-                      " rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                   }
                   onClick={Logout}
                 >
