@@ -332,41 +332,41 @@ const MyProfile = () => {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Order#</th>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Date</th>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Ship to</th>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Order Total</th>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Status</th>
-                  <th scope="col" className="whitespace-nowrap px-3 py-4">Action</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Order#</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Date</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Ship to</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Order Total</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Status</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {data?.slice(0,3)?.map((order) => (
                   <tr key={order.id} className="border-t">
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{order.id}</div>
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{new Date(order.createdAt).toLocaleDateString()}</div>
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{order.email}</div>
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">${order.total}</div>
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{order.status === "active" ? "Complete" : "Pending"}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-4 text-[12px]">
                       <div>
-                        <button className="flex gap-1 text-sm items-center cursor-pointer" onClick={()=>history(`myordersDetail/${order?.id}`)}>
+                        <button className="flex gap-1 text-[12px] items-center cursor-pointer" onClick={()=>history(`myordersDetail/${order?.id}`)}>
                           <FaEye className="text-[18px]" />View
                         </button>
                       </div>
                     </td>
                     <td className="px-6 py-3 whitespace-nowrap">
-                      <div className="text-sm text-[#FF0000] flex items-center gap-1">
+                      <div className="text-[12px] text-[#FF0000] flex items-center gap-1">
                         <PiDotsSixVerticalBold className="text-[18px]" />Reorder
                       </div>
                     </td>
