@@ -5,7 +5,8 @@ import ApiClient from "../../../methods/api/apiClient";
 import loader from "../../../methods/loader";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-
+import Pagination from "react-pagination-js"; 
+import "react-pagination-js/dist/styles.css";
 const OrderListing = () => {
   const history = useNavigate();
   const user = useSelector((state) => state.user);
@@ -19,7 +20,7 @@ const OrderListing = () => {
   const [total, setTotal] = useState(0);
   const [sortBy, setSortBy] = useState("id"); // Default sort by Ref#
   const [sortOrder, setSortOrder] = useState("asc"); // Default order: ascending
-
+  const [totalPages, setTotalPages] = useState(0);
   // Fetching the data from API
   const getData = (p = {}) => {
     loader(true);
@@ -27,8 +28,9 @@ const OrderListing = () => {
 
     ApiClient.get("orderList", filter).then((res) => {
       if (res.success) {
-        setData(res.data.orders);  // Set data to orders
-        setTotal(res.data.total);   // Update total
+        setData(res.data.orders); // Set orders data
+        setTotal(res.data.pagination.totalRecords); // Set total records count
+        setTotalPages(res.data.pagination.totalPages);   // Update total
       }
       loader(false);
     });
@@ -53,12 +55,22 @@ const OrderListing = () => {
   }, [filters]);
 
   useEffect(() => {
-    // Sort the data when it's first loaded
+  
     if (data.length > 0) {
       setData((prevData) => sortData([...prevData])); // Sorting a copy of the data
     }
-  }, [sortBy, sortOrder, data]); // Trigger sorting after fetching and whenever sortBy or sortOrder changes
-
+  }, [sortBy, sortOrder]); // Trigger sorting after fetching and whenever sortBy or sortOrder changes
+  const handlePageSizeChange = (e) => {
+    const count = parseInt(e.target.value);
+    setFilter({ ...filters, count, page: 1 }); // Reset to page 1 when count changes
+    };  
+    const handleCountChange = (newCount) => {
+      setFilter({ ...filters, count: newCount, page: 1 }); // Reset to page 1 when count changes
+    };
+    const handlePageChange = (newPage) => {
+      setFilter({ ...filters, page: newPage });
+    };
+    
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
@@ -152,10 +164,36 @@ const OrderListing = () => {
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      </div>
-    </Layout>
+            
+{total > 0 && (
+<div className="flex justify-between mt-4">
+<div className="flex items-center">
+<span className="text-sm text-gray-600 mr-2">Show</span>
+<select
+  value={filters.count}
+  onChange={(e) => handleCountChange(parseInt(e.target.value))} // Call handleCountChange here
+  className="bg-[#828282] text-white rounded-[10px] px-3 py-2"
+>
+  <option value="10">10</option>
+  <option value="20">20</option>
+  <option value="30">30</option>
+  <option value="50">50</option>
+</select>
+<span className="text-sm text-gray-600 ml-2">items per page</span>
+</div>
+
+<Pagination
+currentPage={filters.page}
+totalSize={total}
+sizePerPage={filters.count}
+changeCurrentPage={handlePageChange}
+/>
+</div>
+)}
+</div>
+</div>
+</div>
+</Layout>
   );
 };
 

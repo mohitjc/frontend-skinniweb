@@ -83,6 +83,13 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
       // key: "readplan",
     },
     {
+      name: "My Appointments",
+      icon: <GoGoal className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      url: "/myappointment",
+      // key: "readstaff",
+      },
+      
+    {
       name: "Change Password",
       icon: <CiLock className="bg-white text-[#B7B7B7] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/changepassword",
