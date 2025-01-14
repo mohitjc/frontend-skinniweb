@@ -58,7 +58,66 @@ const Payments = () => {
 
             <div>
             <h3 className="border-b pb-2 mb-4">Cardholder Information</h3>
-               
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">First Name<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Last Name<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Company</label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+               <div>
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Phone Number<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+            </div>
+
+            <div>
+            <h3 className="border-b pb-2 mb-4">Cardholder Information</h3>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Street<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white mt-2"/>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">City<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">State/Province<span class="text-[#FF0028]">*</span></label>
+               <div class="relative z-20">
+            <select class="relative bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 pr-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none">
+               <option value="" class="dark:bg-dark-2">Option</option>
+               <option value="" class="dark:bg-dark-2">Option</option>
+               <option value="" class="dark:bg-dark-2">Option</option>
+            </select>
+            <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-[#969696]">
+            </span>
+         </div>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Zip/Postal Code<span class="text-[#FF0028]">*</span></label>
+               <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"/>
+               </div>
+               <div className="mb-3">
+               <label class="block mb-2 text-[12px] font-medium text-gray-900 dark:text-white">Country<span class="text-[#FF0028]">*</span></label>
+               <div class="relative z-20">
+            <select class="relative bg-gray-50 border border-gray-300 text-gray-900 text-[12px] block w-full p-2.5 pr-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none">
+               <option value="" class="dark:bg-dark-2">Option</option>
+               <option value="" class="dark:bg-dark-2">Option</option>
+               <option value="" class="dark:bg-dark-2">Option</option>
+            </select>
+            <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-[#969696]">
+            </span>
+         </div>
+               </div>
+               <div className="flex gap-2 flex-wrap mb-3">
+                  <img src=""/>
+               </div>
             </div>
 
            </div>
