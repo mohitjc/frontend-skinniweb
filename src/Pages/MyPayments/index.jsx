@@ -21,8 +21,10 @@ const Payments = () => {
               <div className="grid grid-cols-1 gap-5">
               <div className="bg-white rounded-[12px] p-4">
                 <div className="">
-                  <img src=""/>
-              <h3 className="border-b pb-2 mb-2"><span className="text-[13px] text-[#AE0505]">XXXX-5800</span><span className="text-[10px]">(Expires: 05/202*)</span></h3>
+                  <div className="flex gap-2 items-end border-b pb-2 mb-2">
+                  <img src="/assets/img/card_img1.png"className="w-fit h-[28px] object-contain relative top-[3px]"/>
+              <h3 className=""><span className="text-[13px] text-[#AE0505]">XXXX-5800</span><span className="text-[10px]">(Expires: 05/202*)</span></h3>
+              </div>
               <p className="text-[12px] text-[#AE0505]">Lawrence....</p>
               <p className="text-[12px] text-[#AE0505]">Apple tree Cir</p>
               <p className="text-[12px] text-[#AE0505]">Orlando, Florida, 32819</p>
@@ -37,7 +39,10 @@ const Payments = () => {
               <div className="bg-white rounded-[12px] p-4">
                 <div className="">
                   <img src=""/>
-              <h3 className="border-b pb-2 mb-2"><span className="text-[13px] text-[#AE0505]">XXXX-5800</span><span className="text-[10px]">(Expires: 05/202*)</span></h3>
+                  <div className="flex gap-2 items-end border-b pb-2 mb-2">
+                  <img src="/assets/img/card_img4.png"className="w-fit h-[28px] object-contain relative top-[3px]"/>
+              <h3 className=""><span className="text-[13px] text-[#AE0505]">XXXX-5800</span><span className="text-[10px]">(Expires: 05/202*)</span></h3>
+             </div>
               <p className="text-[12px] text-[#AE0505]">Lawrence....</p>
               <p className="text-[12px] text-[#AE0505]">Apple tree Cir</p>
               <p className="text-[12px] text-[#AE0505]">Orlando, Florida, 32819</p>
