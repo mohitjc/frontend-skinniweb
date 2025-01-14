@@ -69,29 +69,35 @@ const OrderListing = () => {
               <p className="text-sm text-[#828282]">1 item</p>
             </div>
           </div>
-          <div className="flex justify-end flex-wrap gap-y-2 gap-x-1">
+          <div className="flex justify-end flex-wrap gap-y-2 gap-x-2">
             <div className="flex items-center">
-              <span className="text-gray-600 mr-2">Sort By</span>
+              <span className="text-gray-600 mb-0 mr-2">Sort By</span>
+              <div className="relative bg-[#828282] rounded-[10px]">
               <select
-                className="bg-[#828282] text-white rounded-[10px] px-3 py-2"
+                className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2 "
                 onChange={(e) => setSortBy(e.target.value)}
               >
-                <option value="id">Ref#</option>
-                <option value="description">Description</option>
-                <option value="status">Status</option>
-                <option value="total">Subtotal</option>
+                <option className="text-[#828282]" value="id">Ref#</option>
+                <option className="text-[#828282]" value="description">Description</option>
+                <option className="text-[#828282]" value="status">Status</option>
+                <option className="text-[#828282]" value="total">Subtotal</option>
               </select>
+              <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+              </div>
               <FaLongArrowAltDown className="text-[#828282]" />
             </div>
             <div className="flex items-center">
-              <span className="text-gray-600 mr-2">Order</span>
+              <span className="text-gray-600 mb-0 mr-2">Order</span>
+              <div className="relative bg-[#828282] rounded-[10px]">
               <select
-                className="bg-[#828282] text-white rounded-[10px] px-3 py-2"
+                className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2"
                 onChange={(e) => setSortOrder(e.target.value)}
               >
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
+                <option className="text-[#828282]" value="asc">Ascending</option>
+                <option className="text-[#828282]" value="desc">Descending</option>
               </select>
+              <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -102,13 +108,13 @@ const OrderListing = () => {
               <table className="w-full text-sm text-left">
                 <thead className="uppercase">
                   <tr>
-                    <th className="whitespace-nowrap px-3 pb-4">Ref#</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Description</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Status</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Frequency</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Subtotal</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Last Run</th>
-                    {/* <th className="whitespace-nowrap px-3 pb-4">Next Run</th> */}
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Ref#</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Description</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Status</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Frequency</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Subtotal</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Last Run</th>
+                    {/* <th className="whitespace-nowrap text-[13px] px-3 pb-4">Next Run</th> */}
                   </tr>
                 </thead>
                 <tbody>

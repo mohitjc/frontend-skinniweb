@@ -50,12 +50,12 @@ const Goals = () => {
               {/* <p className="text-sm text-[#828282]">1 item</p> */}
             </div>
           </div>
-          <div className="flex justify-end flex-wrap gap-y-2 gap-x-1">
+          <div className="flex justify-end flex-wrap gap-y-2 gap-x-2">
             <div className="flex items-center">
-              <label className="text-gray-600 mr-2">Filter by Date</label>
+              <label className="text-gray-600 mb-0 mr-2">Filter by Date</label>
               <input
                 type="date"
-                className="border p-2 rounded"
+                className="relative bg-white border text-[14px] rounded-[10px] px-3 py-2"
                 value={filters.date}
                 onChange={handleDateChange}
               />
@@ -64,7 +64,7 @@ const Goals = () => {
             {/* Conditionally render Reset button if a filter is applied */}
             {isFilterApplied && (
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 text-white px-3 py-2 rounded-[10px]"
                 onClick={resetFilters}
               >
                 Reset Filters
@@ -79,14 +79,14 @@ const Goals = () => {
               <table className="w-full text-sm text-left">
                 <thead className="uppercase ">
                   <tr className="">
-                    <th className="whitespace-nowrap px-3 pb-4">Fat (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Protein (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Carbs (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Calories</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Consumed Fat (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Consumed Protein (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Consumed Carbs (g)</th>
-                    <th className="whitespace-nowrap px-3 pb-4">Consumed Calories</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Fat (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Protein (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Carbs (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Calories</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Fat (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Protein (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Carbs (g)</th>
+                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Calories</th>
                   </tr>
                 </thead>
                 <tbody>
