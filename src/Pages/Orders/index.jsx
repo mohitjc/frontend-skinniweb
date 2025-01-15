@@ -53,7 +53,7 @@ const Orders = () => {
 
   return (
     <Layout>
-  <Breadcrumb items={breadcrumbItems} />
+    <Breadcrumb items={breadcrumbItems} />
       <div className="">
         {/* Order Details Section */}
         <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
