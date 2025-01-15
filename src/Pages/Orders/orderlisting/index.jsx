@@ -166,7 +166,7 @@ const OrderListing = () => {
             </div>
             
 {total > 0 && (
-<div className="paginationdiv flex flex-wrap justify-between mt-4">
+<div className="paginationdiv flex flex-wrap gap-x-5 gap-y-2 justify-between mt-4">
 <div className="flex items-center">
 <span className="text-sm text-gray-600 mr-2">Show</span>
 <div className="relative bg-[#828282] rounded-[10px]">
