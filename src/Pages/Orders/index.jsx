@@ -106,7 +106,7 @@ const Orders = () => {
 
                     <div className="grid grid-cols-12 gap-y-5">
                       <div className="col-span-12 md:col-span-6 lg:col-span-4">
-                        <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+                        <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
                         {/* <div className="px-2 py-3">
                           <p className="text-[12px]">Landing Page</p>
                           <div className="mt-3">
@@ -131,7 +131,7 @@ const Orders = () => {
                       </div>
 
                       <div className="col-span-6 lg:col-span-2">
-                        <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
+                        <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">SKU</h2>
                         <div className="px-2 py-3">
                             <p className="text-[12px]"> LP -</p>
                             <p className="text-[12px]">GEN -</p>
@@ -140,7 +140,7 @@ const Orders = () => {
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
+                        <h2 className="lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
                        
                           {/* <div className="text-[12px] lg:text-right px-2 py-3">$3.00</div> */}
                           {data?.products?.map((product, index) => (
@@ -151,14 +151,14 @@ const Orders = () => {
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY</h2>
+                        <h2 className="lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">QTY</h2>
                         {data?.products?.map((product, index) => (<div className="px-2 py-3">
                           <p className="text-[12px] lg:text-right" key={index}>Shipped - {product.quantity}</p>
                         </div>))}
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
+                        <h2 className="lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
                           {/* <div className="text-[12px] lg:text-right px-2 py-3">$90.00</div> */}
                           {data?.products?.map((product, index) => (
                             <div className="px-2 py-3">
@@ -197,7 +197,7 @@ const Orders = () => {
 </div>
 <div className="grid grid-cols-12 gap-y-5">
    <div className="col-span-12 md:col-span-6 lg:col-span-4">
-   <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
    <div className="px-2 py-3">
     <p className="text-[12px]">Landing Page</p>
     <div className="mt-3">
@@ -217,7 +217,7 @@ const Orders = () => {
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
+     <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">SKU</h2>
      <div className="px-2 py-3">
      <div className="px-2 py-3">
       <p className="text-[12px]"> LP -</p>
@@ -227,14 +227,14 @@ const Orders = () => {
      </div>
 
      <div className="col-span-6 md:col-span-4 lg:col-span-2">
-     <h2 className="text-[12px] lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
+     <h2 className="text-[12px] lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
      <div className="px-2 py-3">
      <div className="text-[12px] lg:text-right px-2 py-3">$3.00</div>
      </div>
 </div>
 
 <div className="col-span-6 md:col-span-4 lg:col-span-2">
-<h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY</h2>
+<h2 className="lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">QTY</h2>
      <div className="px-2 py-3">
      <p className="text-[12px] lg:text-right">Shipped - 30</p>
      <p className="text-[12px] lg:text-right">Shipped - 30</p>
@@ -242,7 +242,7 @@ const Orders = () => {
      </div>
 
      <div className="col-span-6 md:col-span-4 lg:col-span-2">
-     <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
+     <h2 className="lg:text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
      <div className="px-2 py-3">
      <div className="text-[12px] lg:text-right px-2 py-3">$90.00</div>
      </div>
@@ -281,7 +281,7 @@ const Orders = () => {
 </div>
 <div className="grid grid-cols-12 gap-y-5">
    <div className="col-span-12 lg:col-span-8">
-   <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
    <div className="px-2 py-3">
     <p className="text-[12px]">Landing Page</p>
     <div className="mt-3">
@@ -301,7 +301,7 @@ const Orders = () => {
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
+     <h2 className="whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">SKU</h2>
      <div className="px-2 py-3">
      <div className="px-2 py-3">
       <p className="text-[12px]"> LP -</p>
@@ -311,7 +311,7 @@ const Orders = () => {
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY Shipped</h2>
+     <h2 className="text-right whitespace-nowrap text-[13px] xl:text-[14px] border-b font-bold px-2 py-4">QTY Shipped</h2>
      <div className="px-2 py-3">
      <div className="text-[12px] text-right px-2 py-3">$3.00</div>
      </div>

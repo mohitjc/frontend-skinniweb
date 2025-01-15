@@ -332,12 +332,12 @@ const MyProfile = () => {
             <table className="min-w-full">
               <thead>
                 <tr>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Order#</th>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Date</th>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Ship to</th>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Order Total</th>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Status</th>
-                  <th scope="col" className="whitespace-nowrap text-[13px] px-3 py-4">Action</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Order#</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Date</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Ship to</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Order Total</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Status</th>
+                  <th scope="col" className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 py-4">Action</th>
                 </tr>
               </thead>
               <tbody>
