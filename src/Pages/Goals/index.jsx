@@ -79,14 +79,14 @@ const Goals = () => {
               <table className="w-full text-sm text-left">
                 <thead className="uppercase ">
                   <tr className="">
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Fat (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Protein (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Carbs (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Calories</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Fat (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Protein (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Carbs (g)</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Consumed Calories</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Fat (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Protein (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Carbs (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Calories</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Consumed Fat (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Consumed Protein (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Consumed Carbs (g)</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Consumed Calories</th>
                   </tr>
                 </thead>
                 <tbody>

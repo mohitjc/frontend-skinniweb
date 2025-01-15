@@ -120,13 +120,13 @@ const OrderListing = () => {
               <table className="w-full text-sm text-left">
                 <thead className="uppercase">
                   <tr>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Ref#</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Description</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Status</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Frequency</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Subtotal</th>
-                    <th className="whitespace-nowrap text-[13px] px-3 pb-4">Last Run</th>
-                    {/* <th className="whitespace-nowrap text-[13px] px-3 pb-4">Next Run</th> */}
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Ref#</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Description</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Status</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Frequency</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Subtotal</th>
+                    <th className="whitespace-nowrap text-[14px] px-3 pb-4">Last Run</th>
+                    {/* <th className="whitespace-nowrap text-[14px] px-3 pb-4">Next Run</th> */}
                   </tr>
                 </thead>
                 <tbody>

@@ -55,13 +55,13 @@ const Orders = () => {
           <div className="">
         <h1 className="text-[22px] font-bold mb-1">ORDER #{id}</h1>
        
-          <p className="text-[#828282] text-sm">{datepipeModel.date(data?.createdAt)}</p>
+          <p className="text-[#828282] text-[12px]">{datepipeModel.date(data?.createdAt)}</p>
         </div>
         <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button>
         </div>
         <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
-          <p className="text-[#828282] text-sm font-[600]">Reorder</p>
-          <p className="text-[#828282] text-sm font-[600]">Print Order</p>
+          <p className="text-[#828282] text-[12px] font-[600]">Reorder</p>
+          <p className="text-[#828282] text-[12px] font-[600]">Print Order</p>
         </div>
         </div>
 
@@ -106,76 +106,75 @@ const Orders = () => {
 
                     <div className="grid grid-cols-12 gap-y-5">
                       <div className="col-span-12 md:col-span-6 lg:col-span-4">
-                        <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+                        <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
                         {/* <div className="px-2 py-3">
-                          <p className="text-sm">Landing Page</p>
+                          <p className="text-[12px]">Landing Page</p>
                           <div className="mt-3">
-                            <h2 className="text-sm font-bold">State Name</h2>
-                            <p className="text-sm">Florida (13001)</p>
+                            <h2 className="text-[12px] font-bold">State Name</h2>
+                            <p className="text-[12px]">Florida (13001)</p>
                           </div>
                           <div className="mt-3">
-                            <h2 className="text-sm font-bold">Subscription Acknowledgement</h2>
-                            <p className="text-sm">I Understand h2at by clicking h2is box, i am</p>
-                            <p className="text-sm">signing up............</p>
+                            <h2 className="text-[12px] font-bold">Subscription Acknowledgement</h2>
+                            <p className="text-[12px]">I Understand h2at by clicking h2is box, i am</p>
+                            <p className="text-[12px]">signing up............</p>
                           </div>
                           <div className="mt-3">
-                            <h2 className="text-sm font-bold">Select Sdivengh2</h2>
-                            <p className="text-sm">20 MG</p>
+                            <h2 className="text-[12px] font-bold">Select Sdivengh2</h2>
+                            <p className="text-[12px]">20 MG</p>
                           </div>
                         </div> */}
                         {data?.products?.map((product, index) => (
-                          <div className="col-span-12 md:col-span-6 lg:col-span-4" key={index}>
-                            <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">{product.productName}</h2>
+                          <div className="px-2 py-3" key={index}>
+                            <p className="text-[12px]">{product.productName}</p>
                           </div>
                         ))}
                       </div>
 
                       <div className="col-span-6 lg:col-span-2">
-                        <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">SKU</h2>
+                        <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
                         <div className="px-2 py-3">
-                          <div className="px-2 py-3">
-                            <p className="text-sm"> LP -</p>
-                            <p className="text-sm">GEN -</p>
-                            <p className="text-sm">UI -</p>
-                          </div>
+                            <p className="text-[12px]"> LP -</p>
+                            <p className="text-[12px]">GEN -</p>
+                            <p className="text-[12px]">UI -</p>
                         </div>
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="lg:text-right whitespace-nowrap border-b font-bold px-2 py-4">PRICE</h2>
-                        <div className="px-2 py-3">
-                          {/* <div className="text-sm lg:text-right px-2 py-3">$3.00</div> */}
+                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
+                       
+                          {/* <div className="text-[12px] lg:text-right px-2 py-3">$3.00</div> */}
                           {data?.products?.map((product, index) => (
-                            <div className="text-sm lg:text-right px-2 py-3" key={index}>${product.unitPrice}</div>
+                             <div className="px-2 py-3">
+                            <p className="text-[12px] lg:text-right" key={index}>${product.unitPrice}</p>
+                            </div>
                           ))}
-                        </div>
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="lg:text-right whitespace-nowrap border-b font-bold px-2 py-4">QTY</h2>
+                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY</h2>
                         {data?.products?.map((product, index) => (<div className="px-2 py-3">
-                          <p className="text-sm lg:text-right" key={index}>Shipped - {product.quantity}</p>
+                          <p className="text-[12px] lg:text-right" key={index}>Shipped - {product.quantity}</p>
                         </div>))}
                       </div>
 
                       <div className="col-span-6 md:col-span-4 lg:col-span-2">
-                        <h2 className="llg:text-right whitespace-nowrap border-b font-bold px-2 py-4">SUBTOTAL</h2>
-                        <div className="px-2 py-3">
-                          {/* <div className="text-sm lg:text-right px-2 py-3">$90.00</div> */}
+                        <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
+                          {/* <div className="text-[12px] lg:text-right px-2 py-3">$90.00</div> */}
                           {data?.products?.map((product, index) => (
-                            <div className="text-sm lg:text-right px-2 py-3" key={index}>${product.subTotal}</div>
+                            <div className="px-2 py-3">
+                            <div className="text-[12px] lg:text-right" key={index}>${product.subTotal}</div>
+                            </div>
                           ))}
-                        </div>
                       </div>
                     </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#F1F1F1] mt-4 rounded-[12px] p-4">
                   <div className=""></div>
                   <div className="grid grid-cols-1 gap-3">
-                  <p className="text-sm flex flex-wrap justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">${data?.products?.reduce((total, product) => total + product.subTotal, 0)}</span></p>
-                  {/* <p className="text-sm flex flex-wrap justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p> */}
-                  <p className="text-sm flex flex-wrap justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
-                  <p className="text-sm flex flex-wrap justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL:  <span className="">${data?.products?.reduce((total, product) => total + product.subTotal, 0)}</span></p>
+                  <p className="text-[12px] flex flex-wrap justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">${data?.products?.reduce((total, product) => total + product.subTotal, 0)}</span></p>
+                  {/* <p className="text-[12px] flex flex-wrap justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p> */}
+                  <p className="text-[12px] flex flex-wrap justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="text-[12px] flex flex-wrap justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL:  <span className="">${data?.products?.reduce((total, product) => total + product.subTotal, 0)}</span></p>
                   </div>
             
                 </div>
@@ -190,62 +189,62 @@ const Orders = () => {
                 <div className="border-b pb-3">
   <div className="flex justify-between flex-wrap items-end gap-y-2 gap-x-5">
     <div className="grid grid-cols-1 gap-2">
-  <p className="text-sm text-[#828282] text-sm">Print All Invoices</p>
+  <p className="text-[12px] text-[#828282] text-[12px]">Print All Invoices</p>
   <p className="text-[#000]">Invoice#000032792</p>
   </div>
-  <p className="text-sm text-[#828282] text-sm">Print Invoice</p>
+  <p className="text-[12px] text-[#828282] text-[12px]">Print Invoice</p>
   </div>
 </div>
 <div className="grid grid-cols-12 gap-y-5">
    <div className="col-span-12 md:col-span-6 lg:col-span-4">
-   <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
    <div className="px-2 py-3">
-    <p className="text-sm">Landing Page</p>
+    <p className="text-[12px]">Landing Page</p>
     <div className="mt-3">
-     <h2 className="text-sm font-bold">State Name</h2>
-     <p className="text-sm">Florida (13001)</p>
+     <h2 className="text-[12px] font-bold">State Name</h2>
+     <p className="text-[12px]">Florida (13001)</p>
     </div>
     <div className="mt-3">
-     <h2 className="text-sm font-bold">Subscription Acknowledgement</h2>
-     <p className="text-sm">I Understand h2at by clicking h2is box, i am</p>
-     <p className="text-sm">signing up............</p>
+     <h2 className="text-[12px] font-bold">Subscription Acknowledgement</h2>
+     <p className="text-[12px]">I Understand h2at by clicking h2is box, i am</p>
+     <p className="text-[12px]">signing up............</p>
     </div>
     <div className="mt-3">
-     <h2 className="text-sm font-bold">Select Sdivengh2</h2>
-     <p className="text-sm">20 MG</p>
+     <h2 className="text-[12px] font-bold">Select Sdivengh2</h2>
+     <p className="text-[12px]">20 MG</p>
     </div>
      </div>
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">SKU</h2>
+     <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
      <div className="px-2 py-3">
      <div className="px-2 py-3">
-      <p className="text-sm"> LP -</p>
-      <p className="text-sm">GEN -</p>
+      <p className="text-[12px]"> LP -</p>
+      <p className="text-[12px]">GEN -</p>
        </div>
      </div>
      </div>
 
      <div className="col-span-6 md:col-span-4 lg:col-span-2">
-     <h2 className="text-sm lg:text-right whitespace-nowrap border-b font-bold px-2 py-4">PRICE</h2>
+     <h2 className="text-[12px] lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRICE</h2>
      <div className="px-2 py-3">
-     <div className="text-sm lg:text-right px-2 py-3">$3.00</div>
+     <div className="text-[12px] lg:text-right px-2 py-3">$3.00</div>
      </div>
 </div>
 
 <div className="col-span-6 md:col-span-4 lg:col-span-2">
-<h2 className="lg:text-right whitespace-nowrap border-b font-bold px-2 py-4">QTY</h2>
+<h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY</h2>
      <div className="px-2 py-3">
-     <p className="text-sm lg:text-right">Shipped - 30</p>
-     <p className="text-sm lg:text-right">Shipped - 30</p>
+     <p className="text-[12px] lg:text-right">Shipped - 30</p>
+     <p className="text-[12px] lg:text-right">Shipped - 30</p>
      </div>
      </div>
 
      <div className="col-span-6 md:col-span-4 lg:col-span-2">
-     <h2 className="lg:text-right whitespace-nowrap border-b font-bold px-2 py-4">SUBTOTAL</h2>
+     <h2 className="lg:text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SUBTOTAL</h2>
      <div className="px-2 py-3">
-     <div className="text-sm lg:text-right px-2 py-3">$90.00</div>
+     <div className="text-[12px] lg:text-right px-2 py-3">$90.00</div>
      </div>
      </div>
 
@@ -255,10 +254,10 @@ const Orders = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 bg-[#F1F1F1] mt-4 rounded-[12px] p-4">
                   <div className=""></div>
                   <div className="grid grid-cols-1 gap-3">
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
                   </div>
             
                 </div>
@@ -273,48 +272,48 @@ const Orders = () => {
                 <div className="border-b pb-3">
   <div className="flex justify-between flex-wrap items-end gap-y-2 gap-x-5">
     <div className="grid grid-cols-1 gap-2">
-  <p className="text-sm text-[#828282] text-sm">Track All Shipments Print All Shipments</p>
-  <p className="text-sm text-[#000]">Shipment #000031341</p>
+  <p className="text-[12px] text-[#828282] text-[12px]">Track All Shipments Print All Shipments</p>
+  <p className="text-[12px] text-[#000]">Shipment #000031341</p>
   <p className="text-[12px] text-[#828282] font-[500]">Print Shipment</p>
   </div>
-  <p className="text-sm text-[#828282] text-sm">Track this shipment</p>
+  <p className="text-[12px] text-[#828282] text-[12px]">Track this shipment</p>
   </div>
 </div>
 <div className="grid grid-cols-12 gap-y-5">
    <div className="col-span-12 lg:col-span-8">
-   <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
+   <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">PRODUCT NAME	</h2>
    <div className="px-2 py-3">
-    <p className="text-sm">Landing Page</p>
+    <p className="text-[12px]">Landing Page</p>
     <div className="mt-3">
-     <h2 className="text-smfont-bold">State Name</h2>
-     <p className="text-sm">Florida (13001)</p>
+     <h2 className="text-[12px]font-bold">State Name</h2>
+     <p className="text-[12px]">Florida (13001)</p>
     </div>
     <div className="mt-3">
-     <h2 className="text-sm font-bold">Subscription Acknowledgement</h2>
-     <p className="text-sm">I Understand h2at by clicking h2is box, i am</p>
-     <p className="text-sm">signing up............</p>
+     <h2 className="text-[12px] font-bold">Subscription Acknowledgement</h2>
+     <p className="text-[12px]">I Understand h2at by clicking h2is box, i am</p>
+     <p className="text-[12px]">signing up............</p>
     </div>
     <div className="mt-3">
-     <h2 className="text-sm font-bold">Select Sdivengh2</h2>
-     <p className="text-sm">20 MG</p>
+     <h2 className="text-[12px] font-bold">Select Sdivengh2</h2>
+     <p className="text-[12px]">20 MG</p>
     </div>
      </div>
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="whitespace-nowrap border-b font-bold px-2 py-4">SKU</h2>
+     <h2 className="whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">SKU</h2>
      <div className="px-2 py-3">
      <div className="px-2 py-3">
-      <p className="text-sm"> LP -</p>
-      <p className="text-sm">GEN -</p>
+      <p className="text-[12px]"> LP -</p>
+      <p className="text-[12px]">GEN -</p>
        </div>
      </div>
      </div>
 
      <div className="col-span-6 lg:col-span-2">
-     <h2 className="text-right whitespace-nowrap border-b font-bold px-2 py-4">QTY Shipped</h2>
+     <h2 className="text-right whitespace-nowrap text-[14px] border-b font-bold px-2 py-4">QTY Shipped</h2>
      <div className="px-2 py-3">
-     <div className="text-sm text-right px-2 py-3">$3.00</div>
+     <div className="text-[12px] text-right px-2 py-3">$3.00</div>
      </div>
 </div>
 
@@ -324,10 +323,10 @@ const Orders = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 bg-[#F1F1F1] mt-4 text-right rounded-[12px] p-4">
                   <div className=""></div>
                   <div className="grid grid-cols-1 gap-3">
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
-                  <p className="text-sm flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">SUBTOTAL: <span className="">$90.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">DISCOUNT (SIMPLYCODES 10): <span className="">-$9.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5">SHIPPING AND HANDLING: <span className="">$0.00</span></p>
+                  <p className="text-[12px] flex justify-between gap-y-1 gap-x-5 font-bold mt-5">GRAND TOTAL: <span className="">$81.00</span></p>
                   </div>
             
                 </div>
@@ -346,40 +345,40 @@ const Orders = () => {
    <div className="">
    <h2 className="font-bold py-4">Shipping Address	</h2>
     <div className="">
-     <p className="text-sm">Lawrance 103689</p>
-     <p className="text-sm">Lorem Ipsum</p>
-     <p className="text-sm">Lorem</p>
-     <p className="text-sm">11489</p>
+     <p className="text-[12px]">Lawrance 103689</p>
+     <p className="text-[12px]">Lorem Ipsum</p>
+     <p className="text-[12px]">Lorem</p>
+     <p className="text-[12px]">11489</p>
     </div>
      </div>
 
      <div className="">
    <h2 className="font-bold py-4">Shipping Method	</h2>
     <div className="">
-     <p className="text-sm">Rate</p>
+     <p className="text-[12px]">Rate</p>
     </div>
      </div>
 
      <div className="">
    <h2 className="font-bold py-4">Billing Address	</h2>
     <div className="">
-     <p className="text-sm">Lawrance 103689</p>
-     <p className="text-sm">Lorem Ipsum</p>
-     <p className="text-sm">Lorem</p>
-     <p className="text-sm">11489</p>
+     <p className="text-[12px]">Lawrance 103689</p>
+     <p className="text-[12px]">Lorem Ipsum</p>
+     <p className="text-[12px]">Lorem</p>
+     <p className="text-[12px]">11489</p>
     </div>
      </div>
 
      <div className="">
    <h2 className="font-bold py-4">Payment Method	</h2>
     <div className="">
-     <p className="text-sm">Payment Method</p>
+     <p className="text-[12px]">Payment Method</p>
      <p>Lorem Ipsum</p>
      <div className="border-t pt-2 mt-2">
-     <p className="text-sm flex">Credit Card    <span className="ml-3">Visa</span></p>
+     <p className="text-[12px] flex">Credit Card    <span className="ml-3">Visa</span></p>
      </div>
      <div className="border-t pt-2 mt-2">
-     <p className="text-sm flex">Credit Card Number <span className="ml-3">xxx</span></p>
+     <p className="text-[12px] flex">Credit Card Number <span className="ml-3">xxx</span></p>
      </div>
     </div>
      </div>
