@@ -28,9 +28,9 @@ const Appointment = () => {
     <Layout>
       <div className="bg-white px-6 py-6 rounded-lg shadow-md">
         {/* Appointment Header */}
-        <div className="mb-6">
+        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] mb-5">
           <h1 className="text-2xl font-bold mb-2">Appointment #{data?.id}</h1>
-          <p className="text-sm text-gray-600">Status: {data?.status}</p>
+          <p className="text-sm text-gray-600 capitalize">Status: {data?.status}</p>
         </div>
 
         {/* Appointment Details */}
