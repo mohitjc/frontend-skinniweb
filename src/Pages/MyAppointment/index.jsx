@@ -4,10 +4,16 @@ import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import Layout from "../../components/sidebarglobal/layout";
 import datepipeModel from "../../models/datepipemodel";
+import Breadcrumb from "../../components/common/Breadcrumb/Breadcrumb";
 
 const Appointment = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const breadcrumbItems = [
+    { label: 'Home', link: '/', active: false },
+    { label: 'Appointment Listing', link: '/myappointment', active: false },
+    { label: 'Appointment Detail', link: '', active: true },
+  ];
 
   const getData = () => {
     loader(true);
@@ -26,6 +32,7 @@ const Appointment = () => {
 
   return (
     <Layout>
+    <Breadcrumb items={breadcrumbItems} />
       <div className="bg-white px-6 py-6 rounded-lg shadow-md">
         {/* Appointment Header */}
         <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] mb-5">
