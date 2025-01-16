@@ -64,12 +64,12 @@ const Orders = () => {
 
                 <p className="text-[#828282] text-[12px]">{datepipeModel.date(data?.createdAt)}</p>
               </div>
-              <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button>
+              {/* <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button> */}
             </div>
-            <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
+            {/* <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
               <p className="text-[#828282] text-[12px] font-[600]">Reorder</p>
               <p className="text-[#828282] text-[12px] font-[600]">Print Order</p>
-            </div>
+            </div> */}
           </div>
 
           {/* Tab Group for Order Sections */}
@@ -346,52 +346,58 @@ const Orders = () => {
         </div>
 
         {/* Order Information Section */}
-        {/* <div className="bg-white p-6 rounded-[12px] mt-8 shadow">
-        <h2 className="border-b text-[18px] pb-4 sm:px-4">ORDER INFORMATION</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:px-5">
-   <div className="">
-   <h2 className="font-bold py-4">Shipping Address	</h2>
-    <div className="">
-     <p className="text-[12px]">Lawrance 103689</p>
-     <p className="text-[12px]">Lorem Ipsum</p>
-     <p className="text-[12px]">Lorem</p>
-     <p className="text-[12px]">11489</p>
-    </div>
-     </div>
+        <div className="bg-white p-6 rounded-[12px] mt-8 shadow">
+          <h2 className="border-b text-[18px] pb-4 sm:px-4">ORDER INFORMATION</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:px-5">
+            <div className="">
+              <h2 className="font-bold py-4">Shipping Address	</h2>
+              <div className="">
+              <p className="text-[12px]">{data?.address1}</p>
+              <p className="text-[12px]">{data?.address2}</p>
+              <p className="text-[12px]">{data?.city}</p>
+              <p className="text-[12px]">{data?.state}</p>
+              <p className="text-[12px]">{data?.postal}</p>
+                {/* <p className="text-[12px]">Lawrance 103689</p>
+                <p className="text-[12px]">Lorem Ipsum</p>
+                <p className="text-[12px]">Lorem</p>
+                <p className="text-[12px]">11489</p> */}
+              </div>
+            </div>
 
-     <div className="">
-   <h2 className="font-bold py-4">Shipping Method	</h2>
-    <div className="">
-     <p className="text-[12px]">Rate</p>
-    </div>
-     </div>
+            {/* <div className="">
+              <h2 className="font-bold py-4">Shipping Method	</h2>
+              <div className="">
+                <p className="text-[12px]"></p>
+              </div>
+            </div> */}
 
-     <div className="">
-   <h2 className="font-bold py-4">Billing Address	</h2>
-    <div className="">
-     <p className="text-[12px]">Lawrance 103689</p>
-     <p className="text-[12px]">Lorem Ipsum</p>
-     <p className="text-[12px]">Lorem</p>
-     <p className="text-[12px]">11489</p>
-    </div>
-     </div>
+            <div className="">
+              <h2 className="font-bold py-4">Billing Address	</h2>
+              <div className="">
+              <p className="text-[12px]">{data?.address1}</p>
+              <p className="text-[12px]">{data?.address2}</p>
+              <p className="text-[12px]">{data?.city}</p>
+              <p className="text-[12px]">{data?.state}</p>
+              <p className="text-[12px]">{data?.postal}</p>
+              </div>
+            </div>
 
-     <div className="">
-   <h2 className="font-bold py-4">Payment Method	</h2>
-    <div className="">
-     <p className="text-[12px]">Payment Method</p>
-     <p>Lorem Ipsum</p>
-     <div className="border-t pt-2 mt-2">
-     <p className="text-[12px] flex">Credit Card    <span className="ml-3">Visa</span></p>
-     </div>
-     <div className="border-t pt-2 mt-2">
-     <p className="text-[12px] flex">Credit Card Number <span className="ml-3">xxx</span></p>
-     </div>
-    </div>
-     </div>
+            <div className="">
+              <h2 className="font-bold py-4">Payment Method	</h2>
+              <div className="">
+                <p className="text-[12px]">Payment Method</p>
+                <p>Stripe</p>
+                <div className="border-t pt-2 mt-2">
+                  <p className="text-[12px] flex">Stripe Id  <span className="ml-3">{data?.stripePaymentMethodId}</span></p>
+                </div>
+                <div className="border-t pt-2 mt-2">
+                  <p className="text-[12px] flex">Transaction Id<span className="ml-3">{data?.transactionId}</span></p>
+                </div>
+              </div>
+            </div>
 
-</div>
- </div> */}
+          </div>
+        </div>
       </div>
     </Layout>
   );
