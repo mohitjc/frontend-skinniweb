@@ -239,8 +239,9 @@ const MyProfile = () => {
                 />
               </div>
               <div className="flex max-md:flex-wrap items-center input-field">
-                <label className="text-sm mb-0 w-[45px]">Phone</label>
+                <label className="text-sm mb-0 min-w-[95px]">Phone</label>
                 <PhoneInput
+                className="input-set"
                   country="us"
                   value={form.number}
                   // placeholder="+44 0000000000"

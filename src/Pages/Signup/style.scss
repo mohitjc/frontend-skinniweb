@@ -16,6 +16,29 @@ form.centerLogin {
     display: block;
     margin: auto;
 }
+.react-tel-input{
+    .form-control {
+        border-radius: 50px;
+        width: 100%;
+        border: 0px;
+        background: #e7e7e7;
+        height: 2.25rem;
+    }
+    .flag-dropdown {
+        border-radius: 19px 0px 0px 19px;
+        background-color: #e7e7e7;
+        border: 0px;
+    }
+    .selected-flag.open {
+        background: #e7e7e7 !important;
+        border-radius: 19px 0px 0px 19px !important;
+    }
+    .form-control:focus {
+        box-shadow: 0 0 0 -0.8rem rgba(0, 123, 255, .25) !important;
+    }
+    
+    
+}
 
 img.logimg {
     width: 100%;

@@ -98,8 +98,8 @@ const Signup = ({ setActiveTab }: any) => {
       <AuthLayout>
         <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] px-3 py-[6rem]">
           <div className="main_page w-full">
-            <div className="main_auth bg-white p-[3rem_2rem] sm:p-[3rem_3rem] relative rounded-[20px] w-full">
-              <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
+            <div className="main_auth bg-white p-[2rem_2rem] sm:p-[2rem_2rem] relative rounded-[20px] w-full">
+              <img src="/assets/img/Skinnii-Logo.webp" className="w-[100px] sm:w-[130px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">MEMBER REGISTER </h2>
                 <p className="text-[14px] text-center text-[#000] leading-[16px]">Please fill in this form to create an account.</p>
@@ -113,7 +113,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                       pattern="[A-Za-z]+"
                       type="text"
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                       value={form.firstName}
                     />
@@ -122,7 +122,7 @@ const Signup = ({ setActiveTab }: any) => {
                     <label className="text-[14px] text-[#000] mb-1 ml-3">Last Name</label>
                     <input
                       type="text"
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                       value={form.lastName}
                     />
@@ -130,9 +130,9 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 
                 {/* Phone Number */}
-                <div className="w-full">
+                <div className="w-full mb-3">
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Phone Number</label>
-                  <PhoneInput
+                  <PhoneInput 
                     country="us"
                     value={form.number}
                     enableSearch={true}
@@ -144,7 +144,8 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 
                 {/* Email in a separate row */}
-                <div className="w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-3 mb-3">
+                <div className="">
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Email</label>
                   <input
                     value={form.email}
@@ -152,7 +153,7 @@ const Signup = ({ setActiveTab }: any) => {
                     type="email"
                     required
                     placeholder=""
-                    className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""}`}
+                    className={`bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""}`}
                   />
                   {error && submitted && (
                     <div className="invalid-feedback d-block">{error}</div>
@@ -160,24 +161,24 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 
                 {/* Date of Birth */}
-                <div className="w-full">
+                <div className="">
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Date Of Birth</label>
                   <input
                     required
                     type="date"
-                    className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                    className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
                     onChange={(e) => setForm({ ...form, dob: e.target.value })}
                     value={form.dob}
                   />
                 </div>
 
                 {/* Password */}
-                <div className="w-full">
+                <div className="">
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Password</label>
                   <div className="relative">
                     <input
                       type={eyes.password ? "text" : "password"}
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, password: e.target.value })}
                       value={form.password}
                       minLength={8}
@@ -192,12 +193,12 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 
                 {/* Confirm Password */}
-                <div className="w-full">
+                <div className="">
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Confirm Password</label>
                   <div className="relative">
                     <input
                       type={eyes.confirmPassword ? "text" : "password"}
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       value={confirmpassword}
                       minLength={8}
@@ -215,7 +216,7 @@ const Signup = ({ setActiveTab }: any) => {
                     </div>
                   )}
                 </div>
-
+</div>
                 <div className="mt-4">
                   <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]" type="submit">
                     Sign Up
