@@ -246,7 +246,7 @@ const MyProfile = () => {
                   // placeholder="+44 0000000000"
                   enableSearch={true}
                   onChange={(value, data) => {
-                    setForm({ ...form, mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
+                    setForm({ ...form, number:value , mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
                   }}
                   countryCodeEditable={true}
                 />
