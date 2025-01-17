@@ -242,7 +242,7 @@ const MyProfile = () => {
                 <label className="text-sm mb-0 w-[45px]">Phone</label>
                 <PhoneInput
                   country="us"
-                  value={form.mobileNo}
+                  value={form.number}
                   // placeholder="+44 0000000000"
                   enableSearch={true}
                   onChange={(value, data) => {

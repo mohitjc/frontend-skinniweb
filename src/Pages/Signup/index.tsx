@@ -134,7 +134,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <label className="text-[14px] text-[#000] mb-1 ml-3">Phone Number</label>
                   <PhoneInput
                     country="us"
-                    value={form.mobileNo}
+                    value={form.number}
                     enableSearch={true}
                     onChange={(value, data: any) => {
                       setForm({ ...form,number:value , mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
