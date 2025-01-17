@@ -34,6 +34,20 @@ input:focus-visible {
 select:focus-visible {
   outline: none !important;
 }
+.input-set{
+  .form-control {
+    width: 100%;
+    border-radius: 12px;
+    background: #e5cfbd;
+    color: #000 !important;
+    border: 0px;
+  }
+  .flag-dropdown {
+    border-radius: 12px 0px 0px 12px;
+    background: #e5cfbd;
+    border: 0px;
+  }
+}
 
 ////////////############ Auth css ############////////////
 
