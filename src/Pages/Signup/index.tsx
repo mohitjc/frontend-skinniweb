@@ -136,8 +136,7 @@ const Signup = ({ setActiveTab }: any) => {
                     country="us"
                     value={form.mobileNo}
                     enableSearch={true}
-                    onChange={(value, data: any, country, countries) => {
-                      console.log(value.slice(data.dialCode.length), data, "pppppppp")
+                    onChange={(value, data: any) => {
                       setForm({ ...form, mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
                     }}
                     countryCodeEditable={true}

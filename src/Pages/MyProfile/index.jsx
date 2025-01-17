@@ -18,6 +18,8 @@ import { login_success } from "../actions/user";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { useNavigate } from "react-router-dom";
+import FormControl from "../../components/common/FormControl";
+import PhoneInput from "react-phone-input-2";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.user);
@@ -25,7 +27,7 @@ const MyProfile = () => {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
-    phone: "",
+    mobileNo: "",
     address: "",
     dob: "",
     gender: "male",
@@ -91,8 +93,8 @@ const MyProfile = () => {
     ApiClient.get("profile")
       .then((res) => {
         if (res.success) {
-          const { fullName, email, phone, address, dob, gender, image } = res.data;
-          setForm({ fullName, email, phone, address, dob, gender });
+          const { fullName, email, mobileNo, address, dob, gender, image } = res.data;
+          setForm({ fullName, email, mobileNo, address, dob, gender });
           setImage(image);
         } else {
           toast.error("Failed to fetch profile data");
@@ -103,7 +105,7 @@ const MyProfile = () => {
 
   // Handle profile update
   const handleSubmit = () => {
-    if (!form.fullName || !form.email || !form.phone || !form.address || !form.dob || !form.gender) {
+    if (!form.fullName || !form.email || !form.mobileNo || !form.address || !form.dob || !form.gender) {
       toast.error("All fields are required");
       return;
     }
@@ -111,7 +113,7 @@ const MyProfile = () => {
     let payload = {
       fullName: form.fullName,
       email: form.email,
-      phone: form.phone,
+      mobileNo: form.mobileNo,
       address: form.address,
       dob: form.dob,
       gender: form.gender,
@@ -194,7 +196,7 @@ const MyProfile = () => {
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]" />{form.dob}</span>
               </div>
               <div className="flex items-center">
-                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.phone} </span>
+                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.mobileNo} </span>
               </div>
               <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm "><BsGenderMale className="text-[#828282] text-[22px]" />{form.gender}</span>
@@ -237,13 +239,16 @@ const MyProfile = () => {
                 />
               </div>
               <div className="flex max-md:flex-wrap items-center input-field">
-                <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Phone</label>
-                <input
-                  type="text"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  disabled={!editable}
-                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                <label className="text-sm mb-0 w-[45px]">Phone</label>
+                <PhoneInput
+                  country="us"
+                  value={form.mobileNo}
+                  // placeholder="+44 0000000000"
+                  enableSearch={true}
+                  onChange={(value, data) => {
+                    setForm({ ...form, mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
+                  }}
+                  countryCodeEditable={true}
                 />
               </div>
               <div className="flex max-md:flex-wrap items-center input-field">
