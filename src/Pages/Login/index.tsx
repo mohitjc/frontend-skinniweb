@@ -144,11 +144,11 @@ const Login = () => {
                         }}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-10"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                       ></input>
                       <i
                         className={
-                          eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.password ? "fa fa-eye absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })

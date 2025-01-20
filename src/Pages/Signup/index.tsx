@@ -186,7 +186,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                     />
                     <i
-                      className={eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
+                      className={eyes.password ? "fa fa-eye absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
                       onClick={() => setEyes({ ...eyes, password: !eyes.password })}
                     ></i>
                   </div>
@@ -206,7 +206,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                     />
                     <i
-                      className={eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
+                      className={eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
                       onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
                     ></i>
                   </div>
