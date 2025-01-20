@@ -161,7 +161,7 @@ const MyProfile = () => {
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between mb-4">
           <div className="relative w-full max-sm:flex-wrap flex items-center">
             <div className="relative min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] sm:absolute top-[0px] left-[0px] z-10 mx-auto">
               <img
@@ -288,14 +288,14 @@ const MyProfile = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          {editable && <button onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2">
+          {editable && <button onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-2 mb-2">
             Save Changes
           </button>}
         </div>
 
 
 
-        <div className="flex justify-between flex-wrap gap-x-5 gap-y-2 bg-[#FEE4D0] mt-10 px-4 py-3">
+        <div className="flex justify-between flex-wrap gap-x-5 gap-y-2 bg-[#FEE4D0] mt-4 px-4 py-3">
           <h2 className="">Address Book</h2>
           <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]" />Manage Address</p>
         </div>
