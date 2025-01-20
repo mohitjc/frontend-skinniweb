@@ -113,7 +113,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                       pattern="[A-Za-z]+"
                       type="text"
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                       value={form.firstName}
                     />
@@ -122,7 +122,7 @@ const Signup = ({ setActiveTab }: any) => {
                     <label className="text-[14px] text-[#000] mb-1 ml-3">Last Name</label>
                     <input
                       type="text"
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                       value={form.lastName}
                     />
@@ -153,7 +153,7 @@ const Signup = ({ setActiveTab }: any) => {
                     type="email"
                     required
                     placeholder=""
-                    className={`bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""}`}
+                    className={`bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8 ${error && submitted ? "is-invalid" : ""}`}
                   />
                   {error && submitted && (
                     <div className="invalid-feedback d-block">{error}</div>
@@ -166,7 +166,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <input
                     required
                     type="date"
-                    className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
+                    className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                     onChange={(e) => setForm({ ...form, dob: e.target.value })}
                     value={form.dob}
                   />
@@ -178,7 +178,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <div className="relative">
                     <input
                       type={eyes.password ? "text" : "password"}
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                       onChange={(e) => setForm({ ...form, password: e.target.value })}
                       value={form.password}
                       minLength={8}
@@ -186,7 +186,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                     />
                     <i
-                      className={eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"}
+                      className={eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
                       onClick={() => setEyes({ ...eyes, password: !eyes.password })}
                     ></i>
                   </div>
@@ -198,7 +198,7 @@ const Signup = ({ setActiveTab }: any) => {
                   <div className="relative">
                     <input
                       type={eyes.confirmPassword ? "text" : "password"}
-                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-9 text-[13px] px-3 !pr-8"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       value={confirmpassword}
                       minLength={8}
@@ -206,7 +206,7 @@ const Signup = ({ setActiveTab }: any) => {
                       required
                     />
                     <i
-                      className={eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"}
+                      className={eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"}
                       onClick={() => setEyes({ ...eyes, confirmPassword: !eyes.confirmPassword })}
                     ></i>
                   </div>
@@ -218,7 +218,7 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 </div>
                 <div className="mt-4">
-                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]" type="submit">
+                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]" type="submit">
                     Sign Up
                   </button>
                 </div>

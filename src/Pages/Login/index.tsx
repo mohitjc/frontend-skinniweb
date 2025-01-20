@@ -110,7 +110,7 @@ const Login = () => {
         <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] px-3 py-[6rem]">
           <div className="main_page w-full w-full">
             <div className="main_auth bg-white p-[3rem_2rem] sm:p-[3rem_3rem] relative rounded-[20px] w-full">
-            <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
+            <img src="/assets/img/Skinnii-Logo.webp" className="w-[140px] sm:w-[160px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">Member Login</h2>
                 <p className="text-[14px] text-center text-[#000] leading-[16px]">Access your account.</p>
@@ -125,7 +125,7 @@ const Login = () => {
                       type="email"
                       required
                       placeholder=""
-                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8${
+                      className={`bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8${
                         error && submitted ? "is-invalid" : ""
                       }`}
                     />
@@ -148,7 +148,7 @@ const Login = () => {
                       ></input>
                       <i
                         className={
-                          eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.password ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, password: !eyes.password })
@@ -159,7 +159,7 @@ const Login = () => {
                 </div>
                 <p onClick={()=>{history("/forgotpassword")}} className=" text-right cursor-pointer hover:underline mr-3">Forgot Password?</p>
                 <div className="mt-4">
-                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]">Sign In</button>
+                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]">Sign In</button>
                 </div>
               </form>
               <p className="text-[#000] text-center mt-3">

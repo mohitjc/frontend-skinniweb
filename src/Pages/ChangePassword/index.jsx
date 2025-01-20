@@ -65,7 +65,7 @@ const ChangePassword = () => {
                 onClick={() => history(-1)}
                 className="bg-[#ebebeb] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
               />
-                    <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
+                    <img src="/assets/img/Skinnii-Logo.webp" className="w-[140px] sm:w-[160px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">Change Password</h2>
                 <p className="text-[14px] text-center text-[#000] leading-[16px] max-w-[300px] mx-auto"> Enter a new password below to change your password</p>
@@ -79,7 +79,7 @@ const ChangePassword = () => {
                         type={eyes.currentPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
@@ -89,7 +89,7 @@ const ChangePassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.currentPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.currentPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -107,14 +107,14 @@ const ChangePassword = () => {
                         type={eyes.newPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({ ...form, newPassword: e?.target?.value });
                         }}
                       ></input>
                       <i
                         className={
-                          eyes.newPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.newPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({ ...eyes, newPassword: !eyes.newPassword })
@@ -129,7 +129,7 @@ const ChangePassword = () => {
                         type={eyes.confirmPassword ? "text" : "password"}
                         required
                         placeholder=""
-                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-11 text-[13px] px-3 !pr-8"
+                        className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
                         onChange={(e) => {
                           setForm({
                             ...form,
@@ -139,7 +139,7 @@ const ChangePassword = () => {
                       ></input>
                       <i
                         className={
-                          eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer"
+                          eyes.confirmPassword ? "fa fa-eye absolute right-[15px] top-[16px] text-[14px] text-[#707780] cursor-pointer" : "fa fa-eye-slash absolute right-[15px] top-[14px] text-[14px] text-[#707780] cursor-pointer"
                         }
                         onClick={() =>
                           setEyes({
@@ -159,7 +159,7 @@ const ChangePassword = () => {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]">Update</button>
+                  <button className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]">Update</button>
                 </div>
               </form>
 {/* 

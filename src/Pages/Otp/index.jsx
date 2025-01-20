@@ -59,7 +59,7 @@ const OTP = () => {
                 }}
                 className="bg-[#ebebeb] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
               />
-                          <img src="/assets/img/Skinnii-Logo.webp" className="w-[150px] sm:w-[180px] object-contain mx-auto mb-4" />
+                          <img src="/assets/img/Skinnii-Logo.webp" className="w-[140px] sm:w-[160px] object-contain mx-auto mb-4" />
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">Verification Code</h2>
                 <p className="text-[14px] text-center text-[#000] leading-[16px] max-w-[335px] mx-auto"> We have sent the verification code to your email address</p>
@@ -74,7 +74,7 @@ const OTP = () => {
                   />
                 </div>
                 <div className="mt-4">
-                  <button type="submit" className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-11 flex items-center justify-center text-[#000]">
+                  <button type="submit" className="border-0 bg-[#FED6B6] rounded-[8px] w-full text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]">
                     Confirm
                   </button>
                 </div>
