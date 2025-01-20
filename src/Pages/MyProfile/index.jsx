@@ -167,7 +167,7 @@ const MyProfile = () => {
               <img
                 src={image || "https://via.placeholder.com/150"}
                 alt="Profile Picture"
-                className="w-full h-full rounded-full bg-cover border-[5px] border-[#FED6B6]"
+                className="w-full h-full rounded-full object-cover border-[5px] border-[#FED6B6]"
               />
               {editable && (
                 <div className="absolute bottom-0 right-0 cursor-pointer">
