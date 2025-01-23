@@ -22,6 +22,8 @@ const Goals = () => {
   const [month, setMonth] = useState([])
   const [videos, setVideos] = useState([])
 
+  console.log(user,"kjhjhjk")
+
   const getDietPlan = (data, date) => {
     const fitnessGoalId = data?.caloriesInfo?.map((item) => item?.id)
     const calories = data?.caloriesInfo?.map((item) => item?.calories)
@@ -47,6 +49,12 @@ const Goals = () => {
     generateCurrentMonth(date)
     getDietPlan(user, date)
   }
+
+  useEffect(()=>{
+    if(user?.id || user?._id){
+      getDietPlan(user, moment().format("YYYY-MM-DD"))
+    }
+  },[user])
 
   const getVideoId = (url) => {
     const regExp = /(?:https?:\/\/(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/))([a-zA-Z0-9_-]{11})/;
@@ -102,7 +110,7 @@ const Goals = () => {
 
   useEffect(()=>{
     generateCurrentMonth()
-    getDietPlan()
+    // getDietPlan()
   },[])
 
   return (
