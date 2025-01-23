@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import methodModel from "../../../methods/methods";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Menu } from "@headlessui/react";
 import Sidebar from "../sidebar";
-import { FiMenu, FiX } from "react-icons/fi";
-import { LuLogOut, LuUser } from "react-icons/lu";
-import { GoLock } from "react-icons/go";
+
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 
 

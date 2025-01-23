@@ -30,7 +30,8 @@ function App() {
     { url: "/myorders", path: "Orders/orderlisting" },
     { url: "/mypayments", path: "MyPayments" },
     { url: "/myordersDetail/:id", path: "Orders" },
-    // { url: "/myprofile", path: "MyProfile" },
+    // { url: "/myprofile", path: "Profile" },
+    { url:"/meals", path: "Meals" },
     { url: "/myappointment", path: "MyAppointment/appointmentListing" },
 { url: "/myappointmentData/:id", path: "MyAppointment" },
 
