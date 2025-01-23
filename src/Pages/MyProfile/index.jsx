@@ -165,7 +165,7 @@ const MyProfile = () => {
           <div className="relative w-full max-sm:flex-wrap flex items-center">
             <div className="relative min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] sm:absolute top-[0px] left-[0px] z-10 mx-auto">
               <img
-                src={image || "https://via.placeholder.com/150"}
+                src={image || "/assets/img/person.jpg"}
                 alt="Profile Picture"
                 className="w-full h-full rounded-full object-cover border-[5px] border-[#FED6B6]"
               />
@@ -186,24 +186,24 @@ const MyProfile = () => {
               )}
             </div>
             {!editable && <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[4rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] lg:rounded-r-full">
-              <div className="flex items-center">
+              {form.fullName && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
-              </div>
-              <div className="flex items-center">
+              </div>}
+              {form.email && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><MdEmail className="text-[#828282] text-[22px]" />{form.email}</span>
-              </div>
-              <div className="flex items-center">
+              </div>}
+              {form.dob && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]" />{form.dob}</span>
-              </div>
-              <div className="flex items-center">
+              </div>}
+              {form.mobileNo &&<div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.mobileNo} </span>
-              </div>
-              <div className="flex items-center">
+              </div>}
+              {form.gender && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm "><BsGenderMale className="text-[#828282] text-[22px]" />{form.gender}</span>
-              </div>
-              <div className="flex items-center">
+              </div>}
+              {form.address && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaLocationDot className="text-[#828282] text-[22px]" />{form.address}</span>
-              </div>
+              </div>}
             </div>}
 
             {editable && <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] xl:rounded-r-full">
