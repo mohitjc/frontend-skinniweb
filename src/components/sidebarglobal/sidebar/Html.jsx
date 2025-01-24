@@ -210,9 +210,9 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                                 <NavLink
                                   to={itm.url}
                                   className={(isActive) =>
-                                    "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#8282821f] !no-underline " +
+                                    "relative z-20 p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#8282821f] !no-underline " +
                                     (location?.pathname === itm.url &&
-                                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                                      "relative !z-10 rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                                   }
                                 >
                                   {itm.icon}
@@ -256,9 +256,9 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
                 <NavLink
                   to={"/login"}
                   className={(isActive) =>
-                    "relative p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#8282821f] !no-underline transition-all " +
+                    "relative z-20 p-2.5 rounded-l-full flex items-center gap-[12px] text-sm font-normal text-[#000] hover:text-[#000] hover:bg-[#8282821f] !no-underline transition-all " +
                     (location?.pathname === "" &&
-                      "relative rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
+                      "relative !z-10 rounded_div !text-[#FEE4D0] !bg-[#828282] hover:!text-[#FEE4D0] !font-medium")
                   }
                   onClick={Logout}
                 >
