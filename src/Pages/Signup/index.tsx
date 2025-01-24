@@ -161,16 +161,34 @@ const Signup = ({ setActiveTab }: any) => {
                 </div>
 
                 {/* Date of Birth */}
-                <div className="">
-                  <label className="text-[14px] text-[#000] mb-1 ml-3">Date Of Birth</label>
-                  <input
-                    required
-                    type="date"
-                    className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
-                    onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                    value={form.dob}
-                  />
-                </div>
+                  <div className="">
+                    <label className="text-[14px] text-[#000] mb-1 ml-3">Date Of Birth</label>
+                    <input
+                      required
+                      type="date"
+                      className="bg-[#E7E7E7] w-full rounded-full border-0 h-10 text-[13px] px-3 !pr-8"
+                      onChange={(e) => {
+                        const selectedDate = e.target.value;
+                        const today = new Date();
+                        const dob = new Date(selectedDate);
+
+                        let age = today.getFullYear() - dob.getFullYear();
+                        const month = today.getMonth() - dob.getMonth();
+
+                        if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+                          age--;
+                        }
+
+                        if (age >= 15) {
+                          setForm({ ...form, dob: selectedDate });
+                        } else {
+                          alert("You must be at least 15 years old.");
+                        }
+                      }}
+                      value={form.dob}
+                    />
+                  </div>
+
 
                 {/* Password */}
                 <div className="">

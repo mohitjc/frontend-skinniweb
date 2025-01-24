@@ -233,7 +233,24 @@ const MyProfile = () => {
                 <input
                   type="date"
                   value={form.dob}
-                  onChange={(e) => setForm({ ...form, dob: e.target.value })}
+                  onChange={(e) => {
+                    const selectedDate = e.target.value;
+                    const today = new Date();
+                    const dob = new Date(selectedDate);
+
+                    let age = today.getFullYear() - dob.getFullYear();
+                    const month = today.getMonth() - dob.getMonth();
+
+                    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+                      age--;
+                    }
+
+                    if (age >= 15) {
+                      setForm({ ...form, dob: selectedDate });
+                    } else {
+                      alert("You must be at least 15 years old.");
+                    }
+                  }}
                   disabled={!editable}
                   className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
                 />
