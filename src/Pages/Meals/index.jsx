@@ -376,7 +376,7 @@ const Goals = () => {
                                 <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
                               </div>
                               <div className="py-8">
-                                <div className="bg-[#EEEEEE] rounded-[15px] p-[1.5rem]">
+                                <div className="bg-[#EEEEEE] rounded-[15px] p-3 sm:p-[1.5rem]">
                                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                                     <div className="video_div bg-white rounded-[12px]">
                                       <iframe

@@ -53,7 +53,7 @@ const Layout = memo(function Layout({ children,t }) {
         <Header isOpen={isOpen} setIsOpen={setIsopen} t={t} />
 
         <div className={`main-wrapper flex ${isOpen ? "active-sidebar" : ""}`}>
-          <div className="hide_show main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[3rem] fixed duration-300 transition-all">
+          <div className="hide_show main-sidebar bg-[#FEE4D0] transition-[width] duration-300 !pt-[3rem] fixed duration-300 transition-all max-sm:fixed h-full top-0">
             <div className="min_sidbar !pl-[3rem] h-full relative duration-300 transition-all">
             <div className="">
               <div className="sidebar-brand">
@@ -74,7 +74,7 @@ const Layout = memo(function Layout({ children,t }) {
             <img src="/assets/img/sidebar_img.png" className="absolute bottom-[0px] left-[0px]"/>
           </div>
           </div>
-          <main className="relative main max-[1199px]:w-[calc(100%-0px)] w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] px-[1rem] py-[2.5rem] sm:p-[2.5rem] duration-300 transition-all">
+          <main className="relative main max-sm:!w-[calc(100%_-_0px)] max-[1199px]:w-[calc(100%-0px)] w-[calc(100%-280px)] ml-auto mt-[80px] bg-[#828282] px-[1rem] py-[2.5rem] sm:p-[2.5rem] duration-300 transition-all">
           {/* <ul class="flex items-center space-x-4 absolute top-[9px] left-[15px] sm:left-[40px]">
       <li class="text-sm text-[#FEE4D0] font-[600] cursor-pointer">
         Home
