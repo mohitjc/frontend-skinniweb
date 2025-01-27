@@ -158,6 +158,10 @@ select:focus-visible {
  .active-sidebar .sidebar-brand img {
   width: 50px;
 }
+select:focus option:checked {
+  background: #FEE4D0;
+}
+
 @media (max-width: 1199px) {
   .hide_show {
     display: none;
