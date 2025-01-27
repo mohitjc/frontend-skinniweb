@@ -246,7 +246,7 @@ const MyProfile = () => {
                     }
 
                     if (age >= 15) {
-                      setForm({ ...form, dob: selectedDate });
+                      setForm({ ...form, dob: selectedDate ,age:age});
                     } else {
                       alert("You must be at least 15 years old.");
                     }

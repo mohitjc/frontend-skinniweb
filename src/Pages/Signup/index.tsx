@@ -30,6 +30,7 @@ const Signup = ({ setActiveTab }: any) => {
     password: false,
     confirmPassword: false,
   });
+  
 
   const hendleSubmit = (e: any) => {
     e.preventDefault();
@@ -180,7 +181,7 @@ const Signup = ({ setActiveTab }: any) => {
                         }
 
                         if (age >= 15) {
-                          setForm({ ...form, dob: selectedDate });
+                          setForm({ ...form, dob: selectedDate, age:age });
                         } else {
                           alert("You must be at least 15 years old.");
                         }
