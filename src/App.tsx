@@ -23,21 +23,22 @@ import environment from "./environment";
 const { persistor, store } = configureStoreProd();
 
 function App() {
-  console.log(environment?.secretKey,"environment?.secretKey")
+  console.log(environment?.secretKey, "environment?.secretKey")
   const routes = [
     { url: "/login", path: "Login" },
     { url: "/forum", path: "Forum" },
     { url: "/signup", path: "Signup" },
     { url: "/otp", path: "Otp" },
+    { url: "/chats", path: "Chats" },
     { url: "/dashboard", path: "Dashboard" },
     { url: "/myorders", path: "Orders/orderlisting" },
     { url: "/mypayments", path: "MyPayments" },
     { url: "/myordersDetail/:id", path: "Orders" },
     // { url: "/myprofile", path: "Profile" },
-    { url:"/meals", path: "Meals" },
+    { url: "/meals", path: "Meals" },
     { url: "/myappointment", path: "MyAppointment/appointmentListing" },
-{ url: "/myappointmentData/:id", path: "MyAppointment" },
-
+    { url: "/myappointmentData/:id", path: "MyAppointment" },
+    { url: "/user/detail", path: "UserProfile" },
     { url: "/subscription", path: "Subscription" },
     { url: "/profile/:tab", path: "Settings" },
     { url: "/forgotpassword", path: "Forgotpassword" },
@@ -51,12 +52,12 @@ function App() {
     { url: "/faqs", path: "Faq" },
     { url: "/newsletter", path: "Newsletter" },
     { url: "/api", path: "Api" },
- 
+
     { url: "*", path: "NotFoundPage" },
     { url: "/terms", path: "Terms" },
     { url: "/about", path: "Aboutus" },
     { url: "/privacy", path: "Privacy" },
- 
+
     { url: "/userroles", path: "UserRoles" },
     { url: "/userroles/edit/:id", path: "UserRoles/AddEdit" },
     { url: "/userroles/add", path: "UserRoles/AddEdit" },
@@ -65,14 +66,14 @@ function App() {
     { url: "/users/edit/:id", path: "Users/AddEdit" },
     { url: "/users/add", path: "Users/AddEdit" },
     { url: "/users/detail/:id", path: "Users/View" },
- 
- 
+
+
   ];
 
 
   methodModel.updateSiteDetail({
-    name:'Skinni Web',
-    fabIcon:''
+    name: 'Skinni Web',
+    fabIcon: ''
   })
   sessionStorage.removeItem('browseload');
   sessionStorage.removeItem('siteload');
@@ -97,7 +98,7 @@ function App() {
           >
             <Router>
               <Routes>
-                {routes.map((itm:any) => {
+                {routes.map((itm: any) => {
                   const Element = lazy(() => import(`./Pages/${itm.path}`));
                   return (
                     <Route
