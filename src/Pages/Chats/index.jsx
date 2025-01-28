@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Layout from "../../components/sidebarglobal/layout";
+import { IoMdSearch } from "react-icons/io";
 
 const Chats = () => {
   
@@ -16,6 +17,7 @@ const Chats = () => {
 </div>
 
 <div className="flex items-center">
+<IoMdSearch />
 
 </div>
       </div>

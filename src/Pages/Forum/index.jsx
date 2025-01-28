@@ -88,9 +88,9 @@ const Forums = () => {
                   <Slider {...sliderSetting}>
                     {item?.media?.map((itm, i) => {
                       if (itm?.type === "image") {
-                        return <img className="w-full h-full" src={methodModel.noImg(itm?.path)} alt="image" key={i} />
+                        return <img className="w-full h-[270px] bg-[#000]" src={methodModel.noImg(itm?.path)} alt="image" key={i} />
                       } else if (itm?.type === "video") {
-                        return <video className="w-full h-full" key={i} controls>
+                        return <video className="w-full h-[270px] bg-[#000]" key={i} controls>
                           <source src={methodModel.video(itm?.path)} type="video/mp4" />
                           <source src={methodModel.video(itm?.path)} type="video/ogg" />
                           Your browser does not support the video tag.
@@ -138,26 +138,26 @@ const Forums = () => {
               </div>
               <div className="mt-2">
                 <div className="relative">
-                  <input className="border rounded-full w-full p-1 bg-[#D9D9D97D]" type="text" id="fname" name="fname"></input>
+                  <input className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" id="fname" name="fname"></input>
                   <FiSend className="text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]" />
                 </div>
               </div>
               <div className="mt-2">
-                <p className="text-[#A0A0A0] text-[12px] font-[400]">View all comments</p>
-                <div className="flex items-center">
+                <p className="text-[#A0A0A0] text-[12px] font-[400] mt-2 cursor-pointer">View all comments</p>
+                <div className="flex items-center mt-1">
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
-                  <p className="text-[#4F4F4F] text-[11px] font-[400] ml-1">See Translation</p>
+                  <p className="text-[#4F4F4F] text-[11px] font-[400] ml-1 cursor-pointer">See Translation</p>
                 </div>
               </div>
-              <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl">
+              <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
                 <div className="flex">
                   <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
                   <div className=" ml-2">
                     <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Manny_Ipsum</span>20 mint ago. <FaHeart className="text-[#F44336] mr-1" /> by author</p>
                     <p className="text-[11px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 #NourishYourBody"</p>
                     <div className="flex mt-2">
-                      <p className="text-[10px] font-[400] text-[#A0A0A0]">Reply</p>
-                      <p className="ml-3 text-[10px] font-[400] text-[#A0A0A0]">Hide</p>
+                      <p className="text-[10px] font-[400] text-[#A0A0A0] curs0r-pointer">Reply</p>
+                      <p className="ml-3 text-[10px] font-[400] text-[#A0A0A0] cursor-pointer">Hide</p>
                     </div>
                   </div>
                 </div>
