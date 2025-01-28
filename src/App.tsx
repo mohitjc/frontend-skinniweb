@@ -27,6 +27,7 @@ function App() {
     { url: "/forum", path: "Forum" },
     { url: "/signup", path: "Signup" },
     { url: "/otp", path: "Otp" },
+    { url: "/chats", path: "Chats" },
     { url: "/dashboard", path: "Dashboard" },
     { url: "/myorders", path: "Orders/orderlisting" },
     { url: "/mypayments", path: "MyPayments" },
