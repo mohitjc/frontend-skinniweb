@@ -133,8 +133,8 @@ const Forums = () => {
                 <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg"></img>
                 <p className="ml-1 text-[12px] text-[#000] font-[400] ">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
               </div>
-              <div className="mt-2">
-                <p className="text-[#000] text-[12px] font-[300] flex gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
+                <div className="mt-2">
+                  <p className="text-[#000] text-[12px] font-[300]  gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
               </div>
               <div className="mt-2">
                 <div className="relative">
