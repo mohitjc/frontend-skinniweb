@@ -24,6 +24,7 @@ function App() {
   console.log(environment?.secretKey,"environment?.secretKey")
   const routes = [
     { url: "/login", path: "Login" },
+    { url: "/forum", path: "Forum" },
     { url: "/signup", path: "Signup" },
     { url: "/otp", path: "Otp" },
     { url: "/dashboard", path: "Dashboard" },

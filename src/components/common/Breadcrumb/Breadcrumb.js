@@ -10,7 +10,7 @@ const Breadcrumb = ({ items }) => {
             className={`text-sm ${item.active ? 'text-white font-[300]' : 'text-[#FEE4D0] font-[600]'} cursor-pointer`}
           >
             {item.link ? (
-              <a href={item.link}>{item.label}</a>
+              <a className='hover:!text-[#FEE4D0] !no-underline' href={item.link}>{item.label}</a>
             ) : (
               item.label
             )}

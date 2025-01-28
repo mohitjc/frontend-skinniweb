@@ -51,12 +51,12 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
       url: "/",
       // key: "readDashboard",
     },
-    // {
-    //   name: 'My Profile',
-    //   icon:  <CiUser className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
-    //   url: "/myprofile",
-    //   // key: "readcustomer",
-    // },
+    {
+      name: 'Forums',
+      icon:  <CiUser className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      url: "/forum",
+      // key: "readcustomer",
+    },
     {
       name: 'My Orders',
       icon: <PiKeyThin className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
