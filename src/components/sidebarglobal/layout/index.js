@@ -44,8 +44,6 @@ const Layout = memo(function Layout({ children,t }) {
     setstate(localStorage.getItem("sidebar"));
   }, [localStorage.getItem("sidebar")]);
 
-  console.log(isOpen,"isOpenisOpen")
-
   return (
     <>
       <div component="layout">
