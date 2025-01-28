@@ -114,10 +114,10 @@ const Forums = () => {
                     <FaRegComment className="text-[25px]" />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.commentCount || 0}</p>
                   </div>
-                  <div className=" flex items-center ml-2">
+                  {/* <div className="flex items-center ml-2">
                     <FiSend className="text-[25px]" />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.shareCount || 0}</p>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="">
                   {item?.isSaved ?
