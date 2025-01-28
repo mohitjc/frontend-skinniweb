@@ -25,17 +25,23 @@ const generatekeysArr = (arr, key = "typeofresult") => {
   };
 };
 
-const userImg = (img,modal='users') => {
+const userImg = (img,modal='user') => {
   let value = "/assets/img/person.jpg";
   // if (img) value = environment.api + 'img/' + img
-  if (img) value = `${environment.api}img/${modal}/${img}`;
+  if (img) value = `${environment.api}images/${modal}/${img}`;
   return value;
 };
 
-const noImg = (img, modal = "users") => {
+const noImg = (img, modal = "user") => {
   let value = "/assets/img/placeholder.png";
   // if (img) value = environment.api + 'img/' + img
-  if (img) value = `${environment.api}img/${modal}/${img}`;
+  if (img) value = `${environment.api}images/${modal}/${img}`;
+  return value;
+};
+
+const video = (video, modal = 'videos') => {
+  let value = "";
+  if (video) value = `${environment.api}${modal ? `images/${modal}` : "images/videos"}/${video}`;
   return value;
 };
 
@@ -353,6 +359,7 @@ const methodModel = {
   emailRequiredFor,
   emailvalidation,
   noImg,
+  video,
   isTranslatePage,
   generatekeysArr,
   containsSpaceonly,
