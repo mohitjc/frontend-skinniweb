@@ -7,8 +7,9 @@ const Chats = () => {
   
   return (
     <>
-    <Header className="w-full"/>
-      <div className="bg-white  rounded-[12px]">
+    <Header />
+    <div className="relative main ml-auto bg-[#828282] duration-300 transition-all"> 
+      <div className="bg-white rounded-[12px] pt-[80px]">
       <div className="flex items-center justify-between bg-[#FEE4D0] p-2 rounded-t-[12px]">
 <div className="flex items-center ">
 <img className="w-[40px] h-[40px] rounded-full object-cover" src="/assets/img/profile-image.jpg"></img>
@@ -43,6 +44,7 @@ const Chats = () => {
 </div>
         
       </div>
+    </div>
     </>
   );
 };

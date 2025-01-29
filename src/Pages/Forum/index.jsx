@@ -18,6 +18,8 @@ const Forums = () => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
+  console.log(data, '==data');
+
   useEffect(() => {
     getData();
   }, []);
@@ -53,6 +55,45 @@ const Forums = () => {
     }
     loader(true)
     ApiClient.post(`saved/post/add`, payload).then(res => {
+      if (res.success) {
+        getData()
+      }
+      loader(false)
+    })
+  }
+
+  const handlePostComment = (value, index, key) => {
+    const postData = [...data]
+    postData[index][key] = value
+    setData(postData)
+  }
+  const postComment = (id, message, parentCommentId = "") => {
+    if (!message) return
+    let payload = {
+      postId: id,
+      comment: message
+    }
+    if (parentCommentId) {
+      payload = { ...payload, parentCommentId: parentCommentId }
+    }
+    loader(true)
+    ApiClient.post(`comment`, payload).then(res => {
+      if (res.success) {
+        getData()
+      }
+      loader(false)
+    })
+  }
+
+  const handleLikeUnlikeComments = (type, commentId) => {
+    const payload = {
+      commentId: commentId,
+      userId: user?._id || user?.id
+    }
+    let url = "like/comment"
+    if (type === "unlike") url = "unLike/comment"
+    loader(true)
+    ApiClient.post(url, payload).then(res => {
       if (res.success) {
         getData()
       }
@@ -128,30 +169,29 @@ const Forums = () => {
                 </div>
               </div>
               <div className="flex items-center mt-3">
-                <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
-                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg"></img>
-                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg"></img>
-                <p className="ml-1 text-[12px] text-[#000] font-[400] ">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
+                <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
+                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg" />
+                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg" />
+                <p className="ml-1 text-[12px] text-[#000] font-[400]">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
               </div>
-                <div className="mt-2">
-                  <p className="text-[#000] text-[12px] font-[300]  gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
+              <div className="mt-2">
+                <p className="text-[#000] text-[12px] font-[300] gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
               </div>
               <div className="mt-2">
                 <div className="relative">
-                  <input className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" id="fname" name="fname"></input>
-                  <FiSend className="text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]" />
+                  <input value={item?.comment} onChange={e => handlePostComment(e.target.value, index, "comment")} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" id="fname" />
+                  <FiSend onClick={e => postComment(item?._id || item?.id, item?.comment, "")} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
                 </div>
               </div>
               <div className="mt-2">
                 <p className="text-[#A0A0A0] text-[12px] font-[400] mt-2 cursor-pointer">View all comments</p>
                 <div className="flex items-center mt-1">
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
-                  <p className="text-[#4F4F4F] text-[11px] font-[400] ml-1 cursor-pointer">See Translation</p>
                 </div>
               </div>
               <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
                 <div className="flex">
-                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
+                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
                   <div className=" ml-2">
                     <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Manny_Ipsum</span>20 mint ago. <FaHeart className="text-[#F44336] mr-1" /> by author</p>
                     <p className="text-[11px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 #NourishYourBody"</p>
@@ -162,7 +202,7 @@ const Forums = () => {
                   </div>
                 </div>
                 <div className="flex w-[84%] ml-auto mt-3">
-                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
+                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
                   <div className=" ml-2">
                     <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Linh_Ipsum</span>20 mint ago.author</p>
                     <p className="text-[10px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 </p>
@@ -171,78 +211,6 @@ const Forums = () => {
               </div>
             </div>
           })}
-          {/* <div className="">
-            <div className="bg-[#FEE4D0] rounded-t-2xl">
-              <div className="flex items-center p-3">
-                <img className="w-[37px] h-[37px] rounded-full border-[#FFD6B6] border-2" src="assets/img/profile-image.jpg"></img>
-                <p className="ml-3 text-[#000] font-[500] text-[13px]">Linh_Ipsum</p>
-              </div>
-              <div className="">
-                <img className="w-full h-full" src="assets/img/food-1.png"></img>
-              </div>
-            </div>
-            <div className="flex items-center mt-3 justify-between">
-              <div className="flex items-center ">
-                <div className="flex items-center"><FaHeart className="text-[#F44336] text-[25px]" />
-                  <p className="ml-1 text-[#000] text-[12px] font-[400]">826</p>
-                </div>
-                <div className="ml-2 flex items-center">
-                  <FaRegComment className="text-[25px]" />
-                  <p className="ml-1 text-[#000] text-[12px] font-[400]">15</p>
-                </div>
-                <div className=" flex items-center ml-2">
-                  <FiSend className="text-[25px]" />
-                  <p className="ml-1 text-[#000] text-[12px] font-[400]">20</p>
-                </div>
-              </div>
-              <div className="">
-                <RiBookmarkLine className="text-[25px]" />
-              </div>
-            </div>
-            <div className="flex items-center mt-3">
-              <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
-              <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg"></img>
-              <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg"></img>
-              <p className="ml-1 text-[12px] text-[#000] font-[400] ">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
-            </div>
-            <div className="mt-2">
-              <p className="text-[#000] text-[12px] font-[300]"><span className="font-[500]">Linh_Ipsum</span>"Fueling my body with goodness, one bite at a time. 🥑🍓
-                "Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum</p>
-            </div>
-            <div className="mt-2">
-              <div className="relative">
-                <input className="border rounded-full w-full p-1 bg-[#D9D9D97D]" type="text" id="fname" name="fname"></input>
-                <FiSend className="text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]" />
-              </div>
-            </div>
-            <div className="mt-2">
-              <p className="text-[#A0A0A0] text-[12px] font-[400]">View all comments</p>
-              <div className="flex items-center">
-                <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
-                <p className="text-[#4F4F4F] text-[11px] font-[400] ml-1">See Translation</p>
-              </div>
-            </div>
-            <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl">
-              <div className="flex">
-                <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
-                <div className=" ml-2">
-                  <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Manny_Ipsum</span>20 mint ago. <FaHeart className="text-[#F44336] mr-1" /> by author</p>
-                  <p className="text-[11px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 #NourishYourBody"</p>
-                  <div className="flex mt-2">
-                    <p className="text-[10px] font-[400] text-[#A0A0A0]">Reply</p>
-                    <p className="ml-3 text-[10px] font-[400] text-[#A0A0A0]">Hide</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex w-[84%] ml-auto mt-3">
-                <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg"></img>
-                <div className=" ml-2">
-                  <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Linh_Ipsum</span>20 mint ago.author</p>
-                  <p className="text-[10px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 </p>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </Layout>
