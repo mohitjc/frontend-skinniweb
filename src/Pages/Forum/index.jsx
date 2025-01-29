@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from "../../components/sidebarglobal/layout";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
@@ -90,8 +90,7 @@ const Forums = () => {
       commentId: commentId,
       userId: user?._id || user?.id
     }
-    let url = "like/comment"
-    if (type === "unlike") url = "unLike/comment"
+    let url = `${type}/comment`
     loader(true)
     ApiClient.post(url, payload).then(res => {
       if (res.success) {
@@ -152,7 +151,7 @@ const Forums = () => {
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.likeCount || 0}</p>
                   </div>
                   <div className="ml-2 flex items-center">
-                    <FaRegComment className="text-[25px]" />
+                    <FaRegComment className="text-[25px] cursor-pointer" onClick={e=>{ document.getElementById(`commentInput${index}`).focus() }} />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.commentCount || 0}</p>
                   </div>
                   {/* <div className="flex items-center ml-2">
@@ -179,7 +178,7 @@ const Forums = () => {
               </div>
               <div className="mt-2">
                 <div className="relative">
-                  <input value={item?.comment} onChange={e => handlePostComment(e.target.value, index, "comment")} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" id="fname" />
+                  <input value={item?.comment} onChange={e => handlePostComment(e.target.value, index, "comment")} id={`commentInput${index}`} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
                   <FiSend onClick={e => postComment(item?._id || item?.id, item?.comment, "")} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
                 </div>
               </div>
