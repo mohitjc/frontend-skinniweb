@@ -21,7 +21,7 @@ const Chats = () => {
 
 </div>
 <div className="bg-white rounded-[12px]  mt-3  py-2 ">
-  <div className="h-[calc(100vh_-_178px)] overflow-auto ">
+  <div className="h-[calc(100vh_-_210px)] overflow-auto ">
 <div className="flex justify-between p-3 hover:bg-[#8080802e]">
   <div className="flex gap-2">
   <div>
@@ -29,7 +29,8 @@ const Chats = () => {
   </div>
 <div className="">
 <p className="text-[#000] text-[12px] font-[600] flex items-center">Skinni Support <VscVerifiedFilled className="ml-1 text-[16px] text-[#008abf] "/> </p>
-<p className="text-[12px] font-[400] text-[#707991]">Hey! Can you please tell</p>
+<p className="text-[12px] font-[400] text-[#707991] w-[160px] whitespace-nowrap overflow-hidden
+text-ellipsis block">Hey! Can you please tell</p>
 </div>
   </div>
  <div>
@@ -45,7 +46,8 @@ const Chats = () => {
   </div>
 <div className="">
 <p className="text-[#000] text-[12px] font-[600] flex items-center">Jessica  </p>
-<p className="text-[12px] font-[400] text-[#707991]">It’s all about healthy food and diet.</p>
+<p className="text-[12px] font-[400] text-[#707991] w-[160px] whitespace-nowrap overflow-hidden
+text-ellipsis block">It’s all about healthy food and diet.</p>
 </div>
   </div>
  <div>
@@ -61,7 +63,8 @@ const Chats = () => {
   </div>
 <div className="">
 <p className="text-[#000] text-[12px] font-[600] flex items-center">Manny Lorem  </p>
-<p className="text-[12px] font-[400] text-[#707991]">It’s all about healthy food and diet</p>
+<p className="text-[12px] font-[400] text-[#707991] w-[160px] whitespace-nowrap overflow-hidden
+text-ellipsis block">It’s all about healthy food and diet</p>
 </div>
   </div>
  <div>
@@ -77,7 +80,8 @@ const Chats = () => {
   </div>
 <div className="">
 <p className="text-[#000] text-[12px] font-[600] flex items-center">Skinni Support <VscVerifiedFilled className="ml-1 text-[16px] text-[#008abf] "/> </p>
-<p className="text-[12px] font-[400] text-[#707991]">Hey! Can you please tell</p>
+<p className="text-[12px] font-[400] text-[#707991] w-[160px] whitespace-nowrap overflow-hidden
+text-ellipsis block">Hey! Can you please tell</p>
 </div>
   </div>
  <div>
@@ -111,7 +115,7 @@ const Chats = () => {
       </div>
 <div className="chat-bg-image px-6 py-3 flex items-end ">
 <div className="w-full ">
-<div className="h-[calc(100vh_-_250px)] overflow-auto  ">
+<div className="h-[calc(100vh_-_290px)] overflow-auto  ">
 <p className="text-center text-[#828282] text-[15px] font-[400] mb-3">Today</p>
 
 <div className="flex  gap-3 ">
