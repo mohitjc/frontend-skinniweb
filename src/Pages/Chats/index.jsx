@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import Layout from "../../components/sidebarglobal/layout";
 import { IoMdSearch } from "react-icons/io";
 import { LuPhone } from "react-icons/lu";
 import { IoVideocamOutline } from "react-icons/io5";
+import Header from "../../components/sidebarglobal/header";
 
 const Chats = () => {
   
   return (
-    <Layout>
+    <>
+    <Header className="w-full"/>
       <div className="bg-white  rounded-[12px]">
-      <div className="flex items-center justify-between bg-[#FEE4D0] p-2">
+      <div className="flex items-center justify-between bg-[#FEE4D0] p-2 rounded-t-[12px]">
 <div className="flex items-center ">
 <img className="w-[40px] h-[40px] rounded-full object-cover" src="/assets/img/profile-image.jpg"></img>
 <div className="ml-2">
@@ -26,10 +26,24 @@ const Chats = () => {
 
 </div>
       </div>
+<div className="chat-bg-image">
+<div className="">
+<p>Today</p>
+<div className="flex items-center">
+<div>
+  <img className="w-[50px] h-[50px] obejct-cover rounded-full" src="/assets/img/profile-image.jpg"></img>
+</div>
+<div className="">
+  <p></p>
+</div>
 
+</div>
+
+</div>
+</div>
         
       </div>
-    </Layout>
+    </>
   );
 };
 

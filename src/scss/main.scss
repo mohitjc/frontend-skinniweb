@@ -211,3 +211,10 @@ select:focus option:checked {
 .slick-prev, .slick-next {
   color: #000000 !important;
 }
+
+.chat-bg-image{
+  background-image: url('../../public/assets/img/chat-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 200px);
+}
