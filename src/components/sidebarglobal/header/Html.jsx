@@ -45,7 +45,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
       component="header"
       className={`${
         isOpen ? "min-sidebar w-[calc(100%-80px)]" : `max-[1199px]:w-[calc(100%-0px)] ${urlPath === "/chats" ? "w-[calc(100%-0px)]" : "w-[calc(100%-280px)]"}`
-      } shadow-btn py-1.5 bg-[#5F5F5F] fixed transition-[width] duration-300 ml-auto right-0 z-10 flex items-center h-[80px] z-30 !px-5
+      } shadow-btn py-1.5 bg-[#5F5F5F] fixed transition-[width] duration-300 ml-auto top-0  right-0 z-10 flex items-center h-[80px] z-30 !px-5
       `}
     >
       <button

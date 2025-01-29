@@ -216,5 +216,36 @@ select:focus option:checked {
   background-image: url('../../public/assets/img/chat-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(100vh - 200px);
+  // height: calc(100vh - 200px);
+}
+
+
+
+//slick//
+.slick-slider.slick-initialized {
+  position: relative;
+} 
+svg.slick-arrow.slick-prev {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  z-index: 10;
+  color: #e1ae84 !important;
+  bottom: 50%;
+  background: #9797978f;
+  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+}
+svg.slick-arrow.slick-next {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  z-index: 10;
+  color: #e1ae84 !important;
+  bottom: 50%;
+  width: 25px;
+  height: 25px;
+  background: #9797978f;
+border-radius: 50px;
 }
