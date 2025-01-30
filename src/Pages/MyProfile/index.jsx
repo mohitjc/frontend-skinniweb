@@ -392,7 +392,7 @@ const MyProfile = () => {
           </div>
         </div>
         <div className="flex justify-end">
-          {editable && <button  onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-2 mb-2">
+          {editable && <button  onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-4">
             Save Changes
           </button>}
         </div>
