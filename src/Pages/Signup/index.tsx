@@ -58,7 +58,7 @@ const Signup = ({ setActiveTab }: any) => {
         if (res.success) {
           let url = "/otp";
           setTimeout(() => {
-            toast.success(`Please check your email account,We've sent a code to ${form?.email}`);
+            toast.success(`Please check your email account,We've sent a code to your Email.`);
           }, 400);
           history(url);
           loader(false);
