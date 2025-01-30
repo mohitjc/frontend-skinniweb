@@ -17,9 +17,11 @@ const Forums = () => {
   const user = useSelector((state) => state.user)
   const [filters, setFilter] = useState({ page: 1, count: 10, search: "", date: "" });
   const [data, setData] = useState([]);
+  const [commentData, setCommentData] = useState([]);
+  const [postId,setPostId] = useState("");
   const [total, setTotal] = useState(0);
 
-  console.log(data, '==data');
+  console.log(commentData, '==data');
 
   useEffect(() => {
     getData();
@@ -37,6 +39,19 @@ const Forums = () => {
     });
   };
 
+  const getComments = (id) => {
+    // loader(true);
+    let filter = { postId:id };
+    setPostId(id)
+    ApiClient.get("comment/list", filter).then((res) => {
+      if (res.success) {
+        setCommentData(res.data);
+        // setTotal(res.total);
+      }
+      // loader(false);
+    });
+  };
+
   const handleLikeUnlike = (item) => {
     const payload = {
       postId: item?._id || item?.id,
@@ -49,6 +64,7 @@ const Forums = () => {
       loader(false)
     })
   }
+
   const handleSaveUnsave = (item) => {
     const payload = {
       postId: item?._id || item?.id,
@@ -153,7 +169,10 @@ const Forums = () => {
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.likeCount || 0}</p>
                   </div>
                   <div className="ml-2 flex items-center">
-                    <FaRegComment className="text-[25px] cursor-pointer" onClick={e=>{ document.getElementById(`commentInput${index}`).focus() }} />
+                    <FaRegComment className="text-[25px] cursor-pointer" 
+                    onClick={()=>getComments(item?.id || item?._id)}
+                    // onClick={e=>{ document.getElementById(`commentInput${index}`).focus() }} 
+                    />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.commentCount || 0}</p>
                   </div>
                   {/* <div className="flex items-center ml-2">
@@ -169,28 +188,28 @@ const Forums = () => {
                   }
                 </div>
               </div>
-              <div className="flex items-center mt-3">
+              {/* <div className="flex items-center mt-3">
                 <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
                 <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg" />
                 <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg" />
                 <p className="ml-1 text-[12px] text-[#000] font-[400]">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
-              </div>
+              </div> */}
               <div className="mt-2">
                 <p className="text-[#000] text-[12px] font-[300] gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
               </div>
-              <div className="mt-2">
+              {/* <div className="mt-2">
                 <div className="relative">
                   <input value={item?.comment} onChange={e => handlePostComment(e.target.value, index, "comment")} id={`commentInput${index}`} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
                   <FiSend onClick={e => postComment(item?._id || item?.id, item?.comment, "")} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
                 </div>
-              </div>
+              </div> */}
               <div className="mt-2">
                 <p className="text-[#A0A0A0] text-[12px] font-[400] mt-2 cursor-pointer">View all comments</p>
                 <div className="flex items-center mt-1">
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
                 </div>
               </div>
-              <CommentSection/>
+              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData}/>}
             </div>
           })}
         </div>
