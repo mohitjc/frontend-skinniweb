@@ -230,7 +230,7 @@ const MyProfile = () => {
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-5 py-5 !pt-0 w-full rounded-[12px]">
+            {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-3 sm:px-5 py-5 !pt-0 w-full rounded-[12px]">
               {form.fullName && <div className="">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>}
@@ -252,7 +252,7 @@ const MyProfile = () => {
             </div>}
 
             {editable && (
-              <div className="grid grid-cols-1 lg:grid-cols-3 rounded-[12px] sm:grid-cols-2 mt-[-30px] gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] bg-[#FEE4D0] px-5 py-5 !pt-0 w-full">
+              <div className="grid grid-cols-1 lg:grid-cols-3 rounded-[12px] sm:grid-cols-2 mt-[-30px] gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] bg-[#FEE4D0] px-3 sm:px-5 py-5 !pt-0 w-full">
                 <div className="mb-2">
                   <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Full Name</label>
                   <input
