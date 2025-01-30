@@ -87,6 +87,8 @@ const MyProfile = () => {
     }
   }, [sortBy, sortOrder, data]);
 
+  
+
   // Fetch user profile data
   const fetchProfileData = () => {
     setLoading(true);
