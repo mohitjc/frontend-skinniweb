@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { IoBookmarkSharp } from "react-icons/io5";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import CommentSection from "./Comments";
 
 const Forums = () => {
   const user = useSelector((state) => state.user)
@@ -189,40 +190,7 @@ const Forums = () => {
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
                 </div>
               </div>
-              <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
-                <div className="flex">
-                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
-                  <div className=" ml-2">
-                    <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Manny_Ipsum</span>20 mint ago. <FaHeart className="text-[#F44336] mr-1" /> by author</p>
-                    <div className="flex">
-                    <p className="text-[11px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 #NourishYourBody"</p>
-                    <div className="text-center">
-                    <FaHeart className="text-[#F44336] text-[12px] " />
-                   <p className="text-[8px] font-[300] text-[rgba(0,_0,_0,_0.60)]">1</p>
-                    </div>
-
-                    </div>
-                    <div className="flex mt-2">
-                      <p className="text-[10px] font-[400] text-[#A0A0A0] curs0r-pointer">Reply</p>
-                      <p className="ml-3 text-[10px] font-[400] text-[#A0A0A0] cursor-pointer">Hide</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex w-[84%] ml-auto mt-3">
-                  <img className="w-[40px] h-[40px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
-                  <div className=" ml-2">
-                    <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center"><span className="text-[12px] font-[500] text-[#000] mr-1">Linh_Ipsum</span>20 mint ago.author</p>
-                    <div className="flex">
-                    <p className="text-[11px] font-[300] text-[#000]">"Fueling my body with goodness, one bite at a time. 🥑🍓Lorem Iopsum A little bit of healthy, a whole lot of delicious. 🥑🥒 #NourishYourBody"</p>
-                    <div className="text-center">
-                    <FaHeart className="text-[#F44336] text-[12px] " />
-                   <p className="text-[8px] font-[300] text-[rgba(0,_0,_0,_0.60)]">1</p>
-                    </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CommentSection/>
             </div>
           })}
         </div>
