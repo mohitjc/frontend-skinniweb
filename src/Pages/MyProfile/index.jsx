@@ -403,7 +403,7 @@ const MyProfile = () => {
           <h2 className="">Address Book</h2>
           <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]" />Manage Address</p>
         </div>
-        <div className="bg-[#F7F7F7] px-[1.5rem] sm:px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
+        <div className="bg-[#F7F7F7] px-[1rem] sm:px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
           <div className="flex items-center gap-x-3  sm:gap-x-5">
             <img src="/assets/img/line_div.png" className="h-[130px]" />
             <div className="relative w-full border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
