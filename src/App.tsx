@@ -38,7 +38,7 @@ function App() {
     { url: "/meals", path: "Meals" },
     { url: "/myappointment", path: "MyAppointment/appointmentListing" },
     { url: "/myappointmentData/:id", path: "MyAppointment" },
-    { url: "/user/detail", path: "UserProfile" },
+    { url: "/user/detail/:id", path: "UserProfile" },
     { url: "/subscription", path: "Subscription" },
     { url: "/profile/:tab", path: "Settings" },
     { url: "/forgotpassword", path: "Forgotpassword" },

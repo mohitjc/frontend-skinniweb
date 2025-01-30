@@ -3,12 +3,16 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
+import { useNavigate } from "react-router-dom";
 
-const CommentSection = ({ commentsData, postId, getData }) => {
+const CommentSection = ({ commentsData, postId, getData, getComments }) => {
     const user = useSelector((state) => state.user);
+    const navigate = useNavigate()
     const [newReply, setNewReply] = useState("");
     const [newChildReply, setNewChildReply] = useState({});
     const [replyVisible, setReplyVisible] = useState({});
+    const [initialComment, setinitialComment] = useState({});
+    const [visibleRepliesCount, setVisibleRepliesCount] = useState({});
 
     const toggleReplies = (commentId) => {
         setReplyVisible((prevState) => ({
@@ -17,37 +21,29 @@ const CommentSection = ({ commentsData, postId, getData }) => {
         }));
     };
 
+    const toggleMoreReplies = (commentId, repliesLength) => {
+        setVisibleRepliesCount((prevState) => ({
+            ...prevState,
+            [commentId]: prevState[commentId] === 2 ? repliesLength : 2,
+        }));
+    };
+
     const handleAddReply = (parentCommentId, isChild = false) => {
         const replyText = isChild ? newChildReply[parentCommentId] : newReply;
-        const newReplyObj = {
-            id: Math.random(),
+        const payload = {
+            postId: postId,
             comment: replyText,
             parentCommentId,
-            addedBy: 534,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-            likes: 0,
-            unlikes: 0,
         };
-
-        const updatedComments = commentsData.map((comment) => {
-            if (comment.id === parentCommentId) {
-                if (isChild) {
-                    comment.replyComments.push(newReplyObj);
-                } else {
-                    comment.replyComments = [newReplyObj]; // Direct replies only (no nesting)
-                }
+        ApiClient.post(`comment`, payload).then((res) => {
+            if (res.success) {
+                getComments(postId);
+                setReplyVisible({})
+                setNewReply("");
+                setNewChildReply({});
             }
-            return comment;
+            loader(false);
         });
-
-        commentsData = updatedComments;
-        setReplyVisible({});
-        if (isChild) {
-            setNewChildReply({ ...newChildReply, [parentCommentId]: "" });
-        } else {
-            setNewReply("");
-        }
     };
 
     const handleLike = (commentId) => {
@@ -56,26 +52,32 @@ const CommentSection = ({ commentsData, postId, getData }) => {
             userId: user?.id || user?.id,
         };
         loader(true);
-        ApiClient.post(`likeDislikePost`, payload).then((res) => {
+        ApiClient.post(`like/comment`, payload).then((res) => {
             if (res.success) {
-                getData();
+                getComments(postId);
             }
             loader(false);
         });
     };
 
-    const renderReplies = (replies, parentCommentId) => {
-        return replies.map((reply) => (
-            <div key={reply.id} className="ml-5">
+    const handleProfileNavigate=(id)=>{
+        navigate(`/user/detail/${id}`)
+    }
+
+    const renderReplies = (replies, parentCommentId, indentLevel = 1) => {
+        const repliesToShow = replies.slice(0, visibleRepliesCount[parentCommentId] || 2); // Default to showing 2 replies
+        return repliesToShow.map((reply) => (
+            <div key={reply.id} className={`ml-${indentLevel * 1}`}>
                 <div className="flex">
                     <img
-                        className="w-[40px] h-[40px] rounded-full object-cover"
+                        className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
                         src="assets/img/profile-image.jpg"
+                        onClick={e=>handleProfileNavigate(reply?.addedBy?._id || reply?.addedBy?.id)}
                         alt="Profile"
                     />
                     <div className="ml-2">
                         <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center">
-                            <span className="text-[12px] font-[500] text-[#000] mr-1">
+                            <span onClick={e=>handleProfileNavigate(reply?.addedBy?._id || reply?.addedBy?.id)} className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer">
                                 {reply.addedByName}
                             </span>
                             {new Date(reply.createdAt).toLocaleTimeString()} ago.
@@ -129,23 +131,51 @@ const CommentSection = ({ commentsData, postId, getData }) => {
                         )}
                     </div>
                 </div>
+                {/* Render nested replies if present */}
+                {reply.replyComments && reply.replyComments.length > 0 && (
+                    <div className="">
+                        {renderReplies(reply.replyComments, reply.id, indentLevel + 1)}
+                    </div>
+                )}
             </div>
         ));
     };
 
+    const postComment = (id, message, parentCommentId = "") => {
+        if (!message) return
+        let payload = {
+            postId: postId,
+            comment: initialComment
+        }
+        loader(true)
+        ApiClient.post(`comment`, payload).then(res => {
+            if (res.success) {
+                getData()
+            }
+            loader(false)
+        })
+    }
+
     return (
         <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
+            <div className="mt-2">
+                <div className="relative">
+                    <input value={item?.comment} onChange={e => setinitialComment(e.target.value)} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
+                    <FiSend onClick={e => postComment()} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
+                </div>
+            </div>
             {commentsData.map((comment) => (
                 <div key={comment.id} className="flex flex-col mb-4">
                     <div className="flex">
                         <img
-                            className="w-[40px] h-[40px] rounded-full object-cover"
+                            className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
+                            onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
                             src="assets/img/profile-image.jpg"
                             alt="Profile"
                         />
                         <div className="ml-2">
                             <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center">
-                                <span className="text-[12px] font-[500] text-[#000] mr-1">
+                                <span onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)} className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer">
                                     {comment.addedByName}
                                 </span>
                                 {new Date(comment.createdAt).toLocaleTimeString()} ago.
@@ -174,8 +204,8 @@ const CommentSection = ({ commentsData, postId, getData }) => {
 
                             {/* Show replies only if the reply button is clicked */}
                             {replyVisible[comment.id] && (
-                                <div className="ml-5 mt-2">
-                                    {renderReplies(comment.replyComments, comment.id)}
+                                <div className="">
+                                    {renderReplies(comment.replyComments, comment.id, 1)}
                                     <div className="flex mt-2">
                                         <input
                                             type="text"
@@ -191,6 +221,17 @@ const CommentSection = ({ commentsData, postId, getData }) => {
                                             Post Reply
                                         </button>
                                     </div>
+
+                                    {comment.replyComments && comment.replyComments.length > 2 && (
+                                        <button
+                                            className="mt-2 text-[10px] font-[400] text-[#A0A0A0] cursor-pointer"
+                                            onClick={() => toggleMoreReplies(comment.id, comment.replyComments.length)}
+                                        >
+                                            {visibleRepliesCount[comment.id] === 2
+                                                ? "Show More Replies"
+                                                : "Show Less Replies"}
+                                        </button>
+                                    )}
                                 </div>
                             )}
                         </div>

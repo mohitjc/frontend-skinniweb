@@ -203,13 +203,13 @@ const Forums = () => {
                   <FiSend onClick={e => postComment(item?._id || item?.id, item?.comment, "")} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
                 </div>
               </div> */}
-              <div className="mt-2">
+              {/* <div className="mt-2">
                 <p className="text-[#A0A0A0] text-[12px] font-[400] mt-2 cursor-pointer">View all comments</p>
                 <div className="flex items-center mt-1">
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
                 </div>
-              </div>
-              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData}/>}
+              </div> */}
+              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments}/>}
             </div>
           })}
         </div>
