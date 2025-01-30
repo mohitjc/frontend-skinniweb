@@ -36,7 +36,7 @@ const Forums = () => {
           </div>
         </div>
 
-<div className=" lg:px-10">
+<div className=" px-3 lg:px-10">
 <div className="">
       <div className="">
         <TabGroup>
@@ -57,7 +57,7 @@ const Forums = () => {
           <TabPanels className="mt-3">
               <TabPanel key={"Liked Posts"} className="rounded-xl bg-white/5 px-3 pb-5">
             <div className="">
-<div className="grid lg:grid-cols-4  grid-cols-2 gap-3">
+<div className="grid lg:grid-cols-4  sm:grid-cols-2 grid-cols-1 gap-3">
   <div className="">
     <img className="w-full h-[190px] object-cover" src="/assets/img/food-1.png"></img>
   </div>
