@@ -230,7 +230,7 @@ const MyProfile = () => {
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-5 py-5 !pt-0 w-full rounded-[12px]">
+            {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-3 sm:!px-10 py-5 !pt-0 w-full rounded-[12px]">
               {form.fullName && <div className="">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>}
@@ -252,7 +252,7 @@ const MyProfile = () => {
             </div>}
 
             {editable && (
-              <div className="grid grid-cols-1 lg:grid-cols-3 rounded-[12px] sm:grid-cols-2 mt-[-30px] gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] bg-[#FEE4D0] px-5 py-5 !pt-0 w-full">
+              <div className="grid grid-cols-1 lg:grid-cols-3 rounded-[12px] sm:grid-cols-2 mt-[-30px] gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] bg-[#FEE4D0] px-3 sm:!px-10 py-5 !pt-0 w-full">
                 <div className="mb-2">
                   <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Full Name</label>
                   <input
@@ -260,7 +260,7 @@ const MyProfile = () => {
                     value={form.fullName}
                     onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
                 </div>
@@ -273,7 +273,7 @@ const MyProfile = () => {
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     // disabled={!editable}
                     disabled
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
                 </div>
@@ -301,7 +301,7 @@ const MyProfile = () => {
                       setForm({ ...form, dob: selectedDate });
                     }}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
                 </div>
@@ -314,7 +314,7 @@ const MyProfile = () => {
                     value={form.gender}
                     onChange={(e) => setForm({ ...form, gender: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   >
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
@@ -328,7 +328,7 @@ const MyProfile = () => {
                     value={form.state}
                     onChange={(e) => setForm({ ...form, state: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="lg:col-span-3 mb-2 sm:col-span-2 col-span-1">
@@ -338,7 +338,7 @@ const MyProfile = () => {
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="mb-2">
@@ -348,7 +348,7 @@ const MyProfile = () => {
                     value={form.zip}
                     onChange={(e) => setForm({ ...form, zip: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="mb-2">
@@ -358,7 +358,7 @@ const MyProfile = () => {
                     value={form.city}
                     onChange={(e) => setForm({ ...form, city: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
 
@@ -373,7 +373,7 @@ const MyProfile = () => {
                     value={form.country}
                     onChange={(e) => setForm({ ...form, country: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
 
@@ -403,7 +403,7 @@ const MyProfile = () => {
           <h2 className="">Address Book</h2>
           <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]" />Manage Address</p>
         </div>
-        <div className="bg-[#F7F7F7] px-[1.5rem] sm:px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
+        <div className="bg-[#F7F7F7] px-[1rem] sm:px-[2rem] py-[3rem] grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[3rem]">
           <div className="flex items-center gap-x-3  sm:gap-x-5">
             <img src="/assets/img/line_div.png" className="h-[130px]" />
             <div className="relative w-full border !border-[#E0CCBD] bg-[#FEE4D0] p-4 rounded-[12px]">
