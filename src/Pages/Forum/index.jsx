@@ -67,6 +67,7 @@ const Forums = () => {
     postData[index][key] = value
     setData(postData)
   }
+  
   const postComment = (id, message, parentCommentId = "") => {
     if (!message) return
     let payload = {
