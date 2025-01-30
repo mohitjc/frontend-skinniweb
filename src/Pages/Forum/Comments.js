@@ -3,7 +3,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
-
+import { FiSend } from "react-icons/fi";
 const CommentSection = ({ commentsData, postId, getData }) => {
     const user = useSelector((state) => state.user);
     const [newReply, setNewReply] = useState("");
@@ -174,22 +174,26 @@ const CommentSection = ({ commentsData, postId, getData }) => {
 
                             {/* Show replies only if the reply button is clicked */}
                             {replyVisible[comment.id] && (
-                                <div className="ml-5 mt-2">
+                                <div className=" mt-2">
                                     {renderReplies(comment.replyComments, comment.id)}
-                                    <div className="flex mt-2">
-                                        <input
+                                    <div className="flex mt-2 ml-5">
+                                    <div className="relative">
+                                    <input
                                             type="text"
                                             value={newReply}
                                             onChange={(e) => setNewReply(e.target.value)}
-                                            className="p-1 text-[10px] border border-gray-300 rounded-lg"
+                                            className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]"
                                             placeholder="Write a reply..."
                                         />
-                                        <button
+                                         <FiSend   onClick={() => handleAddReply(comment.id)} className="text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]"/>
+                                        </div>
+                                      
+                                        {/* <button
                                             className="ml-2 text-[10px] font-[500] text-[#000] cursor-pointer"
                                             onClick={() => handleAddReply(comment.id)} // Reply to main comment
                                         >
                                             Post Reply
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             )}
