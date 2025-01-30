@@ -25,20 +25,14 @@ const MyProfile = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch()
   const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    dob: '',
-    number: '',
-    gender: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: '',
-    age: null,
+    fullName: "",
+    email: "",
+    mobileNo: "",
+    address: "",
+    dob: "",
+    gender: "male",
   });
 
-  const [errors, setErrors] = useState({});
   const [editable, setEditable] = useState(false);
   const [image, setImage] = useState(""); // Profile image URL
   const [loading, setLoading] = useState(false);
@@ -100,7 +94,7 @@ const MyProfile = () => {
       .then((res) => {
         if (res.success) {
           const { fullName, email, mobileNo, address, dob, gender, image } = res.data;
-          setForm({ fullName, email, mobileNo, address, dob, gender ,number:mobileNo});
+          setForm({ fullName, email, mobileNo, address, dob, gender });
           setImage(image);
         } else {
           toast.error("Failed to fetch profile data");
@@ -109,42 +103,12 @@ const MyProfile = () => {
       .finally(() => setLoading(false));
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    const today = new Date();
-    const dob = new Date(form.dob);
-    let age = today.getFullYear() - dob.getFullYear();
-    const month = today.getMonth() - dob.getMonth();
-    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
-      age--;
-    }
-
-    if (!form.fullName.trim()) {
-      newErrors.fullName = 'Full name is required.';
-    } else if (!/^[A-Za-z\s]+$/.test(form.fullName)) {
-      newErrors.fullName = 'Full name can only contain letters and spaces.';
-    }
-
-    if (!form.email) {
-      newErrors.email = 'Email is required.';
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      newErrors.email = 'Please enter a valid email address.';
-    }
-
-    if (!form.dob) {
-      newErrors.dob = 'Date of birth is required.';
-    } else if (age < 15) {
-      newErrors.dob = 'You must be at least 15 years old.';
-    }
-
-    if (!form.number) {
-      newErrors.number = 'Phone number is required.';
-    }
-
-    return newErrors;
-  };
-
+  // Handle profile update
   const handleSubmit = () => {
+    if (!form.fullName || !form.email || !form.mobileNo || !form.address || !form.dob || !form.gender) {
+      toast.error("All fields are required");
+      return;
+    }
 
     let payload = {
       fullName: form.fullName,
@@ -157,24 +121,18 @@ const MyProfile = () => {
     };
 
     setLoading(true);
-    const formErrors = validateForm();
-
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-    } else {
-      ApiClient.put("editUserProfile", payload)
-        .then((res) => {
-          if (res.success) {
-            let UserDetail = { ...user, ...res.data }
-            dispatch(login_success(UserDetail));
-            toast.success("Profile updated successfully");
-            setEditable(false);
-          } else {
-            toast.error(res.message || "Failed to update profile");
-          }
-        })
-        .finally(() => setLoading(false));
-    }
+    ApiClient.put("editUserProfile", payload)
+      .then((res) => {
+        if (res.success) {
+          let UserDetail = { ...user, ...res.data }
+          dispatch(login_success(UserDetail));
+          toast.success("Profile updated successfully");
+          setEditable(false);
+        } else {
+          toast.error(res.message || "Failed to update profile");
+        }
+      })
+      .finally(() => setLoading(false));
   };
 
   // Handle image upload
@@ -203,9 +161,9 @@ const MyProfile = () => {
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="flex items-center justify-between mb-4">
-          <div className="relative w-full max-sm:flex-wrap flex items-center">
-            <div className="relative min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] sm:absolute top-[0px] left-[0px] z-10 mx-auto">
+        <div className="">
+          <div className="relative bg-[#FEE4D0] rounded-[12px]">
+            <div className="relative min-w-[150px] md:min-w-[200px] mx-auto w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] ">
               <img
                 src={image || "/assets/img/person.jpg"}
                 alt="Profile Picture"
@@ -227,7 +185,7 @@ const MyProfile = () => {
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[4rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] lg:rounded-r-full">
+            {!editable && <div className="grid grid-cols-1  lg:grid-cols-3 sm:grid-cols-2 gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-5   py-4 w-full ">
               {form.fullName && <div className="flex items-center">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>}
@@ -248,158 +206,106 @@ const MyProfile = () => {
               </div>}
             </div>}
 
-            {editable && (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] xl:rounded-r-full">
-                {/* Full Name */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Full Name</label>
-                  <input
-                    type="text"
-                    value={form.fullName}
-                    onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                  {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
-                </div>
-
-                {/* Email */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Email</label>
-                  <input
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    // disabled={!editable}
-                    disabled
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                  {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
-                </div>
-
-                {/* Date of Birth */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Date of Birth</label>
-                  <input
-                    type="date"
-                    value={form.dob}
-                    onChange={(e) => {
-                      const selectedDate = e.target.value;
-                      setForm({ ...form, dob: selectedDate });
-                    }}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                  {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
-                </div>
-
-                {/* Phone Number */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="text-sm mb-0 min-w-[95px]">Phone</label>
-                  <PhoneInput
-                    className="input-set"
-                    country="us"
-                    value={form.number}
-                    enableSearch={true}
-                    onChange={(value, data) => {
-                      setForm({ ...form, number: value, mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" });
-                    }}
-                    countryCodeEditable={true}
-                  />
-                  {errors.number && <span className="text-red-500 text-xs">{errors.number}</span>}
-                </div>
-
-                {/* Gender */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Gender</label>
-                  <select
-                    value={form.gender}
-                    onChange={(e) => setForm({ ...form, gender: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  >
-                    <option value="">Select Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                  </select>
-                </div>
-
-                {/* Address */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Address</label>
-                  <input
-                    type="text"
-                    value={form.address}
-                    onChange={(e) => setForm({ ...form, address: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
-
-                {/* City */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">City</label>
-                  <input
-                    type="text"
-                    value={form.city}
-                    onChange={(e) => setForm({ ...form, city: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
-
-                {/* State */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">State</label>
-                  <input
-                    type="text"
-                    value={form.state}
-                    onChange={(e) => setForm({ ...form, state: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
-
-                {/* Zip Code */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Zip Code</label>
-                  <input
-                    type="text"
-                    value={form.zip}
-                    onChange={(e) => setForm({ ...form, zip: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
-
-                {/* Country */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Country</label>
-                  <input
-                    type="text"
-                    value={form.country}
-                    onChange={(e) => setForm({ ...form, country: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
-
+            {editable && <div className="grid grid-cols-1  lg:grid-cols-3 sm:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] px-5  py-4 w-full ">
+              <div className="">
+                <label className="max-md:w-full text-sm mb-0 min-w-[95px] ">Full Name</label>
+                <input
+                  type="text"
+                  value={form.fullName}
+                  onChange={(e) => setForm({ ...form, fullName: e.target.value })}
+                  disabled={!editable}
+                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                />
               </div>
-            )}
+
+              <div className="">
+                <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Email</label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  disabled={!editable}
+                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                />
+              </div>
+              <div className="">
+                <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Date of Birth</label>
+                <input
+                  type="date"
+                  value={form.dob}
+                  onChange={(e) => {
+                    const selectedDate = e.target.value;
+                    const today = new Date();
+                    const dob = new Date(selectedDate);
+
+                    let age = today.getFullYear() - dob.getFullYear();
+                    const month = today.getMonth() - dob.getMonth();
+
+                    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+                      age--;
+                    }
+
+                    if (age >= 15) {
+                      setForm({ ...form, dob: selectedDate ,age:age});
+                    } else {
+                      alert("You must be at least 15 years old.");
+                    }
+                  }}
+                  disabled={!editable}
+                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                />
+              </div>
+              <div className="">
+                <label className="text-sm mb-0 min-w-[95px]">Phone</label>
+                <PhoneInput
+                className="input-set"
+                  country="us"
+                  value={form.number}
+                  // placeholder="+44 0000000000"
+                  enableSearch={true}
+                  onChange={(value, data) => {
+                    setForm({ ...form, number:value , mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" })
+                  }}
+                  countryCodeEditable={true}
+                />
+              </div>
+              <div className="">
+                <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Gender</label>
+                <select
+                  value={form.gender}
+                  onChange={(e) => setForm({ ...form, gender: e.target.value })}
+                  disabled={!editable}
+                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div className="col-span-3">
+                <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Address</label>
+                <input
+                  type="text"
+                  value={form.address}
+                  onChange={(e) => setForm({ ...form, address: e.target.value })}
+                  disabled={!editable}
+                  className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                />
+              </div>
+            </div>}
             <div className="">
               {editable ? (<>
                 <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[11px] xl:right-[50px]" />
+
               </>
               ) : (
 
                 <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[32px] xl:right-[50px]" />
               )}
-               
             </div>
           </div>
         </div>
         <div className="flex justify-end">
-          {editable && <button  onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-2 mb-2">
+          {editable && <button onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-2 mb-2">
             Save Changes
           </button>}
         </div>
