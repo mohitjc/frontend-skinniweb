@@ -134,19 +134,19 @@ const Forums = () => {
         <div className="text-[#040415] text-[24px] font-[600]">
           <h3 className="">Recent Posts</h3>
         </div>
-        <div className="grid grid-cols-2 mt-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-3  lg:gap-10 gap-5">
           {data && data?.map((item, index) => {
             return <div key={index}>
               <div className="bg-[#FEE4D0] rounded-t-2xl">
                 <div className="flex items-center p-3">
-                  <img src={methodModel.userImg(item?.addedBy?.image, "category")} className="w-[37px] h-[37px] rounded-full border-[#FFD6B6] border-2" alt="profile_image" />
+                  <img src={methodModel.userImg(item?.addedBy?.image, "category")} className="w-[37px] h-[37px] object-cover min-w-[37px] rounded-full border-[#FFD6B6] border-2" alt="profile_image" />
                   <p className="ml-3 text-[#000] font-[500] text-[13px]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</p>
                 </div>
                 <div className="slider-container">
                   <Slider {...sliderSetting}>
                     {item?.media?.map((itm, i) => {
                       if (itm?.type === "image") {
-                        return <img className="w-full h-[270px] bg-[#000]" src={methodModel.noImg(itm?.path)} alt="image" key={i} />
+                        return <img className="w-full h-[270px] bg-[#000] object-cover" src={methodModel.noImg(itm?.path)} alt="image" key={i} />
                       } else if (itm?.type === "video") {
                         return <video className="w-full h-[270px] bg-[#000]" key={i} controls>
                           <source src={methodModel.video(itm?.path)} type="video/mp4" />

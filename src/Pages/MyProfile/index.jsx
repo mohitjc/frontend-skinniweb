@@ -205,9 +205,10 @@ const MyProfile = () => {
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="flex items-center justify-between mb-4">
-          <div className="relative w-full max-sm:flex-wrap flex items-center">
-            <div className="relative min-w-[150px] md:min-w-[200px] w-[150px] md:w-[200px] h-[150px] md:h-[200px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282] sm:absolute top-[0px] left-[0px] z-10 mx-auto">
+        <div className="pt-4">
+    
+          <div className="relative bg-[#FEE4D0] rounded-[12px] mt-5">
+          <div className="relative top-[-68px] min-w-[150px] md:min-w-[150px] mx-auto w-[150px] md:w-[130px] h-[150px] md:h-[150px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282]  ">
               <img
                 src={image || "/assets/img/person.jpg"}
                 alt="Profile Picture"
@@ -229,32 +230,31 @@ const MyProfile = () => {
                 </div>
               )}
             </div>
-            {!editable && <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[4rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] lg:rounded-r-full">
-              {form.fullName && <div className="flex items-center">
+            {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-5 py-5 !pt-0 w-full rounded-[12px]">
+              {form.fullName && <div className="">
                 <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>}
-              {form.email && <div className="flex items-center">
+              {form.email && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><MdEmail className="text-[#828282] text-[22px]" />{form.email}</span>
               </div>}
-              {form.dob && <div className="flex items-center">
+              {form.dob && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]" />{form.dob}</span>
               </div>}
-              {form.mobileNo &&<div className="flex items-center">
+              {form.mobileNo &&<div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.mobileNo} </span>
               </div>}
-              {form.gender && <div className="flex items-center">
+              {form.gender && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm "><BsGenderMale className="text-[#828282] text-[22px]" />{form.gender}</span>
               </div>}
-              {form.address && <div className="flex items-center">
+              {form.address && <div className="lg:col-span-3  sm:col-span-2 col-span-1">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaLocationDot className="text-[#828282] text-[22px]" />{form.address}</span>
               </div>}
             </div>}
 
             {editable && (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] bg-[#FEE4D0] sm:ml-[5rem] !pl-[1.5rem] sm:!pl-[5.5rem] md:!pl-[9rem] 2xl:!pl-[10rem] mt-[12px] pr-[1.5rem] sm:pr-[3rem] xl:pr-[6rem] py-4 w-full rounded-[20px] rounded-r-[20px] xl:rounded-r-full">
-                {/* Full Name */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Full Name</label>
+              <div className="grid grid-cols-1 lg:grid-cols-3 rounded-[12px] sm:grid-cols-2 mt-[-30px] gap-y-2 gap-x-[2rem] 2xl:gap-x-[4rem] bg-[#FEE4D0] px-5 py-5 !pt-0 w-full">
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Full Name</label>
                   <input
                     type="text"
                     value={form.fullName}
@@ -265,9 +265,8 @@ const MyProfile = () => {
                   {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
                 </div>
 
-                {/* Email */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Email</label>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Email</label>
                   <input
                     type="email"
                     value={form.email}
@@ -278,25 +277,7 @@ const MyProfile = () => {
                   />
                   {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
                 </div>
-
-                {/* Date of Birth */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Date of Birth</label>
-                  <input
-                    type="date"
-                    value={form.dob}
-                    onChange={(e) => {
-                      const selectedDate = e.target.value;
-                      setForm({ ...form, dob: selectedDate });
-                    }}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                  {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
-                </div>
-
-                {/* Phone Number */}
-                <div className="flex max-md:flex-wrap items-center input-field">
+                <div className="mb-2">
                   <label className="text-sm mb-0 min-w-[95px]">Phone</label>
                   <PhoneInput
                     className="input-set"
@@ -310,10 +291,25 @@ const MyProfile = () => {
                   />
                   {errors.number && <span className="text-red-500 text-xs">{errors.number}</span>}
                 </div>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Date of Birth</label>
+                  <input
+                    type="date"
+                    value={form.dob}
+                    onChange={(e) => {
+                      const selectedDate = e.target.value;
+                      setForm({ ...form, dob: selectedDate });
+                    }}
+                    disabled={!editable}
+                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                  />
+                  {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
+                </div>
 
-                {/* Gender */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Gender</label>
+              
+
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Gender</label>
                   <select
                     value={form.gender}
                     onChange={(e) => setForm({ ...form, gender: e.target.value })}
@@ -325,10 +321,18 @@ const MyProfile = () => {
                     <option value="female">Female</option>
                   </select>
                 </div>
-
-                {/* Address */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Address</label>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">State</label>
+                  <input
+                    type="text"
+                    value={form.state}
+                    onChange={(e) => setForm({ ...form, state: e.target.value })}
+                    disabled={!editable}
+                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                  />
+                </div>
+                <div className="lg:col-span-3 mb-2 sm:col-span-2 col-span-1">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Address</label>
                   <input
                     type="text"
                     value={form.address}
@@ -337,10 +341,18 @@ const MyProfile = () => {
                     className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
                   />
                 </div>
-
-                {/* City */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">City</label>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Zip Code</label>
+                  <input
+                    type="text"
+                    value={form.zip}
+                    onChange={(e) => setForm({ ...form, zip: e.target.value })}
+                    disabled={!editable}
+                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                  />
+                </div>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">City</label>
                   <input
                     type="text"
                     value={form.city}
@@ -350,33 +362,12 @@ const MyProfile = () => {
                   />
                 </div>
 
-                {/* State */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">State</label>
-                  <input
-                    type="text"
-                    value={form.state}
-                    onChange={(e) => setForm({ ...form, state: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
+                
 
-                {/* Zip Code */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Zip Code</label>
-                  <input
-                    type="text"
-                    value={form.zip}
-                    onChange={(e) => setForm({ ...form, zip: e.target.value })}
-                    disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
-                  />
-                </div>
+               
 
-                {/* Country */}
-                <div className="flex max-md:flex-wrap items-center input-field">
-                  <label className="max-md:w-full text-sm mb-0 min-w-[95px]">Country</label>
+                <div className="mb-2">
+                  <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Country</label>
                   <input
                     type="text"
                     value={form.country}
@@ -390,11 +381,11 @@ const MyProfile = () => {
             )}
             <div className="">
               {editable ? (<>
-                <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[11px] xl:right-[50px]" />
+                <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               </>
               ) : (
 
-                <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[0px] sm:top-[35px] right-[32px] xl:right-[50px]" />
+                <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               )}
                
             </div>
