@@ -260,7 +260,7 @@ const MyProfile = () => {
                     value={form.fullName}
                     onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.fullName && <span className="text-red-500 text-xs">{errors.fullName}</span>}
                 </div>
@@ -273,7 +273,7 @@ const MyProfile = () => {
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     // disabled={!editable}
                     disabled
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
                 </div>
@@ -301,7 +301,7 @@ const MyProfile = () => {
                       setForm({ ...form, dob: selectedDate });
                     }}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                   {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
                 </div>
@@ -314,7 +314,7 @@ const MyProfile = () => {
                     value={form.gender}
                     onChange={(e) => setForm({ ...form, gender: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   >
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
@@ -328,7 +328,7 @@ const MyProfile = () => {
                     value={form.state}
                     onChange={(e) => setForm({ ...form, state: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="lg:col-span-3 mb-2 sm:col-span-2 col-span-1">
@@ -338,7 +338,7 @@ const MyProfile = () => {
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="mb-2">
@@ -348,7 +348,7 @@ const MyProfile = () => {
                     value={form.zip}
                     onChange={(e) => setForm({ ...form, zip: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
                 <div className="mb-2">
@@ -358,7 +358,7 @@ const MyProfile = () => {
                     value={form.city}
                     onChange={(e) => setForm({ ...form, city: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
 
@@ -373,7 +373,7 @@ const MyProfile = () => {
                     value={form.country}
                     onChange={(e) => setForm({ ...form, country: e.target.value })}
                     disabled={!editable}
-                    className="bg-[#00000017] w-full rounded-[12px] text-sm px-3 py-2"
+                    className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
                   />
                 </div>
 

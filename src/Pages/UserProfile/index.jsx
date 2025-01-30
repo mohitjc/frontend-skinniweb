@@ -17,7 +17,7 @@ const Forums = () => {
     <Layout>
       <div className="flex items-center mb-2"><p className="text-[12px] text-[#FEE4D0] font-[400]">Forum</p><IoIosArrowForward className="text-[12px] text-[#FEE4D0]" /><p className="text-[12px] font-[600] text-[#FEE4D0]">Profile</p></div>
       <div className="bg-white   rounded-[12px]">
-        <div className="set-bg-images">
+        <div className="set-bg-images h-[170px]">
 
         </div>
         <div className="">
