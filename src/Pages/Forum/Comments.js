@@ -4,13 +4,15 @@ import { useSelector } from "react-redux";
 import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
 import { FiSend } from "react-icons/fi";
-const CommentSection = ({ commentsData, postId, getData }) => {
+import { useNavigate } from "react-router-dom";
+
+const CommentSection = ({ commentsData, postId, getData,getComments }) => {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate()
     const [newReply, setNewReply] = useState("");
     const [newChildReply, setNewChildReply] = useState({});
     const [replyVisible, setReplyVisible] = useState({});
-    const [initialComment, setinitialComment] = useState({});
+    const [initialComment, setinitialComment] = useState("");
     const [visibleRepliesCount, setVisibleRepliesCount] = useState({});
 
     const toggleReplies = (commentId) => {
@@ -63,6 +65,25 @@ const CommentSection = ({ commentsData, postId, getData }) => {
         navigate(`/user/detail/${id}`)
     }
 
+    function timeAgo(createdAt) {
+        const now = new Date();
+        const diff = now - new Date(createdAt);
+        
+        const seconds = Math.floor(diff / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+        
+        if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
+        if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
+        if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+        if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+        if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+        return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+      }
+
     const renderReplies = (replies, parentCommentId, indentLevel = 1) => {
         const repliesToShow = replies.slice(0, visibleRepliesCount[parentCommentId] || 2); // Default to showing 2 replies
         return repliesToShow.map((reply) => (
@@ -79,7 +100,7 @@ const CommentSection = ({ commentsData, postId, getData }) => {
                             <span onClick={e=>handleProfileNavigate(reply?.addedBy?._id || reply?.addedBy?.id)} className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer">
                                 {reply.addedByName}
                             </span>
-                            {new Date(reply.createdAt).toLocaleTimeString()} ago.
+                            {timeAgo(reply.createdAt)} ago.
                             {reply?.isLiked ? (
                                 <FaHeart
                                     className="text-[#F44336] mr-1"
@@ -140,8 +161,8 @@ const CommentSection = ({ commentsData, postId, getData }) => {
         ));
     };
 
-    const postComment = (id, message, parentCommentId = "") => {
-        if (!message) return
+    const postComment = () => {
+        if (!initialComment) return
         let payload = {
             postId: postId,
             comment: initialComment
@@ -149,7 +170,8 @@ const CommentSection = ({ commentsData, postId, getData }) => {
         loader(true)
         ApiClient.post(`comment`, payload).then(res => {
             if (res.success) {
-                getData()
+                setinitialComment("")
+                getComments(postId)
             }
             loader(false)
         })
@@ -157,10 +179,10 @@ const CommentSection = ({ commentsData, postId, getData }) => {
 
     return (
         <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
-            <div className="mt-2">
+            <div className="mt-2 mb-2">
                 <div className="relative">
-                    <input value={item?.comment} onChange={e => setinitialComment(e.target.value)} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
-                    <FiSend onClick={e => postComment()} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
+                    <input value={initialComment} onChange={e => setinitialComment(e.target.value)} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
+                    <FiSend onClick={() => postComment()} className={`${!initialComment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
                 </div>
             </div>
             {commentsData.map((comment) => (
@@ -177,7 +199,7 @@ const CommentSection = ({ commentsData, postId, getData }) => {
                                 <span onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)} className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer">
                                     {comment.addedByName}
                                 </span>
-                                {new Date(comment.createdAt).toLocaleTimeString()} ago.
+                                {timeAgo(comment.createdAt)}
                                 {comment?.isLiked ? (
                                     <FaHeart
                                         className="text-[#F44336] mr-1"
