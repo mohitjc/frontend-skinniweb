@@ -3,6 +3,7 @@ import LikesList from './LikeListing';
 import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
 import { useNavigate } from 'react-router-dom';
+import { Button, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 
 const LikesComponent = ({ likedUsers, likeCount, postId }) => {
     const navigate = useNavigate()
@@ -13,12 +14,13 @@ const LikesComponent = ({ likedUsers, likeCount, postId }) => {
         navigate(`/user/detail/${id}`)
     }
 
-    const getLikedData = (id) => {
+    const getLikedData = () => {
         loader(true);
-        let filter = { };
-        ApiClient.get("post/postList", filter).then((res) => {
+        let filter = {postId:postId};
+        ApiClient.get("listUsersLikePost", filter).then((res) => {
           if (res.success) {
             setLikesList(res.data);
+            setLikesModalVisible(true)
             // setTotal(res?.pagination?.total);
           }
           loader(false);
@@ -41,11 +43,24 @@ const LikesComponent = ({ likedUsers, likeCount, postId }) => {
             {likedUsers.map((item, index) => (<p className="ml-1 text-[12px] text-[#000] font-[400] cursor-pointer" onClick={()=>handleProfileNavigate(item?.id)}>
                 <span className="font-[500]">{item.fullName},</span>
             </p>))}
-            <p className="ml-1 text-[12px] text-[#000] font-[400]" onClick={() => setLikesModalVisible(!likesModalVisible)}>
-                and <span className="font-[500]">{(likeCount - 2) > 0 ? (likeCount - 2) : ""} others</span>
+            <p className="ml-1 text-[12px] text-[#000] font-[400]" onClick={() => {getLikedData()}}>
+                and <span className="font-[500] cursor-pointer">{(likeCount - 2) > 0 ? (likeCount - 2) : ""} others</span>
             </p>
         </div>
-        <LikesList likes={likesList} onClose={setLikesModalVisible} />
+        <Dialog
+        open={likesModalVisible}
+        onClose={() => setLikesModalVisible(false)}
+        className="relative z-[9999]"
+      >
+        <DialogBackdrop className="fixed inset-0 bg-black/50" />
+        <div className="fixed inset-0 flex w-screen items-center justify-center">
+          <DialogPanel className="max-w-md border-[2px] border-[#383838] w-full rounded-lg bg-[url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-background_23-2150913805.jpg')] rounded-[20px]">
+            <div className="bg-[#202024f0] rounded-md">
+            <LikesList likes={likesList} onClose={setLikesModalVisible} handleProfileNavigate={handleProfileNavigate}/>
+            </div>
+          </DialogPanel>
+        </div>
+      </Dialog>
     </>
     );
 };

@@ -49,7 +49,7 @@ const Forums = () => {
 
   return (
     <Layout>
-      <div className="flex items-center mb-2"><p className="text-[12px] text-[#FEE4D0] font-[400]" onClick={()=>navigate('/forum')}>Forum</p><IoIosArrowForward className="text-[12px] text-[#FEE4D0]" /><p className="text-[12px] font-[600] text-[#FEE4D0]">Profile</p></div>
+      <div className="flex items-center mb-2"><p className="text-[12px] text-[#FEE4D0] font-[400] cursor-pointer" onClick={()=>navigate('/forum')}>Forum</p><IoIosArrowForward className="text-[12px] text-[#FEE4D0]" /><p className="text-[12px] font-[600] text-[#FEE4D0]">Profile</p></div>
       <div className="bg-white   rounded-[12px]">
         <div className="set-bg-images h-[170px] rounded-t-[12px]">
 
