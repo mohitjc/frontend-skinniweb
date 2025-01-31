@@ -72,7 +72,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                 <div className="flex">
                     <img
                         className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
-                        src="assets/img/profile-image.jpg"
+                        src={reply?.addedByImage || "assets/img/profile-image.jpg"}
                         onClick={e => handleProfileNavigate(reply?.addedBy?._id || reply?.addedBy?.id)}
                         alt="Profile"
                     />
@@ -146,76 +146,78 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
 
     return (
         <div className="bg-[#fffffff0] rounded-[7px] pt-3">
-        <div className="  p-3 rounded-xl max-h-[350px] overflow-auto">
-            {commentsData.map((comment) => (
-                <div key={comment.id} className="flex flex-col mb-4">
-                    <div className="flex">
-                        <img
-                            className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
-                            onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
-                            src="assets/img/profile-image.jpg"
-                            alt="Profile"
-                        />
-                        <div className="ml-2">
-                            <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center cursor-pointer">
-                                <span
-                                    onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
-                                    className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer"
-                                >
-                                    {comment.addedByName}
-                                </span>
-                                {timeAgo(comment.createdAt)}
-                                {comment?.isLiked ? (
-                                    <FaHeart
-                                        className="text-[#F44336] mr-1 ml-1"
-                                        onClick={() => handleLike(comment.id)}
-                                    />
-                                ) : (
-                                    <FaRegHeart
-                                        className="text-[#F44336] mr-1 ml-1"
-                                        onClick={() => handleLike(comment.id)}
-                                    />
-                                )}
-                                {comment.likes} likes
-                            </p>
-                            <p className="text-[11px] font-[300] text-[#000]">{comment.comment}</p>
-
-                            <div className="flex mt-2">
-                                <button
-                                    className="text-[10px] font-[400] text-[#A0A0A0] cursor-pointer mr-3"
-                                    onClick={() => handleReplyClick(comment.id)}
-                                >
-                                    Reply
-                                </button>
-                                <button
-                                    className="text-[10px] font-[400] text-[#A0A0A0] cursor-pointer"
-                                    onClick={() => toggleReplies(comment.id)}
-                                >
-                                    {replyVisible[comment.id] ? "Hide replies" : "See all replies"}
-                                </button>
-                            </div>
-
-                            {replyVisible[comment.id] && (
-                                <div className="mt-2">
-                                    {renderReplies(comment.replyComments, comment.id)}
-
-                                    {comment.replyComments && comment.replyComments.length > 2 && (
-                                        <button
-                                            className="mt-2 text-[10px] font-[400] text-[#A0A0A0] cursor-pointer"
-                                            onClick={() => toggleMoreReplies(comment.id, comment.replyComments.length)}
-                                        >
-                                            {visibleRepliesCount[comment.id] === 2
-                                                ? "Show More Replies"
-                                                : "Show Less Replies"}
-                                        </button>
+            <div className="  p-3 rounded-xl max-h-[350px] overflow-auto">
+                {commentsData.map((comment) => (
+                    <div key={comment.id} className="flex flex-col mb-4">
+                        <div className="flex">
+                            <img
+                                className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
+                                onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
+                                src={comment?.addedByImage || "assets/img/profile-image.jpg"}
+                                alt="Profile"
+                            />
+                            <div className="ml-2">
+                                <p className="flex text-[10px] text-[#A0A0A0] font-[400] items-center cursor-pointer">
+                                    <span
+                                        onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
+                                        className="text-[12px] font-[500] text-[#000] mr-1 cursor-pointer"
+                                    >
+                                        {comment.addedByName}
+                                    </span>
+                                    {timeAgo(comment.createdAt)}
+                                    {comment?.isLiked ? (
+                                        <FaHeart
+                                            className="text-[#F44336] mr-1 ml-1"
+                                            onClick={() => handleLike(comment.id)}
+                                        />
+                                    ) : (
+                                        <FaRegHeart
+                                            className="text-[#F44336] mr-1 ml-1"
+                                            onClick={() => handleLike(comment.id)}
+                                        />
                                     )}
+                                    {comment.likes} likes
+                                </p>
+                                <p className="text-[11px] font-[300] text-[#000]">{comment.comment}</p>
+
+                                <div className="flex mt-2">
+                                    <button
+                                        className="text-[10px] font-[400] text-[#A0A0A0] cursor-pointer mr-3"
+                                        onClick={() => handleReplyClick(comment.id)}
+                                    >
+                                        Reply
+                                    </button>
+                                    {comment?.replyComments?.length > 0 &&
+                                    <button
+                                        className="text-[10px] font-[400] text-[#A0A0A0] cursor-pointer"
+                                        onClick={() => toggleReplies(comment.id)}
+                                    >
+                                        {replyVisible[comment.id] ? "Hide replies" : "See all replies"}
+                                    </button>
+                                    }
                                 </div>
-                            )}
+
+                                {replyVisible[comment.id] && (
+                                    <div className="mt-2">
+                                        {renderReplies(comment.replyComments, comment.id)}
+
+                                        {comment.replyComments && comment.replyComments.length > 2 && (
+                                            <button
+                                                className="mt-2 text-[10px] font-[400] text-[#A0A0A0] cursor-pointer"
+                                                onClick={() => toggleMoreReplies(comment.id, comment.replyComments.length)}
+                                            >
+                                                {visibleRepliesCount[comment.id] === 2
+                                                    ? "Show More Replies"
+                                                    : "Show Less Replies"}
+                                            </button>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
-             </div>
+                ))}
+            </div>
             <div className="mt-2 mb-2 p-3">
                 <div className="relative">
                     <input
@@ -232,7 +234,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                     />
                 </div>
             </div>
-       
+
         </div>
     );
 };

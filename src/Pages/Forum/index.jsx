@@ -12,7 +12,7 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CommentSection from "./Comments";
 import LikesComponent from "./LikeComment";
-import { Button, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css";
 
@@ -246,8 +246,12 @@ const Forums = () => {
       >
         <DialogBackdrop className="fixed inset-0 bg-black/50" />
         <div className="fixed inset-0 flex w-screen items-center justify-center">
-          <DialogPanel className="max-w-md  w-full rounded-lg  rounded-[20px]">
+          <DialogPanel className="max-w-md w-full rounded-lg rounded-[20px]">
             <div className="bg-[#202024f0] rounded-md">
+              <div className="p-4 border-b border-gray-600">
+                <h2 className="text-xl font-semibold text-white">Users Comment on this Post</h2>
+              </div>
+
               <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments} />
             </div>
           </DialogPanel>
