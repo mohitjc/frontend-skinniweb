@@ -145,7 +145,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
     };
 
     return (
-        <div className="bg-[#fffffff0] rounded-[7px]">
+        <div className="bg-[#fffffff0] rounded-[7px] pt-3">
         <div className="  p-3 rounded-xl max-h-[350px] overflow-auto">
             {commentsData.map((comment) => (
                 <div key={comment.id} className="flex flex-col mb-4">
@@ -167,12 +167,12 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                                 {timeAgo(comment.createdAt)}
                                 {comment?.isLiked ? (
                                     <FaHeart
-                                        className="text-[#F44336] mr-1"
+                                        className="text-[#F44336] mr-1 ml-1"
                                         onClick={() => handleLike(comment.id)}
                                     />
                                 ) : (
                                     <FaRegHeart
-                                        className="text-[#F44336] mr-1"
+                                        className="text-[#F44336] mr-1 ml-1"
                                         onClick={() => handleLike(comment.id)}
                                     />
                                 )}
@@ -215,7 +215,8 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                     </div>
                 </div>
             ))}
-            <div className="mt-2 mb-2">
+             </div>
+            <div className="mt-2 mb-2 p-3">
                 <div className="relative">
                     <input
                         ref={inputRef}
@@ -231,7 +232,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                     />
                 </div>
             </div>
-        </div>
+       
         </div>
     );
 };

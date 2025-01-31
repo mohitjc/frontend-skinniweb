@@ -54,7 +54,7 @@ const LikesComponent = ({ likedUsers, likeCount, postId }) => {
       >
         <DialogBackdrop className="fixed inset-0 bg-black/50" />
         <div className="fixed inset-0 flex w-screen items-center justify-center">
-          <DialogPanel className="max-w-md border-[2px] border-[#383838] w-full rounded-lg bg-[url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-background_23-2150913805.jpg')] rounded-[20px]">
+          <DialogPanel className="max-w-md  w-full rounded-lg  rounded-[20px]">
             <div className="bg-[#202024f0] rounded-md">
             <LikesList likes={likesList} onClose={setLikesModalVisible} handleProfileNavigate={handleProfileNavigate}/>
             </div>
