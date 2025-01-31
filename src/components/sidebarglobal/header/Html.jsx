@@ -82,10 +82,10 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
                     </p>
                   </div>
                 </div>
-                <i
+                {/* <i
                   className="fa fa-angle-down top-1 relative h-5 w-5 text-[#FEE4D0]"
                   aria-hidden="true"
-                />
+                /> */}
               </div>
             </Menu.Button>
           </div>

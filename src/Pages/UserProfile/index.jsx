@@ -65,7 +65,7 @@ const Forums = () => {
             <div className="mt-3">
               <p className="text-[14px] text-[#727477] font-[400]">Email: {userDetail?.email || "--"}</p>
               {userDetail?.dob && <p className="text-[14px] text-[#727477] font-[400]">DOB: {moment(userDetail?.dob).format("DD MMM, YYYY")}</p>}
-              <button type="button" onClick={e=>{ navigate(`/chats`) }} className="border !border-[#828282] rounded-full mt-2  bg-[#FEE4D0] text-[12px] font-[400] text-center px-5 py-2 text-[#828282]">Send Message</button>
+              {/* <button type="button" onClick={e=>{ navigate(`/chats`) }} className="border !border-[#828282] rounded-full mt-2  bg-[#FEE4D0] text-[12px] font-[400] text-center px-5 py-2 text-[#828282]">Send Message</button> */}
             </div>
           </div>
         </div>
