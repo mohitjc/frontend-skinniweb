@@ -12,20 +12,29 @@ import { IoBookmarkSharp } from "react-icons/io5";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CommentSection from "./Comments";
+import LikesComponent from "./LikeComment";
+import Pagination from "react-pagination-js";
+import "react-pagination-js/dist/styles.css";
 
 const Forums = () => {
   const user = useSelector((state) => state.user)
   const [filters, setFilter] = useState({ page: 1, count: 10, search: "", date: "" });
   const [data, setData] = useState([]);
   const [commentData, setCommentData] = useState([]);
-  const [postId,setPostId] = useState("");
+  const [postId, setPostId] = useState("");
   const [total, setTotal] = useState(0);
 
-  console.log(commentData, '==data');
+  const handleCountChange = (newCount) => {
+    setFilter({ ...filters, count: newCount, page: 1 });
+  };
+
+  const handlePageChange = (newPage) => {
+    setFilter({ ...filters, page: newPage });
+  };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [filters]);
 
   const getData = (p = {}) => {
     loader(true);
@@ -33,7 +42,7 @@ const Forums = () => {
     ApiClient.get("post/postList", filter).then((res) => {
       if (res.success) {
         setData(res.data);
-        setTotal(res.total);
+        setTotal(res?.pagination?.total);
       }
       loader(false);
     });
@@ -41,7 +50,7 @@ const Forums = () => {
 
   const getComments = (id) => {
     // loader(true);
-    let filter = { postId:id };
+    let filter = { postId: id };
     setPostId(id)
     ApiClient.get("comment/list", filter).then((res) => {
       if (res.success) {
@@ -84,7 +93,7 @@ const Forums = () => {
     postData[index][key] = value
     setData(postData)
   }
-  
+
   const postComment = (id, message, parentCommentId = "") => {
     if (!message) return
     let payload = {
@@ -169,8 +178,8 @@ const Forums = () => {
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.likeCount || 0}</p>
                   </div>
                   <div className="ml-2 flex items-center">
-                    <FaRegComment className="text-[25px] cursor-pointer" 
-                    onClick={()=>getComments(item?.id || item?._id)}
+                    <FaRegComment className="text-[25px] cursor-pointer"
+                      onClick={() => getComments(item?.id || item?._id)}
                     // onClick={e=>{ document.getElementById(`commentInput${index}`).focus() }} 
                     />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.commentCount || 0}</p>
@@ -188,6 +197,7 @@ const Forums = () => {
                   }
                 </div>
               </div>
+              <LikesComponent likedUsers={item?.likedUsers} likeCount={item?.likeCount} postId={item?.id || item?._id}/>
               {/* <div className="flex items-center mt-3">
                 <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
                 <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg" />
@@ -209,10 +219,38 @@ const Forums = () => {
                   <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
                 </div>
               </div> */}
-              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments}/>}
+              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments} />}
             </div>
           })}
         </div>
+
+        {total > 0 && (
+          <div className="paginationdiv flex flex-wrap gap-x-5 gap-y-2 justify-between mt-4">
+            <div className="flex items-center">
+              <span className="text-sm text-gray-600 mr-2">Show</span>
+              <div className="relative bg-[#828282] rounded-[10px]">
+                <select
+                  value={filters.count}
+                  onChange={(e) => handleCountChange(parseInt(e.target.value))}
+                  className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-1.5 ">
+                  <option class="text-[#828282]" value="10">10</option>
+                  <option class="text-[#828282]" value="20">20</option>
+                  <option class="text-[#828282]" value="30">30</option>
+                  <option class="text-[#828282]" value="50">50</option>
+                </select>
+                <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+              </div>
+              <span className="text-sm text-gray-600 ml-2">items per page</span>
+            </div>
+
+            <Pagination
+              currentPage={filters.page}
+              totalSize={total}
+              sizePerPage={filters.count}
+              changeCurrentPage={handlePageChange}
+            />
+          </div>
+        )}
       </div>
     </Layout>
   );

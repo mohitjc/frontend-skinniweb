@@ -5,8 +5,9 @@ import ApiClient from "../../../methods/api/apiClient";
 import loader from "../../../methods/loader";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Pagination from "react-pagination-js"; 
+import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css";
+
 const OrderListing = () => {
   const history = useNavigate();
   const user = useSelector((state) => state.user);
@@ -55,22 +56,25 @@ const OrderListing = () => {
   }, [filters]);
 
   useEffect(() => {
-  
+
     if (data.length > 0) {
-      setData((prevData) => sortData([...prevData])); // Sorting a copy of the data
+      setData((prevData) => sortData([...prevData]));
     }
-  }, [sortBy, sortOrder]); // Trigger sorting after fetching and whenever sortBy or sortOrder changes
+  }, [sortBy, sortOrder]);
+
   const handlePageSizeChange = (e) => {
     const count = parseInt(e.target.value);
-    setFilter({ ...filters, count, page: 1 }); // Reset to page 1 when count changes
-    };  
-    const handleCountChange = (newCount) => {
-      setFilter({ ...filters, count: newCount, page: 1 }); // Reset to page 1 when count changes
-    };
-    const handlePageChange = (newPage) => {
-      setFilter({ ...filters, page: newPage });
-    };
-    
+    setFilter({ ...filters, count, page: 1 });
+  };
+
+  const handleCountChange = (newCount) => {
+    setFilter({ ...filters, count: newCount, page: 1 });
+  };
+
+  const handlePageChange = (newPage) => {
+    setFilter({ ...filters, page: newPage });
+  };
+
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
@@ -85,30 +89,30 @@ const OrderListing = () => {
             <div className="flex items-center">
               <span className="text-gray-600 mb-0 mr-2">Sort By</span>
               <div className="relative bg-[#828282] rounded-[10px]">
-              <select
-                className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2 "
-                onChange={(e) => setSortBy(e.target.value)}
-              >
-                <option className="text-[#828282]" value="id">Ref#</option>
-                <option className="text-[#828282]" value="description">Description</option>
-                <option className="text-[#828282]" value="status">Status</option>
-                <option className="text-[#828282]" value="total">Subtotal</option>
-              </select>
-              <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+                <select
+                  className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2 "
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option className="text-[#828282]" value="id">Ref#</option>
+                  <option className="text-[#828282]" value="description">Description</option>
+                  <option className="text-[#828282]" value="status">Status</option>
+                  <option className="text-[#828282]" value="total">Subtotal</option>
+                </select>
+                <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
               </div>
               <FaLongArrowAltDown className="text-[#828282]" />
             </div>
             <div className="flex items-center">
               <span className="text-gray-600 mb-0 mr-2">Order</span>
               <div className="relative bg-[#828282] rounded-[10px]">
-              <select
-                className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2"
-                onChange={(e) => setSortOrder(e.target.value)}
-              >
-                <option className="text-[#828282]" value="asc">Ascending</option>
-                <option className="text-[#828282]" value="desc">Descending</option>
-              </select>
-              <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+                <select
+                  className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2"
+                  onChange={(e) => setSortOrder(e.target.value)}
+                >
+                  <option className="text-[#828282]" value="asc">Ascending</option>
+                  <option className="text-[#828282]" value="desc">Descending</option>
+                </select>
+                <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
               </div>
             </div>
           </div>
@@ -164,38 +168,38 @@ const OrderListing = () => {
                 </tbody>
               </table>
             </div>
-            
-{total > 0 && (
-<div className="paginationdiv flex flex-wrap gap-x-5 gap-y-2 justify-between mt-4">
-<div className="flex items-center">
-<span className="text-sm text-gray-600 mr-2">Show</span>
-<div className="relative bg-[#828282] rounded-[10px]">
-<select
-  value={filters.count}
-  onChange={(e) => handleCountChange(parseInt(e.target.value))} // Call handleCountChange here
-  className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-1.5 ">
-<option class="text-[#828282]" value="10">10</option>
-<option class="text-[#828282]" value="20">20</option>
-<option class="text-[#828282]" value="30">30</option>
-<option class="text-[#828282]" value="50">50</option>
-</select>
-<span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
-</div>
-<span className="text-sm text-gray-600 ml-2">items per page</span>
-</div>
 
-<Pagination
-currentPage={filters.page}
-totalSize={total}
-sizePerPage={filters.count}
-changeCurrentPage={handlePageChange}
-/>
-</div>
-)}
-</div>
-</div>
-</div>
-</Layout>
+            {total > 0 && (
+              <div className="paginationdiv flex flex-wrap gap-x-5 gap-y-2 justify-between mt-4">
+                <div className="flex items-center">
+                  <span className="text-sm text-gray-600 mr-2">Show</span>
+                  <div className="relative bg-[#828282] rounded-[10px]">
+                    <select
+                      value={filters.count}
+                      onChange={(e) => handleCountChange(parseInt(e.target.value))} // Call handleCountChange here
+                      className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-1.5 ">
+                      <option class="text-[#828282]" value="10">10</option>
+                      <option class="text-[#828282]" value="20">20</option>
+                      <option class="text-[#828282]" value="30">30</option>
+                      <option class="text-[#828282]" value="50">50</option>
+                    </select>
+                    <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+                  </div>
+                  <span className="text-sm text-gray-600 ml-2">items per page</span>
+                </div>
+
+                <Pagination
+                  currentPage={filters.page}
+                  totalSize={total}
+                  sizePerPage={filters.count}
+                  changeCurrentPage={handlePageChange}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </Layout>
   );
 };
 
