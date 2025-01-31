@@ -35,7 +35,7 @@ const Signup = ({ setActiveTab }: any) => {
   const hendleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
-    if (!form?.email || error) {
+    if (!form?.email || error || !form?.number) {
       return;
     } else if (form?.password != confirmpassword && confirmpassword != "") {
       return;
@@ -142,6 +142,7 @@ const Signup = ({ setActiveTab }: any) => {
                     }}
                     countryCodeEditable={true}
                   />
+                    {(!form.number && submitted) && <div className="invalid-feedback d-block">Phone number is required</div>}
                 </div>
 
                 {/* Email in a separate row */}

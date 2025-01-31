@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login_success } from "../actions/user";
 
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -80,6 +81,9 @@ const Login = () => {
           localStorage.removeItem("remember");
         }
         setLogin(res?.data);
+      }else if(res.error.message == "OTP sent to verify user email."){
+        toast.success(res.error.message)
+        history("/otp")
       }
       loader(false);
     });
