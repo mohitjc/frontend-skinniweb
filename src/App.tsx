@@ -51,7 +51,7 @@ function App() {
     { url: "/blogs/:id", path: "Blogs/View" },
     { url: "/faqs", path: "Faq" },
     { url: "/newsletter", path: "Newsletter" },
-    { url: "/api", path: "Api" },
+    { url: "/plans", path: "Plans" },
 
     { url: "*", path: "NotFoundPage" },
     { url: "/terms", path: "Terms" },

@@ -9,7 +9,7 @@ import moment from "moment";
 import { Dialog } from "@headlessui/react";
 import { IoCloseSharp } from "react-icons/io5";
 import loader from "../../methods/loader";
-import PageLayout from "../../components/global/PageLayout";
+import PageLayout from "../../components/sidebarglobal/layout";
 
 const Html = ({
  
