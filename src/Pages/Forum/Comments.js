@@ -145,7 +145,8 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
     };
 
     return (
-        <div className="bg-[#D9D9D97D] mt-2 p-3 rounded-xl mt-2">
+        <div className="bg-[#fffffff0] rounded-[7px]">
+        <div className="  p-3 rounded-xl max-h-[350px] overflow-auto">
             {commentsData.map((comment) => (
                 <div key={comment.id} className="flex flex-col mb-4">
                     <div className="flex">
@@ -220,7 +221,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                         ref={inputRef}
                         value={replies["mainComment"] || ""}
                         onChange={e => setReplies({ ...replies, "mainComment": e.target.value })}
-                        className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]"
+                        className="border rounded-full w-full p-1 px-3 bg-[#fff]"
                         placeholder="Post a comment"
                         type="text"
                     />
@@ -230,6 +231,7 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                     />
                 </div>
             </div>
+        </div>
         </div>
     );
 };
