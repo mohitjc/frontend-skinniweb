@@ -4,7 +4,6 @@ import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
-import { FiSend } from "react-icons/fi";
 import { RiBookmarkLine } from "react-icons/ri";
 import methodModel from "../../methods/methods";
 import { useSelector } from "react-redux";
@@ -13,14 +12,17 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CommentSection from "./Comments";
 import LikesComponent from "./LikeComment";
+import { Button, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
 import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css";
 
 const Forums = () => {
   const user = useSelector((state) => state.user)
   const [filters, setFilter] = useState({ page: 1, count: 10, search: "", date: "" });
+  const [loginModal, setloginModal] = useState(false);
   const [data, setData] = useState([]);
   const [commentData, setCommentData] = useState([]);
+  const [comentPopup,setComentPopup] = useState(false);
   const [postId, setPostId] = useState("");
   const [total, setTotal] = useState(0);
 
@@ -50,11 +52,17 @@ const Forums = () => {
 
   const getComments = (id) => {
     // loader(true);
+    // if (postId == id) {
+    //   setComentPopup(false)
+    //   setPostId("")
+    //   return
+    // }
     let filter = { postId: id };
     setPostId(id)
     ApiClient.get("comment/list", filter).then((res) => {
       if (res.success) {
         setCommentData(res.data);
+        setloginModal(true)
         // setTotal(res.total);
       }
       // loader(false);
@@ -184,10 +192,6 @@ const Forums = () => {
                     />
                     <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.commentCount || 0}</p>
                   </div>
-                  {/* <div className="flex items-center ml-2">
-                    <FiSend className="text-[25px]" />
-                    <p className="ml-1 text-[#000] text-[12px] font-[400]">{item?.shareCount || 0}</p>
-                  </div> */}
                 </div>
                 <div className="">
                   {item?.isSaved ?
@@ -198,28 +202,10 @@ const Forums = () => {
                 </div>
               </div>
               <LikesComponent likedUsers={item?.likedUsers} likeCount={item?.likeCount} postId={item?.id || item?._id}/>
-              {/* <div className="flex items-center mt-3">
-                <img className="w-[27px] h-[27px] rounded-full object-cover" src="assets/img/profile-image.jpg" />
-                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/portrait-expressive-young-woman.jpg" />
-                <img className="w-[27px] h-[27px] rounded-full object-cover relative left-[-7px]" src="assets/img/young-adult-enjoying-virtual-date.jpg" />
-                <p className="ml-1 text-[12px] text-[#000] font-[400]">Liked by<span className="font-[500]">_lorem_ispum___ </span>and <span className="font-[500]">others</span></p>
-              </div> */}
               <div className="mt-2">
                 <p className="text-[#000] text-[12px] font-[300] gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
               </div>
-              {/* <div className="mt-2">
-                <div className="relative">
-                  <input value={item?.comment} onChange={e => handlePostComment(e.target.value, index, "comment")} id={`commentInput${index}`} className="border rounded-full w-full p-1 px-3 bg-[#D9D9D97D]" placeholder="Post a comment" type="text" />
-                  <FiSend onClick={e => postComment(item?._id || item?.id, item?.comment, "")} className={`${!item?.comment ? "cursor-not-allowed" : "cursor-pointer"} text-[25px] absolute right-[13px] top-[9px] text-[#828282] !text-[17px]`} />
-                </div>
-              </div> */}
-              {/* <div className="mt-2">
-                <p className="text-[#A0A0A0] text-[12px] font-[400] mt-2 cursor-pointer">View all comments</p>
-                <div className="flex items-center mt-1">
-                  <p className="text-[#A0A0A0] text-[12px] font-[400]">20 mint ago.</p>
-                </div>
-              </div> */}
-              {postId == item?.id && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments} />}
+              {/* {(postId == item?.id && comentPopup) && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getCommentsListing} />} */}
             </div>
           })}
         </div>
@@ -252,6 +238,22 @@ const Forums = () => {
           </div>
         )}
       </div>
+
+      <Dialog
+        open={loginModal}
+        onClose={() => setloginModal(false)}
+        className="relative z-[9999]"
+      >
+        <DialogBackdrop className="fixed inset-0 bg-black/50" />
+        <div className="fixed inset-0 flex w-screen items-center justify-center">
+          <DialogPanel className="max-w-md border-[2px] border-[#383838] w-full rounded-lg bg-[url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-background_23-2150913805.jpg')] rounded-[20px]">
+            <div className="bg-[#202024f0] rounded-md">
+              <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getComments} />
+            </div>
+          </DialogPanel>
+        </div>
+      </Dialog>
+
     </Layout>
   );
 };
