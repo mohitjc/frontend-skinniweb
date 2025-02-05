@@ -58,7 +58,7 @@ function App() {
     { url: "/terms", path: "Terms" },
     { url: "/about", path: "Aboutus" },
     { url: "/privacy", path: "Privacy" },
-
+    { url: "/success", path: "Success" },
     { url: "/userroles", path: "UserRoles" },
     { url: "/userroles/edit/:id", path: "UserRoles/AddEdit" },
     { url: "/userroles/add", path: "UserRoles/AddEdit" },
