@@ -119,7 +119,7 @@ const Goals = () => {
           <div className="">
             <div className="flex items-center gap-2">
               <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">
-                Diet Plan
+               Your Goals
               </h2>
               <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
             </div>
