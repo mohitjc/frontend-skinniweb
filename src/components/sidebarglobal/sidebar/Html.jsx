@@ -70,12 +70,12 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
       url: "/subscription",
       // key: "readstaff",
     },
-    {
-      name: "My Payments",
-      icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
-      url: "/mypayments",
-      // key: "readstaff",
-    },
+    // {
+    //   name: "My Payments",
+    //   icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
+    //   url: "/mypayments",
+    //   // key: "readstaff",
+    // },
     {
       name: "My Meals",
       icon: <MdOutlinePayments className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
