@@ -203,7 +203,12 @@ const Forums = () => {
               </div>
               <LikesComponent likedUsers={item?.likedUsers} likeCount={item?.likeCount} postId={item?.id || item?._id}/>
               <div className="mt-2">
-                <p className="text-[#000] text-[12px] font-[300] gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span><span dangerouslySetInnerHTML={{ __html: item?.description }}></span></p>
+                <p className="text-[#000] text-[12px] font-[300] gap-2"><span className="font-[500]">{item?.addedBy?.fullName || item?.addedBy?.firstName}</span>
+                
+                <div className="max-h-[87px] overflow-auto">
+                <span dangerouslySetInnerHTML={{ __html: item?.description }}></span>
+                  </div>
+                </p>
               </div>
               {/* {(postId == item?.id && comentPopup) && <CommentSection commentsData={commentData} postId={postId} getData={getData} getComments={getCommentsListing} />} */}
             </div>
