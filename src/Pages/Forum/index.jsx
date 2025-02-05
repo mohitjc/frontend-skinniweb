@@ -15,6 +15,7 @@ import LikesComponent from "./LikeComment";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css";
+import ForumAccess from "./planpopup";
 
 const Forums = () => {
   const user = useSelector((state) => state.user)
@@ -22,7 +23,6 @@ const Forums = () => {
   const [loginModal, setloginModal] = useState(false);
   const [data, setData] = useState([]);
   const [commentData, setCommentData] = useState([]);
-  const [comentPopup,setComentPopup] = useState(false);
   const [postId, setPostId] = useState("");
   const [total, setTotal] = useState(0);
 
@@ -257,7 +257,7 @@ const Forums = () => {
           </DialogPanel>
         </div>
       </Dialog>
-
+      <ForumAccess/>
     </Layout>
   );
 };
