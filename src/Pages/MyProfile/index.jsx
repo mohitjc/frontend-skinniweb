@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/sidebarglobal/layout";
-import { FaCog, FaUser } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { FaCity, FaCog, FaUser } from "react-icons/fa";
+import { MdAccountBalance, MdEmail, MdOutlineRealEstateAgent } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 import { BsGenderMale } from "react-icons/bs";
@@ -20,6 +20,7 @@ import loader from "../../methods/loader";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../components/common/FormControl";
 import PhoneInput from "react-phone-input-2";
+import { TbMapPinCode } from "react-icons/tb";
 
 const MyProfile = () => {
   const user = useSelector((state) => state.user);
@@ -87,22 +88,19 @@ const MyProfile = () => {
   }, [filters]);
 
   useEffect(() => {
-    // Sort the data when it's first loaded
     if (data.length > 0) {
-      setData((prevData) => sortData([...prevData])); // Sorting a copy of the data
+      setData((prevData) => sortData([...prevData]));
     }
   }, [sortBy, sortOrder, data]);
 
-  
 
-  // Fetch user profile data
   const fetchProfileData = () => {
     setLoading(true);
     ApiClient.get("profile")
       .then((res) => {
         if (res.success) {
-          const { fullName, email, mobileNo, address, dob, gender, image } = res.data;
-          setForm({ fullName, email, mobileNo, address, dob, gender ,number:mobileNo});
+          const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country} = res.data;
+          setForm({ fullName, email, mobileNo, address, dob, gender, number: mobileNo, state,country, city, pincode });
           setImage(image);
         } else {
           toast.error("Failed to fetch profile data");
@@ -156,6 +154,10 @@ const MyProfile = () => {
       dob: form.dob,
       gender: form.gender,
       image: image,
+      state: form.state,
+      city: form.city,
+      pincode: form.zip,
+      Country:form.country
     };
 
     setLoading(true);
@@ -179,7 +181,6 @@ const MyProfile = () => {
     }
   };
 
-  // Handle image upload
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (file) {
@@ -198,7 +199,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     if (user?._id || user?.id) {
-      fetchProfileData(); // Fetch profile data when the component mounts
+      fetchProfileData();
     }
   }, []);
 
@@ -206,9 +207,9 @@ const MyProfile = () => {
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
         <div className="pt-4">
-    
+
           <div className="relative bg-[#FEE4D0] rounded-[12px] mt-5">
-          <div className="relative top-[-68px] min-w-[150px] md:min-w-[150px] mx-auto w-[150px] md:w-[130px] h-[150px] md:h-[150px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282]  ">
+            <div className="relative top-[-68px] min-w-[150px] md:min-w-[150px] mx-auto w-[150px] md:w-[130px] h-[150px] md:h-[150px] rounded-full overflow-hidden rounded-full border-[10px] border-[#828282]  ">
               <img
                 src={image || "/assets/img/person.jpg"}
                 alt="Profile Picture"
@@ -240,7 +241,7 @@ const MyProfile = () => {
               {form.dob && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]" />{form.dob}</span>
               </div>}
-              {form.mobileNo &&<div className="">
+              {form.mobileNo && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.mobileNo} </span>
               </div>}
               {form.gender && <div className="">
@@ -248,6 +249,18 @@ const MyProfile = () => {
               </div>}
               {form.address && <div className="lg:col-span-3  sm:col-span-2 col-span-1">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaLocationDot className="text-[#828282] text-[22px]" />{form.address}</span>
+              </div>}
+              {form.state && <div className="">
+                <span className="flex items-center text-[18px] gap-2 text-sm"><MdOutlineRealEstateAgent className="text-[#828282] text-[22px]" />{form.state}</span>
+              </div>}
+              {form.city && <div className="">
+                <span className="flex items-center text-[18px] gap-2 text-sm"><FaCity className="text-[#828282] text-[22px]" />{form.city}</span>
+              </div>}
+              {form.pincode && <div className="">
+                <span className="flex items-center text-[18px] gap-2 text-sm"><TbMapPinCode className="text-[#828282] text-[22px]" />{form.pincode}</span>
+              </div>}
+              {form.country && <div className="">
+                <span className="flex items-center text-[18px] gap-2 text-sm"><MdAccountBalance className="text-[#828282] text-[22px]" />{form.country}</span>
               </div>}
             </div>}
 
@@ -306,12 +319,12 @@ const MyProfile = () => {
                   {errors.dob && <span className="text-red-500 text-xs">{errors.dob}</span>}
                 </div>
 
-              
+
 
                 <div className="mb-2">
                   <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Gender</label>
                   <select
-                    value={form.gender}
+                    value={form.gender.toLowerCase()}
                     onChange={(e) => setForm({ ...form, gender: e.target.value })}
                     disabled={!editable}
                     className="bg-[#00000017] w-full rounded-[6px] text-sm px-3 py-2"
@@ -362,9 +375,9 @@ const MyProfile = () => {
                   />
                 </div>
 
-                
 
-               
+
+
 
                 <div className="mb-2">
                   <label className="max-md:w-full text-sm mb-1 min-w-[95px]">Country</label>
@@ -381,18 +394,18 @@ const MyProfile = () => {
             )}
             <div className="">
               {editable ? (<>
-                <IoChevronBackCircleSharp onClick={() => {setEditable(false); setErrors({})}} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
+                <IoChevronBackCircleSharp onClick={() => { setEditable(false); setErrors({}) }} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               </>
               ) : (
 
-                <LiaEdit onClick={() =>{ setEditable(true); setErrors({})}} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
+                <LiaEdit onClick={() => { setEditable(true); setErrors({}) }} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               )}
-               
+
             </div>
           </div>
         </div>
         <div className="flex justify-end">
-          {editable && <button  onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-4">
+          {editable && <button onClick={handleSubmit} className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-2 mt-4">
             Save Changes
           </button>}
         </div>
@@ -435,7 +448,7 @@ const MyProfile = () => {
         <h2 className="text-xl font-semibold mb-4 mt-8"></h2>
         <div className="flex justify-between gap-x-5 gap-y-2 bg-[#FEE4D0] px-4 py-3">
           <h2 className="">Recent Orders</h2>
-          <p className="text-[#828282] text-sm flex items-center gap-1 cursor-pointer" onClick={()=>history("/myorders")}><FaEye className="text-[22px]" />View All</p>
+          <p className="text-[#828282] text-sm flex items-center gap-1 cursor-pointer" onClick={() => history("/myorders")}><FaEye className="text-[22px]" />View All</p>
         </div>
         <div className="bg-[#F7F7F7] rounded-b-[12px] px-[1rem]">
           <div className="overflow-x-auto">
@@ -451,7 +464,7 @@ const MyProfile = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.slice(0,3)?.map((order) => (
+                {data?.slice(0, 3)?.map((order) => (
                   <tr key={order.id} className="border-t">
                     <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{order.id}</div>
@@ -470,7 +483,7 @@ const MyProfile = () => {
                     </td>
                     <td className="px-3 py-4 text-[12px]">
                       <div>
-                        <button className="flex gap-1 text-[12px] items-center cursor-pointer" onClick={()=>history(`myordersDetail/${order?.id}`)}>
+                        <button className="flex gap-1 text-[12px] items-center cursor-pointer" onClick={() => history(`myordersDetail/${order?.id}`)}>
                           <FaEye className="text-[18px]" />View
                         </button>
                       </div>

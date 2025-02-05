@@ -1,75 +1,78 @@
 import Layout from "../../components/sidebarglobal/layout";
-import { FaLongArrowAltDown } from "react-icons/fa";
+import { useNavigate, useParams } from "react-router-dom";
+import ApiClient from "../../methods/api/apiClient";
+import loader from "../../methods/loader";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import datepipeModel from "../../models/datepipemodel";
+import Breadcrumb from "../../components/common/Breadcrumb/Breadcrumb";
+
 
 const Subscription = () => {
+  const { id } = useParams()
+  const history = useNavigate()
+  const user = useSelector((state) => state.user);
+  const searchState = { data: "" };
+  const [data, setData] = useState([]);
+  const [total, setTotal] = useState(0);
+  const breadcrumbItems = [
+    { label: 'Home', link: '/', active: false },
+    { label: 'Subscription Listing', link: '/subscription', active: false },
+    { label: 'Subcription Detail', link: '', active: true },
+  ];
+
+  const getData = (p = {}) => {
+    loader(true);
+    let filter = { id: id };
+
+    ApiClient.get("subscriptionDetail", filter).then((res) => {
+      if (res.success) {
+        setData(res.data);
+        setTotal(res.total);
+      }
+      loader(false);
+    });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <Layout>
-       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem]  sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
-          <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
-          <div className="">
-        <h1 className="text-[22px] font-bold mb-1">My Subscriptions</h1>
-          <p className="text-sm text-[#828282]">1 item</p>
+    <Breadcrumb items={breadcrumbItems} />
+    <div className="bg-white px-6 py-6 rounded-lg shadow-md">
+        <div className="bg-[#FFF1E7] shadow-md px-4 py-4 rounded-lg mb-5">
+          <h1 className="text-2xl font-bold mb-2">Subscription #{data?.id}</h1>
+          <p className="text-sm text-gray-600 capitalize">Status: {data?.status}</p>
         </div>
-        </div>
-        <div className="flex justify-end flex-wrap gap-y-2 gap-x-1">
-        <div className="flex items-center">
-          <span className="text-gray-600 mb-0 mr-2">Sort By</span>
-          <div className="relative bg-[#828282] rounded-[10px]">
-          <select className="relative z-20 bg-transparent appearance-none text-white text-[14px] rounded-[10px] !pr-[35px] px-3 py-2">
-            <option className="text-[#828282]" value="ref">Ref</option>
-            <option className="text-[#828282]" value="description">Description</option>
-            <option className="text-[#828282]" value="status">Status</option>
-            <option className="text-[#828282]" value="frequency">Frequency</option>
-            <option className="text-[#828282]" value="subtotal">Subtotal</option>
-            <option className="text-[#828282]" value="lastRun">Last Run</option>
-            <option className="text-[#828282]" value="nextRun">Next Run</option>
-          </select>
-          <span class="absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-white"></span>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">User:</span>
+            <p className="text-sm">{data?.userId?.fullName} ({data?.userId?.email})</p>
           </div>
-          <FaLongArrowAltDown className="text-[#828282]" />
-        </div>
-        </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Plan:</span>
+            <p className="text-sm">{data?.planId?.name}</p>
+          </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Amount:</span>
+            <p className="text-sm">${data?.amount / 100}</p>
+          </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Valid Until:</span>
+            <p className="text-sm">{datepipeModel.date(data?.validUpto)}</p>
+          </div>
         </div>
 
-        <div className="bg-[#FFF2E8] rounded-[12px]  p-[1.5rem]  sm:p-[2rem] ">
-        <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-          <div className="overflow-x-auto">
-        <table className="w-full text-sm text-left">
-        <thead className=" ">
-          <tr className="">
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Ref#</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Description</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Status</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Frequency</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Subtotal</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Last Run</th>
-            <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Next Run</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="bg-white border-t">
-            <td className="px-3 py-4 text-[12px]">1000001737</td>
-            <td className="px-3 py-4 text-[12px]">Landing Page</td>
-            <td className="px-3 py-4 text-[12px]">Active</td>
-            <td className="px-3 py-4 text-[12px]">Every Month</td>
-            <td className="px-6 py-4 text-[12px]">890.00</td>
-            <td className="px-3 py-4 text-[12px]">12/25/24</td>
-            <td className="px-3 py-4 text-[12px]">1/25/25</td>
-            <td className="w-[100px] px-3 py-4 text-[12px]">
-              <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] text-[12px] font-[500] px-3 py-1">View</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <div className="bg-gray-100 p-4 rounded-lg">
+          <p className="font-semibold text-sm text-gray-500">Created At:</p>
+          <p className="text-sm">{datepipeModel.date(data?.createdAt)}</p>
+        </div>
       </div>
-        </div>
-        <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] mt-8 p-3">
-        Note: Subtotals do not include shipping, tax, or other possible surcharges. Actual order totals may vary over time.
-      </p>
-        </div>
-        </div>
-
     </Layout>
   );
 };
