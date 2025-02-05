@@ -1,43 +1,47 @@
-import { FaLongArrowAltDown } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
 import Layout from "../../../components/sidebarglobal/layout";
-import { useNavigate } from "react-router-dom";
-import ApiClient from "../../../methods/api/apiClient";
-import loader from "../../../methods/loader";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { FaLongArrowAltDown } from "react-icons/fa";
 import Pagination from "react-pagination-js";
 import "react-pagination-js/dist/styles.css";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ApiClient from "../../../methods/api/apiClient";
+import loader from "../../../methods/loader";
 
-const OrderListing = () => {
+const SubscriptionListing = () => {
+  const { id } = useParams();
   const history = useNavigate();
   const user = useSelector((state) => state.user);
-  const [filters, setFilter] = useState({
-    page: 1,
-    email: user?.email,
-    count: 10,
-    search: "",
-  });
-  const [data, setData] = useState([]);
+  const [subscriptions, setSubscriptions] = useState([]);
+  const [filters, setFilter] = useState({ page: 1, count: 10 });
   const [total, setTotal] = useState(0);
-  const [sortBy, setSortBy] = useState("id"); // Default sort by Ref#
-  const [sortOrder, setSortOrder] = useState("asc"); // Default order: ascending
-  const [totalPages, setTotalPages] = useState(0);
-  // Fetching the data from API
-  const getData = (p = {}) => {
+  const [sortBy, setSortBy] = useState("id");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const fetchSubscriptions = async () => {
+    if (!user?.id && id) return;
     loader(true);
-    let filter = { ...filters, ...p };
+    const response = await ApiClient.get(
+      `mySubscriptions?userId=${
+        user?.id || id
+      }&status=active&sortBy=createdAt asc&page=${filters.page}&count=${
+        filters.count
+      }`
+    );
+    setSubscriptions(response?.data || []);
+    setTotal(response?.data?.pagination?.total || 0);
+  };
+  loader(false);
+  useEffect(() => {
+    fetchSubscriptions();
+  }, [user.id, id, filters.page, filters.count]);
 
-    ApiClient.get("orderList", filter).then((res) => {
-      if (res.success) {
-        setData(res.data.orders); // Set orders data
-        setTotal(res.data.pagination.totalRecords); // Set total records count
-        setTotalPages(res.data.pagination.totalPages); // Update total
-      }
-      loader(false);
-    });
+  const handlePageChange = (newPage) => {
+    setFilter({ ...filters, page: newPage });
+  };
+  const handleCountChange = (newCount) => {
+    setFilter({ ...filters, count: newCount, page: 1 });
   };
 
-  // Sorting logic
   const sortData = (data) => {
     return data.sort((a, b) => {
       const fieldA = a[sortBy];
@@ -51,37 +55,23 @@ const OrderListing = () => {
     });
   };
 
-  useEffect(() => {
-    getData();
-  }, [filters]);
 
   useEffect(() => {
-    if (data.length > 0) {
-      setData((prevData) => sortData([...prevData]));
+    if (subscriptions.length > 0) {
+      setSubscriptions((prevData) => sortData([...prevData]));
     }
   }, [sortBy, sortOrder]);
-
-  const handlePageSizeChange = (e) => {
-    const count = parseInt(e.target.value);
-    setFilter({ ...filters, count, page: 1 });
-  };
-
-  const handleCountChange = (newCount) => {
-    setFilter({ ...filters, count: newCount, page: 1 });
-  };
-
-  const handlePageChange = (newPage) => {
-    setFilter({ ...filters, page: newPage });
-  };
 
   return (
     <Layout>
       <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-[0px_5px_8px_-2px_#c4c4c4] px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
+        <div className="bg-[#FFF1E7] shadow-md px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
           <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
             <div>
-              <h1 className="text-[22px] font-bold mb-1">My Orders</h1>
-              <p className="text-sm text-[#828282]"> {data?.length} items</p>
+              <h1 className="text-[22px] font-bold mb-1">My Subscriptions</h1>
+              <p className="text-sm text-[#828282]">
+                {subscriptions?.length} items
+              </p>
             </div>
           </div>
           <div className="flex justify-end flex-wrap gap-y-2 gap-x-2">
@@ -133,68 +123,57 @@ const OrderListing = () => {
           <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
-                <thead className="">
+                <thead>
                   <tr>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Ref#
-                    </th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Description
-                    </th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Status
-                    </th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Frequency
-                    </th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Subtotal
-                    </th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">
-                      Last Run
-                    </th>
-                    {/* <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Next Run</th> */}
+                    <th className="px-3 pb-4">Ref#</th>
+                    <th className="px-3 pb-4">Description</th>
+                    <th className="px-3 pb-4">Status</th>
+                    <th className="px-3 pb-4">Frequency</th>
+                    <th className="px-3 pb-4">Subtotal</th>
+                    <th className="px-3 pb-4">Last Run</th>
+                    <th className="px-3 pb-4">Next Run</th>
+                    <th className="px-3 pb-4">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.length === 0 ? (
+                  {subscriptions?.length == 0 ? (
                     <tr>
                       <td
-                        colSpan="7"
+                        colSpan="8"
                         className="text-center py-4 text-gray-500"
                       >
-                        No orders found.
+                        No active subscriptions found.
                       </td>
                     </tr>
                   ) : (
-                    data.map((order) => (
-                      <tr key={order.id} className="bg-white border-t">
-                        <td className="px-3 py-4 text-[12px]">{order.id}</td>
+                    subscriptions.map((sub) => (
+                      <tr key={sub?.id} className="border-t">
+                        <td className="px-3 py-4 text-[12px]">{sub?.id}</td>
                         <td className="px-3 py-4 text-[12px]">
-                          {order.products
-                            .map((product) => product.productName)
-                            .join(", ")}
+                          {sub?.planId?.name || "N/A"}
                         </td>
                         <td className="px-3 py-4 text-[12px]">
-                          {order.status}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">Every Month</td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {order.total.toFixed(2)} USD
+                          {sub?.status || "N/A"}
                         </td>
                         <td className="px-3 py-4 text-[12px]">
-                          {new Date(order.createdAt).toLocaleDateString()}
+                          {sub?.intervalCount} month(s)
                         </td>
-                        {/* <td className="px-3 py-4 text-[12px]">
-                        {new Date(order.createdAt)
-                          .setFullYear(new Date(order.createdAt).getFullYear() + 1)
-                          .toLocaleDateString()}
-                      </td> */}
-                        <td className="w-[100px] px-3 py-4 text-[12px]">
+                        <td className="px-3 py-4 text-[12px]">
+                          ${(sub?.amount / 100).toFixed(2)}
+                        </td>
+                        <td className="px-3 py-4 text-[12px]">
+                          {new Date(sub?.createdAt).toLocaleDateString()}
+                        </td>
+                        <td className="px-3 py-4 text-[12px]">
+                          {sub?.validUpto
+                            ? new Date(sub.validUpto).toLocaleDateString()
+                            : "N/A"}
+                        </td>
+                        <td className="px-3 py-4 text-[12px]">
                           <button
                             className="bg-[#828282] text-white rounded-full hover:opacity-[90%] text-[12px] font-[500] px-3 py-1"
                             onClick={() =>
-                              history(`/myordersDetail/${order.id}`)
+                              history(`/subscription/${sub?.id}`)
                             }
                           >
                             View
@@ -206,8 +185,7 @@ const OrderListing = () => {
                 </tbody>
               </table>
             </div>
-
-            {total > 0 && (
+            {subscriptions > 0 && (
               <div className="paginationdiv flex flex-wrap gap-x-5 gap-y-2 justify-between mt-4">
                 <div className="flex items-center">
                   <span className="text-sm text-gray-600 mr-2">Show</span>
@@ -254,4 +232,4 @@ const OrderListing = () => {
   );
 };
 
-export default OrderListing;
+export default SubscriptionListing;

@@ -1,129 +1,77 @@
-import React, { useEffect, useState } from "react";
 import Layout from "../../components/sidebarglobal/layout";
-import { FaLongArrowAltDown } from "react-icons/fa";
-import Pagination from "react-pagination-js";
-import "react-pagination-js/dist/styles.css";
-import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
+import loader from "../../methods/loader";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import datepipeModel from "../../models/datepipemodel";
+import Breadcrumb from "../../components/common/Breadcrumb/Breadcrumb";
+
 
 const Subscription = () => {
-  const { id } = useParams();
-  const history = useNavigate();
+  const { id } = useParams()
+  const history = useNavigate()
   const user = useSelector((state) => state.user);
-  const [subscriptions, setSubscriptions] = useState([]);
-  const [filters, setFilter] = useState({ page: 1, count: 10 });
+  const searchState = { data: "" };
+  const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
+  const breadcrumbItems = [
+    { label: 'Home', link: '/', active: false },
+    { label: 'Subscription Listing', link: '/subscription', active: false },
+    { label: 'Subcription Detail', link: '', active: true },
+  ];
 
-  useEffect(() => {
-    const fetchSubscriptions = async () => {
-      const response = await ApiClient.get(
-        `mySubscriptions?userId=${
-          user?.id || id
-        }&status=active&sortBy=createdAt asc&page=${filters.page}&count=${
-          filters.count
-        }`
-      );
-      console.log(response, "res");
+  const getData = (p = {}) => {
+    loader(true);
+    let filter = { id: id };
 
-      setSubscriptions(response?.data?.subscriptions || []);
-      setTotal(response?.data?.total);
-    };
-
-    fetchSubscriptions();
-  }, [user, id]);
-
-  const handlePageChange = (newPage) => {
-    setFilter({ ...filters, page: newPage });
+    ApiClient.get("subscriptionDetail", filter).then((res) => {
+      if (res.success) {
+        setData(res.data);
+        setTotal(res.total);
+      }
+      loader(false);
+    });
   };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <Layout>
-      <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-        <div className="bg-[#FFF1E7] shadow-md px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px] mb-[1.5rem] sm:mb-[2.5rem]">
-          <div className="flex flex-wrap justify-between gap-y-3 gap-x-5 mb-2">
-            <div>
-              <h1 className="text-[22px] font-bold mb-1">My Subscriptions</h1>
-              <p className="text-sm text-[#828282]">
-                {subscriptions?.length} items
-              </p>
-            </div>
+    <Breadcrumb items={breadcrumbItems} />
+    <div className="bg-white px-6 py-6 rounded-lg shadow-md">
+        <div className="bg-[#FFF1E7] shadow-md px-4 py-4 rounded-lg mb-5">
+          <h1 className="text-2xl font-bold mb-2">Subscription #{data?.id}</h1>
+          <p className="text-sm text-gray-600 capitalize">Status: {data?.status}</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">User:</span>
+            <p className="text-sm">{data?.userId?.fullName} ({data?.userId?.email})</p>
+          </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Plan:</span>
+            <p className="text-sm">{data?.planId?.name}</p>
+          </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Amount:</span>
+            <p className="text-sm">${data?.amount / 100}</p>
+          </div>
+
+          <div className="flex flex-col">
+            <span className="font-semibold text-sm text-gray-500">Valid Until:</span>
+            <p className="text-sm">{datepipeModel.date(data?.validUpto)}</p>
           </div>
         </div>
 
-        <div className="bg-[#FFF2E8] rounded-[12px] p-[1.5rem] sm:p-[2rem]">
-          <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead>
-                  <tr>
-                    <th className="px-3 pb-4">Ref#</th>
-                    <th className="px-3 pb-4">Description</th>
-                    <th className="px-3 pb-4">Status</th>
-                    <th className="px-3 pb-4">Frequency</th>
-                    <th className="px-3 pb-4">Subtotal</th>
-                    <th className="px-3 pb-4">Last Run</th>
-                    <th className="px-3 pb-4">Next Run</th>
-                    <th className="px-3 pb-4">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {subscriptions?.length === 0 ? (
-                    <tr>
-                      <td
-                        colSpan="8"
-                        className="text-center py-4 text-gray-500"
-                      >
-                        No active subscriptions found.
-                      </td>
-                    </tr>
-                  ) : (
-                    subscriptions.map((sub) => (
-                      <tr key={sub?.id} className="border-t">
-                        <td className="px-3 py-4 text-[12px]">{sub?.id}</td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {sub?.planId?.name || "N/A"}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {sub?.status || "N/A"}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {sub?.intervalCount} month(s)
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          ${(sub?.amount / 100).toFixed(2)}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {new Date(sub?.createdAt).toLocaleDateString()}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          {sub?.validUpto
-                            ? new Date(sub.validUpto).toLocaleDateString()
-                            : "N/A"}
-                        </td>
-                        <td className="px-3 py-4 text-[12px]">
-                          <button className="bg-[#828282] text-white rounded-full hover:opacity-[90%] px-3 py-1">
-                            View
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className="bg-[#F1E9E2] text-[#828282] text-sm text-center rounded-[12px] mt-8 p-3">
-            Note: Subtotals do not include shipping, tax, or other possible
-            surcharges. Actual order totals may vary over time.
-          </p>
+        <div className="bg-gray-100 p-4 rounded-lg">
+          <p className="font-semibold text-sm text-gray-500">Created At:</p>
+          <p className="text-sm">{datepipeModel.date(data?.createdAt)}</p>
         </div>
-        <Pagination
-          currentPage={filters.page}
-          totalSize={total}
-          sizePerPage={filters.count}
-          changeCurrentPage={handlePageChange}
-        />
       </div>
     </Layout>
   );
