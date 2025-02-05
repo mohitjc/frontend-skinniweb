@@ -452,6 +452,7 @@ const MyProfile = () => {
         </div>
         <div className="bg-[#F7F7F7] rounded-b-[12px] px-[1rem]">
           <div className="overflow-x-auto">
+
             <table className="min-w-full">
               <thead>
                 <tr>
@@ -464,7 +465,17 @@ const MyProfile = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.slice(0, 3)?.map((order) => (
+              {data?.length == 0 ? (
+                    <tr>
+                      <td
+                        colSpan="8"
+                        className="text-center py-4 text-gray-500"
+                      >
+                        No orders found.
+                      </td>
+                    </tr>
+                  ) : (
+                data?.slice(0, 3)?.map((order) => (
                   <tr key={order.id} className="border-t">
                     <td className="px-3 py-4 text-[12px]">
                       <div className="text-sm">{order.id}</div>
@@ -494,7 +505,8 @@ const MyProfile = () => {
                       </div>
                     </td>
                   </tr>
-                ))}
+              ))
+            )}
               </tbody>
             </table>
           </div>

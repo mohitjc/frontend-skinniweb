@@ -49,7 +49,7 @@ const Subscription = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
           <div className="flex flex-col">
             <span className="font-semibold text-sm text-gray-500">User:</span>
-            <p className="text-sm">{data?.userId?.fullName} ({data?.userId?.email})</p>
+            <p className="text-sm">{data?.userId?.fullName} </p>
           </div>
 
           <div className="flex flex-col">

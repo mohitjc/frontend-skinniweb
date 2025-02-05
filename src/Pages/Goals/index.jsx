@@ -3,18 +3,28 @@ import Layout from "../../components/sidebarglobal/layout";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader";
+import { useSelector } from "react-redux";
 
 const Goals = () => {
   const searchState = { data: "" };
   const [filters, setFilter] = useState({ page: 1, count: 10, search: "", date: "" });
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
-
-  const getData = (p = {}) => {
+  const user = useSelector((state) => state.user);
+  const getData = () => {
     loader(true);
-    let filter = { ...filters, ...p, fitnessGoalId: "", calories: "" };
+    // let filter = { ...filters, ...p, fitnessGoalId: "", calories: "" };
+    const fitnessGoalId = user?.caloriesInfo?.[0]?.id
+    const calories = user?.caloriesInfo?.[0]?.calories
+    console.log(fitnessGoalId,"goal");
+    console.log(calories,"data");
 
-    ApiClient.get("getFoodList", filter).then((res) => {
+    
+    const payload = {
+      fitnessGoalId: String(fitnessGoalId),
+      calories: String(calories)
+    }
+    ApiClient.get("getFoodList", payload).then((res) => {
       if (res.success) {
         setData(res.data);
         setTotal(res.total);
@@ -39,6 +49,7 @@ const Goals = () => {
   }, [filters]); // Re-fetch data when filters change
 
   const isFilterApplied = filters.date || filters.search; // Check if any filter is applied
+
 
   return (
     <Layout>
@@ -78,29 +89,40 @@ const Goals = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
                 <thead className=" ">
-                  <tr className="">
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Fat (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Protein (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Carbs (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Calories</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Consumed Fat (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Consumed Protein (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Consumed Carbs (g)</th>
-                    <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Consumed Calories</th>
-                  </tr>
+                <tr className="">
+      {/* Table Header */}
+      <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Meal</th>
+      <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Fat (g)</th>
+      <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Protein (g)</th>
+      <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Carbs (g)</th>
+      <th className="whitespace-nowrap text-[13px] xl:text-[14px] px-3 pb-4">Calories</th>
+    </tr>
                 </thead>
                 <tbody>
                   {data && (
-                    <tr className="bg-white border-t">
-                      <td className="px-3 py-4 text-[12px]">{data.fatInGrams}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.proteinInGrams}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.carbsInGrams}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.caloriesInGrams}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.consumeFat}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.consumeProtein}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.consumeCarbs}</td>
-                      <td className="px-3 py-4 text-[12px]">{data.consumeCalories}</td>
-                    </tr>
+                     <tr className="bg-white border-t">
+                     <td className="px-3 py-4 text-[12px]">{data?.breakfast?.fat || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.breakfast?.protein || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.breakfast?.carbs || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.breakfast?.calories || 0}</td>
+                   
+                 
+                     <td className="px-3 py-4 text-[12px]">{data?.lunch?.fat || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.lunch?.protein || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.lunch?.carbs || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.lunch?.calories || 0}</td>
+                  
+                     <td className="px-3 py-4 text-[12px]">{data?.dinner?.fat || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.dinner?.protein || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.dinner?.carbs || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.dinner?.calories || 0}</td>
+                 
+               
+                       <td className="px-3 py-4 text-[12px]">{data?.snacks?.fat || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.snacks?.protein || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.snacks?.carbs || 0}</td>
+                     <td className="px-3 py-4 text-[12px]">{data?.snacks?.calories || 0}</td>
+                   </tr>
                   )}
                 </tbody>
               </table>

@@ -35,7 +35,7 @@ const Goals = () => {
       calories: String(calories)
     }
     ApiClient.get(`getFoodList`, payload).then(res => {
-      if (res.success) {
+      if (res.success) { 
         if (res?.data?.length > 0) {
           setDietPlan(res?.data)
           setDietMeasures(res?.data)
