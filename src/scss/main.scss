@@ -249,3 +249,23 @@ svg.slick-arrow.slick-next {
   background: #9797978f;
 border-radius: 50px;
 }
+
+
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #fff !important;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #FEE4D0 !important; 
+
+}

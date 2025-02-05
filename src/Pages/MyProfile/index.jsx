@@ -226,14 +226,14 @@ const MyProfile = () => {
                       style={{ display: "none" }}
                     />
 
-                    <LiaEdit className="bg-[#fff] rounded-full p-[6px] text-[30px] cursor-pointer absolute shadow-lg right-[13px] md:right-[28px] bottom-[4px] " />
+                    <LiaEdit className="bg-[#fff] rounded-full p-[6px] text-[30px] cursor-pointer absolute shadow-lg right-[15px]  bottom-[4px] " />
                   </label>
                 </div>
               )}
             </div>
             {!editable && <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 mt-[-30px] gap-y-5 gap-x-[2rem] 2xl:gap-x-[4rem] min-h-[174px] px-3 sm:!px-10 py-5 !pt-0 w-full rounded-[12px]">
               {form.fullName && <div className="">
-                <span className="flex items-center text-[18px] gap-2 font-[600]"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
+                <span className="flex items-center text-[18px] gap-2 text-sm"><FaUser className="text-[#828282] text-[22px]" />{form.fullName}</span>
               </div>}
               {form.email && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm"><MdEmail className="text-[#828282] text-[22px]" />{form.email}</span>

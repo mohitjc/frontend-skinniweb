@@ -174,23 +174,23 @@ const Goals = () => {
           </div>
         </div>
         <div className="">
-          <div className="flex items-center gap-2">
-            <button onClick={handlePrevYear} className="font-bold">
-              &#10094; {`<< Year`}
+          <div className="flex items-center gap-2 mb-2 max-sm:!grid max-sm:!grid-cols-2">
+            <button onClick={handlePrevYear} className="font-bold border-2 border-[#fbd7b7] text-[12px] bg-[#fff] text-[#828282] p-[2px_15px] rounded-full hover:bg-[#fbd7b7]">
+              &#10094; {` Year`}
             </button>
-            <button onClick={handlePrevMonth} className="font-bold">
-              &#10094; {`< Month`}
+            <button onClick={handlePrevMonth} className="font-bold border-2 border-[#fbd7b7] text-[12px] bg-[#fff] text-[#828282] p-[2px_15px] rounded-full hover:bg-[#fbd7b7]">
+              &#10094; {` Month`}
             </button>
 
-            <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">
+            <h2 className="text-[#FFBF8B] max-sm:col-span-2 max-sm:text-center font-[600] text-[12px] whitespace-nowrap">
               {currentDate.format("MMMM YYYY")}
             </h2>
 
-            <button onClick={handleNextMonth} className="font-bold">
-              {`Month >`} &#10095;
+            <button onClick={handleNextMonth} className="font-bold border-2 border-[#fbd7b7] text-[12px] bg-[#fff] text-[#828282] p-[2px_15px] rounded-full hover:bg-[#fbd7b7]">
+              {`Month `} &#10095;
             </button>
-            <button onClick={handleNextYear} className="font-bold">
-              {`Year >>`} &#10095;
+            <button onClick={handleNextYear} className="font-bold border-2 border-[#fbd7b7] text-[12px] bg-[#fff] text-[#828282] p-[2px_15px] rounded-full hover:bg-[#fbd7b7]">
+              {`Year `} &#10095;
             </button>
           </div>
           <div className="h-[1px] w-full bg-[#FFF0E5]"></div>

@@ -266,7 +266,33 @@ const Html = ({
 
   return (
     <PageLayout>
-      <div className=" p-10">
+
+{/* <div className="bg-white px-[1rem] py-[1.5rem] sm:p-[2rem] rounded-[12px]">
+<div className="bg-[#FFF2E861] py-5 px-5 ">
+<div className="">
+  <h3>Choose Plan That’s Right For You</h3>
+  <div className="grid grid-cols-3 mt-4">
+    <div className="rounded-[12px] bg-[#fff] shadow-[0px_3.301px_11.553px_0px_rgba(28,_66,_161,_0.04)] px-4 py-10 border-t-2 border-[#828282]">
+      <div className="">
+        <div className="">
+        <h3 className="text-[23px] font-[700] text-[#575451]">Basic</h3>
+        <p className="text-[#8690AB] text-[13px] font-[400]">Starting at</p>
+        </div>
+<div className="mt-3">
+<h2><span>$</span>19,500 <span>/year</span></h2>
+<p>Annual Subscription</p>
+</div>
+
+<button>Get Price Estimate</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div> */}
+
+
+      {/* <div className=" p-10">
         <div className="relative mx-auto max-w-7xl px-6 text-center lg:px-8 mb-10">
           <div className="mx-auto max-w-2xl lg:max-w-4xl mb-8">
             <h2 className="text-[28px] font-[600] leading-8 text-[#0065FF] dark:text-teal-400 mb-3">
@@ -525,7 +551,7 @@ const Html = ({
             </div>
           </div>
         </div>
-      </Dialog>
+      </Dialog> */}
     </PageLayout>
   );
 };
