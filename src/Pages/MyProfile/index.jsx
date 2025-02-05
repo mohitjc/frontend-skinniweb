@@ -381,11 +381,11 @@ const MyProfile = () => {
             )}
             <div className="">
               {editable ? (<>
-                <IoChevronBackCircleSharp onClick={() => setEditable(false)} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
+                <IoChevronBackCircleSharp onClick={() => {setEditable(false); setErrors({})}} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               </>
               ) : (
 
-                <LiaEdit onClick={() => setEditable(true)} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
+                <LiaEdit onClick={() =>{ setEditable(true); setErrors({})}} className="text-[26px] cursor-pointer absolute top-[15px] right-[15px]" />
               )}
                
             </div>

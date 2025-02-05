@@ -41,10 +41,10 @@ const LikesComponent = ({ likedUsers, likeCount, postId }) => {
                 Liked by
             </p>
             {likedUsers.map((item, index) => (<p className="ml-1 text-[12px] text-[#000] font-[400] cursor-pointer" onClick={()=>handleProfileNavigate(item?.id)}>
-                <span className="font-[500]">{item.fullName},</span>
+                <span className="font-[500]">{item.fullName}{(likeCount - 2) > 0 ? "," : ""}</span>
             </p>))}
             <p className="ml-1 text-[12px] text-[#000] font-[400]" onClick={() => {getLikedData()}}>
-                and <span className="font-[500] cursor-pointer">{(likeCount - 2) > 0 ? (likeCount - 2) : ""} others</span>
+                {(likeCount - 2) > 0 ? "and" : ""} <span className="font-[500] cursor-pointer">{(likeCount - 2) > 0 ? (likeCount - 2) : ""} {(likeCount - 2) > 0 ? "other" : ""}</span>
             </p>
         </div>
         <Dialog

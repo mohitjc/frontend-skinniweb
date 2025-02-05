@@ -12,6 +12,7 @@ const Goals = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [dietMeasures, setDietMeasures] = useState([""])
   const [dietPlan, setDietPlan] = useState([])
+  const [dietInitialPlan, setDietInitialPlan] = useState([])
   const moderatelyActive = [
     { value: 1, text: "Sedentary" },
     { value: 2, text: "Lightly Active" },
@@ -21,12 +22,13 @@ const Goals = () => {
   ]
   const [month, setMonth] = useState([])
   const [videos, setVideos] = useState([])
+  const [currentDate, setCurrentDate] = useState(moment());
 
-  console.log(user,"kjhjhjk")
+  console.log(dietInitialPlan,"dietInitialPlandietInitialPlan")
 
   const getDietPlan = (data, date) => {
-    const fitnessGoalId = data?.caloriesInfo?.map((item) => item?.id)
-    const calories = data?.caloriesInfo?.map((item) => item?.calories)
+    const fitnessGoalId = data?.caloriesInfo?.[0]?.id
+    const calories = data?.caloriesInfo?.[0]?.calories
     const payload = {
       date: date,
       fitnessGoalId: String(fitnessGoalId),
@@ -45,14 +47,44 @@ const Goals = () => {
     })
   }
 
+  const getInitialDietPlan = (data) => {
+    // const fitnessGoalId = data?.caloriesInfo?.[0]?.id
+    const calories = data?.caloriesInfo?.[0]?.calories
+    const payload = {
+      calories: String(calories)
+    }
+    ApiClient.get(`caloriesInMeal`, payload).then(res => {
+      if (res.success) {
+        setDietInitialPlan(res?.meals)
+      }
+    })
+  }
+
   const handleDateFilter = (date) => {
     generateCurrentMonth(date)
     getDietPlan(user, date)
   }
 
+  const handlePrevMonth = () => {
+    setCurrentDate(currentDate.clone().subtract(1, 'month'));
+  };
+  
+  const handleNextMonth = () => {
+    setCurrentDate(currentDate.clone().add(1, 'month'));
+  };
+  
+  const handlePrevYear = () => {
+    setCurrentDate(currentDate.clone().subtract(1, 'year'));
+  };
+  
+  const handleNextYear = () => {
+    setCurrentDate(currentDate.clone().add(1, 'year'))
+  };
+
   useEffect(()=>{
     if(user?.id || user?._id){
       getDietPlan(user, moment().format("YYYY-MM-DD"))
+      getInitialDietPlan(user)
     }
   },[user])
 
@@ -140,40 +172,58 @@ const Goals = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="">
-                              <div className="flex items-center gap-2">
-                                <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">
-                                  {moment().format("MMMM YYYY")}
-                                </h2>
-                                <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
-                              </div>
-                              <div className="py-8">
-                                <div className="grid grid-cols-1 gap-5">
-                                  <div className="grid grid-cols-7 gap-5">
-                                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => {
-                                      return (
-                                        <h3 key={index} className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto">
-                                          {day}
-                                        </h3>
-                                      );
-                                    })}
-                                  </div>
-                                  <div className="grid grid-cols-7 gap-5">
-                                    {month?.map((item, index) => {
-                                      return (
-                                        <p
-                                          key={index}
-                                          onClick={e => handleDateFilter(item.currentDate)}
-                                          className={`text-[14px] cursor-pointer font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto ${item?.filterDate ? "bg-[#FFEBDC]" : ""}`}
-                                        >
-                                          {item ? item.date : ""}
-                                        </p>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+        <div className="">
+          <div className="flex items-center gap-2">
+            <button onClick={handlePrevYear} className="font-bold">
+              &#10094; {`<< Year`}
+            </button>
+            <button onClick={handlePrevMonth} className="font-bold">
+              &#10094; {`< Month`}
+            </button>
+
+            <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">
+              {currentDate.format("MMMM YYYY")}
+            </h2>
+
+            <button onClick={handleNextMonth} className="font-bold">
+              {`Month >`} &#10095;
+            </button>
+            <button onClick={handleNextYear} className="font-bold">
+              {`Year >>`} &#10095;
+            </button>
+          </div>
+          <div className="h-[1px] w-full bg-[#FFF0E5]"></div>
+
+          <div className="py-8">
+            <div className="grid grid-cols-1 gap-5">
+              <div className="grid grid-cols-7 gap-5">
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => {
+                  return (
+                    <h3
+                      key={index}
+                      className="text-[14px] font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto"
+                    >
+                      {day}
+                    </h3>
+                  );
+                })}
+              </div>
+              <div className="grid grid-cols-7 gap-5">
+                {month.map((item, index) => {
+                  return (
+                    <p
+                      key={index}
+                      onClick={(e) => handleDateFilter(item?.currentDate)}
+                      className={`text-[14px] cursor-pointer font-[600] text-center text-[#828282] w-[35px] h-[35px] rounded-full flex justify-center items-center mx-auto ${item?.filterDate ? "bg-[#FFEBDC]" : ""}`}
+                    >
+                      {item ? item.date : ""}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
                             <div className="">
                               <div className="flex items-center gap-2">
                                 <h2 className="text-[#FFBF8B] font-[600] text-[18px] whitespace-nowrap">Your Diet Measures</h2>
@@ -197,7 +247,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Breakfast</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[0]?.calories}mg Cals</span> | <span className="">{dietInitialPlan[0]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.breakfast?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
@@ -226,7 +276,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Lunch</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[1]?.calories}mg Cals</span> | <span className="">{dietInitialPlan[1]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.lunch?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
@@ -255,7 +305,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Dinner</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[2]?.calories}mg Cals</span> | <span className="">{dietInitialPlan[2]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.dinner?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
@@ -285,7 +335,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 1</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[3]?.calories} Cals</span> | <span className="">{dietInitialPlan[3]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.snacks1?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
@@ -314,7 +364,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 2</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[4]?.calories} Cals</span> | <span className="">{dietInitialPlan[4]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.snacks2?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">
@@ -343,7 +393,7 @@ const Goals = () => {
                                       </div>
                                       <div className="mt-3">
                                         <h2 className="text-[15px] font-[600] text-[#828282] text-center">Snacks 3</h2>
-                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">132 Cals</span> | <span className="">2g Net Cards</span></p>
+                                        <p className="text-[10px] text-center text-[#828282] text-[400]">Recommended: <span className="">{dietInitialPlan[5]?.calories} Cals</span> | <span className="">{dietInitialPlan[5]?.carbs}g Net Cards</span></p>
                                         {dietPlan?.map((item, index) => {
                                           return item?.snacks3?.map((itm, i) => {
                                             return <div key={i} className="bg-[#FED6B6] px-2 py-1 rounded-l-md flex gap-3 justify-between pr-4 border-r-[5px] border-[#FF0000] mt-2">

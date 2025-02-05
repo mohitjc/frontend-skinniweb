@@ -15,7 +15,7 @@ import { PiUserListLight } from "react-icons/pi";
 import { GoGoal } from "react-icons/go";
 import { CiLock } from "react-icons/ci";
 import { IoLogOutOutline } from "react-icons/io5";
-import { MdOutlinePayments } from "react-icons/md";
+import { MdOutlineForum, MdOutlinePayments } from "react-icons/md";
 
 const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) => {
   // const [activeplan, setActiveplan] = useState();
@@ -53,7 +53,7 @@ const Html = ({ ListItemLink, tabclass, isAllow, route, isOpen, user , Logout}) 
     },
     {
       name: 'Forums',
-      icon:  <CiUser className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
+      icon:  <MdOutlineForum className="bg-white text-[#B7B7B7] min-w-[32px] w-[32px] h-[32px] p-[7px] rounded-full" />,
       url: "/forum",
       // key: "readcustomer",
     },
