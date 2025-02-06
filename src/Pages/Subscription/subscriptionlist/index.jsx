@@ -17,13 +17,14 @@ const SubscriptionListing = () => {
   const [total, setTotal] = useState(0);
   const [sortBy, setSortBy] = useState("id");
   const [sortOrder, setSortOrder] = useState("asc");
+
   const fetchSubscriptions = async () => {
     if (!user?.id && id) return;
     loader(true);
     const response = await ApiClient.get(
       `mySubscriptions?userId=${
         user?.id || id
-      }&status=active&sortBy=createdAt asc&page=${filters.page}&count=${
+      }&sortBy=createdAt asc&page=${filters.page}&count=${
         filters.count
       }`
     );
@@ -85,13 +86,13 @@ const SubscriptionListing = () => {
                   <option className="text-[#828282]" value="id">
                     Ref#
                   </option>
-                  <option className="text-[#828282]" value="description">
-                    Description
-                  </option>
+                  {/* <option className="text-[#828282]" value="name">
+                    Name
+                  </option> */}
                   <option className="text-[#828282]" value="status">
                     Status
                   </option>
-                  <option className="text-[#828282]" value="total">
+                  <option className="text-[#828282]" value="amount">
                     Subtotal
                   </option>
                 </select>
