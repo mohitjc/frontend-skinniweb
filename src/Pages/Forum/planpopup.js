@@ -32,15 +32,16 @@ const ForumAccess = () => {
             {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
                     <div className="bg-white rounded-lg shadow-lg w-96">
-                        <div className="flex justify-between items-center p-4 border-b border-gray-300">
-                            <h2 className="text-xl font-semibold">Access Denied</h2>
+                        <div className="flex justify-between items-center bg-[#fbd7b7] rounded-t-md px-4 py-3 border-b border-gray-300">
+                            <h2 className="text-[16px]] font-semibold">Access Denied</h2>
                             {/* <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-700">
                 <span className="text-xl">&times;</span>
               </button> */}
                         </div>
                         <div className="p-6 text-center">
-                            <p>You need to purchase a plan in order to access the forums.</p>
-                            <div className="flex justify-end space-x-4  border-gray-300">
+                            <img className='w-[70px] h-[70px] m-auto' src='assets/img/popupimg.png'></img>
+                            <p className='mt-3 text-[15px] font-[400]'>You need to purchase a plan in order to access the forums by Skinny App.</p>
+                            <div className="flex justify-end space-x-4  border-gray-300 mt-3">
                             {/* <button
                 onClick={handleCloseModal}
                 className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400"
@@ -49,7 +50,7 @@ const ForumAccess = () => {
               </button> */}
                             <button
                                 onClick={handlePurchasePlan}
-                                className="border-0 bg-[#FED6B6] rounded-[8px] px-6 -py-2 text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]"
+                                className="border-0 bg-[#FED6B6] w-full rounded-[8px] px-6 -py-2 text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]"
                             >
                                Ok
                             </button>
