@@ -41,9 +41,16 @@ const Subscription = () => {
     <Layout>
     <Breadcrumb items={breadcrumbItems} />
     <div className="bg-white px-6 py-6 rounded-lg shadow-md">
-        <div className="bg-[#FFF1E7] shadow-md px-4 py-4 rounded-lg mb-5">
+        <div className="bg-[#FFF1E7] shadow-md px-4 py-4 flex justify-between rounded-lg mb-5">
+          <div>
           <h1 className="text-2xl font-bold mb-2">Subscription #{data?.id}</h1>
           <p className="text-sm text-gray-600 capitalize">Status: {data?.status}</p>
+          </div>
+         
+          <div className=" ">
+          <h1 className="text-2xl font-bold mb-2">Created At</h1>
+          <p className="text-sm text-gray-600 capitalize">Date: {datepipeModel.date(data?.createdAt)}</p>
+        </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -68,10 +75,7 @@ const Subscription = () => {
           </div>
         </div>
 
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <p className="font-semibold text-sm text-gray-500">Created At:</p>
-          <p className="text-sm">{datepipeModel.date(data?.createdAt)}</p>
-        </div>
+       
       </div>
     </Layout>
   );

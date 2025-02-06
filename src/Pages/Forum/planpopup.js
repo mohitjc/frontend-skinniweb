@@ -38,10 +38,9 @@ const ForumAccess = () => {
                 <span className="text-xl">&times;</span>
               </button> */}
                         </div>
-                        <div className="p-6">
+                        <div className="p-6 text-center">
                             <p>You need to purchase a plan in order to access the forums.</p>
-                        </div>
-                        <div className="flex justify-center space-x-4 p-4 border-t border-gray-300">
+                            <div className="flex justify-end space-x-4  border-gray-300">
                             {/* <button
                 onClick={handleCloseModal}
                 className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400"
@@ -50,11 +49,13 @@ const ForumAccess = () => {
               </button> */}
                             <button
                                 onClick={handlePurchasePlan}
-                                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                                className="border-0 bg-[#FED6B6] rounded-[8px] px-6 -py-2 text-[16px] font-[400] h-10 flex items-center justify-center text-[#000]"
                             >
                                Ok
                             </button>
                         </div>
+                        </div>
+                 
                     </div>
                 </div>
             )}
