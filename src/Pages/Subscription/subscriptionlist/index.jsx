@@ -126,12 +126,12 @@ const SubscriptionListing = () => {
                 <thead>
                   <tr>
                     <th className="px-3 pb-4">Ref#</th>
-                    <th className="px-3 pb-4">Description</th>
+                    <th className="px-3 pb-4">Name</th>
                     <th className="px-3 pb-4">Status</th>
                     <th className="px-3 pb-4">Frequency</th>
                     <th className="px-3 pb-4">Subtotal</th>
-                    <th className="px-3 pb-4">Last Run</th>
-                    <th className="px-3 pb-4">Next Run</th>
+                    {/* <th className="px-3 pb-4">Last Run</th> */}
+                    {/* <th className="px-3 pb-4">Next Run</th> */}
                     <th className="px-3 pb-4">Action</th>
                   </tr>
                 </thead>
@@ -161,14 +161,14 @@ const SubscriptionListing = () => {
                         <td className="px-3 py-4 text-[12px]">
                           ${(sub?.amount / 100).toFixed(2)}
                         </td>
-                        <td className="px-3 py-4 text-[12px]">
+                        {/* <td className="px-3 py-4 text-[12px]">
                           {new Date(sub?.createdAt).toLocaleDateString()}
                         </td>
                         <td className="px-3 py-4 text-[12px]">
                           {sub?.validUpto
                             ? new Date(sub.validUpto).toLocaleDateString()
                             : "N/A"}
-                        </td>
+                        </td> */}
                         <td className="px-3 py-4 text-[12px]">
                           <button
                             className="bg-[#828282] text-white rounded-full hover:opacity-[90%] text-[12px] font-[500] px-3 py-1"

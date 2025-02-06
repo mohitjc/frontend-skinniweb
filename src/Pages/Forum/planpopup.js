@@ -39,7 +39,7 @@ const ForumAccess = () => {
               </button> */}
                         </div>
                         <div className="p-6">
-                            <p>You need to purchase a plan in order to access the forums.</p>
+                            <p>You need to purchase a plan in order to access the forums by Skinny App.</p>
                         </div>
                         <div className="flex justify-center space-x-4 p-4 border-t border-gray-300">
                             {/* <button
