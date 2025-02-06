@@ -40,7 +40,7 @@ const ForumAccess = () => {
                         </div>
                         <div className="p-6 text-center">
                             <img className='w-[70px] h-[70px] m-auto' src='assets/img/popupimg.png'></img>
-                            <p className='mt-3 text-[15px] font-[400]'>You need to purchase a plan in order to access the forums by Skinny App.</p>
+                            <p className='mt-3 text-[15px] font-[400]'>You need to purchase a plan in order to access the forums by Skinni App.</p>
                             <div className="flex justify-end space-x-4  border-gray-300 mt-3">
                             {/* <button
                 onClick={handleCloseModal}
