@@ -101,7 +101,7 @@ const MyProfile = () => {
         if (res.success) {
           const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country} = res.data;
           setForm({ fullName, email, mobileNo, address, dob, gender, number: mobileNo, state,country, city, pincode });
-          setImage(image);
+          setImage(image?.includes("https" || "http") ? image : `${environment?.api}${image}`);
         } else {
           toast.error("Failed to fetch profile data");
         }
