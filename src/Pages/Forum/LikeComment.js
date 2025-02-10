@@ -4,6 +4,7 @@ import ApiClient from '../../methods/api/apiClient';
 import loader from '../../methods/loader';
 import { useNavigate } from 'react-router-dom';
 import { Button, Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
+import environment from '../../environment';
 
 const LikesComponent = ({ likedUsers, likeCount, postId }) => {
     const navigate = useNavigate()
@@ -33,7 +34,7 @@ const LikesComponent = ({ likedUsers, likeCount, postId }) => {
                 <img
                     key={index}
                     className={`w-[27px] h-[27px] rounded-full object-cover ${index > 0 ? 'relative left-[-7px]' : ''}`}
-                    src={item?.image ? item?.image : "/assets/img/person.jpg"}
+                    src={item.image?.includes("https" || "http") ? item.image || "/assets/img/person.jpg" : !item.image ? "/assets/img/person.jpg" :`${environment?.api}${item.image}` || "/assets/img/person.jpg"}
                     alt={`Profile ${index + 1}`}
                 />
             ))}

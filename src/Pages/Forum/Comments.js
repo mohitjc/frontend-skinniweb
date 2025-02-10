@@ -5,6 +5,7 @@ import loader from "../../methods/loader";
 import ApiClient from "../../methods/api/apiClient";
 import { FiSend } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import environment from "../../environment";
 
 const CommentSection = ({ commentsData, postId, getData, getComments }) => {
     const user = useSelector((state) => state.user);
@@ -153,7 +154,8 @@ const CommentSection = ({ commentsData, postId, getData, getComments }) => {
                             <img
                                 className="w-[40px] h-[40px] rounded-full object-cover cursor-pointer"
                                 onClick={e => handleProfileNavigate(comment?.addedBy?._id || comment?.addedBy?.id)}
-                                src={comment?.addedByImage || "assets/img/profile-image.jpg"}
+                                // src={comment?.addedByImage || "assets/img/profile-image.jpg"}
+                                src={comment?.addedByImage?.includes("https" || "http") ? comment?.addedByImage || "/assets/img/person.jpg" : !comment?.addedByImage ? "/assets/img/person.jpg" :`${environment?.api}${comment?.addedByImage}` || "/assets/img/person.jpg"}
                                 alt="Profile"
                             />
                             <div className="ml-2">

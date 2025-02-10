@@ -1,4 +1,5 @@
 import React from "react";
+import environment from "../../environment";
 
 const LikesList = ({ likes , handleProfileNavigate}) => {
   return (
@@ -15,7 +16,8 @@ const LikesList = ({ likes , handleProfileNavigate}) => {
               <li key={user.userId} className="flex items-center space-x-4 cursor-pointer" onClick={()=>handleProfileNavigate(user.userId)}>
                 <img
                   className="w-10 h-10 rounded-full object-cover"
-                  src={user.image || "assets/img/profile-image.jpg"}
+                  src={user.image?.includes("https" || "http") ? user.image || "/assets/img/person.jpg" : !user.image ? "/assets/img/person.jpg" :`${environment?.api}${user.image}` || "/assets/img/person.jpg"}
+                  // src={user.image || "assets/img/profile-image.jpg"}
                   alt={user.fullName}
                 />
                 <span className="text-[15px] font-medium text-gray-700">{user.fullName}</span>

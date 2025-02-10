@@ -73,7 +73,7 @@ const Html = ({ isOpen, toggle, user, isOpen1, Logout, t }) => {
                 <div className="flex gap-2 items-center">
                   <img
                     alt="image"
-                    src={user.image?.includes("https" || "http") ? user.image || "/assets/img/person.jpg" : `${environment?.api}${user.image}` || "/assets/img/person.jpg"}
+                    src={user.image?.includes("https" || "http") ? user.image || "/assets/img/person.jpg" : !user.image ? "/assets/img/person.jpg" :`${environment?.api}${user.image}` || "/assets/img/person.jpg"}
                     className="h-10 w-10 rounded-full object-cover"
                   />
                   <div className="text-[#FEE4D0]">
