@@ -99,7 +99,7 @@ const MyProfile = () => {
     ApiClient.get("profile")
       .then((res) => {
         if (res.success) {
-          const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country} = res.data;
+          const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country,code} = res.data;
           setForm({ fullName, email, mobileNo, address, dob, gender, number: mobileNo, state,country, city, pincode });
           setImage(image?.includes("https" || "http") ? image  : !image ? "/assets/img/person.jpg"  : `${environment?.api}${image}`);
         } else {
@@ -298,7 +298,7 @@ const MyProfile = () => {
                     value={form.number}
                     enableSearch={true}
                     onChange={(value, data) => {
-                      setForm({ ...form, number: value, mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" });
+                      setForm({ ...form, number: value.slice(data.dialCode.length), mobileNo: value.slice(data.dialCode.length), code: data.dialCode || "1" });
                     }}
                     countryCodeEditable={true}
                   />
