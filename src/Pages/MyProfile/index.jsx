@@ -99,8 +99,8 @@ const MyProfile = () => {
     ApiClient.get("profile")
       .then((res) => {
         if (res.success) {
-          const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country,code} = res.data;
-          setForm({ fullName, email, mobileNo, address, dob, gender, number: mobileNo, state,country, city, pincode });
+          const { fullName, email, mobileNo, address, dob, gender, image, state, city, pincode ,country,dialCode} = res.data;
+          setForm({ fullName, email, mobileNo, address, dob, gender, number:`${dialCode}${mobileNo}`, state,country, city, pincode });
           setImage(image?.includes("https" || "http") ? image  : !image ? "/assets/img/person.jpg"  : `${environment?.api}${image}`);
         } else {
           toast.error("Failed to fetch profile data");
@@ -242,7 +242,7 @@ const MyProfile = () => {
                 <span className="flex items-center text-[18px] gap-2 text-sm"><FaCalendarAlt className="text-[#828282] text-[22px]" />{form.dob}</span>
               </div>}
               {form.mobileNo && <div className="">
-                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{form.mobileNo} </span>
+                <span className="flex items-center text-[18px] gap-2 text-sm"><FaPhoneAlt className="text-[#828282] text-[22px]" />{`${form.number}`} </span>
               </div>}
               {form.gender && <div className="">
                 <span className="flex items-center text-[18px] gap-2 text-sm "><BsGenderMale className="text-[#828282] text-[22px]" />{form.gender}</span>
