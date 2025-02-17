@@ -412,7 +412,7 @@ const MyProfile = () => {
 
 
 
-        <div className="flex justify-between flex-wrap gap-x-5 gap-y-2 bg-[#FEE4D0] mt-4 px-4 py-3">
+        {/* <div className="flex justify-between flex-wrap gap-x-5 gap-y-2 bg-[#FEE4D0] mt-4 px-4 py-3">
           <h2 className="">Address Book</h2>
           <p className="text-[#828282] text-sm flex items-center gap-1"><BiSolidBook className="text-[24px]" />Manage Address</p>
         </div>
@@ -443,7 +443,7 @@ const MyProfile = () => {
               <LiaEdit className="text-[24px] cursor-pointer absolute right-[22px] top-[22px]" />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <h2 className="text-xl font-semibold mb-4 mt-8"></h2>
         <div className="flex justify-between gap-x-5 gap-y-2 bg-[#FEE4D0] px-4 py-3">
@@ -499,11 +499,11 @@ const MyProfile = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
+                    {/* <td className="px-6 py-3 whitespace-nowrap">
                       <div className="text-[12px] text-[#FF0000] flex items-center gap-1">
                         <PiDotsSixVerticalBold className="text-[18px]" />Reorder
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
               ))
             )}
