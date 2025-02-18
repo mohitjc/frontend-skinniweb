@@ -16,66 +16,97 @@ import configureStoreProd from "./Pages/config/configureStore.prod";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
-import { lazy } from "react";
 import methodModel from "./methods/methods";
 import environment from "./environment";
+
+// Import the page components directly
+import Login from "./Pages/Login";
+import Forum from "./Pages/Forum";
+import Signup from "./Pages/Signup";
+import Otp from "./Pages/Otp";
+import Chats from "./Pages/Chats";
+import Dashboard from "./Pages/Dashboard";
+import OrderListing from "./Pages/Orders/orderlisting";
+import MyPayments from "./Pages/MyPayments";
+import Orders from "./Pages/Orders";
+import Subscription from "./Pages/Subscription";
+import Meals from "./Pages/Meals";
+import AppointmentListing from "./Pages/MyAppointment/appointmentListing";
+import MyAppointment from "./Pages/MyAppointment";
+import UserProfile from "./Pages/UserProfile";
+import Settings from "./Pages/Settings";
+import Forgotpassword from "./Pages/Forgotpassword";
+import Resetpassword from "./Pages/Resetpassword";
+import ChangePassword from "./Pages/ChangePassword";
+import Goals from "./Pages/Goals";
+import Blogs from "./Pages/Blogs";
+import BlogView from "./Pages/Blogs/View";
+import Faq from "./Pages/Faq";
+import Plans from "./Pages/Plans";
+import NotFoundPage from "./Pages/NotFoundPage";
+import Terms from "./Pages/Terms";
+import Aboutus from "./Pages/Aboutus";
+import Privacy from "./Pages/Privacy";
+import Success from "./Pages/Success";
+import UserRoles from "./Pages/UserRoles";
+import UserRolesAddEdit from "./Pages/UserRoles/AddEdit";
+import Users from "./Pages/Users";
+import UsersAddEdit from "./Pages/Users/AddEdit";
+import MyProfile from "./Pages/MyProfile";
+import SubscriptionListing from "./Pages/Subscription/subscriptionlist";
 
 const { persistor, store } = configureStoreProd();
 
 function App() {
   console.log(environment?.secretKey, "environment?.secretKey")
   const routes = [
-    { url: "/login", path: "Login" },
-    { url: "/forum", path: "Forum" },
-    { url: "/signup", path: "Signup" },
-    { url: "/otp", path: "Otp" },
-    { url: "/chats", path: "Chats" },
-    { url: "/dashboard", path: "Dashboard" },
-    { url: "/myorders", path: "Orders/orderlisting" },
-    { url: "/mypayments", path: "MyPayments" },
-    { url: "/myordersDetail/:id", path: "Orders" },
-    { url: "/subscription/:id", path: "Subscription" },
-    // { url: "/myprofile", path: "Profile" },
-    { url: "/meals", path: "Meals" },
-    { url: "/myappointment", path: "MyAppointment/appointmentListing" },
-    { url: "/myappointmentData/:id", path: "MyAppointment" },
-    { url: "/user/detail/:id", path: "UserProfile" },
-    { url: "/subscription", path: "Subscription/subscriptionlist" },
-    { url: "/profile/:tab", path: "Settings" },
-    { url: "/forgotpassword", path: "Forgotpassword" },
-    { url: "/resetpassword", path: "Resetpassword" },
-    { url: "/changepassword", path: "ChangePassword" },
-    { url: "/Goals", path: "Goals" },
-    { url: "/", path: 'MyProfile' },
-    { url: "/chat", path: "Chat" },
-    { url: "/blogs", path: "Blogs" },
-    { url: "/blogs/:id", path: "Blogs/View" },
-    { url: "/faqs", path: "Faq" },
-    { url: "/newsletter", path: "Newsletter" },
-    { url: "/plans", path: "Plans" },
-
-    { url: "*", path: "NotFoundPage" },
-    { url: "/terms", path: "Terms" },
-    { url: "/about", path: "Aboutus" },
-    { url: "/privacy", path: "Privacy" },
-    { url: "/success", path: "Success" },
-    { url: "/userroles", path: "UserRoles" },
-    { url: "/userroles/edit/:id", path: "UserRoles/AddEdit" },
-    { url: "/userroles/add", path: "UserRoles/AddEdit" },
-    { url: "/userroles/detail/:id", path: "UserRoles/View" },
-    { url: "/users", path: "Users" },
-    { url: "/users/edit/:id", path: "Users/AddEdit" },
-    { url: "/users/add", path: "Users/AddEdit" },
-    { url: "/users/detail/:id", path: "Users/View" },
-
-
+    { url: "/login", component: Login },
+    { url: "/forum", component: Forum },
+    { url: "/signup", component: Signup },
+    { url: "/otp", component: Otp },
+    { url: "/chats", component: Chats },
+    { url: "/dashboard", component: Dashboard },
+    { url: "/myorders", component: OrderListing },
+    { url: "/mypayments", component: MyPayments },
+    { url: "/myordersDetail/:id", component: Orders },
+    { url: "/subscription/:id", component: Subscription },
+    { url: "/meals", component: Meals },
+    { url: "/myappointment", component: AppointmentListing },
+    { url: "/myappointmentData/:id", component: MyAppointment },
+    { url: "/user/detail/:id", component: UserProfile },
+    { url: "/subscription", component: SubscriptionListing },
+    { url: "/profile/:tab", component: Settings },
+    { url: "/forgotpassword", component: Forgotpassword },
+    { url: "/resetpassword", component: Resetpassword },
+    { url: "/changepassword", component: ChangePassword },
+    { url: "/Goals", component: Goals },
+    { url: "/", component:MyProfile },
+    // { url: "/chat", component: Chat },
+    { url: "/blogs", component: Blogs },
+    { url: "/blogs/:id", component: BlogView },
+    { url: "/faqs", component: Faq },
+    // { url: "/newsletter", component: Newsletter },
+    { url: "/plans", component: Plans },
+    { url: "*", component: NotFoundPage },
+    { url: "/terms", component: Terms },
+    { url: "/about", component: Aboutus },
+    { url: "/privacy", component: Privacy },
+    { url: "/success", component: Success },
+    { url: "/userroles", component: UserRoles },
+    { url: "/userroles/edit/:id", component: UserRolesAddEdit },
+    { url: "/userroles/add", component: UserRolesAddEdit },
+    { url: "/userroles/detail/:id", component: UserRolesAddEdit },
+    { url: "/users", component: Users },
+    { url: "/users/edit/:id", component: UsersAddEdit },
+    { url: "/users/add", component: UsersAddEdit },
+    { url: "/users/detail/:id", component: UsersAddEdit },
   ];
-
 
   methodModel.updateSiteDetail({
     name: 'Skinni Web',
     fabIcon: ''
-  })
+  });
+
   sessionStorage.removeItem('browseload');
   sessionStorage.removeItem('siteload');
   sessionStorage.removeItem('activeRooms');
@@ -99,12 +130,12 @@ function App() {
           >
             <Router>
               <Routes>
-                {routes.map((itm: any) => {
-                  const Element = lazy(() => import(`./Pages/${itm.path}`));
+                {routes.map((itm, index) => {
                   return (
                     <Route
+                      key={index}
                       path={itm.url}
-                      element={itm.path ? <Element /> : itm?.element}
+                      element={<itm.component />}
                     />
                   );
                 })}

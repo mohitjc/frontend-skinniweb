@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import ApiClient from "../../methods/api/apiClient";
 import loader from "../../methods/loader"; 
 import "./style.scss";
-import AuthLayout from "../../components/AuthLayout";
+// import AuthLayout from "../../components/AuthLayout";
 import { toast } from "react-toastify"; 
 import { IoIosArrowBack } from "react-icons/io";
 import { useSelector } from "react-redux";
+import Layout from "../../components/sidebarglobal/layout";
 
 const ChangePassword = () => {
   const history = useNavigate();
@@ -56,16 +57,16 @@ const ChangePassword = () => {
 
   return (
     <>
-      <AuthLayout>
+      <Layout>
         <div className="sm:h-screen flex justify-center items-center max-w-[500px] mx-auto p-[4rem_0rem] px-3 py-[6rem]">
           <div className="main_page w-full">
       
             <div className="main_auth bg-white p-[3rem_2rem] sm:p-[3rem_3rem] relative rounded-[20px] w-full">
-              <IoIosArrowBack
+              {/* <IoIosArrowBack
                 onClick={() => history(-1)}
                 className="bg-[#ebebeb] h-[28px] w-[28px] rounded-full p-[5px] absolute left-[2rem] top-[1rem] cursor-pointer"
-              />
-                    <img src="/assets/img/Skinnii-Logo.webp" className="w-[140px] sm:w-[160px] object-contain mx-auto mb-4" />
+              /> */}
+                    {/* <img src="/assets/img/Skinnii-Logo.webp" className="w-[140px] sm:w-[160px] object-contain mx-auto mb-4" /> */}
               <div className="main_heading mb-4">
                 <h2 className="text-[15px] uppercase font-[500] text-center text-[#828282] mb-1">Change Password</h2>
                 <p className="text-[14px] text-center text-[#000] leading-[16px] max-w-[300px] mx-auto"> Enter a new password below to change your password</p>
@@ -180,7 +181,7 @@ const ChangePassword = () => {
             </div>
           </div>
         </div>
-      </AuthLayout>
+      </Layout>
     </>
   );
 };
