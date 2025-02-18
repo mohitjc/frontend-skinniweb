@@ -36,6 +36,24 @@ const Orders = () => {
     });
   };
 
+  const downloadPrint = (id) => {
+    let filter = { intentId: id };
+  
+    ApiClient.get("invoiceDownload", filter).then((res) => {
+      if (res.success) {
+        const link = res?.data;
+  
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = '_blank';
+        a.download = 'invoice.pdf';
+        a.click();
+      }
+    });
+  };
+  
+  
+
   // Function to handle date change
   // const handleDateChange = (e) => {
   //   const selectedDate = e.target.value;
@@ -66,10 +84,10 @@ const Orders = () => {
               </div>
               {/* <button className="bg-[#828282] text-white px-3 py-2 rounded-[10px] h-fit hover:opacity-[90%]">Complete</button> */}
             </div>
-            {/* <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
-              <p className="text-[#828282] text-[12px] font-[600]">Reorder</p>
-              <p className="text-[#828282] text-[12px] font-[600]">Print Order</p>
-            </div> */}
+            <div className="flex justify-between flex-wrap gap-y-3 gap-x-5">
+              {/* <p className="text-[#828282] text-[12px] font-[600]">Reorder</p> */}
+              <p className="text-[#828282] text-[12px] font-[600] cursor-pointer" onClick={()=>downloadPrint(data?.intent_id)}>Print Order</p>
+            </div>
           </div>
 
           {/* Tab Group for Order Sections */}
